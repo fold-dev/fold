@@ -1,7 +1,7 @@
 {
     "name": "@fold-dev/core",
     "title": "Fold",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "The UI library for product builders.",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -70,7 +70,7 @@
         "storybook"
     ],
     "author": "Jo du Plessis",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/fold-dev/fold/issues"
     },
