@@ -1,0 +1,263 @@
+:root {
+    --f-progress-background: var(--f-color-surface-stronger);
+    --f-progress-active: var(--f-color-accent);
+    --f-progress-radius: var(--f-radius);
+    --f-subtle-progress-padding: var(--f-space-1);
+    --f-subtle-progress-opacity: 0.2;
+}
+
+.f-progress {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: var(--f-progress-background);
+    border-radius: var(--f-progress-radius);
+}
+
+.f-progress__bar {
+    --f-progress-background-color: var(--f-progress-active);
+
+    top: 0px;
+    left: 0%;
+    height: 100%;
+    position: absolute;
+    background: var(--f-progress-background-color);
+    pointer-events: none;
+}
+
+.f-progress.is-accent .f-progress__bar {
+    --f-progress-background-color: var(--f-color-accent);
+}
+
+.f-progress.is-success .f-progress__bar {
+    --f-progress-background-color: var(--f-color-success);
+}
+
+.f-progress.is-neutral .f-progress__bar {
+    --f-progress-background-color: var(--f-color-neutral);
+}
+
+.f-progress.is-caution .f-progress__bar {
+    --f-progress-background-color: var(--f-color-caution);
+}
+
+.f-progress.is-warning .f-progress__bar {
+    --f-progress-background-color: var(--f-color-warning);
+}
+
+.f-progress.is-danger .f-progress__bar {
+    --f-progress-background-color: var(--f-color-danger);
+}
+
+.f-progress.is-highlight .f-progress__bar {
+    --f-progress-background-color: var(--f-color-highlight);
+}
+
+.f-progress.is-indeterminate .f-progress__bar {
+    background: linear-gradient(to right, transparent 0%, var(--f-progress-background-color) 50%, transparent 100%);
+    animation: 1s ease 0s infinite normal none running f-progress-animation-indeterminate;
+}
+
+@keyframes f-progress-animation-indeterminate {
+    0% {
+        left: -40%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.f-progress.is-animated > div:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    z-index: 1;
+    background-size: 50px 50px;
+    animation: f-progress-animation 2s linear infinite;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+
+@keyframes f-progress-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+/* subtle */
+
+.f-subtle-progress {
+    width: 100%;
+    padding: var(--f-subtle-progress-padding);
+    overflow: hidden;
+    position: relative;
+}
+
+.f-subtle-progress > * {
+    z-index: 1;
+    position: relative;
+}
+
+.f-subtle-progress__bar {
+    z-index: 0;
+    border-radius: var(--f-progress-radius);
+    top: 0px;
+    left: 0%;
+    height: 100%;
+    position: absolute;
+    background: var(--f-progress-background);
+    pointer-events: none;
+}
+
+.f-subtle-progress.is-accent .f-subtle-progress__bar,
+.f-subtle-progress.is-success .f-subtle-progress__bar,
+.f-subtle-progress.is-neutral .f-subtle-progress__bar,
+.f-subtle-progress.is-caution .f-subtle-progress__bar,
+.f-subtle-progress.is-warning .f-subtle-progress__bar,
+.f-subtle-progress.is-danger .f-subtle-progress__bar,
+.f-subtle-progress.is-highlight .f-subtle-progress__bar {
+    opacity: var(--f-subtle-progress-opacity);
+}
+
+.f-subtle-progress.is-accent .f-subtle-progress__bar {
+    background: var(--f-color-accent);
+}
+
+.f-subtle-progress.is-success .f-subtle-progress__bar {
+    background: var(--f-color-success);
+}
+
+.f-subtle-progress.is-neutral .f-subtle-progress__bar {
+    background: var(--f-color-neutral);
+}
+
+.f-subtle-progress.is-caution .f-subtle-progress__bar {
+    background: var(--f-color-caution);
+}
+
+.f-subtle-progress.is-warning .f-subtle-progress__bar {
+    background: var(--f-color-warning);
+}
+
+.f-subtle-progress.is-danger .f-subtle-progress__bar {
+    background: var(--f-color-danger);
+}
+
+.f-subtle-progress.is-highlight .f-subtle-progress__bar {
+    background: var(--f-color-highlight);
+}
+
+.f-progress.is-animated > div:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    z-index: 1;
+    background-size: 50px 50px;
+    animation: f-progress-animation 2s linear infinite;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+
+@keyframes f-progress-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+/* circular */
+
+.f-circular-progress {
+    position: relative;
+}
+
+.f-circular-progress svg {
+    transform: rotateZ(-90deg);
+}
+
+.f-circular-progress circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+    stroke: var(--f-progress-background);
+    stroke-width: 1rem;
+}
+
+.f-circular-progress circle:last-of-type {
+    stroke: var(--f-progress-active);
+}
+
+.f-circular-progress-children {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.f-circular-progress.is-accent circle:last-of-type {
+    stroke: var(--f-color-accent);
+}
+
+.f-circular-progress.is-success circle:last-of-type {
+    stroke: var(--f-color-success);
+}
+
+.f-circular-progress.is-neutral circle:last-of-type {
+    stroke: var(--f-color-neutral);
+}
+
+.f-circular-progress.is-caution circle:last-of-type {
+    stroke: var(--f-color-caution);
+}
+
+.f-circular-progress.is-warning circle:last-of-type {
+    stroke: var(--f-color-warning);
+}
+
+.f-circular-progress.is-danger circle:last-of-type {
+    stroke: var(--f-color-danger);
+}
+
+.f-circular-progress.is-highlight circle:last-of-type {
+    stroke: var(--f-color-highlight);
+}
+
+

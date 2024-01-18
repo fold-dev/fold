@@ -1,0 +1,57 @@
+{
+    "light": {
+        "radius": { "value": "{radius.default}" },
+        "focus": { "value": "3px solid {color.accent.200}" },
+        "color": {
+            "background": { "value": "{color.base.50}" },
+            "accent": {
+                " ": { "value": "{color.accent.500}" },
+                "weak": { "value": "{color.accent.50}" }
+            },
+            "success": {
+                " ": { "value": "{color.teal.400}" },
+                "weak": { "value": "{color.teal.100}" }
+            },
+            "neutral": {
+                " ": { "value": "{color.gray.400}" },
+                "weak": { "value": "{color.gray.100}" }
+            },
+            "caution": {
+                " ": { "value": "{color.yellow.400}" },
+                "weak": { "value": "{color.yellow.100}" }
+            },
+            "warning": {
+                " ": { "value": "{color.orange.400}" },
+                "weak": { "value": "{color.orange.100}" }
+            },
+            "danger": {
+                " ": { "value": "{color.red.400}" },
+                "weak": { "value": "{color.red.100}" }
+            },
+            "highlight": {
+                " ": { "value": "{color.purple.400}" },
+                "weak": { "value": "{color.purple.100}" }
+            },
+            "text": {
+                " ": { "value": "{color.base.700}" },
+                "weak": { "value": "{color.base.600}" },
+                "weaker": { "value": "{color.base.500}" },
+                "weakest": { "value": "{color.base.300}" },
+                "link": { "value": "{color.accent.500}" },
+                "on-color": { "value": "{color.white}" }
+            },
+            "surface": {
+                " ": { "value": "{color.white}" },
+                "strong": { "value": "{color.base.50}" },
+                "stronger": { "value": "{color.base.100}" },
+                "strongest": { "value": "{color.base.200}" },
+                "highlight": { "value": "{color.accent.100}" },
+                "inverse": { "value": "{color.base.700}" }
+            },
+            "border": {
+                " ": { "value": "{color.base.200}" },
+                "strong": { "value": "{color.base.300}" }
+            }
+        }
+    }
+}

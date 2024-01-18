@@ -1,0 +1,118 @@
+:root {
+    --f-resizable-color: var(--f-color-surface-strong);
+    --f-resizable-color-hover: var(--f-color-surface-stronger);
+    --f-resizable-color-active: var(--f-color-accent);
+    --f-resizable-size: var(--f-size-1);
+    --f-resizable-handle-size: var(--f-size-7);
+    --f-resizable-handle-border-radius: var(--f-radius-full);
+    --f-resizable-handle-background-color: var(--f-color-surface-strong);
+    --f-resizable-handle-color: var(--f-color-accent);
+    --f-resizable-handle-hover-background-color: var(--f-color-accent);
+    --f-resizable-handle-hover-border-color: var(--f-color-accent);
+}
+
+.f-resizable {
+    background-color: transparent;
+    position: relative;
+}
+
+.f-resizable.is-dragging *:not(.f-resizable-rail) {
+    user-select: none;    
+    pointer-events: none;
+}
+
+.f-resizable-rail {
+    background-color: var(--f-resizable-color);
+    position: absolute;
+    transition: opacity, background-color .2s;
+    z-index: var(--f-index-resizable);
+}
+
+.f-resizable-rail.is-transparent {
+    background-color: transparent;
+}
+
+/* position & direction */
+
+.f-resizable-rail.is-vertical {
+    width: 100%;
+    height: var(--f-resizable-size);
+    right: 0px;
+    bottom: 0px;
+    transform: translateY(50%);
+    cursor: row-resize;
+}
+
+.f-resizable-rail.is-horizontal {
+    height: 100%;
+    width: var(--f-resizable-size);
+    right: 0px;
+    top: 0px;
+    transform: translateX(50%);
+    cursor: col-resize;
+}
+
+.f-resizable-rail.is-vertical.is-start {
+    bottom: 100%;
+}
+
+.f-resizable-rail.is-horizontal.is-start {
+    right: 100%;
+}
+
+.f-resizable-rail.is-vertical.is-dragging {
+    cursor: row-resize;
+    background-color: var(--f-resizable-color-active);
+}
+
+.f-resizable-rail.is-horizontal.is-dragging {
+    cursor: col-resize;
+    background-color: var(--f-resizable-color-active);
+}
+
+.f-resizable-rail:hover {
+    background-color: var(--f-resizable-color-hover);
+}
+
+/* handle */
+
+.f-resizable-rail__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+}
+
+.f-resizable-rail__handle > * {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.f-resizable-rail.is-horizontal .f-resizable-rail__handle {
+    cursor: col-resize;
+}
+
+.f-resizable-rail.is-vertical .f-resizable-rail__handle {
+    cursor: row-resize;
+}
+
+/* default handle */
+
+.f-resizable-rail__handle-default {
+    width: var(--f-resizable-handle-size);
+    height: var(--f-resizable-handle-size);
+    transition: border 0.1s, width 0.1s, height 0.1s, top 0.1s;
+    transition-timing-function: ease-out;
+    border: 0rem solid;
+    border-color: var(--f-resizable-handle-color);
+    color: var(--f-resizable-handle-color);
+    border-radius: var(--f-resizable-handle-border-radius);
+    background-color: var(--f-resizable-handle-background-color);
+    box-shadow: var(--f-shadow-base);
+}
+
+.f-resizable-rail__handle-default.is-dragging,
+.f-resizable-rail__handle-default:hover {
+    color: var(--f-resizable-handle-background-color);
+    background-color: var(--f-resizable-handle-hover-background-color);
+    border-color: var(--f-resizable-handle-hover-border-color);
+}

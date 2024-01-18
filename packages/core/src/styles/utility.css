@@ -1,0 +1,158 @@
+:root {
+    --f-buttonize-opacity: 0.75;
+    --f-buttonize-outline-size: 0.2rem;
+    --f-buttonize-outline-color: var(--f-color-accent);
+}
+
+/* button */
+
+.f-buttonize {
+    cursor: pointer;
+    transition: opacity .1s;
+}
+
+.f-buttonize:hover {
+    opacity: var(--f-buttonize-opacity);
+}
+
+.f-buttonize-outline {
+    transition: outline 0.25s;
+}
+
+.f-buttonize-outline:hover {
+    cursor: pointer;
+    outline: var(--f-buttonize-outline-size) solid var(--f-buttonize-outline-color);
+}
+
+/* text */
+
+.f-uppercase {
+    text-transform: uppercase;
+}
+
+.f-underline {
+    --f-underline-position: 105%;
+    --f-underline-size: 2px;
+    text-decoration: none !important;
+}
+
+.f-underline::after {
+    width: 0%;
+    height: var(--f-underline-size);
+    transition: height, width var(--f-transition-duration-ultra-fast) var(--f-transition-easing-ease-in);
+    content: "";
+    position: absolute;
+    top: var(--f-underline-position);
+    left: 0px;
+    background-color: currentColor;
+    z-index: 2;
+}
+
+.f-underline:hover::after {
+    width: 100%;
+}
+
+/* text */ 
+
+.f-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* scrollbars */
+
+.f-scrollbar {
+    --f-scrollbar-size: 0.3rem;
+    --f-scrollbar-foreground: var(--f-color-surface-stronger);
+    --f-scrollbar-background: var(--f-color-surface-strong);
+}
+
+.f-scrollbar::-webkit-scrollbar {
+    width: var(--f-scrollbar-size);
+    height: var(--f-scrollbar-size);
+}
+
+.f-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--f-scrollbar-foreground);
+}
+
+.f-scrollbar::-webkit-scrollbar-track {
+    background: var(--f-scrollbar-background);
+}
+
+/* overflow */
+
+.f-overflow-y-auto {
+    overflow-y: auto;
+}
+
+.f-overflow-x-auto {
+    overflow-x: auto;
+}
+
+.f-overflow-auto {
+    overflow: auto;
+}
+
+/* flex */ 
+
+.f-flexer {
+    flex: 1;
+}
+
+.f-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: relative;
+}
+
+.f-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    position: relative;
+}
+
+/* basic fade in */
+
+.f-fadein {
+    animation: f-fadein var(--f-transition-duration-slow);
+}
+
+@keyframes f-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* other */
+
+.f-user-select-none {
+    user-select: none;
+}
+
+.f-pointer-events-none {
+    pointer-events: none;
+}
+
+/* cursors */
+
+.f-cursor-row,
+.f-cursor-row * {
+    cursor: row-resize !important;
+}
+
+.f-cursor-col,
+.f-cursor-col * {
+    cursor: col-resize !important;
+}
+
+.f-cursor-grabbing {
+    cursor: grabbing !important;
+}

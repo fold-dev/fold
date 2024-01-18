@@ -1,0 +1,17 @@
+:root {
+    --f-dialog-padding: var(--f-space-inset-x-5);
+    --f-dialog-spacing: var(--f-space-4);
+}
+
+.f-dialog {
+    padding: var(--f-dialog-padding);
+    gap: var(--f-dialog-spacing);
+}
+
+.f-dialog.has-children { 
+    padding: 0;
+}
+
+.f-dialog:not(.has-children) > * {
+    text-align: center;
+}

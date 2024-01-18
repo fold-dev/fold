@@ -1,0 +1,47 @@
+html, body {
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    /*  
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%; 
+    font-feature-settings: "pnum" on,"lnum" on,"ss01" on,"case" on;
+    font-variation-settings: normal;
+    text-rendering: optimizeLegibility;
+    tab-size: 4;
+    */
+} 
+
+*,
+*:before,
+*:after {
+    outline-color: transparent;
+    box-sizing: inherit;
+}
+
+*:focus {
+    transition-timing-function: linear;
+    transition-property: outline;
+    transition-duration: 100ms;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

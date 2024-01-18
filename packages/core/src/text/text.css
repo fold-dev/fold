@@ -1,0 +1,127 @@
+:root {
+    --f-text-color: var(--f-color-text);
+    --f-label-color: var(--f-color-text-weak);
+    --f-blockquote-color: var(--f-color-text-weak);
+    --f-link-color: var(--f-color-text-link);
+    --f-text-decoration-size: default;
+    --f-blockquote-width: 0.25rem;
+}
+
+p,
+button,
+legend,
+code,
+p,
+span,
+strong,
+b,
+i,
+em,
+mark,
+small,
+del,
+ins,
+sub,
+sup,
+u,
+abbr,
+cite,
+kbd,
+s,
+samp,
+blockquote,
+.f-text {
+    font-family: var(--f-font-body);
+    color: var(--f-text-color);
+    border: none;
+    position: relative;
+    z-index: 1;
+    /* line-height: normal;  */
+    /* text-decoration-thickness: var(--f-text-decoration-size);  */
+    /* vertical-align: middle; */
+}
+
+label, 
+.f-text.is-label {
+    color: var(--f-label-color);
+    user-select: none;
+}
+
+a, 
+.f-text.is-link {
+    color: var(--f-link-color);
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all 100ms linear;
+    font-weight: 500;
+}
+
+a:hover,
+.f-text.is-link:hover {
+    opacity: 0.75;
+}
+
+p, 
+p.f-text {
+    padding: 0px;
+}
+
+blockquote, 
+blockquote.f-text {
+    border-left: var(--f-blockquote-width) solid var(--f-color-accent);
+    padding: var(--f-space-inset-x-2);
+    margin-left: 0;
+    margin-right: 0;
+    color: var(--f-blockquote-color);
+}
+
+small, 
+small.f-text {
+    font-size: var(--f-font-size-sm) !important; /* always */
+}
+
+strong, 
+strong.f-text {
+    font-weight: var(--f-font-weight-bold);
+}
+
+mark, 
+mark.f-text {
+    background-color: var(--f-color-surface-highlight);
+}
+
+code, 
+pre, 
+code.f-text, 
+pre.f-text {
+    font-family: var(--f-font-mono);
+}
+
+legend, 
+legend.f-text {
+    font-weight: var(--f-font-weight-semibold);
+    user-select: none;
+}
+
+/* sizes */
+
+.f-text.xs {
+    font-size: var(--f-font-size-xs);
+}
+
+.f-text.sm {
+    font-size: var(--f-font-size-sm);
+}
+
+.f-text.md {
+    font-size: var(--f-font-size-md);
+}
+
+.f-text.lg {
+    font-size: var(--f-font-size-lg);
+}
+
+.f-text.xl {
+    font-size: var(--f-font-size-xl);
+}

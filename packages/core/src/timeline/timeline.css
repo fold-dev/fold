@@ -1,0 +1,69 @@
+:root {
+    --f-timeline-item-marker-color: var(--f-color-accent);
+    --f-timeline-item-text-color: var(--f-color-text);
+    --f-timeline-item-marker-line-color: var(--f-color-surface-strongest);
+    --f-timeline-item-marker-line-size: 2px; /* has to be px */
+    --f-timeline-item-marker-line-spacing: 0.5rem;
+    --f-timeline-item-marker-width: 1.5rem;
+    --f-timeline-item-marker-spacing: var(--f-size-2);
+    --f-timeline-item-spacing: var(--f-size-3);
+    --f-timeline-item-marker-top: 1px;
+}
+
+.f-timeline {}
+
+.f-timeline > .f-timeline-item + .f-timeline-item {
+    margin-top: var(--f-timeline-item-spacing);
+}
+
+.f-timeline-item {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: stretch;
+    color: var(--f-timeline-item-text-color);
+}
+
+.f-timeline-item > div:not(.f-hidden):first-child {
+    margin-right: var(--f-timeline-item-marker-spacing);
+}
+
+.f-timeline-item__marker {
+    color: var(--f-timeline-item-marker-color);
+    position: relative;
+    overflow: hidden;
+    width: var(--f-timeline-item-marker-width);
+    top: var(--f-timeline-item-marker-top); /* tiny hack to get it lined up with container start */
+}
+
+.f-timeline-item__marker > * {
+    z-index: 1;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.f-timeline-item__marker::after {
+    content: "";
+    flex-shrink: 0;
+    background-color: var(--f-timeline-item-marker-line-color);
+    width: var(--f-timeline-item-marker-line-size);
+    height: 100%;
+    left: 50%;
+    margin-top: var(--f-timeline-item-marker-line-spacing);    
+    position: absolute;
+    display: block;
+    transform: translateX(-50%);
+    z-index: 0;
+    color: inherit;
+ }
+
+ .f-timeline > div:not(.f-hidden):last-child > .f-timeline-item__marker::after {
+    content: none;
+ }
+
+.f-timeline-item__content {
+    flex: 1;
+    color: inherit;
+}

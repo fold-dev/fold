@@ -1,0 +1,22 @@
+:root {
+    --f-sparkline-active: var(--f-color-accent);
+    --f-sparkline-inactive: var(--f-color-surface);
+}
+
+.f-sparkline {   
+}
+
+.f-sparkline.is-line {
+    stroke: var(--f-sparkline-active);
+    fill: transparent;
+}
+
+.f-sparkline.is-bar {
+    stroke: var(--f-sparkline-inactive);
+    fill: var(--f-sparkline-active);
+}
+
+.f-sparkline.is-square {
+    stroke: var(--f-sparkline-inactive);
+    fill: var(--f-sparkline-active);    
+}

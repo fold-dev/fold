@@ -1,0 +1,295 @@
+/* popout */
+
+.f-popout-content {
+    display: none;
+    animation: f-popout-content-fadein var(--f-transition-duration-fast); 
+}
+
+@keyframes f-popout-content-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-popout-trigger:hover .f-popout-content {
+    display: block;
+}
+
+/* positioning */
+
+.f-popout-top-center,
+.f-popout-bottom-center,
+.f-popout-bottom-left,
+.f-popout-bottom-right,
+.f-popout-top-left,
+.f-popout-top-right,
+.f-popout-middle-left,
+.f-popout-middle-right {
+    position: absolute;
+}
+
+.f-popout-top-center {
+    left: 50%;
+    top: 0;
+    transform: translateY(-100%) translateX(-50%);
+}
+
+.f-popout-bottom-center {
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+}
+
+.f-popout-bottom-left {
+    left: 0;
+    top: 100%;
+}
+
+.f-popout-bottom-right {
+    left: 100%;
+    top: 100%;
+    transform: translateX(-100%);
+}
+
+.f-popout-top-left {
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.f-popout-top-right {
+    right: 0;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.f-popout-middle-left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(-100%);
+}
+
+.f-popout-middle-right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+} 
+
+/* positioning - arrows */ 
+
+:root {
+    --f-arrow-size: var(--f-size-3);
+    --f-arrow-spacing: calc(var(--f-arrow-size));
+}
+
+.f-popout-top-center.has-arrow {
+    margin-top: calc(var(--f-arrow-spacing) * -1);
+}
+
+.f-popout-bottom-center.has-arrow {
+    margin-top: var(--f-arrow-spacing);
+}
+
+.f-popout-bottom-left.has-arrow {
+    margin-top: var(--f-arrow-spacing);
+}
+
+.f-popout-bottom-right.has-arrow {
+    margin-top: var(--f-arrow-spacing);
+}
+
+.f-popout-top-left.has-arrow {
+    margin-top: calc(var(--f-arrow-spacing) * -1);
+}
+
+.f-popout-top-right.has-arrow {
+    margin-top: calc(var(--f-arrow-spacing) * -1);
+}
+
+.f-popout-middle-left.has-arrow {
+    margin-left: calc(var(--f-arrow-spacing) * -1);
+}
+
+.f-popout-middle-right.has-arrow {
+    margin-left: var(--f-arrow-spacing);
+}
+
+/* arrow */
+
+.f-popout-bottom-left.has-arrow:after,
+.f-popout-top-left.has-arrow:after,
+.f-popout-top-right.has-arrow:after,
+.f-popout-bottom-right.has-arrow:after,
+.f-popout-bottom-center.has-arrow:after,
+.f-popout-top-center.has-arrow:after,
+.f-popout-middle-left.has-arrow:after,
+.f-popout-middle-right.has-arrow:after {
+    z-index: 0;
+    background-color: inherit;
+    height: var(--f-arrow-size);
+    width: var(--f-arrow-size);
+    position: absolute;
+    pointer-events: none;
+    content: '';
+    border-style: solid;
+    border-color: transparent;
+}
+
+.f-popout-bottom-left.has-arrow:after {
+    top: 0px;
+    left: var(--f-radius);
+    border-left-width: 0.1rem;
+    border-right-width: 0rem;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0rem;
+    border-top-left-radius: var(--f-radius-sm);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.f-popout-bottom-right.has-arrow:after {
+    top: 0px;
+    right: var(--f-radius);
+    border-left-width: 0.1rem;
+    border-right-width: 0rem;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0rem;
+    border-top-left-radius: var(--f-radius-sm);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.f-popout-top-left.has-arrow:after {
+    top: 100%;
+    left: var(--f-radius);
+    border-left-width: 0rem;
+    border-right-width: 0.1rem;
+    border-bottom-width: 0.1rem;
+    border-top-width: 0rem;
+    border-bottom-right-radius: var(--f-radius-sm);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.f-popout-top-right.has-arrow:after {
+    top: 100%;
+    right: var(--f-radius);
+    border-left-width: 0rem;
+    border-right-width: 0.1rem;
+    border-bottom-width: 0.1rem;
+    border-top-width: 0rem;
+    border-bottom-right-radius: var(--f-radius-sm);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.f-popout-bottom-center.has-arrow:after {
+    top: 0%;
+    right: 50%;
+    border-left-width: 0.1rem;
+    border-right-width: 0rem;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0rem;
+    border-top-left-radius: var(--f-radius-sm);
+    transform: translateY(-50%) translateX(50%) rotate(45deg);
+}
+
+.f-popout-top-center.has-arrow:after {
+    top: 100%;
+    right: 50%;
+    border-left-width: 0rem;
+    border-right-width: 0.1rem;
+    border-bottom-width: 0.1rem;
+    border-top-width: 0rem;
+    border-bottom-right-radius: var(--f-radius-sm);
+    transform: translateY(-50%) translateX(50%) rotate(45deg);
+}
+
+.f-popout-middle-left.has-arrow:after {
+    top: 50%;
+    right: 0.1rem;
+    border-left-width: 0rem;
+    border-right-width: 0.1rem;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0rem;
+    border-top-right-radius: var(--f-radius-sm);
+    transform: translateY(-50%) translateX(50%) rotate(45deg);
+}
+
+.f-popout-middle-right.has-arrow:after {
+    top: 50%;
+    left: 0.1rem;
+    border-left-width: 0.1rem;
+    border-right-width: 0rem;
+    border-bottom-width: 0.1rem;
+    border-top-width: 0rem;
+    border-bottom-left-radius: var(--f-radius-sm);
+    transform: translateY(-50%) translateX(-50%) rotate(45deg);
+}
+
+/* arrow backing to keep hover activation */
+
+.f-popout-bottom-left.has-arrow:before,
+.f-popout-top-left.has-arrow:before,
+.f-popout-top-right.has-arrow:before,
+.f-popout-bottom-right.has-arrow:before,
+.f-popout-bottom-center.has-arrow:before,
+.f-popout-top-center.has-arrow:before,
+.f-popout-middle-left.has-arrow:before,
+.f-popout-middle-right.has-arrow:before {
+    z-index: 0;
+    position: absolute;
+    content: '';
+    background: transparent;
+}
+
+.f-popout-bottom-left.has-arrow:before {
+    left: 0px;
+    bottom: 100%;
+    width: 100%;
+    height: var(--f-arrow-size);
+}
+
+.f-popout-bottom-right.has-arrow:before {
+    width: 100%;
+    height: var(--f-arrow-size);
+    bottom: 100%;
+    left: 0px;
+}
+
+.f-popout-top-left.has-arrow:before {
+    width: 100%;
+    height: var(--f-arrow-size);
+    top: 100%;
+    left: 0px;
+}
+
+.f-popout-top-right.has-arrow:before {
+    width: 100%;
+    height: var(--f-arrow-size);
+    top: 100%;
+    left: 0px;
+}
+
+.f-popout-bottom-center.has-arrow:before {
+    width: 100%;
+    height: var(--f-arrow-size);
+    bottom: 100%;
+    left: 0px;
+}
+
+.f-popout-top-center.has-arrow:before {
+    width: 100%;
+    height: var(--f-arrow-size);
+    top: 100%;
+    left: 0px;
+}
+
+.f-popout-middle-left.has-arrow:before {
+    height: 100%;
+    width: var(--f-arrow-size);
+    left: 100%;
+    top: 0px;
+}
+
+.f-popout-middle-right.has-arrow:before {
+    height: 100%;
+    width: var(--f-arrow-size);
+    right: 100%;
+    top: 0px;
+}

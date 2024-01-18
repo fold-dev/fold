@@ -1,0 +1,31 @@
+:root {
+    --f-card-color-background: var(--f-color-surface);
+    --f-card-color-solid-background: var(--f-color-surface-inverse);
+    --f-card-border-radius: var(--f-radius);
+    --f-card-border-color: var(--f-color-border);
+    --f-card-shadow: var(--f-shadow-card);
+}
+
+.f-card {
+    height: fit-content;
+    border-radius: var(--f-card-border-radius);
+    border: 0.1rem solid;
+    border-color: var(--f-card-border-color);
+    position: relative;
+    background-color: var(--f-card-color-background);
+    box-shadow: var(--f-card-shadow);
+}
+
+.f-card__header > * {
+    border-top-left-radius: var(--f-card-border-radius) !important;
+    border-top-right-radius: var(--f-card-border-radius) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.f-card__footer > * {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: var(--f-card-border-radius) !important;
+    border-bottom-right-radius: var(--f-card-border-radius) !important;
+}

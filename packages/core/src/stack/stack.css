@@ -1,0 +1,18 @@
+.f-stack {}
+
+.f-stack:not(.is-nostretch) {
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+/*
+defined in code:
+--f-stack-spacing-top
+--f-stack-spacing-left
+*/
+
+.f-stack > * + * {
+    margin-top: var(--f-stack-spacing-top) !important;
+    margin-left: var(--f-stack-spacing-left) !important; 
+}

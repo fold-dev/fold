@@ -1,0 +1,88 @@
+:root {
+  --f-range-border-radius: var(--f-radius-full);
+  --f-range-background: var(--f-color-surface-stronger);
+  --f-range-thumb-shadow: var(--f-shadow-base);
+  --f-range-thumb-border-radius: var(--f-radius-full);
+  --f-range-thumb-background-color: var(--f-color-accent);
+  --f-range-thumb-border-color: var(--f-color-accent);
+  --f-range-thumb-hover-background-color: var(--f-color-accent);
+  --f-range-thumb-hover-border-color: var(--f-color-accent);
+  --f-range-thumb-size: var(--f-size-5);
+  --f-range-thumb-border-size: 0.2;
+  --f-range-track-size: var(--f-size-2);
+}
+
+.f-range {
+    position: relative;
+    width: 100%;
+    height: var(--f-range-track-size);
+    padding: 0px;
+    margin: 0px;
+}
+
+.f-range input[type="range"] {
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--f-range-border-radius);
+    background: var(--f-range-background);
+    -webkit-appearance: none;
+}
+
+.f-range input[type="range"]:disabled,
+.f-range input[type="range"]:disabled::-webkit-slider-thumb {
+    cursor: not-allowed !important;
+}
+
+.f-range input[type="range"]:focus {
+    outline: none;
+}
+
+.f-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: var(--f-range-thumb-size);
+    width: var(--f-range-thumb-size);
+    border: var(--f-range-thumb-border-size) solid;
+    border-color: var(--f-range-thumb-border-color);
+    border-radius: var(--f-range-thumb-border-radius);
+    background-color: var(--f-range-thumb-background-color);
+    box-shadow: var(--f-range-thumb-shadow);
+    transition: width .1s, height .1s;
+}
+
+.f-range input[type="range"]:focus::-webkit-slider-thumb {
+    outline: var(--f-focus);
+    transition: outline 100ms;
+}
+
+.f-range input[type="range"]:hover::-webkit-slider-thumb {
+    cursor: pointer;
+    background-color: var(--f-range-thumb-hover-background-color);
+    border-color: var(--f-range-thumb-hover-border-color);
+}
+
+.f-range input[type="range"]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+.f-range .range__tooltip-track {
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    width: calc(100% - var(--f-size-5));
+    height: var(--f-range-track-size);
+    margin-left: calc((var(--f-range-thumb-size)) / 2);
+}
+
+.f-range .range__tooltip-container {
+    width: var(--f-range-thumb-size);
+    height: var(--f-range-thumb-size);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: calc(var(--f-range-track-size) / 2);
+}

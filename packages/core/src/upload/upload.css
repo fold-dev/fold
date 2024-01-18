@@ -1,0 +1,80 @@
+:root {
+    --f-upload-border-radius: var(--f-radius);
+    --f-upload-border: 0.2rem solid var(--f-color-border);
+    --f-upload-border-hover: 0.2rem solid var(--f-color-border-strong);
+    --f-upload-border-active: 0.2rem dashed var(--f-color-accent);
+    --f-upload-background: var(--f-color-surface-strong);
+    --f-upload-color: var(--f-color-text);
+    --f-upload-color-sub: var(--f-color-text-weaker);
+    --f-upload-color-active: var(--f-color-accent);
+    --f-upload-padding: var(--f-size-15) 0;
+    --f-upload-gap: 1rem;
+}
+
+.f-upload {
+    border-radius: var(--f-upload-border-radius);
+    border: var(--f-upload-border);
+    background: var(--f-upload-background);
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    color: var(--f-upload-color);
+    padding: var(--f-upload-padding);
+    gap: var(--f-upload-gap);    
+    transition: border 0.3s;
+}
+
+.f-upload .f-progress {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    z-index: 2;
+}
+
+.f-upload:not(.is-disabled):not(.is-loading):hover {
+    border: var(--f-upload-border-hover);
+}
+
+.f-upload h1 {
+    color: inherit;
+}
+
+.f-upload p {
+    color: var(--f-upload-color-sub);
+}
+
+.f-upload.is-disabled {
+    cursor: not-allowed;
+}
+
+.f-upload.is-loading {
+    cursor: progress;
+}
+
+.f-upload.is-disabled > .f-heading,
+.f-upload.is-disabled > .f-text,
+.f-upload.is-disabled > .f-icon,
+.f-upload.is-loading > .f-heading,
+.f-upload.is-loading > .f-text,
+.f-upload.is-loading > .f-icon {
+    opacity: 0.5;
+}
+
+.f-upload .f-spinner-overlay {
+    background-color: var(--f-color-surface);
+    z-index: 1;
+}
+
+.f-upload.is-active {
+    color: var(--f-upload-color-active);
+    border: var(--f-upload-border-active) !important;
+}
+
+.f-upload.is-active p {
+    color: inherit;
+}
+
+input[type="file"] {
+    display: none;
+}

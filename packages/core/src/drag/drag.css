@@ -1,0 +1,210 @@
+:root {
+    --f-drag-speed: 0s;
+    --f-drag-transition: cubic-bezier(.17,.67,.54,1.06);
+    --f-drag-indent: 4rem;
+}
+
+/* area */
+
+.f-drag-area {
+    position: relative;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+/* dragging */
+
+.f-drag-area.is-dragging .f-drag-element > *,
+.f-drag-area.is-dragging .f-drag-area__element > * {
+    pointer-events: none;
+}
+
+.f-drag-area.is-dragging {
+    pointer-events: all !important; 
+}
+
+/* target groups */
+
+.f-drag-area.is-dragging.no-origin-variant .f-drag-area.is-dragging:not(.no-origin-variant) {
+    pointer-events: all;    
+}
+
+.f-drag-area.is-dragging.no-origin-variant {
+    pointer-events: none !important;
+}
+
+/* drag element */
+
+.f-drag-element {
+    flex-direction: column;
+}
+
+.f-drag-element,
+.f-drag-area__element {
+    position: relative;
+    user-select: none;  
+    flex-shrink: 0;
+    transition: none;
+    z-index: 2;
+}
+
+.f-drag-area.is-animated .f-drag-element,
+.f-drag-area.is-animated .f-drag-area__element {
+    transition: transform var(--f-drag-speed) var(--f-drag-transition);
+}
+
+.f-drag-area.is-vertical > .f-drag-element,
+.f-drag-area.is-vertical > .f-drag-area__element {
+    width: 100%;
+    height: fit-content;
+}
+
+.f-drag-area.is-horizontal > .f-drag-element,
+.f-drag-area.is-horizontal > .f-drag-area__element {
+    width: fit-content;
+    height: 100%;
+}
+
+/* why? */
+.f-drag-element *:focus,
+.f-drag-area__element *:focus {
+    /* outline: var(--f-focus); */
+    /* outline-offset: 4px; */
+}
+
+.f-drag-element.is-dragged,
+.f-drag-area__element.is-dragged {
+    display: none;
+}
+
+/* 
+    line variant
+    f-drag-element isn't here because these elements don't exist  
+    in the parent DragElementArea (.f-drag-area)
+*/
+
+.f-drag-area__element__line {
+    position: absolute;
+    background: var(--f-color-accent);
+    z-index: 100;
+    animation: f-drag-fadein var(--f-transition-duration-slow);
+}
+
+.f-drag-area__element__line.is-vertical.is-first {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0.25rem;
+}
+
+.f-drag-area__element__line.is-vertical.is-last {
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    height: 0.25rem;
+}
+
+.f-drag-area__element__line.is-horizontal.is-first {
+    left: 0; 
+    top: 0;
+    height: 100%;
+    width: 0.25rem;
+}
+
+.f-drag-area__element__line.is-horizontal.is-last {
+    right: 0; 
+    top: 0; 
+    height: 100%;
+    width: 0.25rem;
+}
+
+/* lined-focus variant */
+
+.f-drag-area__element__lined-focus {
+    pointer-events: none;
+    position: absolute;
+    background: rgb(from var(--f-color-accent) r g b / 5%);
+    z-index: 100;
+    top: 0px;
+    height: 100%;
+    left: 0px;
+    width: 100%;
+    border: 0.2rem solid var(--f-color-accent);
+    border-radius: var(--f-radius);
+    animation: f-drag-focus 0.5s;
+}
+
+@keyframes f-drag-focus {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 
+    drag element focus 
+    f-drag-area__element isn't here because the pattern for showing "fosued"
+    is different - see right above
+*/
+
+.f-drag-element[data-focus="yes"]:before {
+    content:" ";
+    position: absolute;
+    pointer-events: none;
+    background: var(--f-color-accent);
+    z-index: 100;
+    top: 0px;
+    height: 100%;
+    left: 0px;
+    width: 100%;
+    opacity: 0.15;
+}
+
+/* buffer, ghost & placeholder */
+
+.f-drag-area__placeholder-lined {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 0.25rem;
+    pointer-events: none;
+    z-index: 10000;
+    /* background: var(--f-color-accent); */
+    background:  -webkit-linear-gradient(left, var(--f-color-accent), #11ffee00);
+    /* animation: f-drag-fadein var(--f-transition-duration-fast); */
+    transition: transform 0.05s var(--f-drag-transition);
+    /* background: red; */
+    /* z-index: 99999999999999; */
+}
+
+.f-drag-area__placeholder {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    z-index: 1;
+    background: var(--f-color-surface-stronger);
+    /* animation: f-drag-fadein var(--f-transition-duration-fast); */
+    /* transition: transform 0.1s var(--f-drag-transition); */
+    /* background: red; */
+    /* z-index: 99999999999999; */
+    /* background: rgba(255,0,0,0.25); */
+}
+
+.f-drag-area__buffer {
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.f-drag-ghost {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    user-select: none !important;
+    pointer-events: none !important;
+    z-index: 500;
+    will-change: transform;
+    opacity: 0.5;
+    /* transition: transform 1s linear;  */
+}

@@ -1,0 +1,74 @@
+:root {
+    --f-step-color: var(--f-color-surface-strongest);
+    --f-step-color-active: var(--f-color-accent);
+    --f-step-color-active-weak: var(--f-color-accent-weak);
+    --f-step-seperator-size: var(--f-size-1);
+    --f-step-seperator-radius: var(--f-radius);
+    --f-step-seperator-color: var(--f-color-surface-stronger);
+    --f-step-indicator-border-width: 0.125rem;
+    --f-step-indicator-size: var(--f-size-10);
+    --f-step-indicator-radius: var(--f-radius);
+    --f-step-content-width: fit-content;
+    --f-step-icon-sw: 2.5;
+}
+
+.f-steps > .f-step:last-of-type {
+    width: fit-content !important;
+    flex: 0 !important;
+}
+
+.f-steps > .f-step:last-of-type > .f-step__seperator {
+    display: none;
+}
+
+.f-step__indicator {
+    border-radius: var(--f-step-indicator-radius);
+    border: var(--f-step-indicator-border-width) solid;
+    border-color: var(--f-step-color);
+    color: var(--f-step-color);
+    width: var(--f-step-indicator-size);
+    height: var(--f-step-indicator-size);
+    flex-shrink: 0;
+
+    --f-icon-stroke-width-md: var(--f-step-icon-sw);
+}
+
+.f-step__indicator > * {
+    color: inherit;
+}
+
+.f-step.is-next .f-step__indicator {
+    border-color: var(--f-step-color-active);
+    color: var(--f-step-color-active);
+}
+
+.f-step.is-completed .f-step__indicator {
+    border-color: var(--f-step-color-active);
+    background-color: var(--f-step-color-active);
+    color: var(--f-step-color-active-weak);
+}
+
+.f-step__content {
+    color: var(--f-step-color);
+    width: var(--f-step-content-width);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+}
+
+.f-step__content > * {
+    word-break: keep-all;    
+}
+
+.f-step__seperator {
+    border-radius: var(--f-step-seperator-radius);
+    background: var(--f-step-seperator-color);
+    height: var(--f-step-seperator-size) !important;
+    flex-shrink: 0;
+    flex: 1;    
+}
+
+.f-step.is-completed .f-step__seperator {
+    background: var(--f-step-color-active);
+}

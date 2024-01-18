@@ -1,0 +1,73 @@
+:root {
+    --f-list-color: var(--f-color-text);
+    --f-list-padding: 0 2rem;
+    --f-li-spacing: 0.3rem;
+    --f-li-padding: 0.1rem;
+    --f-li-icon-margin: 0.4rem;
+    --f-li-line-height: normal;
+}
+
+ul,
+.f-list {
+    color: var( --f-list-color);
+    font-family: var(--f-font-body);
+    padding: 0;
+    margin: 0;
+    display: block;
+    list-style-type: none;
+}
+
+ol,
+.f-list.is-ol {
+    padding: var(--f-list-padding);
+    list-style-type: decimal;
+}
+
+ul,
+.f-list.is-ul {
+    padding: var(--f-list-padding);
+    list-style-type: disc;
+}
+
+.f-list:not(.is-ul, .is-ol) {
+    padding: 0 !important;
+}
+
+li,
+li::before,
+.f-li,
+.f-li::before {
+    text-align: left;
+    color: currentColor;
+    position: relative;
+    line-height: var(--f-li-line-height);
+    padding: var(--f-li-padding);
+    margin: 0;
+}
+
+ol > li + li,
+ul > li + li,
+.f-list > li + li,
+.f-list > .f-li + .f-li {
+    margin-top: var(--f-li-spacing);
+}
+
+li .f-text:not(a),
+li .f-heading,
+.f-li .f-text:not(a),
+.f-li .f-heading {
+    color: currentColor;
+}
+
+li::marker,
+.f-li::marker {
+    color: currentColor;
+    content: var(--f-list-bullet);
+}
+
+li > .f-icon:first-child,
+.f-li > .f-icon:first-child {
+    margin-right: var(--f-li-icon-margin);
+}
+
+

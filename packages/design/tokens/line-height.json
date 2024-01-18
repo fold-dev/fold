@@ -1,0 +1,11 @@
+{
+    "line-height": {
+        "normal": { "value": "normal" },
+        "none": { "value": "1rem" },
+        "shorter": { "value": "1.25rem" },
+        "short": { "value": "1.375rem" },
+        "base": { "value": "1.5rem" },
+        "tall": { "value": "1.625rem" },
+        "taller": { "value": "2rem" }
+    }
+}

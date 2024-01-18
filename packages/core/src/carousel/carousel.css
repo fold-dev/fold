@@ -1,0 +1,78 @@
+:root {
+    --f-carousel-radius: var(--f-radius);
+    --f-carousel-pill-radius: var(--f-radius);
+    --f-carousel-pill-color-active: var(--f-color-accent);
+    --f-carousel-pill-color-inactive: var(--f-color-surface-stronger);
+    --f-carousel-pills-spacing: var(--f-space-1);
+    --f-carousel-pills-padding: var(--f-space-2);
+    --f-carousel-pill-height-inactive: var(--f-size-3);
+    --f-carousel-pill-height-active: var(--f-size-3);
+    --f-carousel-pill-width-inactive: var(--f-size-4);
+    --f-carousel-pill-width-active: var(--f-size-10);
+}
+
+.f-carousel {
+    align-items: stretch;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: var(--f-carousel-radius);
+}
+
+.f-carousel__content {
+    justify-content: flex-start;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: fit-content;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    transition: transform var(--f-transition-duration-fast) var(--f-transition-easing-ease-in-out);
+    user-select: none;
+}
+
+.f-carousel-item {
+    display: block;
+    height: 100%;
+    position: relative;
+    user-select: none;
+}
+
+.f-carousel.is-swipable .f-carousel-item::after {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    z-index: var(--f-index-swipable);
+}
+
+.f-carousel-item > * {
+    width: 100%;
+    height: 100%;
+}
+
+.f-carousel-pills {
+    padding: var(--f-carousel-pills-padding);
+}
+
+.f-carousel-pills > * {
+    margin: var(--f-carousel-pills-spacing);
+}
+
+.f-carousel-pill {
+    border-radius: var(--f-carousel-pill-radius);
+    background: var(--f-carousel-pill-color-inactive);
+    width: var(--f-carousel-pill-width-inactive);
+    height: var(--f-carousel-pill-height-inactive);
+    transition: width 0.2s, height 0.2s;
+}
+
+.f-carousel-pill.is-active {
+    background: var(--f-carousel-pill-color-active);    
+    width: var(--f-carousel-pill-width-active);
+    height: var(--f-carousel-pill-height-active);
+}

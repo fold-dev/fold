@@ -1,0 +1,49 @@
+:root {
+    --f-rate-color: var(--f-color-text-weakest);
+    --f-rate-color-active: var(--f-color-accent);
+    --f-rate-zoom: scale(1.1);
+}
+
+.f-rate {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.f-rate > .f-rate-icon {
+    margin: var(--f-size-1);
+}
+
+.f-rate-icon {
+    cursor: pointer;
+    transition: transform .2s;
+    color: var(--f-rate-color);
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    transition: color, transform .2s;
+    position: relative;
+}
+
+.f-rate-icon:hover {
+    transform: var(--f-rate-zoom);
+}
+
+.f-rate-icon__top {
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    width: fit-content;
+    height:fit-content;
+    color: var(--f-rate-color-active);
+}
+
+.f-rate-icon__bottom {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: fit-content;
+    height:fit-content;
+    color: var(--f-rate-color);
+}

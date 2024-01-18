@@ -1,0 +1,17 @@
+:root {
+    --f-skip-nav-top: 100px;
+    --f-skip-nav-left: 50px;
+}
+
+.f-skip-nav {
+    left: -200px;
+    top: -200px;
+    position: fixed;
+    text-decoration: none;
+    z-index: var(--f-index-skip-nav);
+}
+
+.f-skip-nav:focus {
+    left: var(--f-skip-nav-left);
+    top: var(--f-skip-nav-top);
+}

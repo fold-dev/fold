@@ -1,0 +1,56 @@
+:root {
+    --f-app-background-color: var(--f-color-background);
+    --f-sidebar-border-color: var(--f-color-border);
+    --f-sidebar-background-color: var(--f-color-surface);
+    --f-header-border-color: var(--f-color-border);
+    --f-header-background-color: var(--f-color-surface);
+    --f-footer-border-color: var(--f-color-border);
+    --f-footer-background-color: var(--f-color-surface);
+}
+
+.f-app {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: var(--f-app-background-color);
+    overflow: hidden;
+}
+
+.f-content {
+    background: transparent;
+    overflow: hidden;
+    position: relative;
+}
+
+.f-main {
+    height: 100%;
+    background: transparent;
+    position: relative;
+}
+
+.f-sidebar {
+    background-color: var(--f-sidebar-background-color);
+    height: 100%;
+}
+
+.f-sidebar.is-left {
+    border-right: 0.1rem solid var(--f-sidebar-border-color);
+}
+
+.f-sidebar.is-right {
+    border-left: 0.1rem solid var(--f-sidebar-border-color);
+}
+
+.f-header {
+    border-bottom: 0.1rem solid var(--f-header-border-color);
+    background-color: var(--f-header-background-color);
+    justify-content: left;
+    width: 100%;
+}
+
+.f-footer {
+    border-top: 0.1rem solid var(--f-footer-border-color);
+    background-color: var(--f-footer-background-color); 
+    justify-content: left;
+    width: 100%;
+}

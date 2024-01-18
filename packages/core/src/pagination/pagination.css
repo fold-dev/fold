@@ -1,0 +1,83 @@
+:root {
+    --f-pagination-background: transparent;
+    --f-pagination-background-active: var(--f-color-surface-strong);
+    --f-pagination-background-hover: var(--f-color-surface-stronger);
+    --f-pagination-border-radius: var(--f-radius);
+    --f-pagination-color: var(--f-color-text-weaker);
+    --f-pagination-color-active: var(--f-color-accent);
+    --f-pagination-color-disabled: var(--f-color-text-weakest);
+    --f-pagination-gap: 0.2rem;
+    --f-pagination-min-width: 2.5rem;
+    --f-pagination-item-border: 0.1rem solid var(--f-color-border);
+}
+
+.f-pagination {
+    width: 100%;
+    background: var(--f-pagination-background);
+    border-radius: var(--f-pagination-border-radius);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--f-pagination-gap);
+    user-select: none;
+}
+
+.f-pagination__item {
+    user-select: none;
+    display: flex;
+    cursor: pointer;
+    padding: var(--f-space-2);
+    margin: 0;
+    border-radius: var(--f-pagination-border-radius);
+    position: relative;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: var(--f-pagination-item-border);
+    min-width: var(--f-pagination-min-width);
+}
+
+.f-pagination__item > .f-icon {
+    margin: 0px !important; /* override default f-list > li */
+}
+
+.f-pagination__item,
+.f-pagination__item > .f-text {
+    color: var(--f-pagination-color);
+}
+
+.f-pagination__item.is-button {
+}
+
+.f-pagination__item.dots:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+.f-pagination__item:hover {
+    background-color: var(--f-pagination-background-hover);
+    cursor: pointer;
+}
+
+.f-pagination__item.is-selected {
+    background-color: var(--f-pagination-background-active);
+}
+
+.f-pagination__item.is-selected .f-text {
+    color: var(--f-pagination-color-active);
+    font-weight: var(--f-font-weight-bold);
+}
+
+.f-pagination__item.is-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: var(--f-pagination-color-disabled);
+}
+
+.f-pagination__item.is-disabled:hover {
+    background-color: transparent;
+    cursor: default;
+}
+

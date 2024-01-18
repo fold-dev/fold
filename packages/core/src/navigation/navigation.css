@@ -1,0 +1,281 @@
+:root {
+    --f-navigation-padding: var(--f-radius);
+    --f-navbar-padding: var(--f-space-3);
+    --f-navigation-background-color: var(--f-color-surface);
+    --f-navigation-heading-color: var(--f-color-accent);
+    --f-navigation-item-background-color-hover: var(--f-color-surface-strong);
+    --f-navigation-item-background-color-active: var(--f-color-accent-weak);
+    --f-navigation-item-color: var(--f-color-text-weaker);
+    --f-navigation-item-color-hover: var(--f-color-text-weak);
+    --f-navigation-item-color-active: var(--f-color-accent);
+    --f-navigation-item-color-disabled: var(--f-color-text-weakest);
+    --f-navigation-item-border-radius: var(--f-radius);
+    --f-navigation-item-padding: var(--f-space-inset-x-2);
+    --f-navigation-item-height: fit-content;
+    --f-navbar-item-padding: var(--f-space-inset-x-2);
+    --f-navigation-divider-spacing: var(--f-space-2);
+    --f-navigation-divider-color: var(--f-color-surface-stronger);
+    --f-navigation-item-font-weight: var(--f-font-weight-normal);
+    --f-navigation-item-ix-spacing: var(--f-space-3);
+    --f-sub-navigation-line-size: 0.2rem;
+    --f-sub-navigation-background-color: var(--f-color-surface);
+    --f-sub-navigation-border-color: var(--f-color-border);
+    --f-sub-navigation-line-color: var(--f-color-accent);
+}
+
+.f-navigation {
+    font-family: var(--f-font-body);
+    width: fit-content; 
+    height: fit-content;
+    background-color: var(--f-navigation-background-color);
+    list-style-type: none;
+    margin: 0px;
+    padding: var(--f-navigation-padding) 0;
+}
+
+.f-navigation.is-transparent {
+    --f-navigation-background-color: transparent;
+    --f-navigation-item-background-color-active: transparent;
+    --f-navigation-item-background-color-hover: transparent;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* navigation item */
+
+.f-navigation-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; 
+    height: fit-content;
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.f-navigation-item__container {
+    cursor: pointer;
+    padding: var(--f-navigation-item-padding);
+    margin: 0;
+    justify-content: flex-start;
+    transition: background-color 0.1s;
+    width: 100%; 
+    height: var(--f-navigation-item-height);
+    color: var(--f-navigation-item-color);
+    position: relative;
+    border: 0;
+    background: transparent;
+    gap: var(--f-navigation-item-ix-spacing);
+}
+
+.f-navigation-item__label {
+    justify-content: flex-start;
+    font-size: var(--f-font-size-md); 
+    font-weight: var(--f-navigation-item-font-weight);
+    color: inherit;
+    text-align: left;
+    flex: 1;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.f-navigation-item__suffix {
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.f-navigation-item__prefix {
+    color: inherit;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* states */
+
+.f-navigation-item__container:not(.is-disabled).is-active {
+    color: var(--f-navigation-item-color-active);    
+    background-color: var(--f-navigation-item-background-color-active);    
+}
+
+/* .f-navigation-item.is-open > .f-navigation-item__container:not(.is-disabled), */
+.f-navigation-item__container:not(.is-disabled):focus,
+.f-navigation-item__container:not(.is-disabled):hover {
+    outline: none;
+    color: var(--f-navigation-item-color-hover);
+    background-color: var(--f-navigation-item-background-color-hover);
+}
+
+.f-navigation-item__container.is-disabled {
+    color: var(--f-navigation-item-color-disabled);
+    cursor: not-allowed;
+    outline: none;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* divider */ 
+
+.f-navigation-divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    overflow: hidden;
+    border-top: 0.1rem solid var(--f-navigation-divider-color);
+}
+
+.f-navigation-divider > hr {
+    display: none;
+}
+
+/* spacing using sibling selectors */
+
+.f-navigation:not(.is-navbar) .f-navigation-divider + .f-navigation-optiongroup,
+.f-navigation:not(.is-navbar) .f-navigation-divider + .f-navigation-heading,
+.f-navigation:not(.is-navbar) .f-navigation-divider + .f-navigation-item,
+.f-navigation:not(.is-navbar) .f-navigation-divider + .f-navigation-section {
+    margin-top: var(--f-navigation-divider-spacing);
+}
+
+.f-navigation:not(.is-navbar) .f-navigation-optiongroup + .f-navigation-divider,
+.f-navigation:not(.is-navbar) .f-navigation-item + .f-navigation-divider,
+.f-navigation:not(.is-navbar) .f-navigation-heading + .f-navigation-divider,
+.f-navigation:not(.is-navbar) .f-navigation-section + .f-navigation-divider {
+    margin-top: var(--f-navigation-divider-spacing);
+    margin-bottom: var(--f-navigation-divider-spacing);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* section */
+
+.f-navigation-section {
+    padding: var(--f-navigation-item-padding);
+    flex-shrink: 0;
+    color: var(--f-navigation-item-color);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* heading */
+
+.f-navigation-heading {
+    flex-shrink: 0;
+}
+
+.f-navigation-heading .f-navigation-heading__heading {
+    color: var(--f-navigation-heading-color);
+    font-weight: var(--f-font-weight-medium);
+    padding: var(--f-navigation-item-padding);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* navbar (horizontal) */
+
+.f-navigation.is-navbar {
+    width: fit-content;
+    min-width: fit-content;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    padding: var(--f-navbar-padding);
+}
+
+.f-navigation.is-navbar > .f-navigation-section {
+    margin: 0;
+    width: fit-content;
+}
+.f-navigation.is-navbar > .f-navigation-item {
+    width: fit-content;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+} 
+
+.f-navigation.is-navbar > * + * {
+    margin-left: 0.1rem;
+}
+
+.f-navigation.is-navbar > .f-navigation-divider {
+    margin: 0;
+    margin-left: var(--f-navigation-divider-spacing);
+    margin-right: var(--f-navigation-divider-spacing);
+    height: 100%;
+    width: 1px;
+    border: none;
+    position: static;
+} 
+
+.f-navigation.is-navbar > .f-navigation-divider > hr {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: calc(((var(--f-navbar-padding) / 2) * -1) - 0.1rem);
+    width: 1px;
+    color: transparent;
+    background: transparent;
+    border: none;
+    border-left: 0.1rem solid var(--f-color-border);
+}
+
+.f-navigation.is-navbar > .f-navigation-item .f-navigation-item__container {
+    padding: var(--f-navbar-item-padding);
+    border-radius: var(--f-navigation-item-border-radius);
+}
+
+.f-navigation.is-navbar > .f-navigation-item .f-navigation .f-navigation-item__container {
+    border-radius: 0;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* sub-navigation */
+
+.f-sub-navigation {
+    background-color: var(--f-sub-navigation-background-color);
+    padding: 0px;
+    margin: 0px;
+}
+
+.f-sub-navigation .f-navigation {
+    padding: 0;
+}
+
+.f-navigation-item__suffix {
+    padding: 0px;
+    margin: 0px;
+}
+
+.f-navigation-item__sub-navigation_line {
+    background-color: var(--f-sub-navigation-line-color);
+    position: absolute;
+    left: 0px;
+    top: 0%;
+    width: var(--f-sub-navigation-line-size);
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.f-navigation.is-sub-navigation {
+    background-color: transparent;
+}
+
+.f-navigation-item__container.has-sub-navigation.is-open {}

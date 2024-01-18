@@ -1,0 +1,38 @@
+:root {
+    --f-skeleton-color-light: var(--f-color-surface-strong);
+    --f-skeleton-color-dark: var(--f-color-surface-stronger);
+    --f-skeleton-border-radius: var(--f-radius);
+}
+
+.f-skeleton .f-badge,
+.f-skeleton .f-button,
+.f-skeleton .f-text,
+.f-skeleton .f-heading,
+.f-skeleton .f-avatar,
+.f-skeleton-block,
+.f-skeleton-circle {
+    background-image: none !important;
+    background: var(--f-skeleton-color-dark);
+    color: transparent !important;
+    border: 0 !important;
+    animation-name: f-skeleton-color;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    border-radius: var(--f-skeleton-border-radius);
+}
+
+.f-skeleton-circle { border-radius: 50%; }
+
+@keyframes f-skeleton-color {
+    0% {
+      background-color: var(--f-skeleton-color-dark);
+    }
+
+    50% {
+      background-color: var(--f-skeleton-color-light);
+    }
+
+    100% {
+      background-color: var(--f-skeleton-color-dark);
+    }
+}

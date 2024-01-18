@@ -1,0 +1,15 @@
+:root {
+    --f-alert-padding: var(--f-space-inset-x-5);
+    --f-alert-spacing: var(--f-space-4);
+    --f-alert-icon-color: var(--f-color-text-weak);
+}
+
+.f-alert {
+    color: var(--f-alert-icon-color);
+    padding: var(--f-alert-padding);
+    gap: var(--f-alert-spacing);
+}
+
+.f-alert > * {
+    text-align: center;
+}

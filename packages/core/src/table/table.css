@@ -1,0 +1,117 @@
+:root {
+    --f-table-border-radius: var(--f-radius); 
+    --f-table-border-color: var(--f-color-border);
+    --f-table-caption-color: var(--f-color-text-weaker);
+    --f-table-caption-size: var(--f-font-size-sm);
+    --f-table-cell-padding: var(--f-space-inset-y-2);
+    --f-table-tr-odd-background-color: var(--f-color-surface-strong);
+    --f-table-tr-even-background-color: var(--f-color-surface);
+    --f-table-td-color: var(--f-color-text);
+    --f-table-th-color: var(--f-color-text-weakest);
+    --f-table-th-background-color: var(--f-color-surface);
+}
+
+table.f-table {
+    width: 100%;
+    border-radius: var(--f-table-border-radius);
+}
+
+table.f-table th,
+table.f-table th:first-child {
+}
+
+table.f-table th {
+    background: var(--f-table-th-background-color);
+    padding: var(--f-table-cell-padding);
+    color: var(--f-table-th-color);
+    margin: 0;
+    font-weight: normal;
+}
+
+table.f-table td {
+    padding: var(--f-table-cell-padding);
+    color: var(--f-table-td-color);
+    border: none;
+    border-top: 0rem solid;
+    border-left: 0rem solid;
+    border-color: var(--f-table-border-color);
+    margin: 0;
+}
+
+table.f-table tr td:first-child {
+    border-left: none;
+}
+
+/* border radius & coloring */
+
+table.f-table th:first-child {
+    border-top-left-radius: var(--f-table-border-radius);
+}
+
+table.f-table th:last-child {
+    border-top-right-radius: var(--f-table-border-radius);
+}
+
+table.f-table tr:last-child td:first-child {
+    border-bottom-left-radius: var(--f-table-border-radius);
+}
+
+table.f-table tr:last-child td:last-child {
+    border-bottom-right-radius: var(--f-table-border-radius);
+}
+
+table.f-table.is-striped tr:nth-child(odd) td {
+    background: var(--f-table-tr-odd-background-color);
+}
+
+table.f-table.is-striped tr:nth-child(even) td {
+    background: var(--f-table-tr-even-background-color);
+}
+
+table.f-table.is-lined tr td {
+    border-top: 0.1rem solid;    
+    border-color: var(--f-table-border-color);
+}
+
+
+/* caption */
+
+table.f-table .f-table-caption {
+    text-align: center;
+    color: var(--f-table-caption-color);
+    font-size: var(--f-table-caption-size);
+    padding-bottom: var(--f-space-3);
+    padding-top: 0;
+    width: 100%;
+}
+
+table.f-table.has-caption-bottom .f-table-caption {
+    padding-top: var(--f-space-3);
+    padding-bottom: 0;
+}
+
+table.f-table.has-caption-bottom {
+    caption-side: bottom;
+}
+
+/* stickiness */
+
+table.f-table.has-sticky-column tr td:first-child {
+    position: sticky;
+    left: 0; 
+    z-index: 1;
+}
+
+table.f-table.has-sticky-header tr th:first-child {
+    position: sticky;
+    left: 0; 
+    z-index: 2;
+}
+
+table.f-table.has-sticky-header th,
+table.f-table.has-sticky-column th,
+table.f-table.has-sticky-header th:first-child,
+table.f-table.has-sticky-column th:first-child {
+    position: sticky;
+    top: 0; 
+}

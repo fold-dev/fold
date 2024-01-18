@@ -1,0 +1,212 @@
+:root {
+    --f-select-width: 300px;
+    --f-select-color: var(--f-color-text);
+    --f-select-color-placeholder: var(--f-color-text-weakest);
+    --f-select-color-disabled: var(--f-color-text-weakest);
+    --f-select-color-selected: var(--f-color-accent);
+    --f-select-option-focus: var(--f-color-surface-strong); 
+    --f-select-option-active-size: 0.2rem;
+    --f-select-options-height: 200px; 
+    --f-select-option-padding: var(--f-space-inset-x-3);
+    --f-select-popover-border-color: var(--f-color-border);
+    --f-select-popover-border-radius: var(--f-radius);
+    --f-select-popover-background: var(--f-color-surface);
+    --f-select-popover-box-shadow: var(--f-shadow-lg);
+}
+
+.f-select-container {
+    width: var(--f-select-width);
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.f-select {
+    z-index: 1;
+}
+
+input.f-select {
+    cursor: pointer;
+    color: var(--f-select-color);
+}
+
+input.f-select::placeholder {
+    color: var(--f-select-color);
+}
+
+input.f-select.is-placeholder::placeholder {
+    color: var(--f-select-color-placeholder);
+}
+
+input.f-select:disabled {
+    cursor: not-allowed;
+}
+
+/* popover */
+
+.f-select-popover {
+    top: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0.1rem solid;
+    border-color: var(--f-select-popover-border-color);
+    border-radius: var(--f-select-popover-border-radius);
+    background: var(--f-select-popover-background);
+    box-shadow: var(--f-select-popover-box-shadow);
+    z-index: var(--f-index-popover);
+    height: fit-content;
+    animation: f-popover-fadein var(--f-transition-duration-fast);
+    pointer-events: all;
+    padding-bottom: var(--f-select-popover-border-radius);
+    padding-top: var(--f-select-popover-border-radius);
+}
+
+.f-select-popover.is-offscreen {
+    top: 0px;
+    transform: translateY(-100%);
+}
+
+@keyframes f-popover-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* list */
+
+.f-select-list:focus {
+    outline: none;
+}
+
+.f-select-list ul {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: block;
+    max-height: var(--f-select-options-height);
+}
+
+.f-select-list.is-virtual ul {
+    flex: 1;
+    max-height: fit-content;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* list option wrapper */
+
+li.f-select-list-option-container {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.f-select-list-option-container:focus,
+.f-select-list-option-container.is-focused {
+    background-color: var(--f-select-option-focus);
+    outline: none;
+}
+
+/* list option */  
+
+.f-select-list-option {
+    text-align: left;
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    color: var(--f-select-color);
+    font-size: var(--f-font-size-md);
+    font-weight: var(--f-font-weight-normal);
+    padding: var(--f-select-option-padding);
+    margin: 0;
+    cursor: pointer;  
+    flex-grow: 1;
+}
+
+.f-select-list-option.is-disabled .f-select-list-option__label {
+    color: var(--f-select-color-disabled);
+}
+
+.f-select-list-option.is-selected {
+    background: var(--f-color-surface-strong);
+}
+
+.f-select-list-option.is-selected {
+    color: var(--f-select-color-selected);
+}
+
+.f-select-list-option:not(.is-disabled):focus {
+    outline: none;
+}
+
+.f-select-list-option:not(.is-disabled):hover {
+    background: var(--f-color-surface-strong);
+}
+
+.f-select-list-option.is-disabled {
+    cursor: not-allowed;
+}
+
+.f-select-list-option__label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    color: currentColor;
+}
+
+.f-select-list-option__active {
+    background-color: var(--f-select-color-selected);
+    position: absolute;
+    left: 0px;
+    top: 0%;
+    width: var(--f-select-option-active-size);
+    height: 100%;
+}
+
+.f-select-list-option__prefix {
+    padding-right: 0.5rem;
+    color: currentColor;
+}
+
+.f-select-list-option__suffix {
+    padding-left: 0.5rem;
+    color: currentColor;
+}
+
+/* outline */
+
+.f-select-custom:focus-within,
+.f-select-native:focus-within {
+    outline: var(--f-focus);
+    outline-offset: 1px;
+    transition: outline 100ms;
+}
+
+/* static */
+
+.f-select-container.is-static .f-input-control,
+.f-select-container.is-static input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.f-select-container.is-static .f-select-popover {
+    position: relative;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: none;
+    padding-top: 0;
+}
+
+.f-select-container.is-static .f-input-common {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+}

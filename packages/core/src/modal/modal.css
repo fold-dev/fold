@@ -1,0 +1,126 @@
+:root {
+    --f-modal-overlay: var(--f-color-overlay);
+    --f-modal-box-shadow: var(--f-shadow-lg);
+    --f-modal-background: var(--f-color-surface);
+    --f-modal-border-color: var(--f-color-border);
+    --f-modal-border-width: 0.1rem;
+    --f-modal-border-radius: var(--f-radius);
+    --f-modal-padding: var(--f-space-4);
+    --f-modal-body-padding: var(--f-space-4);
+}
+
+.f-modal {
+    background: var(--f-modal-overlay);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: var(--f-index-modal);
+}
+
+.f-modal__inner {
+    background: var(--f-modal-background);
+    border-radius: var(--f-modal-border-radius);
+    box-shadow: var(--f-modal-box-shadow);
+    border: var(--f-modal-border-width) solid; 
+    border-color: var(--f-modal-border-color);
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    animation: f-modal-fadein var(--f-transition-duration-slow);
+    position: absolute;
+}
+
+@keyframes f-modal-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* position */
+
+.f-modal__inner.is-top-right {
+    top: 0px;
+    right: 0px;
+}
+
+.f-modal__inner.is-top-center {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.f-modal__inner.is-top-left {
+    top: 0px;
+    left: 0px;
+}
+
+.f-modal__inner.is-middle-left {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.f-modal__inner.is-middle-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.f-modal__inner.is-middle-right {
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+.f-modal__inner.is-bottom-left {
+    bottom: 0px;
+    left: 0px;
+}
+
+.f-modal__inner.is-bottom-center {
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.f-modal__inner.is-bottom-right {
+    bottom: 0px;
+    right: 0px;
+}
+
+/* inner */
+
+.f-modal__body {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    padding: var(--f-modal-body-padding);
+}
+
+.f-modal__footer {
+    padding: var(--f-modal-padding);
+    justify-content: flex-start;
+    border-top: 0.1rem solid var(--f-modal-border-color);
+}
+
+.f-modal__header {
+    padding: var(--f-modal-padding);
+    justify-content: flex-start;   
+    border-bottom: 0.1rem solid var(--f-modal-border-color); 
+}
+
+/* close button */
+
+.f-modal__close {
+    position: absolute;
+    top: var(--f-modal-padding);
+    right: var(--f-modal-padding);
+    z-index: 10;
+}
+
+.f-modal__header .f-modal__close {
+    position: relative;
+    top: 0;
+    right: 0;
+}

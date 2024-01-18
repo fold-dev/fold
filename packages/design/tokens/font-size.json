@@ -1,0 +1,15 @@
+{
+    "font-size": {
+        "xs": { "value": "0.6rem" },
+        "sm": { "value": "0.8rem" },
+        "md": { "value": "1rem" },
+        "lg": { "value": "1.25rem" },
+        "xl": { "value": "1.5rem" },
+        "2xl": { "value": "1.75rem" },
+        "3xl": { "value": "2rem" },
+        "large": { "value": "3rem" },
+        "huge": { "value": "5rem" },
+        "jumbo": { "value": "6.75rem" },
+        "kbd": { "value": "0.75rem" }
+    }
+}

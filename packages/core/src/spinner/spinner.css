@@ -1,0 +1,73 @@
+:root {
+    --f-spinner-color: var(--f-color-accent);
+    --f-spinner-overlay-background-color: transparent;
+    --f-spinner-overlay-z-index: var(--f-index-overlay);
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
+
+.f-spinner {
+    animation: rotate 2s linear infinite;
+    position: relative;
+    color: var(--f-spinner-color); 
+}
+
+.f-spinner.xs {
+    width: var(--f-size-3);
+    height: var(--f-size-3);
+}
+
+.f-spinner.sm {
+    width: var(--f-size-5);
+    height: var(--f-size-5);
+}
+
+.f-spinner.md {
+    width: var(--f-size-8);
+    height: var(--f-size-8);
+}
+
+.f-spinner.lg {
+    width: var(--f-size-12);
+    height: var(--f-size-12);
+}
+
+.f-spinner.xl {
+    width: var(--f-size-16);
+    height: var(--f-size-16);
+}
+
+.f-spinner circle {
+    stroke: currentColor;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.f-spinner-overlay {
+    z-index: var(--f-spinner-overlay-z-index);
+    background-color: var(--f-spinner-overlay-background-color);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

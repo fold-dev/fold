@@ -1,0 +1,55 @@
+:root {
+    --f-drawer-speed: var(--f-transition-duration-slow);
+}
+
+.f-drawer {
+    border-radius: 0;
+    bottom: 0px;
+}
+
+/* animation */
+
+/* top */
+
+.f-drawer.is-top {
+    animation: f-modal-slidein-top var(--f-drawer-speed);
+}
+
+@keyframes f-modal-slidein-top {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0%); }
+}
+
+/* bottom */
+
+.f-drawer.is-bottom {
+    animation: f-modal-slidein-bottom var(--f-drawer-speed);
+}
+
+@keyframes f-modal-slidein-bottom {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0%); }
+}
+
+/* left */
+
+.f-drawer.is-left {
+    animation: f-modal-slidein-left var(--f-drawer-speed);
+}
+
+@keyframes f-modal-slidein-left {
+    from { transform: translateX(-100%); }
+    to { transform: translateY(0%); }
+}
+
+/* right */
+
+.f-drawer.is-right {
+    animation: f-modal-slidein-right var(--f-drawer-speed);
+}
+
+@keyframes f-modal-slidein-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0%); }
+}
+

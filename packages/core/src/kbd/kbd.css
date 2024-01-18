@@ -1,0 +1,24 @@
+:root {
+    --f-kbd-border-radius: var(--f-radius);
+    --f-kbd-background-color: var(--f-color-surface-stronger);
+    --f-kbd-border-color: var(--f-color-border-strong);
+    --f-kbd-color: var(--f-color-text-weaker);
+}
+
+.f-kbd {
+    padding: var(--f-space-inset-x-1);
+    border-bottom: 0.15rem solid;
+    border-right: 0.05rem solid;
+    border-radius: var(--f-kbd-border-radius);
+    border-color: var(--f-kbd-border-color);
+    background-color: var(--f-kbd-background-color);
+    color: var(--f-kbd-color);
+    font-family: var(--f-font-mono);
+    font-size: var(--f-font-size-kbd); 
+    font-weight: 500;
+    font-weight: var(--f-font-weight-semibold);
+    width: fit-content;
+    position: relative;
+    flex-shrink: 0;
+    white-space: nowrap;
+}

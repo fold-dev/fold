@@ -1,0 +1,10 @@
+.f-virtual {
+    overflow-y: auto;
+    width: 100%;
+    position: relative;
+}
+
+.f-virtual__spacer {
+    position: relative;
+    width: inherit;
+}

@@ -1,0 +1,101 @@
+:root {
+    --f-avatar-border-radius: var(--f-radius-round);
+    --f-avatar-color: var(--f-color-accent);
+    --f-avatar-background-color: var(--f-color-surface-strong);
+    --f-avatar-group-overlap: -1rem;
+    --f-avatar-group-overlap-small: -0.66rem;
+    --f-avatar-group-spacing: 1px;
+}
+
+.f-avatar {
+    background-color: var(--f-avatar-background-color);
+    color: var(--f-avatar-color);
+    border-radius: var(--f-avatar-border-radius);
+    transition: opacity .2s, border .1s;
+    user-select: none;
+    background-size: cover;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.f-avatar .f-image {
+    border-radius: var(--f-avatar-border-radius);
+}
+
+.f-avatar .f-text {
+    color: currentColor;
+    padding: 0;
+}
+
+/* Sizes */
+
+.f-avatar.xs {
+    width: var(--f-size-5);
+    height: var(--f-size-5);
+}
+
+.f-avatar.sm {
+    width: var(--f-size-7);
+    height: var(--f-size-7);
+}
+
+.f-avatar.md {
+    width: var(--f-size-10);
+    height: var(--f-size-10);
+}
+
+.f-avatar.lg {
+    width: var(--f-size-13);
+    height: var(--f-size-13);
+}
+
+.f-avatar.xl {
+    width: var(--f-size-17);
+    height: var(--f-size-17);
+}
+
+/* group */
+
+.f-avatar-group {
+    width: fit-content;
+    z-index: 1;
+}
+
+.f-avatar-group:not(.is-inverted)::after {
+    content: ' ';
+    width: calc(var(--f-avatar-group-overlap) * -1);
+    height: 1rem;
+    display: block;
+}
+
+.f-avatar-group.is-inverted::before {
+    content: ' ';
+    width: calc(var(--f-avatar-group-overlap) * -1);
+    height: 1rem;
+    display: block;
+}
+
+/* adjust spacing for small ones  */
+
+.f-avatar.xs,
+.f-avatar.sm {
+    --f-avatar-group-overlap: var(--f-avatar-group-overlap-small);
+}
+
+.f-avatar-group .f-avatar {
+    margin-right: var(--f-avatar-group-overlap);
+}
+
+.f-avatar-group.is-animated .f-avatar {
+    margin-right: var(--f-avatar-group-overlap);
+    transition: margin-right .1s;
+}
+
+.f-avatar-group.is-animated:hover .f-avatar {
+    margin-right: var(--f-avatar-group-spacing);
+}
+
+.f-avatar-group.is-inverted {
+     flex-direction: row-reverse; 
+}

@@ -1,0 +1,129 @@
+import * as Token from '@fold-dev/design/tokens'
+import { Avatar, IconLib, Pill, Stack } from '@fold-dev/core'
+import React from 'react'
+
+export default {
+    title: 'Components/Pill',
+    component: Pill,
+}
+
+export const docs = {
+    title: 'Pill',
+    subtitle:
+        'The Pill component serves to convey the status of something, whether it be an entry on a to-do list or user associated with a piece of content.',
+    description:
+        "Pill components highlight fresh and crucial information, effectively directing the user's focus towards significant content that might go unnoticed otherwise.",
+}
+
+export const Usage = () => (
+    <Pill
+        prefix={
+            <Avatar
+                name="Patrick Anthony"
+                size="sm"
+                src="/men/09.jpg"
+            />
+        }>
+        Patrick Anthony
+    </Pill>
+)
+
+// --
+
+export const Sizes = () => (
+    <Stack spacing={5}>
+        <Pill size="xs">React</Pill>
+        <Pill size="sm">VueJS</Pill>
+        <Pill size="md">Svelte</Pill>
+        <Pill size="lg">SolidJS</Pill>
+        <Pill size="xl">Angular</Pill>
+    </Stack>
+)
+
+// --
+
+export const WithPrefixAndSuffix = () => (
+    <Stack spacing={5}>
+        <Pill
+            suffix={
+                <IconLib
+                    icon="bin"
+                    size="sm"
+                />
+            }>
+            Craig Pather
+        </Pill>
+        <Pill
+            suffix={
+                <Avatar
+                    name="Etienne Dreyer"
+                    size="sm"
+                    src="/men/01.jpg"
+                />
+            }>
+            Etienne Dreyer
+        </Pill>
+        <Pill
+            prefix={
+                <Avatar
+                    name="Patrick Anthony"
+                    size="sm"
+                    src="/men/09.jpg"
+                />
+            }
+            suffix={
+                <IconLib
+                    icon="bin"
+                    size="sm"
+                />
+            }>
+            Patrick Anthony
+        </Pill>
+        <Pill
+            prefix={
+                <IconLib
+                    icon="user"
+                    size="sm"
+                />
+            }
+            suffix={
+                <IconLib
+                    icon="bin"
+                    size="sm"
+                />
+            }>
+            Johannes du Plessis
+        </Pill>
+    </Stack>
+)
+
+// --
+
+export const Variants = () => (
+    <Stack spacing={5}>
+        <Pill>React</Pill>
+        <Pill subtle>VueJS</Pill>
+        <Pill outline>Svelte</Pill>
+    </Stack>
+)
+
+// --
+
+/**
+ * The Pill component takes a hex-code value for the color.
+ */
+export const Color = () => (
+    <Stack spacing={5}>
+        <Pill color={Token.ColorElectric400}>React</Pill>
+        <Pill
+            color={Token.ColorPurple400}
+            subtle>
+            VueJS
+        </Pill>
+        <Pill
+            color={Token.ColorTeal400}
+            outline>
+            Svelte
+        </Pill>
+    </Stack>
+)

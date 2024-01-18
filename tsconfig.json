@@ -1,0 +1,31 @@
+  {
+    
+    "compilerOptions": {
+        "ignoreDeprecations": "5.0",
+        "module": "CommonJS",
+        "target": "es2015",
+        "lib": ["es5", "es6", "es7", "es2021", "dom"],
+        "sourceMap": false,
+        "declaration": true,
+        "allowJs": false,
+        "jsx": "react",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": false,
+        "noImplicitReturns": false,
+        "noImplicitThis": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "typeRoots": ["node_modules/@types", "./typings.d.ts"],
+    "exclude": ["node_modules","**/*.stories.tsx","**/*.test.tsx"]
+}

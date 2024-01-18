@@ -1,0 +1,82 @@
+:root {
+    --f-copy-background-color: var(--f-color-surface);
+    --f-copy-border-color: var(--f-color-border);
+    --f-copy-border-width: 0.1rem;
+    --f-copy-border-color-active: var(--f-color-border-strong);
+    --f-copy-color: var(--f-color-accent);
+    --f-copy-border-radius: var(--f-radius);
+    --f-copy-padding: var(--f-space-3);
+    --f-copy-shadow: var(--f-shadow-sm);
+}
+
+.f-copy {
+    position: relative;
+    width: 100%;
+    background-color: var(--f-copy-background-color);
+    border: var(--f-copy-border-width) solid;
+    border-color: var(--f-copy-border-color);
+    border-radius: var(--f-copy-border-radius);
+    padding: var(--f-copy-padding);
+    transition: border 0.25s;
+    color: var(--f-copy-color);
+    box-shadow: var(--f-copy-shadow);
+}
+
+.f-copy__prefix,
+.f-copy__suffix {
+    padding-left: var(--f-space-3);
+    padding-right: var(--f-space-3);   
+    color: inherit;
+}
+
+.f-copy code {
+    flex: 1;
+    color: var(--f-copy-color);
+    user-select: none;
+    font-size: inherit;
+}
+
+.f-copy:hover {
+    border-color: var(--f-copy-border-color-active);
+}
+
+.f-copy__value {
+    white-space: nowrap;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.f-copy__value.is-scrolling {
+    overflow-x: auto;
+    text-overflow: initial;
+    white-space: nowrap;
+}
+
+/* size */
+
+.f-copy.xs {
+    font-size: var(--f-font-size-xs) !important;
+    min-height: var(--f-size-8);
+}
+
+.f-copy.sm {
+    font-size: var(--f-font-size-sm) !important;
+    min-height: var(--f-size-9);
+}
+
+.f-copy.md {
+    font-size: var(--f-font-size-md) !important;
+    min-height: var(--f-size-11); 
+}
+
+.f-copy.lg {
+    font-size: var(--f-font-size-lg) !important;
+    min-height: var(--f-size-13); 
+}
+
+.f-copy.xl {
+    font-size: var(--f-font-size-xl) !important;
+    min-height: var(--f-size-15); 
+}

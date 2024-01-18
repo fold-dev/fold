@@ -1,0 +1,147 @@
+:root {
+    --f-options-spacing: var(--f-space-1);
+    --f-options-border-radius: var(--f-radius);
+    --f-options-background-color: var(--f-color-surface);
+    --f-options-active-background-color: var(--f-color-surface-strong);
+    --f-option-color: var(--f-color-text-weaker);
+    --f-option-disabled-color: var(--f-color-text-weakest);
+    --f-option-selected-color: var(--f-color-text);
+    --f-options-border-width: 1px;
+    --f-options-border-color: var(--f-color-border);
+    --f-options-shadow: var(--f-shadow-sm);
+    --f-option-ix-spacing: 0.5rem;
+}
+
+.f-options {
+    padding: var(--f-space-1);
+    border-radius: var(--f-options-border-radius);
+    background-color: var(--f-options-background-color);
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+    border: var(--f-options-border-width) solid;
+    border-color: var(--f-options-border-color);
+    box-shadow: var(--f-options-shadow);
+    align-items: stretch;
+    gap: var(--f-options-spacing);
+    flex-shrink: 0;
+}
+
+.f-option {
+    flex: 1;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--f-options-border-radius);
+    background: transparent;
+    color: var(--f-option-color);
+    z-index: 1;
+    flex-shrink: 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.f-option:focus {
+    outline: none;
+}
+
+.f-option:disabled {
+    cursor: not-allowed;
+    color: var(--f-option-disabled-color);
+}
+
+.f-option:not(:disabled):not(.is-selected):hover {
+    opacity: 0.8;
+    transition: opacity .2s;
+}
+
+.f-option:not(:disabled).is-selected {
+    color: var(--f-option-selected-color);
+}
+
+.f-option:not(:disabled):not(.is-animated).is-selected {
+    background-color: var(--f-options-active-background-color);
+    transition-property: var(--f-transition-property-colors);
+    transition-duration: var(--f-transition-duration-faster); 
+    transition-timing-function: var(--f-transition-easing-ease-out);
+}
+
+.f-options__selected {
+    margin-top: calc(var(--f-options-border-width) * -1); /* take into account the border */
+    background-color: var(--f-options-active-background-color);
+    border-radius: var(--f-options-border-radius);
+    position: absolute;
+    top: var(--f-space-2);
+    left: -100px;
+    width: 100px;
+    height: 100%;
+    z-index: 0;
+    transition-property: var(--f-transition-property-dimensions), var(--f-transition-property-position);
+    transition-duration: var(--f-transition-duration-faster); 
+    transition-timing-function: var(--f-transition-easing-ease-out);
+}
+
+.f-option__suffix__label {
+    color: currentColor;
+    padding: 0;
+    margin: 0;
+}
+
+.f-option__suffix,
+.f-option__prefix {
+    color: inherit;
+    height: fit-content;
+    width: fit-content;
+    position: static;
+}
+
+.f-option__suffix {
+    padding-left: var(--f-option-ix-spacing);
+}
+
+.f-option__prefix {
+    padding-right: var(--f-option-ix-spacing);
+}
+
+/* sizes - options */
+
+.f-options.xs {
+    height: var(--f-size-8);
+}
+
+.f-options.sm {
+    height: var(--f-size-9);
+}
+
+.f-options.md {
+    height: var(--f-size-11); 
+}
+
+.f-options.lg {
+    height: var(--f-size-13); 
+}
+
+.f-options.xl {
+    height: var(--f-size-15); 
+}
+
+/* sizes - option */
+
+.f-option.xs {  
+    padding: 0 var(--f-space-2);
+}
+
+.f-option.sm { 
+    padding: 0 var(--f-space-3);
+}
+
+.f-option.md { 
+    padding: 0 var(--f-space-4);
+}
+
+.f-option.lg { 
+    padding: 0 var(--f-space-5);
+}
+
+.f-option.xl { 
+    padding: 0 var(--f-space-6);
+}

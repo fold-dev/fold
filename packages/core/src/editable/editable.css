@@ -1,0 +1,16 @@
+.f-editable {
+    width: fit-content;
+    height: fit-content;
+}
+
+.f-editable:focus-within {
+    border-radius: var(--f-radius);
+    outline: var(--f-focus);
+    outline-offset: 5px;
+    transition: outline 100ms;
+}
+
+.f-editable > *:focus {
+    outline: none;
+}
+

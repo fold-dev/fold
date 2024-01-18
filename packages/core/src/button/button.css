@@ -1,0 +1,496 @@
+:root {
+    --f-button-color: var(--f-color-text-weak);
+    --f-button-color-hover: var(--f-color-text);
+    --f-button-border-width: 1px;
+    --f-button-border-color: var(--f-color-border);
+    --f-button-background-color: var(--f-color-surface);
+    --f-button-background-color-hover: var(--f-color-surface-stronger);
+    --f-button-disabled-opacity: 0.5;
+    --f-button-border-radius: var(--f-radius);
+    --f-button-shadow: var(--f-shadow-sm);
+}
+
+.f-button {
+    width: fit-content;
+    border: var(--f-button-border-width) solid;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition-property: background-color, outline;
+    transition-duration: 100ms;
+    color: var(--f-button-color);
+    border-color: var(--f-button-border-color);
+    background-color: var(--f-button-background-color);
+    box-shadow: var(--f-button-shadow);
+    position: relative;
+    user-select: none;
+    text-decoration: none;
+    border-radius: var(--f-button-border-radius);
+    font-weight: normal;
+}
+
+.f-button.is-flat {
+    box-shadow: none;
+}
+
+.f-button.is-underlined {
+    text-decoration: underline;
+}
+
+.f-button:focus {
+    outline: var(--f-focus);
+    outline-offset: 1px;
+}
+
+.f-button:active {
+    /* outline: var(--f-focus); */
+}
+
+.f-button.is-active,
+.f-button:not(:disabled):hover {
+    color: var(--f-button-color-hover);
+    background-color: var(--f-button-background-color-hover);
+}
+
+.f-button:disabled {
+    cursor: not-allowed;
+}
+
+.f-button:disabled > * {
+    opacity: var(--f-button-disabled-opacity);
+}
+
+.f-button.is-loading {
+    cursor: progress !important;
+}
+
+.f-button.is-loading > *:not(.f-spinner-overlay) {
+    visibility: hidden;
+}
+
+.f-button .f-spinner-overlay {
+    background-color: transparent;
+}
+
+.f-button > * {
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.f-button span,
+.f-button a {
+    color: inherit;
+    text-decoration: none !important; 
+}
+
+.f-button__label {
+    pointer-events: none;
+    position: relative;  
+    flex: 1;
+    flex-shrink: 0; 
+}
+
+.f-button__suffix {
+    flex-shrink: 0;
+    height: fit-content;
+    width: fit-content;
+    margin-left: var(--f-size-2); 
+    margin-right: calc(var(--f-size-1) * -1); 
+    pointer-events: none;
+}
+
+.f-button__prefix {
+    flex-shrink: 0;
+    height: fit-content;
+    width: fit-content;
+    margin-right: var(--f-size-2); 
+    margin-left: calc(var(--f-size-1) * -1); 
+    pointer-events: none;
+}
+
+/* ********************************************* */
+/* ********************************************* */
+/* ********************************************* */
+
+/* no other visual props */
+
+.f-button.is-accent,
+.f-button.is-accent:hover {
+    color: var(--f-color-accent-weak);
+    border-color: var(--f-color-accent);
+    outline-color: var(--f-color-accent);
+    background-color: var(--f-color-accent);
+}
+
+.f-button.is-success,
+.f-button.is-success:hover {
+    color: var(--f-color-success-weak);
+    border-color: var(--f-color-success);
+    outline-color: var(--f-color-success);
+    background-color: var(--f-color-success);
+}
+
+.f-button.is-neutral,
+.f-button.is-neutral:hover {
+    color: var(--f-color-neutral-weak);
+    border-color: var(--f-color-neutral);
+    outline-color: var(--f-color-neutral);
+    background-color: var(--f-color-neutral);
+}
+
+.f-button.is-caution,
+.f-button.is-caution:hover {
+    color: var(--f-color-caution-weak);
+    border-color: var(--f-color-caution);
+    outline-color: var(--f-color-caution);
+    background-color: var(--f-color-caution);
+}
+
+.f-button.is-warning,
+.f-button.is-warning:hover {
+    color: var(--f-color-warning-weak);
+    border-color: var(--f-color-warning);
+    outline-color: var(--f-color-warning);
+    background-color: var(--f-color-warning);
+}
+
+.f-button.is-danger,
+.f-button.is-danger:hover {
+    color: var(--f-color-danger-weak);
+    border-color: var(--f-color-danger);
+    outline-color: var(--f-color-danger);
+    background-color: var(--f-color-danger);
+}
+
+.f-button.is-highlight,
+.f-button.is-highlight:hover {
+    color: var(--f-color-highlight-weak);
+    border-color: var(--f-color-highlight);
+    outline-color: var(--f-color-highlight);
+    background-color: var(--f-color-highlight);
+}
+
+.f-button.is-accent:after,
+.f-button.is-success:after,
+.f-button.is-neutral:after,
+.f-button.is-caution:after,
+.f-button.is-warning:after,
+.f-button.is-danger:after,
+.f-button.is-highlight:after {
+    content: " ";
+    background-color: var(--f-color-surface);
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.f-button.is-accent.is-active:after,
+.f-button.is-success.is-active:after,
+.f-button.is-neutral.is-active:after,
+.f-button.is-caution.is-active:after,
+.f-button.is-warning.is-active:after,
+.f-button.is-danger.is-active:after,
+.f-button.is-highlight.is-active:after,
+.f-button.is-accent:not(:disabled):hover:after,
+.f-button.is-success:not(:disabled):hover:after,
+.f-button.is-neutral:not(:disabled):hover:after,
+.f-button.is-caution:not(:disabled):hover:after,
+.f-button.is-warning:not(:disabled):hover:after,
+.f-button.is-danger:not(:disabled):hover:after,
+.f-button.is-highlight:not(:disabled):hover:after {
+    opacity: 0.2;
+}
+
+/* ********************************************* */
+/* ********************************************* */
+/* ********************************************* */
+
+/* subtle */
+
+.f-button.is-subtle {
+    transition: none;
+    box-shadow: none;
+    background: transparent;
+    border-color: transparent;
+}
+
+.f-button.is-subtle:not(:disabled):hover {
+    background: var(--f-button-background-color-hover);
+}
+
+.f-button.is-accent.is-subtle:hover,
+.f-button.is-success.is-subtle:hover,
+.f-button.is-neutral.is-subtle:hover,
+.f-button.is-caution.is-subtle:hover,
+.f-button.is-warning.is-subtle:hover,
+.f-button.is-danger.is-subtle:hover,
+.f-button.is-highlight.is-subtle:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+.f-button.is-accent.is-subtle { 
+    color: var(--f-color-accent); 
+}
+
+.f-button.is-accent.is-subtle.is-active,
+.f-button.is-accent.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-accent-weak); 
+    border-color: var(--f-color-accent-weak); 
+}
+
+.f-button.is-success.is-subtle { 
+    color: var(--f-color-success); 
+}
+
+.f-button.is-success.is-subtle.is-active,
+.f-button.is-success.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-success-weak); 
+    border-color: var(--f-color-success-weak); 
+}
+
+.f-button.is-neutral.is-subtle { 
+    color: var(--f-color-neutral); 
+}
+
+.f-button.is-neutral.is-subtle.is-active,
+.f-button.is-neutral.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-neutral-weak); 
+    border-color: var(--f-color-neutral-weak); 
+}
+
+.f-button.is-caution.is-subtle { 
+    color: var(--f-color-caution); 
+}
+
+.f-button.is-caution.is-subtle.is-active,
+.f-button.is-caution.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-caution-weak); 
+    border-color: var(--f-color-caution-weak); 
+}
+
+.f-button.is-warning.is-subtle { 
+    color: var(--f-color-warning); 
+}
+
+.f-button.is-warning.is-subtle.is-active,
+.f-button.is-warning.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-warning-weak); 
+    border-color: var(--f-color-warning-weak); 
+}
+
+.f-button.is-danger.is-subtle { 
+    color: var(--f-color-danger); 
+}
+
+.f-button.is-danger.is-subtle.is-active,
+.f-button.is-danger.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-danger-weak); 
+    border-color: var(--f-color-danger-weak); 
+}
+
+.f-button.is-highlight.is-subtle { 
+    color: var(--f-color-highlight); 
+}
+
+.f-button.is-highlight.is-subtle.is-active,
+.f-button.is-highlight.is-subtle:not(:disabled):hover { 
+    background: var(--f-color-highlight-weak); 
+    border-color: var(--f-color-highlight-weak); 
+}
+
+/* ********************************************* */
+/* ********************************************* */
+/* ********************************************* */
+
+/* outline */
+
+.f-button.is-outline {
+    background: transparent;
+}
+
+.f-button.is-outline:disabled:hover,
+.f-button.is-accent.is-outline:disabled:hover,
+.f-button.is-success.is-outline:disabled:hover,
+.f-button.is-neutral.is-outline:disabled:hover,
+.f-button.is-caution.is-outline:disabled:hover,
+.f-button.is-warning.is-outline:disabled:hover,
+.f-button.is-danger.is-outline:disabled:hover,
+.f-button.is-highlight.is-outline:disabled:hover {
+    background: transparent;
+}
+
+.f-button.is-outline:after {
+    opacity: 0 !important;
+}
+
+.f-button.is-accent.is-outline { 
+    color: var(--f-color-accent); 
+}
+
+.f-button.is-accent.is-outline.is-active,
+.f-button.is-accent.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-accent); 
+    color: var(--f-color-accent-weak); 
+}
+
+.f-button.is-success.is-outline { 
+    color: var(--f-color-success); 
+}
+
+.f-button.is-success.is-outline.is-active,
+.f-button.is-success.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-success); 
+    color: var(--f-color-success-weak); 
+}
+
+.f-button.is-neutral.is-outline { 
+    color: var(--f-color-neutral); 
+}
+
+.f-button.is-neutral.is-outline.is-active,
+.f-button.is-neutral.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-neutral); 
+    color: var(--f-color-neutral-weak);
+}
+
+.f-button.is-caution.is-outline { 
+    color: var(--f-color-caution); 
+}
+
+.f-button.is-caution.is-outline.is-active,
+.f-button.is-caution.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-caution); 
+    color: var(--f-color-caution-weak); 
+}
+
+.f-button.is-warning.is-outline { 
+    color: var(--f-color-warning); 
+}
+
+.f-button.is-warning.is-outline.is-active,
+.f-button.is-warning.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-warning); 
+    color: var(--f-color-warning-weak); 
+}
+
+.f-button.is-danger.is-outline { 
+    color: var(--f-color-danger); 
+}
+
+.f-button.is-danger.is-outline.is-active,
+.f-button.is-danger.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-danger); 
+    color: var(--f-color-danger-weak); 
+}
+
+.f-button.is-highlight.is-outline { 
+    color: var(--f-color-highlight); 
+}
+
+.f-button.is-highlight.is-outline.is-active,
+.f-button.is-highlight.is-outline:not(:disabled):hover { 
+    background-color: var(--f-color-highlight); 
+    color: var(--f-color-highlight-weak); 
+}
+
+/* ********************************************* */
+/* ********************************************* */
+/* ********************************************* */
+
+/* sizes */
+
+.f-button.xs {  
+    height: var(--f-size-8);
+    padding: 0 var(--f-space-2);
+}
+
+.f-button.sm { 
+    height: var(--f-size-9);
+    padding: 0 var(--f-space-3);
+}
+
+.f-button.md { 
+    height: var(--f-size-11); 
+    padding: 0 var(--f-space-4);
+}
+
+.f-button.lg { 
+    height: var(--f-size-13); 
+    padding: 0 var(--f-space-5);
+}
+
+.f-button.xl { 
+    height: var(--f-size-15); 
+    padding: 0 var(--f-space-6);
+    border-radius: calc(var(--f-button-border-radius) * 1.2);
+}
+
+/* ********************************************* */
+/* ********************************************* */
+/* ********************************************* */
+
+/* button group */
+
+.f-button-group {
+    width: fit-content;
+    border-radius: var(--f-button-border-radius);
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+.f-button-group > .f-button {
+    z-index: 1;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.f-button-group > .f-button:focus {
+    z-index: 2;
+}
+
+/* vertical */
+
+.f-button-group.is-vertical > .f-button {
+    width: 100%;
+}
+
+.f-button-group.is-vertical > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type) {
+    border-radius: 0px;
+    border-bottom: 0px;
+}
+
+.f-button-group.is-vertical > .f-button:last-of-type:not(.f-button:first-of-type) {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.f-button-group.is-vertical > .f-button:first-of-type:not(.f-button:last-of-type) {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom: 0px;
+}
+
+/* horizontal */
+
+.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type) {
+    border-radius: 0px;
+    border-right: 0px;
+}
+
+.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type) {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type) {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-right: 0px;
+}

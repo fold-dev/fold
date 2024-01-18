@@ -1,0 +1,12 @@
+:root {
+    --f-cookie-margin: var(--f-size-10);
+    --f-cookie-button-spacing: 1px;
+}
+
+.f-cookie {
+    margin: var(--f-cookie-margin);
+}
+
+.f-cookie .f-button {
+    margin: var(--f-cookie-button-spacing);
+}

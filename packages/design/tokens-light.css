@@ -1,0 +1,38 @@
+/**
+ * Do not edit directly
+ * Generated on Thu, 18 Jan 2024 14:56:54 GMT
+ */
+
+[data-theme='light'] {
+  --f-radius: 1.5rem;
+  --f-focus: 3px solid #a2cdff;
+  --f-color-background: #f7fafc;
+  --f-color-accent: #0078ff;
+  --f-color-accent-weak: #d0e6ff;
+  --f-color-success: #38b2ac;
+  --f-color-success-weak: #b2f5ea;
+  --f-color-neutral: #a0aec0;
+  --f-color-neutral-weak: #f0f5fa;
+  --f-color-caution: #ecc94b;
+  --f-color-caution-weak: #fefcbf;
+  --f-color-warning: #ed8936;
+  --f-color-warning-weak: #feebc8;
+  --f-color-danger: #f56565;
+  --f-color-danger-weak: #fed7d7;
+  --f-color-highlight: #9f7aea;
+  --f-color-highlight-weak: #e9d8fd;
+  --f-color-text: #2d3748;
+  --f-color-text-weak: #4a5568;
+  --f-color-text-weaker: #718096;
+  --f-color-text-weakest: #cbd5e0;
+  --f-color-text-link: #0078ff;
+  --f-color-text-on-color: #ffffff;
+  --f-color-surface: #ffffff;
+  --f-color-surface-strong: #f7fafc;
+  --f-color-surface-stronger: #f0f5fa;
+  --f-color-surface-strongest: #e2e8f0;
+  --f-color-surface-highlight: #b9daff;
+  --f-color-surface-inverse: #2d3748;
+  --f-color-border: #e2e8f0;
+  --f-color-border-strong: #cbd5e0;
+}

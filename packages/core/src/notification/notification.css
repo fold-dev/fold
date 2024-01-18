@@ -1,0 +1,97 @@
+:root {
+    --f-notification-border-radius: 0;
+    --f-notification-accent-size: var(--f-size-2);
+    --f-notification-color: var(--f-color-text-weaker);
+    --f-notification-background-color: var(--f-color-surface-strong);
+    --f-notification-spacing: var(--f-space-4);
+    --f-notification-padding: var(--f-space-inset-x-4);
+}
+
+.f-notification {
+    color: var(--f-notification-color);
+    background-color: var(--f-notification-background-color);
+    border-radius: var(--f-notification-border-radius); 
+    padding: var(--f-notification-padding);
+    border: 0;
+    gap: var(--f-notification-spacing);
+}
+
+.f-notification.is-left-accent {
+    border-left: var(--f-notification-accent-size) solid;
+}
+
+.f-notification.is-right-accent {
+    border-right: var(--f-notification-accent-size) solid;
+}
+
+.f-notification.is-bottom-accent {
+    border-bottom: var(--f-notification-accent-size) solid;
+}
+
+.f-notification.is-top-accent {
+    border-top: var(--f-notification-accent-size) solid;
+}
+
+.f-notification__icon {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.f-notification__content {
+    padding: 0;
+}
+
+.f-notification__content .f-text,
+.f-notification__content .f-heading {
+    color: currentColor;
+}
+
+.f-notification__content {
+    color: currentColor;
+    flex: 1;
+}
+
+.f-notification.is-accent {
+    color: var(--f-color-accent);
+    border-color: var(--f-color-accent);
+    background-color: var(--f-color-accent-weak);
+}
+
+.f-notification.is-success {
+    color: var(--f-color-success);
+    border-color: var(--f-color-success);
+    background-color: var(--f-color-success-weak);
+}
+
+.f-notification.is-neutral {
+    color: var(--f-color-neutral);
+    border-color: var(--f-color-neutral);
+    background-color: var(--f-color-neutral-weak);
+}
+
+.f-notification.is-caution {
+    color: var(--f-color-caution);
+    border-color: var(--f-color-caution);
+    background-color: var(--f-color-caution-weak);
+}
+
+.f-notification.is-warning {
+    color: var(--f-color-warning);
+    border-color: var(--f-color-warning);
+    background-color: var(--f-color-warning-weak);
+}
+
+.f-notification.is-danger {
+    color: var(--f-color-danger);
+    border-color: var(--f-color-danger);
+    background-color: var(--f-color-danger-weak);
+}
+
+.f-notification.is-highlight {
+    color: var(--f-color-highlight);
+    border-color: var(--f-color-highlight);
+    background-color: var(--f-color-highlight-weak);
+}

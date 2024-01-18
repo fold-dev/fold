@@ -1,0 +1,34 @@
+:root {
+    --f-video-border-radius: var(--f-radius);
+    --f-video-background-color: var(--f-color-surface-strong);
+}
+
+.f-video {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--f-video-border-radius);
+    background-color: var(--f-video-background-color);
+}
+
+.f-video__error {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.f-video video {
+    display: inline-block;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.f-video.is-loading video {
+    visibility: hidden;
+}
+
+.f-video .f-spinner-overlay {
+    background-color: transparent;
+}

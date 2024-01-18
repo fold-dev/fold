@@ -1,0 +1,165 @@
+:root {
+    --f-toast-border-radius: var(--f-radius);
+    --f-toast-color: var(--f-color-text-on-color);
+    --f-toast-background-color: var(--f-color-surface-inverse);
+    --f-toast-max-width: 100%;
+    --f-toast-padding: var(--f-space-4);
+}
+
+.f-toast-container {
+    position: fixed;  
+    width: fit-content;
+    z-index: var(--f-index-toast);
+}
+
+.f-toast-progress {
+    height: var(--f-size-1);
+    border-radius: var(--f-toast-border-radius);
+    margin-top: var(--f-size-3);
+    width: 0%;
+    background: currentColor;
+    transition-property: width;
+    transition-timing-function: linear;
+}
+
+.f-toast {
+    width: fit-content;
+    max-width: var(--f-toast-max-width);
+    margin-top: 0.5rem;
+    border-radius: var(--f-toast-border-radius);
+    box-shadow: var(--f-shadow-lg);
+    padding: var(--f-toast-padding);
+    z-index: var(--f-index-toast);
+    animation: f-toast-fadein var(--f-transition-duration-slow);
+    background-color: var(--f-toast-background-color);
+    color: var(--f-toast-color);
+    user-select: none;
+    gap: var(--f-size-3);
+}
+
+@keyframes f-toast-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-toast > * {
+    z-index: 1;
+}
+
+.f-toast__message {
+    color: inherit;
+}
+
+.f-toast__prefix {
+    flex-shrink: 0;
+    width: fit-content;
+}
+
+.f-toast__content {
+    flex: 1;
+}
+
+.f-toast__close {
+    background: transparent;
+    border: none;
+    color: inherit;
+    width: var(--f-size-8);
+    height: var(--f-size-8);
+    flex-shrink: 0;
+    border-radius: var(--f-radius);
+}
+
+.f-toast__close:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* ********************************************* */
+
+.f-toast.is-accent { 
+    color: var(--f-color-accent-weak); 
+    background-color: var(--f-color-accent); 
+}
+
+.f-toast.is-success { 
+    color: var(--f-color-success-weak); 
+    background-color: var(--f-color-success); 
+}
+
+.f-toast.is-neutral { 
+    color: var(--f-color-neutral-weak); 
+    background-color: var(--f-color-neutral); 
+}
+
+.f-toast.is-caution { 
+    color: var(--f-color-caution-weak); 
+    background-color: var(--f-color-caution); 
+}
+
+.f-toast.is-warning { 
+    color: var(--f-color-warning-weak); 
+    background-color: var(--f-color-warning); 
+}
+
+.f-toast.is-danger { 
+    color: var(--f-color-danger-weak); 
+    background-color: var(--f-color-danger); 
+}
+
+.f-toast.is-highlight { 
+    color: var(--f-color-highlight-weak); 
+    background-color: var(--f-color-highlight); 
+}
+
+/* ********************************************* */
+
+/* position */
+
+.f-toast-container.is-bottom-center {
+    right: 50%;
+    bottom: 1rem;
+    transform: translateX(50%);
+}
+
+.f-toast-container.is-bottom-right {
+    right: 1rem;
+    bottom: 1rem;
+    align-items: flex-end;
+}
+
+.f-toast-container.is-bottom-left {
+    left: 1rem;
+    bottom: 1rem;
+    align-items: flex-start;
+}
+
+.f-toast-container.is-top-center {
+    right: 50%;
+    top: 1rem;
+    transform: translateX(50%);
+}
+
+.f-toast-container.is-top-right {
+    right: 1rem;
+    top: 1rem;
+    align-items: flex-end;
+}
+
+.f-toast-container.is-top-left {
+    left: 1rem;
+    top: 1rem;
+    align-items: flex-start;
+}
+
+/* messages position */
+
+.f-toast.is-bottom-center {}
+
+.f-toast.is-bottom-right {}
+
+.f-toast.is-bottom-left {}
+
+.f-toast.is-top-center {}
+
+.f-toast.is-top-right {}
+
+.f-toast.is-top-left {}

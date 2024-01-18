@@ -1,0 +1,65 @@
+:root {
+    --f-heading-color: var(--f-color-text);
+    --f-heading-background-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, .f-heading {
+    color: var(--f-heading-color);
+    background-color: var(--f-heading-background-color);
+    font-family: var(--f-font-heading);
+    width: fit-content;
+    /* line-height: normal; */
+}
+
+.f-heading.is-jumbo {
+    font-size: var(--f-font-size-jumbo);
+    line-height: 95%;
+    letter-spacing: -0.25rem;
+    font-weight: 500;
+}
+
+.f-heading.is-huge {
+    font-size: var(--f-font-size-huge);
+    line-height: 100%;
+    letter-spacing: -0.15rem;
+    font-weight: 500;
+}
+
+h1, 
+h1.f-heading {
+    font-size: var(--f-font-size-3xl);
+    letter-spacing: -0.05rem;
+    /* padding-bottom: var(--f-space-4); */
+}
+
+h2, 
+h2.f-heading {
+    font-size: var(--f-font-size-2xl);
+    /* letter-spacing: -0.05rem; */
+    /* padding-bottom: var(--f-space-3); */
+}
+
+h3, 
+h3.f-heading {
+    font-size: var(--f-font-size-xl);
+    /* letter-spacing: -0.025rem; */
+    /* padding-bottom: var(--f-space-2); */
+}
+
+h4, 
+h4.f-heading {
+    font-size: var(--f-font-size-lg);
+    /* padding-bottom: var(--f-space-1); */
+}
+
+h5, 
+h5.f-heading {
+    font-size: var(--f-font-size-md);
+    /* padding-bottom: var(--f-space-1); */
+}
+
+h6, 
+h6.f-heading {
+    font-size: var(--f-font-size-sm);
+    /* padding-bottom: var(--f-space-1); */
+}

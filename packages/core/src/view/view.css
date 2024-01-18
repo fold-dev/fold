@@ -1,0 +1,15 @@
+:root {
+    --f-blur-overlay-radius: 0.5rem;
+    --f-blur-overlay-z-index: var(--f-index-overlay);
+}
+
+.view {}
+
+.f-blur {
+    filter: blur(var(--f-blur-overlay-radius));
+}
+
+.f-blur-overlay {
+    position: absolute;
+    z-index: var(--f-blur-overlay-z-index);
+}

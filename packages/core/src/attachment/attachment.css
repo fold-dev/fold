@@ -1,0 +1,238 @@
+:root {
+    --f-attachment-background: var(--f-color-surface);
+    --f-attachment-color: var(--f-color-accent);
+    --f-attachment-border-radius: var(--f-radius);
+    --f-attachment-border-color: var(--f-color-border);
+    --f-attachment-border-color-hover: var(--f-color-border-strong);
+    --f-attachment-icon-background: var(--f-color-surface-strong);
+    --f-attachment-icon-color: var(--f-color-accent);
+    --f-attachment-thumb-background: var(--f-color-surface);
+    --f-attachment-thumb-size: var(--f-size-28); 
+    --f-attachment-thumb-overlay: var(--f-color-overlay);
+}
+
+.f-attachment {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    color: var(--f-attachment-color);
+    position: relative;
+    cursor: pointer;
+    min-height: var(--f-size-12);
+    border: 0.1rem solid;
+    border-color: var(--f-attachment-border-color);
+    border-radius: var(--f-attachment-border-radius);
+    padding: var(--f-space-2); 
+    margin-bottom: var(--f-space-1);
+    background: var(--f-attachment-background);
+}
+
+.f-attachment * {
+    cursor: pointer;
+}
+
+.f-attachment__content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: var(--f-space-3);
+}
+
+.f-attachment:hover {
+    text-decoration: none;
+}
+
+.f-attachment.is-loading {
+    color: var(--f-color-text-weakest);
+}
+
+.f-attachment.is-loading:hover {
+    text-decoration: none;
+}
+
+.f-attachment__icon {
+    border-radius: var(--f-attachment-border-radius);
+    background-color: var(--f-attachment-icon-background);
+    color: var(--f-attachment-icon-color);
+}
+
+.f-attachment__hero-poster {
+    width: 100% !important;
+    margin-bottom: var(--f-size-2);
+    position: relative;
+}
+
+.f-attachment__icon .f-image {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--f-attachment-border-radius);
+}
+
+.f-attachment__text {
+    flex: 1;
+    min-height: var(--f-size-11);
+    align-items: flex-start;
+}
+
+/* hack to remove padding from the bottom on default settings so the icon sites flush */
+
+.f-attachment__text > * + * {
+    margin-top: -2px;
+}
+
+.f-attachment__text-meta {
+    white-space: nowrap;
+    color: var(--f-color-text-weakest);
+}
+
+/* error */
+
+.f-attachment.is-error {
+    color: var(--f-color-danger) !important;   
+    border-color: var(--f-color-danger);
+}
+
+.f-attachment.is-error .f-attachment__icon {
+    color: var(--f-color-danger) !important;   
+}
+
+/* sizes */
+
+.f-attachment.xs .f-attachment__icon { 
+    width: var(--f-size-8); 
+    height: var(--f-size-8); 
+}
+
+.f-attachment.sm .f-attachment__icon { 
+    width: var(--f-size-10); 
+    height: var(--f-size-10); 
+}
+
+.f-attachment.md .f-attachment__icon { 
+    width: var(--f-size-12); 
+    height: var(--f-size-12); 
+}
+
+.f-attachment.lg .f-attachment__icon { 
+    width: var(--f-size-14); 
+    height: var(--f-size-14); 
+}
+
+.f-attachment.xl .f-attachment__icon { 
+    width: var(--f-size-16); 
+    height: var(--f-size-16); 
+}
+
+/* thumb */ 
+
+.f-attachment-thumb {
+    background: var(--f-attachment-thumb-background);
+    width: 100%;
+    text-decoration: none;
+    color: var(--f-attachment-color);
+    position: relative;
+    min-height: var(--f-size-12);
+    border: 0.1rem solid;
+    border-color: var(--f-attachment-border-color);
+    border-radius: var(--f-attachment-border-radius);
+    width: var(--f-attachment-thumb-size); 
+    height: var(--f-attachment-thumb-size); 
+}
+
+.f-attachment-thumb * {
+    cursor: pointer;
+}
+
+.f-attachment-thumb .f-progress {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    z-index: 2;
+}
+
+.f-attachment-thumb .f-spinner-overlay {
+    border-radius: var(--f-attachment-border-radius);
+    background: transparent;
+    z-index: 1;
+}
+
+.f-attachment-thumb:hover {
+    text-decoration: none;
+}
+
+.f-attachment-thumb.is-loading:hover {
+    text-decoration: none;
+}
+
+.f-attachment-thumb .f-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--f-attachment-border-radius);
+    width: var(--f-attachment-thumb-size); 
+    height: var(--f-attachment-thumb-size); 
+}
+
+.f-attachment-thumb__details {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--f-attachment-border-radius);
+    width: 100%; 
+    height: 100%; 
+    border: 0.1rem solid transparent;
+    gap: var(--f-space-1);
+}
+
+.f-attachment-thumb__text-meta {
+    white-space: nowrap;
+    color: var(--f-color-text-weakest);
+}
+
+/* error */
+
+.f-attachment-thumb.is-error {
+    color: var(--f-color-danger) !important;   
+    border-color: var(--f-color-danger);
+}
+
+.f-attachment-thumb.is-error > * {
+    color: var(--f-color-danger) !important;   
+}
+
+.f-attachment-thumb__tools {
+    z-index: 2;
+    background: var(--f-attachment-thumb-overlay);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--f-attachment-border-radius);
+    width: 100%; 
+    height: 100%; 
+    visibility: hidden;
+}
+
+.f-attachment-thumb__tools:after {
+    content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--f-attachment-border-radius);
+    background-color: var(--f-attachment-thumb-overlay);
+    width: 100%; 
+    height: 100%;
+    z-index: 0; 
+}
+
+.f-attachment-thumb:hover .f-attachment-thumb__tools {
+    visibility: visible;
+    color: var(--f-color-white);
+}
+
+.f-attachment-thumb__tool {
+    padding: var(--f-space-1); 
+    z-index: 1; 
+    position: relative;
+}

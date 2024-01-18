@@ -1,0 +1,54 @@
+:root {
+    --f-icon-sizing-xs: var(--f-icon-size-xs); 
+    --f-icon-sizing-sm: var(--f-icon-size-sm); 
+    --f-icon-sizing-md: var(--f-icon-size-md); 
+    --f-icon-sizing-lg: var(--f-icon-size-lg); 
+    --f-icon-sizing-xl: var(--f-icon-size-xl); 
+    --f-icon-stroke-width-xs: 2.25;
+    --f-icon-stroke-width-sm: 2.2;
+    --f-icon-stroke-width-md: 2;
+    --f-icon-stroke-width-lg: 1.6;
+    --f-icon-stroke-width-xl: 1.5;
+    --rounding-interval: 1px;
+}
+
+.f-icon {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.f-icon svg {
+    fill: currentColor;
+}
+
+.f-icon.xs { 
+    width: var(--f-icon-sizing-xs); 
+    height: var(--f-icon-sizing-xs); 
+    stroke-width: var(--f-icon-stroke-width-xs);
+}
+
+.f-icon.sm { 
+    width: var(--f-icon-sizing-sm); 
+    height: var(--f-icon-sizing-sm); 
+    stroke-width: var(--f-icon-stroke-width-sm);
+}
+
+.f-icon.md { 
+    width: var(--f-icon-sizing-md); 
+    height: var(--f-icon-sizing-md); 
+    stroke-width: var(--f-icon-stroke-width-md);
+}
+
+.f-icon.lg { 
+    width: var(--f-icon-sizing-lg); 
+    height: var(--f-icon-sizing-lg); 
+    stroke-width: var(--f-icon-stroke-width-lg);
+}
+
+.f-icon.xl { 
+    width: var(--f-icon-sizing-xl); 
+    height: var(--f-icon-sizing-xl); 
+    stroke-width: var(--f-icon-stroke-width-xl);
+}

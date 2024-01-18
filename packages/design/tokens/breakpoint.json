@@ -1,0 +1,10 @@
+{
+    "breakpoint": {
+        "base": { "value": "0em" },
+        "sm": { "value": "30em" },
+        "md": { "value": "48em" },
+        "lg": { "value": "62em" },
+        "xl": { "value": "80em" },
+        "xxl": { "value": "96em" }
+    }
+}

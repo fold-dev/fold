@@ -1,0 +1,6 @@
+.f-affix {
+    top: -1px;
+    position: sticky;
+}
+
+.f-affix.is-stuck {}

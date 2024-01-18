@@ -1,0 +1,39 @@
+:root {
+    --f-stat-color-label: var(--f-color-text-weakest);
+    --f-stat-color-number: var(--f-color-text-weak);
+    --f-stat-color-description: var(--f-color-text-weaker);
+    --f-stat-color-icon: var(--f-color-text-weaker);
+}
+
+.f-stat {
+    width: fit-content;
+    height: fit-content;
+    gap: var(--f-space-2);
+    flex-grow: 1;
+    position: relative;
+}
+
+.f-stat .f-text {
+    color: var(--f-stat-color-label);
+}
+
+.f-stat .f-heading {
+    color: var(--f-stat-color-number);
+}
+
+.f-stat .f-icon {
+    color: var(--f-stat-color-icon);
+}
+
+.f-stat-footer {
+    width: fit-content;
+    color: var(--f-stat-color-description);
+}
+
+.f-stat-footer .f-text {
+    color: var(--f-stat-color-description);
+}
+
+.f-stat-footer > * {
+    margin-right: var(--f-space-1);
+}

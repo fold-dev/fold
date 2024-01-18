@@ -1,0 +1,324 @@
+:root {
+    --f-menu-shadow: var(--f-shadow-menu);
+    --f-menu-padding: var(--f-radius);
+    --f-menu-background-color: var(--f-color-surface);
+    --f-menu-border-color: var(--f-color-border);
+    --f-menu-heading-color: var(--f-color-text-weakest);
+    --f-menu-border-radius: var(--f-radius);
+    --f-menu-item-background-color-hover: var(--f-color-surface-strong);
+    --f-menu-item-background-color-active: var(--f-color-surface-strong);
+    --f-menu-item-color: var(--f-color-text-weaker);
+    --f-menu-item-color-hover: var(--f-color-text-weak);
+    --f-menu-item-color-active: var(--f-color-accent);
+    --f-menu-item-active-size: 0.2rem;
+    --f-menu-item-color-disabled: var(--f-color-text-weakest);
+    --f-menu-item-padding: var(--f-space-2) var(--f-space-5);
+    --f-menu-item-height: fit-content;
+    --f-menubar-item-padding: var(--f-space-2);
+    --f-menu-divider-spacing: var(--f-space-2);
+    --f-menu-divider-color: var(--f-color-surface-stronger);
+    --f-menu-item-font-weight: var(--f-font-weight-normal);
+    --f-menu-offset: 10px;
+    --f-menu-item-ix-spacing: 0.75rem;
+    --f-menubar-padding: var(--f-space-2);
+}
+
+.f-menu {
+    font-family: var(--f-font-body);
+    width: 100%; 
+    height: fit-content;
+    background-color: var(--f-menu-background-color);
+    border-radius: var(--f-menu-border-radius);
+    border: 0.1rem solid;
+    border-color: var(--f-menu-border-color);
+    list-style-type: none;
+    margin: 0px;
+    padding: var(--f-menu-padding) 0;
+    z-index: var(--f-index-menu);
+}
+
+.f-menu:not(.is-menubar) {
+    box-shadow: var(--f-menu-shadow);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* submenu */
+
+.f-menu-item > .f-menu {
+    display: none;
+    position: absolute;
+    flex-shrink: 0;
+    top: 0px;
+    right: var(--f-menu-offset);
+    transform: translateX(100%); 
+    animation: f-menu-fadein var(--f-transition-duration-fast); 
+}
+
+@keyframes f-menu-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-menu-item.is-open > .f-menu {
+    display: block;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* menu item */
+
+.f-menu-item {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; 
+    height: fit-content;
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+    color: var(--f-menu-item-color);
+}
+
+.f-menu-item * {
+    color: currentColor;
+}
+
+.f-menu-item__container {
+    cursor: pointer;
+    padding: var(--f-menu-item-padding);
+    margin: 0;
+    justify-content: flex-start;
+    transition: background-color 0.1s;
+    width: 100%; 
+    height: var(--f-menu-item-height);
+    justify-content: flex-start;
+    position: relative;
+    border: 0;
+    background: transparent;
+    list-style-type: none;
+    gap: var(--f-menu-item-ix-spacing);
+}
+
+.f-menu-item__label {
+    font-size: var(--f-font-size-md); 
+    font-weight: var(--f-menu-item-font-weight);
+    color: inherit;
+    text-align: left;
+    flex: 1;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.f-menu-item__active {
+    background-color: var(--f-menu-item-color-active);
+    position: absolute;
+    left: 0px;
+    top: 0%;
+    width: var(--f-menu-item-active-size);
+    height: 100%;
+}
+
+.f-menu-item__suffix {
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.f-menu-item__prefix {
+    color: inherit;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* states */
+
+.f-menu-item__container:not(.is-disabled).is-active {
+    color: var(--f-menu-item-color-active);    
+    background-color: var(--f-menu-item-background-color-active);    
+}
+
+.f-menu-item__container:not(.is-disabled).is-active > * {
+    color: var(--f-menu-item-color-active);    
+}
+
+.f-menu-item.is-open > .f-menu-item__container:not(.is-disabled),
+.f-menu-item__container:not(.is-disabled):focus {
+    outline: none;
+    color: var(--f-menu-item-color-hover);
+    background-color: var(--f-menu-item-background-color-hover);
+}
+
+.f-menu-item__container.is-disabled {
+    color: var(--f-menu-item-color-disabled);
+    cursor: not-allowed;
+    outline: none;
+}
+
+.f-menu-item__container:last-child {
+    border-bottom: none;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* divider */ 
+
+.f-menu-divider {
+    height: 1px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    border-top: 0.1rem solid var(--f-menu-divider-color);
+}
+
+.f-menu-divider > hr {
+    display: none;
+}
+
+/* spacing using sibling selectors */
+
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-optiongroup,
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-heading,
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-item,
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-section {
+    margin-top: var(--f-menu-divider-spacing);
+}
+
+.f-menu:not(.is-menubar) .f-menu-optiongroup + .f-menu-divider,
+.f-menu:not(.is-menubar) .f-menu-item + .f-menu-divider,
+.f-menu:not(.is-menubar) .f-menu-heading + .f-menu-divider
+.f-menu:not(.is-menubar) .f-menu-section + .f-menu-divider {
+    margin-top: var(--f-menu-divider-spacing);
+    margin-bottom: var(--f-menu-divider-spacing);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* section */
+
+.f-menu-section {
+    padding: var(--f-menu-item-padding);
+    flex-shrink: 0;
+    color: var(--f-menu-item-color);
+    width: 100%;
+    display: block;
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* heading */
+
+.f-menu-heading {
+    flex-shrink: 0;
+}
+
+.f-menu-heading .f-menu-heading__heading {
+    color: var(--f-menu-heading-color);
+    font-weight: var(--f-font-weight-medium);
+    padding: var(--f-menu-item-padding);
+}
+
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* menubar (horizontal) */
+
+.f-menu.is-menubar {
+    width: fit-content;
+    min-width: fit-content;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    padding: var(--f-menubar-padding);
+}
+
+.f-menu.is-menubar > .f-menu-item {
+    width: fit-content;
+} 
+
+.f-menu.is-menubar > .f-menu-divider {
+    margin: 0;
+    margin-left: var(--f-menu-divider-spacing);
+    margin-right: var(--f-menu-divider-spacing);
+    height: 100%;
+    width: 1px;
+    border: none;
+    position: static;
+} 
+
+.f-menu.is-menubar > .f-menu-divider > hr {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: calc(((var(--f-menubar-padding) / 2) * -1) - 0.1rem);
+    width: 1px;
+    color: transparent;
+    background: transparent;
+    border: none;
+    border-left: 0.1rem solid var(--f-color-border);
+}
+
+.f-menu.is-menubar > .f-menu-item .f-menu-item__active {
+    display: none;
+}
+
+.f-menu.is-menubar > .f-menu-item .f-menu-item__container {
+    padding: var(--f-menubar-item-padding);
+    border-radius: var(--f-menu-border-radius);
+}
+
+.f-menu.is-menubar > .f-menu-item > .f-menu:not(.is-menubar) > .f-menu-item > .f-menu-item__container {
+    padding: var(--f-menu-item-padding);
+}
+
+.f-menu.is-menubar > .f-menu-item .f-menu .f-menu-item__container {
+    border-radius: 0;
+}
+
+.f-menu.is-menubar > .f-menu-item > .f-menu {
+    top: 100%;
+    right: 100%;
+    transform: translateX(100%) translateY(0%);
+}
+ 
+/* ************************************************************** */
+/* ************************************************************** */
+/* ************************************************************** */
+
+/* off screen */
+
+.f-menu.is-offscreen-x {
+    top: 0px;
+    right: 0px;
+    left: var(--f-menu-offset);
+    transform: translateX(-100%);
+}
+
+.f-menu.is-menubar > .f-menu-item > .f-menu.is-offscreen-x {
+    top: 100%;
+    right: 0px;
+    left: 100%;
+    transform: translateX(-100%) 
+}
+
+.f-menu.is-menubar > .f-menu-item > .f-menu.is-offscreen-y {
+    top: 0px;
+    right: 100%;
+    transform: translateX(100%) translateY(-100%);
+}

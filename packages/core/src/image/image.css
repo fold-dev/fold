@@ -1,0 +1,38 @@
+:root {
+    --f-image-border-radius: var(--f-radius);
+    --f-image-background-color: var(--f-color-surface-strong);
+    --f-image-placeholder-color: var(--f-color-surface-strongest);
+}
+
+.f-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: var(--f-image-border-radius);
+    background-color: var(--f-image-background-color);
+    color: var(--f-image-placeholder-color);
+}
+
+.f-image__error {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.f-image img {
+    display: inline-block;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.f-image.is-loading img {
+    visibility: hidden;
+}
+
+.f-image-placeholder > .f-image-placeholder__icon {
+    width: 33%;
+    height: auto;
+}

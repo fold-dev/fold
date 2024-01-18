@@ -1,0 +1,57 @@
+:root {
+    --f-tooltip-background: var(--f-color-surface-inverse);
+    --f-tooltip-color: var(--f-color-text-weakest);
+    --f-tooltip-border-radius: var(--f-radius);
+    --f-tooltip-reposition-duraction: var(--f-transition-duration-fast);
+}
+
+.f-tooltip {
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    animation: f-tooltip-fadein var(--f-transition-duration-fast);
+    z-index: var(--f-index-tooltip);
+    transition: top var(--f-tooltip-reposition-duraction), left var(--f-tooltip-reposition-duraction);
+}
+
+@keyframes f-tooltip-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-tooltip-content {
+    animation: f-tooltip-fadein var(--f-transition-duration-fast);
+    pointer-events: none;
+    position: absolute;
+    white-space: nowrap;
+    padding: var(--f-space-inset-x-3);
+    box-shadow: var(--f-shadow-lg);
+    background: var(--f-tooltip-background);
+    color: var(--f-tooltip-color);
+    border-radius: var(--f-tooltip-border-radius);
+    z-index: var(--f-index-tooltip);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.f-tooltip-content .f-text,
+.f-tooltip-content .f-heading {
+    color: inherit;
+}
+
+.f-tooltip-content .f-text {
+    color: currentColor;
+}
+
+.f-tooltip-content > * {
+    z-index: 1;
+}
+
+.f-tooltip-content:after {
+    background: var(--f-tooltip-background) !important;
+    border-color: transparent !important;
+}

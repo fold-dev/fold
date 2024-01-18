@@ -1,0 +1,50 @@
+{
+    "name": "@fold-dev/design",
+    "title": "Design Tokens",
+    "version": "0.1.0",
+    "description": "The UI library for product builders.",
+    "main": "",
+    "module": "",
+    "typings": "",
+    "sideEffects": [
+        "*"
+    ],
+    "engines": {
+      "node": ">=18.0"
+    },
+    "pre-commit": [],
+    "publishConfig": {
+        "registry": "https://www.npmjs.com/org/fold-dev"
+    },
+    "browserslist": [
+        "last 2 version",
+        "Firefox ESR",
+        "> 1%",
+        "ie >= 9"
+    ],
+    "scripts": {
+        "watch": "nodemon --watch 'tokens/**/*' --exec 'npm run build'",
+        "build": "style-dictionary build --config ./config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fold-dev/fold"
+    },
+    "private": false,
+    "author": "Jo du Plessis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fold-dev/fold/issues"
+    },
+    "contributors": [
+        {
+            "name": "joduplessis"
+        }
+    ],
+    "homepage": "https://fold.dev",
+    "dependencies": {},
+    "devDependencies": {
+        "nodemon": "^2.0.20",
+        "style-dictionary": "^3.7.1"
+    }
+}

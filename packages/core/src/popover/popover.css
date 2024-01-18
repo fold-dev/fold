@@ -1,0 +1,54 @@
+:root {
+    --f-popover-border-color: var(--f-color-border);
+    --f-popover-border-radius: var(--f-radius);
+    --f-popover-background: var(--f-color-surface);
+    --f-popover-box-shadow: var(--f-shadow-lg);
+}
+
+.f-popover {
+    position: absolute;
+    border: 0.1rem solid;
+    border-color: var(--f-popover-border-color);
+    border-radius: var(--f-popover-border-radius);
+    background: var(--f-popover-background);
+    box-shadow: var(--f-popover-box-shadow);
+    z-index: var(--f-index-popover);
+    height: fit-content;
+    width: 100%;
+    animation: f-popover-fadein var(--f-transition-duration-fast);
+    pointer-events: all;
+}
+
+.f-popover.is-fixed {
+    position: fixed;
+}
+
+@keyframes f-popover-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-popover > * {
+    z-index: 1;
+}
+
+/* for the arrows & positioning classes */
+
+.f-popover:after {
+    background: var(--f-color-surface) !important;
+    border-color: var(--f-popover-border-color) !important;
+}
+
+.f-popover__anchor {
+    left: 0px;
+    top: 0px;
+    flex-grow: 1;
+    pointer-events: none;
+    position: absolute;
+    z-index: var(--f-index-popover);
+}
+
+/* disable stack from adjusting it */
+.f-stack > .f-popover__anchor {
+    margin: 0 !important;
+}
