@@ -2,17 +2,9 @@
 
 ## Overview
 
-Welcome to Fold - a versatile and customizable React UI component library designed to streamline the development of beautiful and responsive user interfaces.
+Fold is a zero-dependency React UI library for product builders, built on modern web standards that aims to be flexible & performant. With this philosphy in mind, we're also aiming to build a developer experience that is pleasant for beginners, but also for veterans.
 
-### Features
-
-- **Modular Design:** The library is built with a modular architecture, allowing you to pick and choose components based on your project requirements.
-
-- **Customizable Styles:** Tailor the look and feel of components to match your application's design system effortlessly.
-
-- **Accessibility:** We prioritize accessibility to ensure a positive user experience for everyone.
-
-- **Responsive:** Our components are designed to adapt seamlessly to various screen sizes, providing a consistent user experience across devices.
+> We have just launched & will be adding more information to the roadmap as well as the documentation. If you have any questions, feel free to open an issue or start a discussion. 🚀 
 
 ## Getting Started
 
