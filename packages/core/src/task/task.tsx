@@ -28,7 +28,15 @@ import {
 
 // labels
 
-export const TaskLabel = ({ icon = null, text, color, onClick, subtle = true }) => {
+export type TaslLabelProps = {
+    icon?: string
+    text: string
+    color: string
+    onClick: (e) => void
+    subtle?: boolean
+}
+
+export const TaskLabel = ({ icon = null, text, color, onClick, subtle = true }: TaslLabelProps) => {
     return (
         <Pill
             subtle={subtle}
@@ -48,7 +56,12 @@ export const TaskLabel = ({ icon = null, text, color, onClick, subtle = true }) 
     )
 }
 
-export const TaskLabels = ({ labels, onClick }) => {
+export type TaslLabelsProps = {
+    labels: TaskLabel[]
+    onClick: (e) => void
+}
+
+export const TaskLabels = ({ labels, onClick }: TaslLabelsProps) => {
     if (labels.length == 0) return null
     return labels.map((label: any, index: number) => (
         <TaskLabel
@@ -64,7 +77,12 @@ export const TaskLabels = ({ labels, onClick }) => {
 
 // avatars
 
-export const TaskAvatars = ({ users, onClick, ...rest }) => {
+export type TaslAvatarsProps = {
+    users: TaskUser[]
+    onClick: (e) => void
+} & Omit<CoreViewProps, 'onClick'>
+
+export const TaskAvatars = ({ users, onClick, ...rest }: TaslAvatarsProps) => {
     if (users.length == 0) return null
     const { avatars, more } = useMemo(() => {
         const avatars = users.slice(0, 2)
@@ -100,7 +118,7 @@ export const TaskAvatars = ({ users, onClick, ...rest }) => {
 
 // badges
 
-export const TaskBadge = ({ icon, label, color, progress, onClick }) => {
+export const TaskBadge = ({ icon, label, color, progress, onClick }: TaskBadge) => {
     return (
         <span
             className="f-row f-buttonize f-task-badge"
@@ -134,7 +152,12 @@ export const TaskBadge = ({ icon, label, color, progress, onClick }) => {
     )
 }
 
-export const TaskBadges = ({ badges, onClick }) => {
+export type TaskBadgesProps = {
+    badges: TaskBadge[]
+    onClick: (e) => void
+}
+
+export const TaskBadges = ({ badges, onClick }: TaskBadgesProps) => {
     const allBadges = useMemo(() => badges.filter((badge: TaskBadge) => !badge.hide), [badges])
 
     return allBadges.map((badge: any, index: number) => (
@@ -151,6 +174,15 @@ export const TaskBadges = ({ badges, onClick }) => {
 
 // hover menu button
 
+export type TaskMenuButtonProps = {
+    edit?: boolean
+    onEditClick?: (e) => void
+    date?: boolean
+    onDateClick?: (e) => void
+    menu?: boolean
+    onMenuClick?: (e) => void
+}
+
 export const TaskMenuButton = ({
     edit = false,
     onEditClick = null,
@@ -158,7 +190,7 @@ export const TaskMenuButton = ({
     onDateClick = null,
     menu = false,
     onMenuClick = null,
-}) => {
+}: TaskMenuButtonProps) => {
     return (
         <div className="f-task-menu-button f-row">
             {edit && (
@@ -190,7 +222,12 @@ export const TaskMenuButton = ({
 
 // checkbox
 
-export const TaskCheckbox = ({ onCheck, checked }) => (
+export type TaskCheckboxProps = {
+    onCheck: (e) => void
+    checked: boolean
+}
+
+export const TaskCheckbox = ({ onCheck, checked }: TaskCheckboxProps) => (
     <div className="f-task-checkbox f-row">
         <CheckboxAlt
             icon="check"
@@ -209,14 +246,24 @@ export const TaskCheckbox = ({ onCheck, checked }) => (
 
 // text
 
-export const TaskTextTitle = ({ text, variant = 'primary', complete }) => (
+export type TaskTextTitleProps = {
+    text: string
+    complete: boolean
+}
+
+export const TaskTextTitle = ({ text, complete }: TaskTextTitleProps) => (
     <p
         className={'f-task-text-title f-text ' + (complete ? ' is-complete' : '')}
         dangerouslySetInnerHTML={{ __html: text }}
     />
 )
 
-export const TaskTextDescription = ({ text, variant = 'primary', complete }) => (
+export type TaskTextDescriptionProps = {
+    text: string
+    complete: boolean
+}
+
+export const TaskTextDescription = ({ text, complete }: TaskTextDescriptionProps) => (
     <p
         className={'f-task-text-description f-text ' + (complete ? ' is-complete' : '')}
         dangerouslySetInnerHTML={{ __html: text }}
@@ -231,6 +278,7 @@ export type TaskBadge = {
     progress?: number
     label?: string
     hide?: boolean
+    onClick?: (e) => void
 }
 
 export type TaskUser = {} & UserSelectUser
