@@ -141,7 +141,6 @@ const generateMdx = (path) => {
                 !fileName.includes('.test') &&
                 !fileName.includes('fold.context')
             ) {
-                if (fileName == 'task.tsx') return
                 console.log('exporting ', fileName)
 
                 const slug = fileName.replace('.tsx', '')
