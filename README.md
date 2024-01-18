@@ -84,8 +84,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 If you encounter any issues or have questions, feel free to [open an issue](https://github.com/fold-dev/fold/issues) or start a [discussion](https://github.com/fold-dev/fold/discussions).
 
-Thank you for being part of our community, and for helping us
-
----
-
-Thank you for choosing Fold! We hope it enhances your React development experience.
+Thank you for being part of our community, and for helping us.
