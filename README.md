@@ -1,3 +1,5 @@
+![Fold](./github.png)
+
 # Fold
 
 ## Overview
