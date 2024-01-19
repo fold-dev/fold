@@ -2,7 +2,7 @@
 
 ## Overview
 
-Fold is a zero-dependency React UI library for product builders, built on modern web standards that aims to be flexible & performant. With this philosphy in mind, we're also aiming to build a developer experience that is pleasant for beginners, but also for veterans.
+Powerful, fully customisable React components for scaling your product to the next level. Supercharge your dev workflow by using our zero-dependency UI components.
 
 > We have just launched & will be adding more information to the roadmap as well as the documentation. If you have any questions, feel free to open an issue or start a discussion. 🚀 
 
