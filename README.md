@@ -8,6 +8,14 @@ Powerful, fully customizable React components for scaling your product to the ne
 
 > We have just launched & will be adding more information to the roadmap as well as the documentation. If you have any questions, feel free to open an issue or start a discussion. 🚀 
 
+- [Getting Started](#getting-started)
+- [Documentation](#documentation)
+- [Theming](#theming)
+- [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct-☀️)
+- [License](#license)
+- [Support](#support)
+
 ## Getting Started
 
 ### Prerequisites
@@ -19,23 +27,13 @@ Ensure you have the following prerequisites installed:
 
 ### Installation
 
-1. Clone the repository:
+``` bash
+# Using npm
+npm install @fold-dev/core
 
-   ```bash
-   git clone https://github.com/fold-dev/fold.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd fold
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
+# Using yarn
+yarn add @fold-dev/core
+```
 
 ### Usage
 
@@ -58,6 +56,32 @@ const App = () => {
 
 export default App;
 ```
+
+### Building
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/fold-dev/fold.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd fold
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Developing:
+
+   ```bash
+   npm run dev
+   ```
 
 ## Documentation
 
