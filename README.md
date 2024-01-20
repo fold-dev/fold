@@ -4,7 +4,7 @@
 
 ## Overview
 
-Powerful, fully customisable React components for scaling your product to the next level. Supercharge your dev workflow by using our zero-dependency UI components.
+Powerful, fully customizable React components for scaling your product to the next level. Supercharge your dev workflow by using our zero-dependency UI components.
 
 > We have just launched & will be adding more information to the roadmap as well as the documentation. If you have any questions, feel free to open an issue or start a discussion. 🚀 
 
