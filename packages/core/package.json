@@ -1,7 +1,7 @@
 {
     "name": "@fold-dev/core",
     "title": "Fold",
-    "version": "0.1.9",
+    "version": "0.0.1",
     "description": "The UI library for product builders.",
     "main": "dist/index.js",
     "module": "dist/index.js",
