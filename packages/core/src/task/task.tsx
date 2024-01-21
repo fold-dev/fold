@@ -164,16 +164,20 @@ export type TaskBadgesProps = {
 export const TaskBadges = ({ badges, onClick }: TaskBadgesProps) => {
     const allBadges = useMemo(() => badges.filter((badge: TaskBadge) => !badge.hide), [badges])
 
-    return allBadges.map((badge: any, index: number) => (
-        <TaskBadge
-            key={index}
-            icon={badge.icon}
-            label={badge.label}
-            progress={badge.progress}
-            color={badge.color}
-            onClick={onClick}
-        />
-    ))
+    return (
+        <>
+            {allBadges.map((badge: any, index: number) => (
+                <TaskBadge
+                    key={index}
+                    icon={badge.icon}
+                    label={badge.label}
+                    progress={badge.progress}
+                    color={badge.color}
+                    onClick={onClick}
+                />
+            ))}
+        </>
+    )
 }
 
 // hover menu button
