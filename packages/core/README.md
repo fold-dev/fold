@@ -5,21 +5,18 @@
 Zero-dependency React components for scaling your product to the next level.
 
 - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Building](#building)
 - [Documentation](#documentation)
 - [Theming](#theming)
 - [Contributing](#contributing)
+    - [Reporting Bugs 🐞](#reporting-bugs-🐞)
+    - [Sharing Feedback 📢](#sharing-feedback-📢)
 - [Code of Conduct](#code-of-conduct-☀️)
 - [License](#license)
 - [Support](#support)
-
-## Getting Started
-
-### Prerequisites
-
-Ensure you have the following prerequisites installed:
-
-- [Node](https://nodejs.org/) - v18.17.1
-- [Npm](https://www.npmjs.com/) (Node Package Manager) - v9.6.7
 
 ### Installation
 
@@ -54,6 +51,11 @@ export default App;
 ```
 
 ### Building
+
+Ensure you have the following prerequisites installed:
+
+- [Node](https://nodejs.org/) - v18.17.1
+- [Npm](https://www.npmjs.com/) (Node Package Manager) - v9.6.7
 
 1. Clone the repository:
 

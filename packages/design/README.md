@@ -6,14 +6,14 @@ This README file is intended to provide developers with the necessary informatio
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
+- [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
     - [Configuration](#configuration)
-2. [Usage](#usage)
-3. [Contributing](#contributing)
-4. [License](#license)
-5. [Acknowledgments](#acknowledgments)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 

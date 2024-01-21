@@ -6,24 +6,18 @@
 
 Powerful, fully customizable React components for scaling your product to the next level. Supercharge your dev workflow by using our zero-dependency UI components.
 
-> We have just launched & will be adding more information to the roadmap as well as the documentation. If you have any questions, feel free to open an issue or start a discussion. 🚀 
-
 - [Getting Started](#getting-started)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Building](#building)
 - [Documentation](#documentation)
 - [Theming](#theming)
 - [Contributing](#contributing)
+    - [Reporting Bugs 🐞](#reporting-bugs-🐞)
+    - [Sharing Feedback 📢](#sharing-feedback-📢)
 - [Code of Conduct](#code-of-conduct-☀️)
 - [License](#license)
 - [Support](#support)
-
-## Getting Started
-
-### Prerequisites
-
-Ensure you have the following prerequisites installed:
-
-- [Node](https://nodejs.org/) - v18.17.1
-- [Npm](https://www.npmjs.com/) (Node Package Manager) - v9.6.7
 
 ### Installation
 
@@ -58,6 +52,11 @@ export default App;
 ```
 
 ### Building
+
+Ensure you have the following prerequisites installed:
+
+- [Node](https://nodejs.org/) - v18.17.1
+- [Npm](https://www.npmjs.com/) (Node Package Manager) - v9.6.7
 
 1. Clone the repository:
 
