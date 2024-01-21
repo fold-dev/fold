@@ -13,9 +13,9 @@ Powerful, fully customizable React components for scaling your product to the ne
 - [Documentation](#documentation)
 - [Theming](#theming)
 - [Contributing](#contributing)
-    - [Reporting Bugs](#reporting-bugs-🐞)
-    - [Sharing Feedback](#sharing-feedback-📢)
-- [Code of Conduct](#code-of-conduct-☀️)
+    - [Reporting Bugs](#reporting-bugs-)
+    - [Sharing Feedback](#sharing-feedback-)
+- [Code of Conduct](#code-of-conduct-)
 - [License](#license)
 - [Support](#support)
 

@@ -12,9 +12,9 @@ Zero-dependency React components for scaling your product to the next level.
 - [Documentation](#documentation)
 - [Theming](#theming)
 - [Contributing](#contributing)
-    - [Reporting Bugs](#reporting-bugs-🐞)
-    - [Sharing Feedback](#sharing-feedback-📢)
-- [Code of Conduct](#code-of-conduct-☀️)
+    - [Reporting Bugs](#reporting-bugs-)
+    - [Sharing Feedback](#sharing-feedback-)
+- [Code of Conduct](#code-of-conduct-)
 - [License](#license)
 - [Support](#support)
 
