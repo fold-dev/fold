@@ -63,16 +63,20 @@ export type TaslLabelsProps = {
 
 export const TaskLabels = ({ labels, onClick }: TaslLabelsProps) => {
     if (labels.length == 0) return null
-    return labels.map((label: any, index: number) => (
-        <TaskLabel
-            key={index}
-            icon={label.icon}
-            text={label.text}
-            color={label.color}
-            subtle={label.subtle}
-            onClick={onClick}
-        />
-    ))
+    return (
+        <>
+            {labels.map((label: any, index: number) => (
+                <TaskLabel
+                    key={index}
+                    icon={label.icon}
+                    text={label.text}
+                    color={label.color}
+                    subtle={label.subtle}
+                    onClick={onClick}
+                />
+            ))}
+        </>
+    )
 }
 
 // avatars
