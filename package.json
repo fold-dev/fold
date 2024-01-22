@@ -66,7 +66,10 @@
         "lint": "eslint 'scripts/**/*.{ts,tsx}' 'packages/core/src/**/*.{ts,tsx}'",
         "lint:fix": "eslint --fix 'scripts/**/*.{ts,tsx}' 'packages/core/src/**/*.{ts,tsx}'",
         "lint:watch": "eslint --watch 'scripts/**/*.{ts,tsx}' 'packages/core/src/**/*.{ts,tsx}'",
-        "test": "jest --config=jest.config.js --no-cache"
+        "test": "jest --config=jest.config.js --no-cache",
+        "publish:core:patch": "./scripts/publish.sh core patch",
+        "publish:core:minor": "./scripts/publish.sh core minor",
+        "publish:core:major": "./scripts/publish.sh core major"
     },
     "repository": {
         "type": "git",

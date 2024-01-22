@@ -7,7 +7,7 @@ echo "Are you sure want to publish?"
 read -p "Want to continue? (y): " choice
 
 if [ $choice == "y" ]; then
-    cd ../packages/"$1"    
+    cd "./packages/$1"
 
     # patch: 1.0.0 -> 1.0.1
     # minor: 1.0.1 -> 1.1.0
@@ -24,10 +24,3 @@ if [ $choice == "y" ]; then
 else
   echo "Bye"
 fi
-
-
-
-
-
-
-
