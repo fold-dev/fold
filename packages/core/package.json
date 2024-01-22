@@ -64,10 +64,15 @@
         "url": "https://github.com/fold-dev/fold"
     },
     "keywords": [
-        "react",
-        "fold",
-        "ui",
-        "storybook"
+        "React",
+        "ReactDOM",
+        "ui kit",
+        "component library",
+        "PostCSS",
+        "ESBuild",
+        "CSSNano",
+        "Storybook",
+        "TypeScript"
     ],
     "author": "Jo du Plessis",
     "license": "MIT",

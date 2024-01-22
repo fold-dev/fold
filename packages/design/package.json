@@ -42,6 +42,12 @@
             "name": "joduplessis"
         }
     ],
+    "keywords": [
+        "CSS",
+        "Design Tokens",
+        "Design System",
+        "Style Dictionary"
+    ],
     "homepage": "https://fold.dev",
     "dependencies": {},
     "devDependencies": {
