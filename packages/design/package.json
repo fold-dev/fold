@@ -24,7 +24,8 @@
     ],
     "scripts": {
         "watch": "nodemon --watch 'tokens/**/*' --exec 'npm run build'",
-        "build": "style-dictionary build --config ./config.js"
+        "build": "style-dictionary build --config ./config.js",
+        "build:prod": "style-dictionary build --config ./config.js"
     },
     "repository": {
         "type": "git",
