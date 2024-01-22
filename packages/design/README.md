@@ -2,8 +2,6 @@
 
 Fold Design is a Node.js project that uses StyleDictionary to generate the design tokens used in Fold. 
 
-This README file is intended to provide developers with the necessary information to get started with the project, contribute, and understand its structure.
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)
