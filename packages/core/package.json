@@ -2,7 +2,7 @@
     "name": "@fold-dev/core",
     "title": "Fold",
     "version": "0.0.6",
-    "description": "The UI library for product builders.",
+    "description": "The UI library for product teams.",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "typings": "dist/index.d.ts",

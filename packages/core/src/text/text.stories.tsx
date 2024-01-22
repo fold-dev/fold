@@ -13,7 +13,7 @@ export const docs = {
         'The Text component forms part of the Fold typography system. Please see the Design Token section for information about available options.',
 }
 
-export const Usage = () => <Text>Fold is a UI component library for product builders.</Text>
+export const Usage = () => <Text>Fold is a UI component library for product teams.</Text>
 
 // --
 
