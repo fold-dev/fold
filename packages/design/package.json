@@ -1,7 +1,7 @@
 {
     "name": "@fold-dev/design",
     "title": "Design Tokens",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "The UI library for product builders.",
     "main": "",
     "module": "",
@@ -10,7 +10,7 @@
         "*"
     ],
     "engines": {
-      "node": ">=18.0"
+        "node": ">=18.0"
     },
     "pre-commit": [],
     "publishConfig": {
