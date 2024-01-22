@@ -69,7 +69,10 @@
         "test": "jest --config=jest.config.js --no-cache",
         "publish:core:patch": "./scripts/publish.sh core patch",
         "publish:core:minor": "./scripts/publish.sh core minor",
-        "publish:core:major": "./scripts/publish.sh core major"
+        "publish:core:major": "./scripts/publish.sh core major",
+        "publish:design:patch": "./scripts/publish.sh core patch",
+        "publish:design:minor": "./scripts/publish.sh core minor",
+        "publish:design:major": "./scripts/publish.sh core major"
     },
     "repository": {
         "type": "git",
