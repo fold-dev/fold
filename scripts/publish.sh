@@ -20,6 +20,7 @@ if [ $choice == "y" ]; then
     git commit -m "Increment $1 $2 version"
     git push origin $branch
 
+    npm run build:prod
     npm publish
 
     echo "Done"
