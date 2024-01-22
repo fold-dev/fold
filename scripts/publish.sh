@@ -17,8 +17,10 @@ if [ $choice == "y" ]; then
     env -i
 
     git add -A
-    git commit -m "Increment $2 version"
+    git commit -m "Increment $1 $2 version"
     git push origin $branch
+
+    npm publish
 
     echo "Done"
 else
