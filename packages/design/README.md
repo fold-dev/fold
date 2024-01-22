@@ -11,7 +11,6 @@ Fold Design is a Node.js project that uses StyleDictionary to generate the desig
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 
@@ -78,13 +77,3 @@ Here is how you can submit a pull request:
 ## License
 
 This project is licensed under the MIT License (as part of Fold)
-
-## Acknowledgments
-
-Some tokens, in part, were inspired by other great OSS UI libraries:
-
-- [Symantic UI](https://github.com/Semantic-Org/Semantic-UI)
-- [Chakra UI](https://github.com/chakra-ui/chakra-ui)
-- [Mantine](https://github.com/mantinedev/mantine)
-
-If you have any questions about this, please  [reach out](https://github.com/fold-dev/fold/discussions) to us.
