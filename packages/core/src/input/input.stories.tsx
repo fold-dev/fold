@@ -51,6 +51,21 @@ export const Usage = () => {
 
 // --
 
+export const SelectOnFocus = () => {
+    const [text, setText] = useState('John Smith')
+
+    return (
+        <Input
+            selectOnFocus
+            value={text}
+            placeholder="Please enter your name"
+            onChange={(e) => setText(e.target.value)}
+        />
+    )
+}
+
+// --
+
 export const Sizes = () => {
     const [text, setText] = useState('')
 

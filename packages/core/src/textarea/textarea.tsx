@@ -6,6 +6,7 @@ import { classNames, mergeRefs } from '../helpers'
 export type TextareaProps = {
     size?: Size
     value: string
+    selectOnFocus?: boolean
     minHeight?: number | string
     maxHeight?: number | string
     autoAdjust?: boolean
@@ -13,7 +14,7 @@ export type TextareaProps = {
     CoreInputProps
 
 export const Textarea = forwardRef((props: TextareaProps, ref) => {
-    const { size = 'md', value, minHeight = 100, maxHeight, autoAdjust, style = {}, ...rest } = props
+    const { size = 'md', selectOnFocus, value, minHeight = 100, maxHeight, autoAdjust, style = {}, ...rest } = props
     const textareaRef = useRef<any>(null)
     const className = classNames(
         {
@@ -32,6 +33,14 @@ export const Textarea = forwardRef((props: TextareaProps, ref) => {
             }
         }
     }
+
+    const onFocus = () => textareaRef.current?.select()
+
+    useEffect(() => {
+        if (!textareaRef.current) return 
+        textareaRef.current?.addEventListener('focus', onFocus)
+        return () => textareaRef.current?.removeEventListener('focus', onFocus)
+    })
 
     useLayoutEffect(() => adjustHeight(), [value])
 

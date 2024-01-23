@@ -1,4 +1,4 @@
-import React, { forwardRef, InputHTMLAttributes, useRef, useState } from 'react'
+import React, { forwardRef, InputHTMLAttributes, useEffect, useRef, useState } from 'react'
 import { View } from '..'
 import { classNames, getLetterArray, mergeRefs, renderWithProps, windowObject } from '../helpers'
 import { IconLib } from '../icon/icon'
@@ -96,11 +96,12 @@ export type CoreInputProps = {
 export type InputProps = {
     size?: Size
     showIndicator?: boolean
+    selectOnFocus?: boolean
 } & CoreViewProps &
     CoreInputProps
 
 export const Input = forwardRef((props: InputProps, ref) => {
-    const { showIndicator = false, size = 'md', ...rest } = props
+    const { showIndicator, selectOnFocus, size = 'md', ...rest } = props
     const inputRef = useRef(null)
     const className = classNames(
         {
@@ -110,6 +111,14 @@ export const Input = forwardRef((props: InputProps, ref) => {
         },
         [size, props.className]
     )
+
+    const onFocus = () => inputRef.current?.select()
+
+    useEffect(() => {
+        if (!inputRef.current) return
+        inputRef.current?.addEventListener('focus', onFocus)
+        return () => inputRef.current?.removeEventListener('focus', onFocus)
+    })
 
     return (
         <View

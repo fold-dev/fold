@@ -29,6 +29,23 @@ export const Usage = () => {
 
 // --
 
+export const SelectOnFocus = () => {
+    const [text, setText] = useState('Hey there!')
+
+    return (
+        <Textarea
+            selectOnFocus
+            value={text}
+            height={100}
+            className="f-scrollbar"
+            placeholder="Write message..."
+            onChange={(e) => setText(e.target.value)}
+        />
+    )
+}
+
+// --
+
 export const Disabled = () => {
     const [text, setText] = useState('')
 
