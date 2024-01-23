@@ -223,26 +223,28 @@ export const getButton = (e) => {
     }
 }
 
+// these are shortcuts to the most commonly used, here is the whole list:
+// https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
 export const getKey = (e) => {
-    const { keyCode } = e
+    const { key } = e
     const { shiftKey, ctrlKey, altKey, metaKey } = e
 
     return {
-        isBackspace: keyCode == 8,
-        isEscape: keyCode == 27,
-        isSpace: keyCode == 32,
-        isEnter: keyCode == 13,
-        isDown: keyCode == 40,
-        isUp: keyCode == 38,
-        isLeft: keyCode == 37,
-        isRight: keyCode == 39,
-        isPageUp: keyCode == 33,
-        isPageDown: keyCode == 34,
-        isTab: keyCode == 9,
-        isTabNormal: keyCode == 9 && !shiftKey,
-        isTabReverse: keyCode == 9 && shiftKey,
+        isBackspace: key == 'Backspace',
+        isEscape: key == 'Escape',
+        isSpace: key == ' ',
+        isEnter: key == 'Enter',
+        isDown: key == 'ArrowDown',
+        isUp: key == 'ArrowUp',
+        isLeft: key == 'ArrowLeft',
+        isRight: key == 'ArrowRight',
+        isPageUp: key == 'PageUp',
+        isPageDown: key == 'PageDown',
+        isTab: key == 'Tab',
+        isTabNormal: key == 'Tab' && !shiftKey,
+        isTabReverse: key == 'Tab' && shiftKey,
         isShift: shiftKey,
-        isCntrl: ctrlKey,
+        isCtrl: ctrlKey,
         isAlt: altKey,
         isMeta: metaKey,
     }
