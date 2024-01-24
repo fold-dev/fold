@@ -89,7 +89,9 @@ const createMdxFile = (slug, stories, dependenciesText, docsText, propsText, ins
             const section = title || name
 
             fileExport += `### ${addSpaces(section)}\n`
-            fileExport += `<a name="${section.toLowerCase()}"></a>\n`
+            // we generate these on the fly when indexing each page
+            // not using <a> tags - but with id attributes
+            // fileExport += `<a name="${section.toLowerCase()}"></a>\n`
             fileExport += '\n'
 
             if (description) fileExport += `> ${description}\n\n`
