@@ -27,7 +27,7 @@ const Usage = () => (
     </Accordion>
 )
 
-describe('Usage Component', () => {
+describe('Accordion Component', () => {
     test('renders accordion with correct headings', () => {
         const { getByText, getByTestId } = render(<Usage />)
 

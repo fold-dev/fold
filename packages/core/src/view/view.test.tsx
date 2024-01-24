@@ -13,13 +13,9 @@ describe('View Component', () => {
             </View>
         )
 
-        // Check if the welcome text is rendered
+        // TODO: Cover more shorthand style types
         expect(getByText('Welcome to Fold!')).toBeInTheDocument()
-
-        // Check if the view has the correct padding
         expect(getByTestId('view-component')).toHaveStyle('padding: 50px')
-
-        // Check if the view has the correct background token
         expect(getByTestId('view-component')).toHaveStyle('background-color: var(--surface-strong)')
     })
 })

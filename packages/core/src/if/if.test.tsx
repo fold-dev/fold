@@ -12,10 +12,7 @@ describe('If Component', () => {
             </View>
         )
 
-        // Check if the visible content is rendered
         expect(getByText('This is visible...')).toBeInTheDocument()
-
-        // Check if the not visible content is not rendered
         expect(queryByText('...and this is not visible.')).toBeNull()
     })
 })
