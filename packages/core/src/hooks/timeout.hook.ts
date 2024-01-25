@@ -15,14 +15,3 @@ export const useTimeout = (callback, delay) => {
         return () => clearTimeout(id)
     }, [delay])
 }
-/* 
-export const useTimeout = (callback, delay) => {
-    const savedCallback = useCallback(() => callback, [callback])
-
-    useEffect(() => {
-        if (delay === null) return null
-        const id = setTimeout(() => savedCallback(), delay)
-        return () => clearTimeout(id)
-    }, [delay])
-}
- */
