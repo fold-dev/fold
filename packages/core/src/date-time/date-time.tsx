@@ -279,19 +279,7 @@ export type DateCellProps = {
 } & TextProps
 
 export const DateCell = (props: DateCellProps) => {
-    const { 
-        disabled, 
-        selected, 
-        weekend, 
-        unavailable, 
-        pending, 
-        pendingStart,
-        pendingEnd,
-        today, 
-        start, 
-        end, 
-        ...rest 
-    } = props
+    const { disabled, selected, weekend, unavailable, pending, today, start, end, ...rest } = props
     const className = classNames(
         {
             'f-date-cell': true,
@@ -301,8 +289,6 @@ export const DateCell = (props: DateCellProps) => {
             'is-unavailable': unavailable,
             'is-weekend': weekend,
             'is-pending': pending,
-            'is-pending-start': pendingStart,
-            'is-pending-end': pendingEnd,
             'is-disabled': disabled,
             'is-today': today,
             'is-start': start,
@@ -389,14 +375,15 @@ export const Month = (props: MonthProps) => {
         dateCellProps = {},
         ...rest
     } = props
-    const { dateRangeSelection, setDateRangeSelection, pendingRowSelection, setPendingRowSelection } = useContext(DateRangeContext)
+    const { dateRangeSelection, setDateRangeSelection, pendingRowSelection, setPendingRowSelection } =
+        useContext(DateRangeContext)
     const className = classNames(
         {
             'f-month': true,
         },
         [props.className]
     )
-    
+
     const days = useMemo(() => {
         const monthDay = new Date(date.getFullYear(), date.getMonth(), 1)
         const weekdayOfFirstDay = monthDay.getDay() - offsetDays
@@ -427,11 +414,9 @@ export const Month = (props: MonthProps) => {
                           : false
                   }, false)
 
-            // get start and end booleans for selection / pending
-            const isStart = selection.reduce((acc, val) => acc ||  FDate(day).isSame(val[0]), false)
-            const isEnd = selection.reduce((acc, val) => acc ||  FDate(day).isSame(val[1] || val[0]), false)
-            const isPendingStart = false // pendingRowSelection[0] ?  FDate(day).isSame(pendingRowSelection[0]) : false
-            const isPendingEnd = false // pendingRowSelection[1] ?  FDate(day).isSame(pendingRowSelection[1]) : false
+            // get start and end booleans for selection
+            const isStart = selection.reduce((acc, val) => acc || FDate(day).isSame(val[0]), false)
+            const isEnd = selection.reduce((acc, val) => acc || FDate(day).isSame(val[1] || val[0]), false)
 
             days.push({
                 date: day,
@@ -443,8 +428,6 @@ export const Month = (props: MonthProps) => {
                 selected: isSelected,
                 start: isStart,
                 end: isEnd,
-                pendingStart: isPendingStart,
-                pendingEnd: isPendingEnd,
             })
         }
 
@@ -488,8 +471,6 @@ export const Month = (props: MonthProps) => {
                         start={day.start}
                         end={day.end}
                         pending={day.pending}
-                        pendingStart={day.pendingStart}
-                        pendingEnd={day.pendingEnd}
                         unavailable={day.unavailable}
                         today={day.today}
                         weekend={day.weekend}
@@ -554,13 +535,26 @@ export const Months = (props: MonthsProps) => {
                     : false
             }, false)
 
-            // TODO: add border radii (like days)
+            // get start and end booleans for selection
+            const isStart = selection.reduce(
+                (acc, val) =>
+                    acc || (month.getMonth() === val[0].getMonth() && month.getFullYear() === val[0].getFullYear()),
+                false
+            )
+            const isEnd = selection.reduce(
+                (acc, val) =>
+                    acc || (month.getMonth() === val[1].getMonth() && month.getFullYear() === val[1].getFullYear()),
+                false
+            )
+
             return {
                 date: month,
                 today: isToday,
                 disabled: isDisabled,
                 pending: isPending,
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
                 name: monthName,
                 month: index,
             }
@@ -591,6 +585,8 @@ export const Months = (props: MonthsProps) => {
                         key={index}
                         disabled={month.disabled}
                         selected={month.selected}
+                        start={month.start}
+                        end={month.end}
                         pending={month.pending}
                         today={month.today}
                         unavailable={false}
@@ -657,6 +653,10 @@ export const Years = (props: YearsProps) => {
                     : false
             }, false)
 
+            // get start and end booleans for selection
+            const isStart = selection.reduce((acc, val) => acc || year.getFullYear() === val[0].getFullYear(), false)
+            const isEnd = selection.reduce((acc, val) => acc || year.getFullYear() === val[1].getFullYear(), false)
+
             // TODO: add border radii (like days)
             return {
                 date: year,
@@ -664,6 +664,8 @@ export const Years = (props: YearsProps) => {
                 disabled: isDisabled,
                 pending: isPending,
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
                 year: yearNumber,
             }
         })
@@ -693,6 +695,8 @@ export const Years = (props: YearsProps) => {
                         key={index}
                         disabled={year.disabled}
                         selected={year.selected}
+                        start={year.start}
+                        end={year.end}
                         pending={year.pending}
                         today={year.today}
                         unavailable={false}
@@ -1030,8 +1034,8 @@ export const ScrollingDatePicker = forwardRef((props: ScrollingDatePickerProps, 
                         className="f-col"
                         style={{ height, width: '100%' }}>
                         <Text
-                            fontWeight={600}
-                            p={5}
+                            as="span"
+                            className="f-scrolling-date-picker__title"
                             size={size}
                             width="100%">
                             {monthTitle(month)}

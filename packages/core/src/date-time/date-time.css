@@ -91,8 +91,22 @@
 /* pending */
 
 .f-date-cell.is-pending {
-    background: var(--f-date-cell-pending-background);
     color: var(--f-date-cell-pending);
+}
+
+.f-date-cell.is-pending::after {
+    content: ' ';
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: calc(96% - var(--f-date-cell-selected-space));
+    top: var(--f-date-cell-selected-space);
+    left: 0;
+    z-index: -2;
+    background: var(--f-date-cell-pending-background);
+    border-radius: var(--f-radius);
+    opacity: 0.25; /* instead of adding a accent-weaker token */
 }
 
 /* selection */
@@ -101,18 +115,6 @@
     position: relative;
     color: var(--f-date-cell-selected);
 }
-
-/* 
-.f-month > .f-date-cell.is-selected + .f-date-cell.is-selected {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0; 
-}
-
-.f-month > .f-date-cell.is-selected:first-of-type:not(:only-of-type) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-} 
-*/
 
 .f-date-cell.is-selected::before {
     content: ' ';
@@ -262,7 +264,17 @@
 
 /* scrolling date picker */
 
+:root {
+    --f-date-scrolling-picker-title-padding: 0.25rem 0;
+}
+
 .f-scrolling-date-picker {
   position: relative;
   overflow-y: auto;
+}
+
+.f-scrolling-date-picker__title {
+    font-weight: 600;
+    display: inline-block;
+    padding: var(--f-date-scrolling-picker-title-padding);
 }
