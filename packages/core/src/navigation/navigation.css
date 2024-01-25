@@ -54,6 +54,7 @@
     display: block;
     position: relative;
     flex-shrink: 0;
+    text-decoration: none;
 }
 
 .f-navigation-item__container {
@@ -69,6 +70,7 @@
     border: 0;
     background: transparent;
     gap: var(--f-navigation-item-ix-spacing);
+    text-decoration: none;
 }
 
 .f-navigation-item__label {

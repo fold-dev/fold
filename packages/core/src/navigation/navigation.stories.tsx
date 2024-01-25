@@ -30,7 +30,7 @@ export const Usage = () => (
         bgToken="surface-strong"
         p={20}>
         <Navigation width={300}>
-            <NavigationItem>Dashboard</NavigationItem>
+            <NavigationItem href="#">Dashboard</NavigationItem>
             <NavigationItem>Projects</NavigationItem>
             <NavigationItem>Products</NavigationItem>
             <NavigationItem>Analytics</NavigationItem>
