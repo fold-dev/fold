@@ -272,10 +272,12 @@ export type DateCellProps = {
     today?: boolean
     pending?: boolean
     weekend?: boolean
+    start?: boolean
+    end?: boolean
 } & TextProps
 
 export const DateCell = (props: DateCellProps) => {
-    const { disabled, selected, weekend, unavailable, pending, today, ...rest } = props
+    const { disabled, selected, weekend, unavailable, pending, today, start, end, ...rest } = props
     const className = classNames(
         {
             'f-date-cell': true,
@@ -287,6 +289,8 @@ export const DateCell = (props: DateCellProps) => {
             'is-pending': pending,
             'is-disabled': disabled,
             'is-today': today,
+            'is-start': start,
+            'is-end': end,
         },
         [props.className]
     )
@@ -395,6 +399,12 @@ export const Month = (props: MonthProps) => {
             const day = new Date(monthDay)
             const isDisabled = disabled.reduce((acc, val) => acc || isDayInsideRange(day, val), false)
             const isSelected = selection.reduce((acc, val) => acc || isDayInsideRange(day, val), false)
+
+            const isStart = selection.reduce((acc, val) => acc || FDate(day).isSame(val[0]), false)
+            const isEnd = selection.reduce((acc, val) => acc || FDate(day).isSame(val[1] || val[0]), false)
+
+            console.log(isStart)
+
             const isPending = selectWeek
                 ? day >= pendingRowSelection[0] && day <= pendingRowSelection[1]
                 : selection.reduce((acc, val) => {
@@ -415,6 +425,8 @@ export const Month = (props: MonthProps) => {
                 unavailable: day.getMonth() !== date.getMonth(),
                 pending: isPending && day.getMonth() === date.getMonth(),
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
             })
         }
 
@@ -455,6 +467,8 @@ export const Month = (props: MonthProps) => {
                         key={index}
                         disabled={day.disabled}
                         selected={day.selected}
+                        start={day.start}
+                        end={day.end}
                         pending={day.pending}
                         unavailable={day.unavailable}
                         today={day.today}
@@ -722,7 +736,6 @@ export const DatePicker = (props: DatePickerProps) => {
     const [level, setLevel] = useState<'days' | 'months' | 'years'>(defaultLevel)
     const [date, setDate] = useState(defaultDate)
     const dates = useMemo(() => {
-        console.clear()
         return new Array(panels).fill(date).map((d, i) => {
             const index = panels == 1 ? i : i - 1
             return FDate(d).add(index, 'month')
