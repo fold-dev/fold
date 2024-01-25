@@ -64,7 +64,7 @@ export const Usage = () => {
             width="fit-content">
             <DateRangeProvider>
                 <DatePicker
-                    height={300}
+                    height={350}
                     width={300}
                     defaultDate={date}
                     selection={selection}
@@ -330,6 +330,7 @@ export const DateCellVariants = () => (
 export const ScrollingPicker = () => {
     const { goToToday } = useScrollingDatePicker()
     const ref = useRef(null)
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const { today, tomorrow, start, end } = useMemo(() => {
         const today = new Date()
         const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
@@ -372,6 +373,7 @@ export const ScrollingPicker = () => {
                     defaultDate={new Date()}
                     selection={selection}
                     onChange={handleSelection}
+                    monthTitle={(date: Date) => '' + `${monthNames[date.getMonth()]} / ${date.getFullYear()}`}
                 />
             </DateRangeProvider>
         </View>

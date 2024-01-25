@@ -50,6 +50,7 @@
     --f-date-cell-pending-background: var(--f-color-accent-weak);
     --f-date-cell-selected: var(--f-color-accent-weak);
     --f-date-cell-selected-background: var(--f-color-accent);
+    --f-date-cell-selected-space: 1px;
     --f-date-cell-today: var(--f-color-accent);
 }
 
@@ -73,11 +74,6 @@
     background: var(--f-date-cell-weekend-background);
 }
 
-.f-date-cell.is-pending {
-    background: var(--f-date-cell-pending-background);
-    color: var(--f-date-cell-pending);
-}
-
 .f-date-cell.is-unavailable.is-weekend {
     color: var(--f-date-cell-disabled);
 }
@@ -92,6 +88,12 @@
     font-weight: bold;
 }
 
+/* pending */
+
+.f-date-cell.is-pending {
+    background: var(--f-date-cell-pending-background);
+    color: var(--f-date-cell-pending);
+}
 
 /* selection */
 
@@ -100,17 +102,28 @@
     color: var(--f-date-cell-selected);
 }
 
+/* 
+.f-month > .f-date-cell.is-selected + .f-date-cell.is-selected {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; 
+}
+
+.f-month > .f-date-cell.is-selected:first-of-type:not(:only-of-type) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+} 
+*/
+
 .f-date-cell.is-selected::before {
     content: ' ';
     display: block;
     pointer-events: none;
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
+    height: calc(96% - var(--f-date-cell-selected-space));
+    top: var(--f-date-cell-selected-space);
     left: 0;
     z-index: -1;
-
     background: var(--f-date-cell-selected-background);
 }
  
@@ -122,7 +135,7 @@
 .f-date-cell.is-end::before {
     border-top-right-radius: var(--f-radius);
     border-bottom-right-radius: var(--f-radius);
-}
+} 
 
 /* weekdays */
 
