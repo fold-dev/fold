@@ -53,7 +53,7 @@
         "dev:design": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook | npm --workspace @fold-dev/design run watch",
         "dev": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook",
         "storybook": "storybook dev -p 6006",
-        "storybook:build": "storybook build -c .storybook -o docs",
+        "storybook:build": "storybook build -c .storybook -o storybook-static",
         "build:storybook:docs": "npm --workspace @fold-dev/core run build:styles && npm --workspace @fold-dev/core run build && npm run storybook:build",
         "build:storybook": "npm --workspace @fold-dev/core run build:styles && storybook build",
         "build:docs": "ts-node ./scripts/docgen/build.ts",
