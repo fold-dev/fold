@@ -162,13 +162,11 @@ export const InputField = () => {
 // --
 
 /**
- * Listen for any mutations on DOM elements (experimental)
+ * Tracks mutations on a DOM element (experimental)
  */
 export const Observer = () => {
-    // Tracks mutations on a DOM element
     const mutationRecord: MutationRecord = useObserver(documentObject.documentElement)
-
-    return <View />
+    return <Text>Example coming soon</Text>
 }
 
 // --
@@ -187,22 +185,23 @@ export const Pubsub = () => {
 
 /**
  * Interact with LocalStorage
+ * `getSafeStorage` returns an empty string if there is no value
  */
 export const Storage = () => {
     const {
         getStorage,
-        getSafeStorage, // if there is no value then '' is returned
+        getSafeStorage,
         setStorage,
         deleteStorage,
     } = useStorage()
     const {
         isCached,
         deleteCache,
-        getSafeCache, // if there is no value then '' is returned
+        getSafeCache,
         setCache,
     } = useCacheValue('foobar')
 
-    return <View />
+    return <Text>Example coming soon</Text>
 }
 
 // --
@@ -211,9 +210,18 @@ export const Storage = () => {
  * Listen to tab visibility events (when a tab becomes visible or hidden)
  */
 export const TabVisibility = () => {
-    useTabVisibility((e) => alert('Welcome back!'))
+    const [text, setText] = useState('')
 
-    return <View />
+    useTabVisibility((e) => {
+        const date = new Date()
+        const seconds = date.getSeconds();
+        const minutes = date.getMinutes();
+        const hour = date.getHours();
+
+        setText(`Time is ${hour}:${minutes}:${seconds}`)
+    })
+
+    return <Text>{ text || 'Change tabs & come back'}</Text>
 }
 
 // --
