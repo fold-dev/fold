@@ -1,10 +1,16 @@
 import { documentObject } from '../helpers'
-import React from 'react'
+import React, { ReactElement, ReactNode, Ref } from 'react'
 import ReactDOM from 'react-dom'
 
-export class Portal extends React.Component {
+export type PortalProps = {
+    portalRef?: HTMLDivElement
+    children?: ReactElement
+}
+
+export class Portal extends React.Component<PortalProps, any> {
     el: HTMLElement
     props: any
+    state: any
 
     constructor(props) {
         super(props)
@@ -26,11 +32,11 @@ export class Portal extends React.Component {
         }
     }
 
-    componentDidMount() {}
-
-    componentWillUnmount() {}
-
     render() {
-        return <>{ReactDOM.createPortal(this.props.children, this.el)}</>
+        return (
+            <>
+                {ReactDOM.createPortal(this.props.children, this.el)}
+            </>
+        )
     }
 }

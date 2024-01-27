@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { Portal } from '@fold-dev/core'
+import React, { useRef, useState } from 'react'
+import { Button, Portal, Text, View, documentObject } from '@fold-dev/core'
 
 export default {
     title: 'Components/Portal',
@@ -21,15 +21,24 @@ export const Usage = () => {
 // --
 
 export const CustomRoot = () => {
+    const [show, setShow] = useState(false)
     const portalRef = useRef(null)
-
+    
     return (
         <>
-            <div
+            <Button onClick={() => setShow(!show)}>Toggle Portal</Button>
+
+            <View
+                p="1rem 0 0 0"
                 id="custom-root"
                 ref={portalRef}
             />
-            <Portal portalRef={portalRef.current}>Content in a portal, in a custom root</Portal>
+
+            {show && (
+                <Portal portalRef={portalRef.current}>
+                    <Text>Content in a portal, in a custom root</Text>
+                </Portal>
+            )}
         </>
     )
 }
