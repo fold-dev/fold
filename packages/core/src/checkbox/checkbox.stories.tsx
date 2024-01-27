@@ -120,7 +120,7 @@ export const Alternative = () => {
             <CheckboxAlt
                 onChange={check}
                 checked={checked}
-                icon="circle"
+                icon="x"
             />
         </Stack>
     )
