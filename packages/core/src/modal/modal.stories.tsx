@@ -1,4 +1,4 @@
-import { Button, Flexer, Heading, Modal, ModalClose, Text, View, useVisibility } from '@fold-dev/core'
+import { Button, Flexer, Heading, Modal, ModalClose, Portal, Text, View, useVisibility } from '@fold-dev/core'
 import React from 'react'
 
 export default {
@@ -22,6 +22,7 @@ export const Usage = () => {
             <Button onClick={show}>Show Modal</Button>
 
             <Modal
+                portal={Portal}
                 width="500px"
                 height="fit-content"
                 anchor="middle-center"
@@ -56,6 +57,7 @@ export const WithHeaderAndFooter = () => {
             <Button onClick={show}>Show Modal</Button>
 
             <Modal
+                portal={Portal}
                 width="500px"
                 height="fit-content"
                 anchor="middle-center"
