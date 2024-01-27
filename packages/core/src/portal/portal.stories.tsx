@@ -14,13 +14,10 @@ export const docs = {
         'Useful for creating a seamless React element hierarchy within a distinct DOM hierarchy, preventing potential style conflicts with parent elements that might obscure or conceal content (commonly used for popovers, dropdowns, and modals). It supports custom root mounts.',
 }
 
+/**
+ * Without the `portalId` prop, the `<Portal />` component will mount to the root of the current document
+ */
 export const Usage = () => {
-    return <Portal>Content outside of the existing DOM hierarchy</Portal>
-}
-
-// --
-
-export const CustomRoot = () => {
     const [show, setShow] = useState(false)
     const portalRef = useRef(null)
     
