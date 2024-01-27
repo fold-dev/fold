@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Timeline',
     component: Timeline,
+    excludeStories: 'docs',
 }
 
 export const docs = {

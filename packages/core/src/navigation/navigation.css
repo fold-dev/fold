@@ -1,10 +1,10 @@
 :root {
-    --f-navigation-padding: var(--f-radius);
+    --f-navigation-padding: var(--f-space-3);
     --f-navbar-padding: var(--f-space-3);
     --f-navigation-background-color: var(--f-color-surface);
     --f-navigation-heading-color: var(--f-color-accent);
-    --f-navigation-item-background-color-hover: var(--f-color-surface-strong);
-    --f-navigation-item-background-color-active: var(--f-color-accent-weak);
+    --f-navigation-item-background-color-hover: var(--f-color-surface-stronger);
+    --f-navigation-item-background-color-active: var(--f-color-surface-strong);
     --f-navigation-item-color: var(--f-color-text-weaker);
     --f-navigation-item-color-hover: var(--f-color-text-weak);
     --f-navigation-item-color-active: var(--f-color-accent);
@@ -54,6 +54,7 @@
     display: block;
     position: relative;
     flex-shrink: 0;
+    text-decoration: none;
 }
 
 .f-navigation-item__container {
@@ -69,6 +70,7 @@
     border: 0;
     background: transparent;
     gap: var(--f-navigation-item-ix-spacing);
+    text-decoration: none;
 }
 
 .f-navigation-item__label {

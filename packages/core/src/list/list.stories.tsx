@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/List',
     component: List,
+    excludeStories: 'docs',
 }
 
 export const docs = {

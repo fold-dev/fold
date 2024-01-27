@@ -5,6 +5,7 @@ import React from 'react'
 export default {
     title: 'Components/Pill',
     component: Pill,
+    excludeStories: 'docs',
 }
 
 export const docs = {

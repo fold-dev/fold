@@ -18,6 +18,7 @@ import React, { useRef } from 'react'
 export default {
     title: 'Components/Popover',
     component: Popover,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -334,7 +335,7 @@ export const FocusTrapWithChildWidth = () => {
 // --
 
 export const Anchor = () => {
-    const { visible, show, hide } = useVisibility(true)
+    const { visible, show, hide } = useVisibility(false)
 
     return (
         <View position="relative">
@@ -385,7 +386,7 @@ export const OffscreenDetection = () => {
                     onDismiss={hide}
                     content={
                         <View
-                            width={300}
+                            width={500}
                             height={200}>
                             <Text p={20}>This will open to the left</Text>
                         </View>

@@ -4,6 +4,7 @@ import { Badge, View } from '@fold-dev/core'
 export default {
     title: 'Components/Badge',
     component: Badge,
+    excludeStories: 'docs',
 }
 
 export const docs = {

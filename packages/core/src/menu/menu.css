@@ -102,6 +102,7 @@
     background: transparent;
     list-style-type: none;
     gap: var(--f-menu-item-ix-spacing);
+    text-decoration: none;
 }
 
 .f-menu-item__label {

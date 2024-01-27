@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Rate',
     component: Rate,
+    excludeStories: 'docs',
 }
 
 export const docs = {

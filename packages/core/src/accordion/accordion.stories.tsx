@@ -4,6 +4,7 @@ import { Accordion, AccordionHeading, AccordionItem, AccordionPanel } from '@fol
 export default {
     title: 'Components/Accordion',
     component: Accordion,
+    excludeStories: 'docs',
 }
 
 export const docs = {

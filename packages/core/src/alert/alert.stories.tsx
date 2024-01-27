@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 export default {
     title: 'Components/Alert',
     component: Alert,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -1,36 +1,23 @@
 import { documentObject } from '../helpers'
-import React from 'react'
+import React, { ReactElement, ReactNode, Ref, useMemo, useState } from 'react'
 import ReactDOM from 'react-dom'
 
-export class Portal extends React.Component {
-    el: HTMLElement
-    props: any
-
-    constructor(props) {
-        super(props)
-
-        if (!props.portalRef) {
-            const portalId: string = 'fold-portal'
-            const el: HTMLElement = documentObject.getElementById(portalId)
-
-            if (el) {
-                this.el = el
-            } else {
-                const newEl = documentObject.createElement('div')
-                newEl.setAttribute('id', portalId)
-                documentObject.body.appendChild(newEl)
-                this.el = newEl
-            }
-        } else {
-            this.el = props.portalRef
-        }
-    }
-
-    componentDidMount() {}
-
-    componentWillUnmount() {}
-
-    render() {
-        return <>{ReactDOM.createPortal(this.props.children, this.el)}</>
-    }
+export type PortalProps = {
+    portalRef?: HTMLDivElement
+    children?: ReactElement
 }
+
+export const Portal = (props: PortalProps) => {
+    const el = useMemo(() => {
+        if (props.portalRef) return props.portalRef
+        const portalId: string = 'fold-portal'
+        const el: HTMLElement = documentObject.getElementById(portalId)
+        if (el) return el
+        const newEl = documentObject.createElement('div')
+        newEl.setAttribute('id', portalId)
+        documentObject.body.appendChild(newEl)
+        return newEl
+    }, [])
+
+    return ReactDOM.createPortal(props.children, el)
+  }

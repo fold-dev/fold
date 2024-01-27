@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Textarea',
     component: Textarea,
+    excludeStories: 'docs',
 }
 
 export const docs = {

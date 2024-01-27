@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Slider',
     component: Slider,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 export default {
     title: 'Components/Virtual',
     component: Virtual,
+    excludeStories: 'docs',
 }
 
 export const docs = {

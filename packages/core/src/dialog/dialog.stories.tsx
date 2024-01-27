@@ -1,9 +1,10 @@
-import { Button, Dialog, Flexer, Heading, Input, Stack, Text, useVisibility, View } from '@fold-dev/core'
+import { Button, Dialog, Flexer, Heading, Input, Portal, Stack, Text, useVisibility, View } from '@fold-dev/core'
 import React, { useState } from 'react'
 
 export default {
     title: 'Components/Dialog',
     component: Dialog,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -21,6 +22,7 @@ export const Usage = () => {
             <Button onClick={show}>Show Dialog</Button>
 
             <Dialog
+                portal={Portal}
                 closeButton
                 isVisible={visible}
                 title="Empty Trash?"
@@ -58,6 +60,7 @@ export const AdvancedLayout = () => {
             <Button onClick={show}>Show Dialog</Button>
 
             <Dialog
+                portal={Portal}
                 isVisible={visible}
                 onDismiss={hide}
                 header={

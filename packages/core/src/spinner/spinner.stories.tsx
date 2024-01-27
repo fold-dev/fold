@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Spinner',
     component: Spinner,
+    excludeStories: 'docs',
 }
 
 export const docs = {

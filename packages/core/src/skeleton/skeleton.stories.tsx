@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Skeleton',
     component: Skeleton,
+    excludeStories: 'docs',
 }
 
 export const docs = {

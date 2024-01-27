@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Drawer',
     component: Drawer,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Video',
     component: Video,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
-import { Portal } from '@fold-dev/core'
+import React, { useRef, useState } from 'react'
+import { Button, Portal, Text, View, documentObject } from '@fold-dev/core'
 
 export default {
     title: 'Components/Portal',
     component: Portal,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -14,22 +15,28 @@ export const docs = {
         'Useful for creating a seamless React element hierarchy within a distinct DOM hierarchy, preventing potential style conflicts with parent elements that might obscure or conceal content (commonly used for popovers, dropdowns, and modals). It supports custom root mounts.',
 }
 
+/**
+ * Without the `portalId` prop, the `<Portal />` component will mount to the root of the current document
+ */
 export const Usage = () => {
-    return <Portal>Content outside of the existing DOM hierarchy</Portal>
-}
-
-// --
-
-export const CustomRoot = () => {
+    const [show, setShow] = useState(false)
     const portalRef = useRef(null)
-
+    
     return (
         <>
-            <div
+            <Button onClick={() => setShow(!show)}>Toggle Portal</Button>
+
+            <View
+                p="1rem 0 0 0"
                 id="custom-root"
                 ref={portalRef}
             />
-            <Portal portalRef={portalRef.current}>Content in a portal, in a custom root</Portal>
+
+            {show && (
+                <Portal portalRef={portalRef.current}>
+                    <Text>Content in a portal, in a custom root</Text>
+                </Portal>
+            )}
         </>
     )
 }

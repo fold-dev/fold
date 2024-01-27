@@ -27,6 +27,7 @@ import React, { useRef, useState } from 'react'
 export default {
     title: 'Components/Input',
     component: Input,
+    excludeStories: 'docs',
 }
 
 export const docs = {

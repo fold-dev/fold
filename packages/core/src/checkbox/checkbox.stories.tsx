@@ -5,6 +5,7 @@ import React from 'react'
 export default {
     title: 'Components/Checkbox',
     component: Checkbox,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -120,7 +121,7 @@ export const Alternative = () => {
             <CheckboxAlt
                 onChange={check}
                 checked={checked}
-                icon="circle"
+                icon="x"
             />
         </Stack>
     )

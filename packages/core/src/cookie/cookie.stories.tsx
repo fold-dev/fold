@@ -4,6 +4,7 @@ import { Button, Cookie, Text, useVisibility, View } from '@fold-dev/core'
 export default {
     title: 'Components/Cookie',
     component: Cookie,
+    excludeStories: 'docs',
 }
 
 export const docs = {

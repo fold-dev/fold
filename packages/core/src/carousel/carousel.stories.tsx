@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Carousel',
     component: Carousel,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Notification',
     component: Notification,
+    excludeStories: 'docs',
 }
 
 export const docs = {

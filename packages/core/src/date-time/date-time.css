@@ -50,6 +50,7 @@
     --f-date-cell-pending-background: var(--f-color-accent-weak);
     --f-date-cell-selected: var(--f-color-accent-weak);
     --f-date-cell-selected-background: var(--f-color-accent);
+    --f-date-cell-selected-space: 1px;
     --f-date-cell-today: var(--f-color-accent);
 }
 
@@ -73,11 +74,6 @@
     background: var(--f-date-cell-weekend-background);
 }
 
-.f-date-cell.is-pending {
-    background: var(--f-date-cell-pending-background);
-    color: var(--f-date-cell-pending);
-}
-
 .f-date-cell.is-unavailable.is-weekend {
     color: var(--f-date-cell-disabled);
 }
@@ -92,11 +88,56 @@
     font-weight: bold;
 }
 
+/* pending */
+
+.f-date-cell.is-pending {
+    color: var(--f-date-cell-pending);
+}
+
+.f-date-cell.is-pending::after {
+    content: ' ';
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: calc(96% - var(--f-date-cell-selected-space));
+    top: var(--f-date-cell-selected-space);
+    left: 0;
+    z-index: -2;
+    background: var(--f-date-cell-pending-background);
+    border-radius: var(--f-radius);
+    opacity: 0.25; /* instead of adding a accent-weaker token */
+}
+
+/* selection */
+
 .f-date-cell.is-selected {
     position: relative;
     color: var(--f-date-cell-selected);
+}
+
+.f-date-cell.is-selected::before {
+    content: ' ';
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: calc(96% - var(--f-date-cell-selected-space));
+    top: var(--f-date-cell-selected-space);
+    left: 0;
+    z-index: -1;
     background: var(--f-date-cell-selected-background);
 }
+ 
+.f-date-cell.is-start::before {
+    border-top-left-radius: var(--f-radius);
+    border-bottom-left-radius: var(--f-radius);
+}
+
+.f-date-cell.is-end::before {
+    border-top-right-radius: var(--f-radius);
+    border-bottom-right-radius: var(--f-radius);
+} 
 
 /* weekdays */
 
@@ -223,7 +264,17 @@
 
 /* scrolling date picker */
 
+:root {
+    --f-date-scrolling-picker-title-padding: 0.25rem 0;
+}
+
 .f-scrolling-date-picker {
   position: relative;
   overflow-y: auto;
+}
+
+.f-scrolling-date-picker__title {
+    font-weight: 600;
+    display: inline-block;
+    padding: var(--f-date-scrolling-picker-title-padding);
 }

@@ -18,6 +18,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Form',
     component: Form,
+    excludeStories: 'docs',
 }
 
 export const docs = {

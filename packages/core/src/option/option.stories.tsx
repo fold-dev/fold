@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Option',
     component: Option,
+    excludeStories: 'docs',
 }
 
 export const docs = {

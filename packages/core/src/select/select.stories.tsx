@@ -25,6 +25,7 @@ import React, { useMemo, useRef, useState } from 'react'
 export default {
     title: 'Components/Select',
     component: Select,
+    excludeStories: 'docs',
 }
 
 export const docs = {

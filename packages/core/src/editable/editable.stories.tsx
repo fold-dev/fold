@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 export default {
     title: 'Components/Editable',
     component: Editable,
+    excludeStories: 'docs',
 }
 
 export const docs = {

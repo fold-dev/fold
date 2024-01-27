@@ -271,11 +271,15 @@ export type DateCellProps = {
     selected?: boolean
     today?: boolean
     pending?: boolean
+    pendingStart?: boolean
+    pendingEnd?: boolean
     weekend?: boolean
+    start?: boolean
+    end?: boolean
 } & TextProps
 
 export const DateCell = (props: DateCellProps) => {
-    const { disabled, selected, weekend, unavailable, pending, today, ...rest } = props
+    const { disabled, selected, weekend, unavailable, pending, today, start, end, ...rest } = props
     const className = classNames(
         {
             'f-date-cell': true,
@@ -287,6 +291,8 @@ export const DateCell = (props: DateCellProps) => {
             'is-pending': pending,
             'is-disabled': disabled,
             'is-today': today,
+            'is-start': start,
+            'is-end': end,
         },
         [props.className]
     )
@@ -395,17 +401,22 @@ export const Month = (props: MonthProps) => {
             const day = new Date(monthDay)
             const isDisabled = disabled.reduce((acc, val) => acc || isDayInsideRange(day, val), false)
             const isSelected = selection.reduce((acc, val) => acc || isDayInsideRange(day, val), false)
+
+            // calculates whether a user is selecting a date range
             const isPending = selectWeek
                 ? day >= pendingRowSelection[0] && day <= pendingRowSelection[1]
                 : selection.reduce((acc, val) => {
                       const dateRange = val || new Date()
                       const selectionStart = dateRange[0]
-
                       return acc || (!dateRange[1] && selectionStart)
                           ? (day >= selectionStart && day <= dateRangeSelection) ||
                                 (day <= selectionStart && day >= dateRangeSelection)
                           : false
                   }, false)
+
+            // get start and end booleans for selection
+            const isStart = selection.reduce((acc, val) => acc || FDate(day).isSame(val[0]), false)
+            const isEnd = selection.reduce((acc, val) => acc || FDate(day).isSame(val[1] || val[0]), false)
 
             days.push({
                 date: day,
@@ -415,6 +426,8 @@ export const Month = (props: MonthProps) => {
                 unavailable: day.getMonth() !== date.getMonth(),
                 pending: isPending && day.getMonth() === date.getMonth(),
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
             })
         }
 
@@ -455,6 +468,8 @@ export const Month = (props: MonthProps) => {
                         key={index}
                         disabled={day.disabled}
                         selected={day.selected}
+                        start={day.start}
+                        end={day.end}
                         pending={day.pending}
                         unavailable={day.unavailable}
                         today={day.today}
@@ -504,6 +519,7 @@ export const Months = (props: MonthsProps) => {
         },
         [props.className]
     )
+
     const months = useMemo(() => {
         return monthNames.map((monthName: string, index: number) => {
             const month = new Date(date.getFullYear(), index, date.getDate())
@@ -519,12 +535,26 @@ export const Months = (props: MonthsProps) => {
                     : false
             }, false)
 
+            // get start and end booleans for selection
+            const isStart = selection.reduce(
+                (acc, val) =>
+                    acc || (month.getMonth() === val[0].getMonth() && month.getFullYear() === val[0].getFullYear()),
+                false
+            )
+            const isEnd = selection.reduce(
+                (acc, val) =>
+                    acc || (month.getMonth() === val[1].getMonth() && month.getFullYear() === val[1].getFullYear()),
+                false
+            )
+
             return {
                 date: month,
                 today: isToday,
                 disabled: isDisabled,
                 pending: isPending,
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
                 name: monthName,
                 month: index,
             }
@@ -555,6 +585,8 @@ export const Months = (props: MonthsProps) => {
                         key={index}
                         disabled={month.disabled}
                         selected={month.selected}
+                        start={month.start}
+                        end={month.end}
                         pending={month.pending}
                         today={month.today}
                         unavailable={false}
@@ -604,6 +636,7 @@ export const Years = (props: YearsProps) => {
         },
         [props.className]
     )
+
     const years = useMemo(() => {
         return new Array(yearAmount).fill(null).map((_, index: number) => {
             const yearNumber = date.getFullYear() - yearAmount / 2 + index
@@ -620,12 +653,19 @@ export const Years = (props: YearsProps) => {
                     : false
             }, false)
 
+            // get start and end booleans for selection
+            const isStart = selection.reduce((acc, val) => acc || year.getFullYear() === val[0].getFullYear(), false)
+            const isEnd = selection.reduce((acc, val) => acc || year.getFullYear() === val[1].getFullYear(), false)
+
+            // TODO: add border radii (like days)
             return {
                 date: year,
                 today: isToday,
                 disabled: isDisabled,
                 pending: isPending,
                 selected: isSelected,
+                start: isStart,
+                end: isEnd,
                 year: yearNumber,
             }
         })
@@ -655,6 +695,8 @@ export const Years = (props: YearsProps) => {
                         key={index}
                         disabled={year.disabled}
                         selected={year.selected}
+                        start={year.start}
+                        end={year.end}
                         pending={year.pending}
                         today={year.today}
                         unavailable={false}
@@ -722,7 +764,6 @@ export const DatePicker = (props: DatePickerProps) => {
     const [level, setLevel] = useState<'days' | 'months' | 'years'>(defaultLevel)
     const [date, setDate] = useState(defaultDate)
     const dates = useMemo(() => {
-        console.clear()
         return new Array(panels).fill(date).map((d, i) => {
             const index = panels == 1 ? i : i - 1
             return FDate(d).add(index, 'month')
@@ -900,6 +941,7 @@ export type ScrollingDatePickerProps = {
     weekdaysProps?: WeekdaysProps
     monthProps?: Omit<MonthProps, 'date'>
     monthNames?: string[]
+    monthTitle: (date: Date) => string
 } & Omit<CoreViewProps, 'onChange' | 'disabled'>
 
 export const useScrollingDatePicker = () => {
@@ -928,6 +970,7 @@ export const ScrollingDatePicker = forwardRef((props: ScrollingDatePickerProps, 
         weekdaysProps = {},
         monthProps = {},
         monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        monthTitle,
         ...rest
     } = props
     const date = useMemo(() => new Date(defaultDate.getFullYear(), defaultDate.getMonth(), 15), [defaultDate])
@@ -991,11 +1034,11 @@ export const ScrollingDatePicker = forwardRef((props: ScrollingDatePickerProps, 
                         className="f-col"
                         style={{ height, width: '100%' }}>
                         <Text
-                            fontWeight={600}
-                            p={5}
+                            as="span"
+                            className="f-scrolling-date-picker__title"
                             size={size}
                             width="100%">
-                            {monthNames[month.getMonth()]} / {month.getFullYear()}
+                            {monthTitle(month)}
                         </Text>
                         <Month
                             width="100%"

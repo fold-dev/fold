@@ -18,12 +18,14 @@ import React from 'react'
 export default {
     title: 'Components/Task',
     component: TaskCard,
+    excludeStories: 'docs',
 }
 
 export const docs = {
     title: 'Task',
     subtitle: 'The Task component represents an item on a todo list or card on a kanban board.',
-    description: 'Tasks are useful for giving the user a visual element to interact with on a task list. They are especially relevant in task managers; however, task components can enable a wide variety of tooling within a product.',
+    description:
+        'Tasks are useful for giving the user a visual element to interact with on a task list. They are especially relevant in task managers; however, task components can enable a wide variety of tooling within a product.',
     experimental: true,
 }
 
@@ -59,7 +61,7 @@ export const Usage = () => {
             { label: '3/4', progress: 75, color: Token.ColorOrange400 },
         ],
     }
-    
+
     const task2: TaskProps = {
         id: '2',
         title: 'Component dev pipeline, build pipeline & design system setup. Component dev pipeline, build pipeline & design system setup. Component dev pipeline, build pipeline & design system setup.',
@@ -73,7 +75,7 @@ export const Usage = () => {
             { id: 1, name: 'du Plessis' },
         ],
     }
-    
+
     const task3: TaskProps = {
         id: '3',
         title: 'Component dev pipeline, build pipeline & design system setup',
@@ -81,7 +83,7 @@ export const Usage = () => {
         selected: true,
         users: [{ id: 1, name: '+' }],
     }
-    
+
     const task4: TaskProps = {
         id: '4',
         title: 'Component dev pipeline, build pipeline & design system setup',
@@ -95,16 +97,21 @@ export const Usage = () => {
             { id: 1, name: 'du Plessis' },
         ],
     }
-    
+
     return (
         <MenuProvider
             menu={({ data: { target, payload }, dismiss }) => {
                 switch (target) {
-                    case 'task-label': return <PopupMenu target={target} />
-                    case 'task-user': return <PopupMenu target={target} />
-                    case 'task-menu': return <PopupMenu target={target} />
-                    case 'task-date': return <PopupMenu target={target} />
-                    default: return null
+                    case 'task-label':
+                        return <PopupMenu target={target} />
+                    case 'task-user':
+                        return <PopupMenu target={target} />
+                    case 'task-menu':
+                        return <PopupMenu target={target} />
+                    case 'task-date':
+                        return <PopupMenu target={target} />
+                    default:
+                        return null
                 }
             }}>
             <Heading as="h3">Cards</Heading>
@@ -184,11 +191,16 @@ export const Editable = () => {
         <MenuProvider
             menu={({ data: { target, payload }, dismiss }) => {
                 switch (target) {
-                    case 'task-label': return <PopupMenu target={target} />
-                    case 'task-user': return <PopupMenu target={target} />
-                    case 'task-menu': return <PopupMenu target={target} />
-                    case 'task-date': return <PopupMenu target={target} />
-                    default: return null
+                    case 'task-label':
+                        return <PopupMenu target={target} />
+                    case 'task-user':
+                        return <PopupMenu target={target} />
+                    case 'task-menu':
+                        return <PopupMenu target={target} />
+                    case 'task-date':
+                        return <PopupMenu target={target} />
+                    default:
+                        return null
                 }
             }}>
             <TaskListItem

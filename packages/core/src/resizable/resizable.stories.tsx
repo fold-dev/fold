@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Resizable',
     component: Resizable,
+    excludeStories: 'docs',
 }
 
 export const docs = {

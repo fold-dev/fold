@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Progress',
     component: Progress,
+    excludeStories: 'docs',
 }
 
 export const docs = {

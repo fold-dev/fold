@@ -5,6 +5,7 @@ import { Grid, GridItem } from '@fold-dev/core'
 export default {
     title: 'Components/Grid',
     component: Grid,
+    excludeStories: 'docs',
 }
 
 export const docs = {

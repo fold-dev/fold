@@ -5,6 +5,7 @@ import React from 'react'
 export default {
     title: 'Components/Avatar',
     component: Avatar,
+    excludeStories: 'docs',
 }
 
 export const docs = {

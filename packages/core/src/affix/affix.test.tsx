@@ -37,15 +37,14 @@ describe('Affix Component', () => {
     test('renders default content when not stuck', () => {
         const { getByText, queryByText } = render(<Usage />)
 
-        // Check if the default content is rendered initially
         expect(getByText('Default content')).toBeInTheDocument()
-
-        // Check if the content when stuck is not initially rendered
         expect(queryByText('Content when stuck')).not.toBeInTheDocument()
     })
 
     /* 
     https://github.com/testing-library/react-testing-library/issues/671
+    TODO: use Playwright to automate browser event specific tests
+
     test('renders content when affixed', () => {
       const { getByText, queryByText } = render(<Usage />);
       

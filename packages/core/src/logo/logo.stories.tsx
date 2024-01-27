@@ -5,6 +5,7 @@ import { Logo, LogoSolid, View } from '@fold-dev/core'
 export default {
     title: 'Components/Logo',
     component: Logo,
+    excludeStories: 'docs',
 }
 
 export const docs = {

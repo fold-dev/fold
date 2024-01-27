@@ -4,6 +4,7 @@ import { Hidden, Text, View } from '@fold-dev/core'
 export default {
     title: 'Components/Hidden',
     component: Hidden,
+    excludeStories: 'docs',
 }
 
 export const docs = {

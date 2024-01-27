@@ -89,7 +89,9 @@ const createMdxFile = (slug, stories, dependenciesText, docsText, propsText, ins
             const section = title || name
 
             fileExport += `### ${addSpaces(section)}\n`
-            fileExport += `<a name="${section.toLowerCase()}"></a>\n`
+            // we generate these on the fly when indexing each page
+            // not using <a> tags - but with id attributes
+            // fileExport += `<a name="${section.toLowerCase()}"></a>\n`
             fileExport += '\n'
 
             if (description) fileExport += `> ${description}\n\n`
@@ -135,6 +137,8 @@ const generateMdx = (path) => {
         if (!isFile) {
             generateMdx(filePath)
         } else {
+            // general components
+            // -----------------------------
             if (
                 fileName.includes('tsx') &&
                 !fileName.includes('.stories') &&
@@ -194,6 +198,8 @@ const generateMdx = (path) => {
                 createMdxFile(slug, stories, fileParts[0], fileParts[2], propsText, installText, cssText, storyTypeDocs)
             }
 
+            // hooks
+            // -----------------------------
             if (fileName.includes('hooks')) {
                 console.log('exporting ', fileName)
 
@@ -211,8 +217,9 @@ const generateMdx = (path) => {
                 // get special docs stored in the story file
                 const storyTypeDocs = docgen.parse(storyFile, parserOptions)
 
+                // don't do this step for hooks - it's manually added
                 // 3) push this component to the navigation
-                navigation.push({ slug, ...module.docs })
+                // navigation.push({ slug, ...module.docs })
 
                 let installText: any = fileParts[0].split('\n')
                 installText.pop()

@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Attachment',
     component: Attachment,
+    excludeStories: 'docs',
 }
 
 export const docs = {

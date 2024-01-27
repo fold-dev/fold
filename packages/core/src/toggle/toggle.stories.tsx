@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Toggle',
     component: Toggle,
+    excludeStories: 'docs',
 }
 
 export const docs = {

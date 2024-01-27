@@ -20,6 +20,7 @@ import React from 'react'
 export default {
     title: 'Components/Layout',
     component: App,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -27,6 +27,7 @@ import React, { useMemo, useRef, useState } from 'react'
 export default {
     title: 'Components/DateTime',
     component: DatePicker,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -64,7 +65,7 @@ export const Usage = () => {
             width="fit-content">
             <DateRangeProvider>
                 <DatePicker
-                    height={300}
+                    height={350}
                     width={300}
                     defaultDate={date}
                     selection={selection}
@@ -234,15 +235,16 @@ export const MonthsDisplay = () => {
     const month = today.getMonth()
     const year = today.getFullYear()
     const date = new Date(year, month, 1)
-    const selected = new Date(year, month, 16)
-    const disabled = new Date(year, month - 1, 14)
+    const selectedStart = new Date(year, month, 16)
+    const selectedEnd = new Date(year, month + 3, 16)
+    const disabled = new Date(year, month + 7, 14)
 
     return (
         <Months
             width={300}
             height={300}
             date={date}
-            selection={[[selected, selected]]}
+            selection={[[selectedStart, selectedEnd]]}
             disabled={[[disabled]]}
         />
     )
@@ -255,15 +257,16 @@ export const YearsDisplay = () => {
     const month = today.getMonth()
     const year = today.getFullYear()
     const date = new Date(year, month, 1)
-    const selected = new Date(year, month, 16)
-    const disabled = new Date(year - 1, month, 14)
+    const selectedStart = new Date(year, month, 16)
+    const selectedEnd = new Date(year + 1, month, 16)
+    const disabled = new Date(year + 4, month, 14)
 
     return (
         <Years
             width={300}
             height={300}
             date={date}
-            selection={[[selected, selected]]}
+            selection={[[selectedStart, selectedEnd]]}
             disabled={[[disabled]]}
         />
     )
@@ -330,6 +333,7 @@ export const DateCellVariants = () => (
 export const ScrollingPicker = () => {
     const { goToToday } = useScrollingDatePicker()
     const ref = useRef(null)
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const { today, tomorrow, start, end } = useMemo(() => {
         const today = new Date()
         const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
@@ -372,6 +376,7 @@ export const ScrollingPicker = () => {
                     defaultDate={new Date()}
                     selection={selection}
                     onChange={handleSelection}
+                    monthTitle={(date: Date) => '' + `${monthNames[date.getMonth()]} / ${date.getFullYear()}`}
                 />
             </DateRangeProvider>
         </View>
@@ -438,34 +443,46 @@ export const MultipleMonths = () => {
             <Stack
                 direction="vertical"
                 spacing={20}>
-                <DatePicker
-                    defaultDate={date}
-                    selection={selection}
-                    onChange={handleSelection}
-                    disabled={[[disabled1, disabled2]]}
-                    width={300}
-                    height={300}
-                />
+                <Card
+                    p={10}
+                    width="fit-content">
+                    <DatePicker
+                        defaultDate={date}
+                        selection={selection}
+                        onChange={handleSelection}
+                        disabled={[[disabled1, disabled2]]}
+                        height={350}
+                        width={300}
+                    />
+                </Card>
 
-                <DatePicker
-                    defaultDate={date}
-                    selection={selection}
-                    onChange={handleSelection}
-                    width={600}
-                    height={300}
-                    disabled={[[disabled1, disabled2]]}
-                    panels={2}
-                />
+                <Card
+                    p={10}
+                    width="fit-content">
+                    <DatePicker
+                        defaultDate={date}
+                        selection={selection}
+                        onChange={handleSelection}
+                        width={600}
+                        height={350}
+                        disabled={[[disabled1, disabled2]]}
+                        panels={2}
+                    />
+                </Card>
 
-                <DatePicker
-                    defaultDate={date}
-                    selection={selection}
-                    onChange={handleSelection}
-                    disabled={[[disabled1, disabled2]]}
-                    width={900}
-                    height={300}
-                    panels={3}
-                />
+                <Card
+                    p={10}
+                    width="fit-content">
+                    <DatePicker
+                        defaultDate={date}
+                        selection={selection}
+                        onChange={handleSelection}
+                        disabled={[[disabled1, disabled2]]}
+                        width={900}
+                        height={350}
+                        panels={3}
+                    />
+                </Card>
             </Stack>
         </DateRangeProvider>
     )

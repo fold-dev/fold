@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Tabs',
     component: Tabs,
+    excludeStories: 'docs',
 }
 
 export const docs = {

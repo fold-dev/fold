@@ -4,6 +4,7 @@ import { AspectRatio } from '@fold-dev/core'
 export default {
     title: 'Components/AspectRatio',
     component: AspectRatio,
+    excludeStories: 'docs',
 }
 
 export const docs = {

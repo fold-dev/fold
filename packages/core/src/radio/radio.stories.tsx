@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Radio',
     component: Radio,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -1,9 +1,10 @@
-import { Pagination } from '@fold-dev/core'
+import { Pagination, View } from '@fold-dev/core'
 import React, { useState } from 'react'
 
 export default {
     title: 'Components/Pagination',
     component: Pagination,
+    excludeStories: 'docs',
 }
 
 export const docs = {
@@ -17,14 +18,16 @@ export const Usage = () => {
     const [page, setPage] = useState(1)
 
     return (
-        <Pagination
-            width={500}
-            pageSize={5}
-            totalCount={1023}
-            currentPage={page}
-            siblingCount={4}
-            separator="..."
-            onPageChange={(page) => setPage(page)}
-        />
+        <View row>
+            <Pagination
+                width={500}
+                pageSize={5}
+                totalCount={1023}
+                currentPage={page}
+                siblingCount={4}
+                separator="..."
+                onPageChange={(page) => setPage(page)}
+            />
+        </View>
     )
 }
