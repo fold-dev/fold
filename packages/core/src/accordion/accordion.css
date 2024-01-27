@@ -9,7 +9,7 @@
     --f-accordion-hover-background-color: var(--f-color-surface-strong);
     --f-accordion-disabled-color: var(--f-color-text-weakest);
     --f-accordion-active-background: var(--f-color-surface-strong);
-    --f-accordion-active-color: var(--f-color-accent);
+    --f-accordion-active-color: var(--f-color-text);
     --f-accordion-spacing: 1rem;
 }
 
@@ -103,6 +103,7 @@
     border-bottom-right-radius: 0; 
 }
 
+.f-accordion__item.is-active .f-accordion-heading__heading > .f-accordion-heading__heading-text,
 .f-accordion__item.is-active .f-accordion-heading__heading {
     color: var(--f-accordion-active-color);
 }
