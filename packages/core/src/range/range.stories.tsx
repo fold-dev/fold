@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Range',
     component: Range,
+    excludeStories: 'docs',
 }
 
 export const docs = {

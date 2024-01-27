@@ -4,6 +4,7 @@ import { Button, Portal, Text, View, documentObject } from '@fold-dev/core'
 export default {
     title: 'Components/Portal',
     component: Portal,
+    excludeStories: 'docs',
 }
 
 export const docs = {

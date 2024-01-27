@@ -14,6 +14,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Drag',
     component: DragArea,
+    excludeStories: 'docs',
 }
 
 export const docs = {

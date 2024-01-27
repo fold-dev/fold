@@ -20,6 +20,7 @@ import React from 'react'
 export default {
     title: 'Components/Card',
     component: Card,
+    excludeStories: 'docs',
 }
 
 export const docs = {

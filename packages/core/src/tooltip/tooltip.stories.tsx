@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Tooltip',
     component: Tooltip,
+    excludeStories: 'docs',
 }
 
 export const docs = {

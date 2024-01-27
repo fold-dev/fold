@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 export default {
     title: 'Components/Sparkline',
     component: Sparkline,
+    excludeStories: 'docs',
 }
 
 export const docs = {

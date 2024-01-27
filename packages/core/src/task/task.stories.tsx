@@ -18,6 +18,7 @@ import React from 'react'
 export default {
     title: 'Components/Task',
     component: TaskCard,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -15,6 +15,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Navigation',
     component: Navigation,
+    excludeStories: 'docs',
 }
 
 export const docs = {

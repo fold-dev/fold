@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Divider',
     component: Divider,
+    excludeStories: 'docs',
 }
 
 export const docs = {

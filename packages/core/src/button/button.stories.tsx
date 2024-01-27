@@ -15,6 +15,7 @@ import React from 'react'
 export default {
     title: 'Components/Button',
     component: Button,
+    excludeStories: 'docs',
 }
 
 export const docs = {

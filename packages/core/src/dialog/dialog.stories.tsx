@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Dialog',
     component: Dialog,
+    excludeStories: 'docs',
 }
 
 export const docs = {

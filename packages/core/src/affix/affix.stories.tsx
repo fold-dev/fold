@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Affix',
     component: Affix,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Image',
     component: Image,
+    excludeStories: 'docs',
 }
 
 export const docs = {

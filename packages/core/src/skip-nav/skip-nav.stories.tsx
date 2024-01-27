@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/SkipNav',
     component: SkipNav,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -27,6 +27,7 @@ import React, { useMemo, useRef, useState } from 'react'
 export default {
     title: 'Components/DateTime',
     component: DatePicker,
+    excludeStories: 'docs',
 }
 
 export const docs = {

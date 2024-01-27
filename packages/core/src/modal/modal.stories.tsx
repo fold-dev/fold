@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Modal',
     component: Modal,
+    excludeStories: 'docs',
 }
 
 export const docs = {

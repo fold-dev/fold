@@ -5,6 +5,7 @@ import React, { useLayoutEffect, useState } from 'react'
 export default {
     title: 'Components/Icon',
     component: Icon,
+    excludeStories: 'docs',
 }
 
 export const docs = {

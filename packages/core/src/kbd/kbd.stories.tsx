@@ -4,6 +4,7 @@ import { Kbd, Text, View } from '@fold-dev/core'
 export default {
     title: 'Components/Kbd',
     component: Kbd,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -5,6 +5,7 @@ import React from 'react'
 export default {
     title: 'Components/Checkbox',
     component: Checkbox,
+    excludeStories: 'docs',
 }
 
 export const docs = {

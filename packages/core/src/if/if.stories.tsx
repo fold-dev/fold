@@ -4,6 +4,7 @@ import { If, View } from '@fold-dev/core'
 export default {
     title: 'Components/If',
     component: If,
+    excludeStories: 'docs',
 }
 
 export const docs = {

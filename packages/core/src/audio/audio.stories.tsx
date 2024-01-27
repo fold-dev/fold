@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Audio',
     component: Audio,
+    excludeStories: 'docs',
 }
 
 export const docs = {

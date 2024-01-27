@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Pagination',
     component: Pagination,
+    excludeStories: 'docs',
 }
 
 export const docs = {

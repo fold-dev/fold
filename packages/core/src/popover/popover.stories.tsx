@@ -18,6 +18,7 @@ import React, { useRef } from 'react'
 export default {
     title: 'Components/Popover',
     component: Popover,
+    excludeStories: 'docs',
 }
 
 export const docs = {

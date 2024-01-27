@@ -4,6 +4,7 @@ import React from 'react'
 export default {
     title: 'Components/Toast',
     component: Toast,
+    excludeStories: 'docs',
 }
 
 export const docs = {

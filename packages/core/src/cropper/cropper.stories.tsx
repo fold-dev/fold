@@ -4,6 +4,7 @@ import { Cropper, Range, View } from '@fold-dev/core'
 export default {
     title: 'Components/Cropper',
     component: Cropper,
+    excludeStories: 'docs',
 }
 
 export const docs = {

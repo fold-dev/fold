@@ -16,6 +16,7 @@ import React from 'react'
 export default {
     title: 'Components/Menu',
     component: Menu,
+    excludeStories: 'docs',
 }
 
 export const docs = {

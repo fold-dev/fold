@@ -4,6 +4,7 @@ import { Heading, Stack } from '@fold-dev/core'
 export default {
     title: 'Components/Heading',
     component: Heading,
+    excludeStories: 'docs',
 }
 
 export const docs = {

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 export default {
     title: 'Components/Collapsible',
     component: Collapsible,
+    excludeStories: 'docs',
 }
 
 export const docs = {

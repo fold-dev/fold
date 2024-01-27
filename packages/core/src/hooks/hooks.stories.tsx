@@ -28,6 +28,7 @@ import React, { useEffect, useRef, useState } from 'react'
 export default {
     title: 'Components/Hooks',
     component: <></>,
+    excludeStories: 'docs',
 }
 
 export const docs = {
