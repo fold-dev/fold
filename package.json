@@ -50,6 +50,8 @@
     },
     "scripts": {
         "prepare": "husky install",
+        "deploy:core": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && npm --workspace @fold-dev/core publish",
+        "deploy:core:dry-run": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && npm --workspace @fold-dev/core publish --dry-run",
         "dev:design": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook | npm --workspace @fold-dev/design run watch",
         "dev": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook",
         "storybook": "storybook dev -p 6006",
