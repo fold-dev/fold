@@ -8,8 +8,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -20,3 +18,11 @@ jobs:
         run: |
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+      - name: Publish to NPM
+        working-directory: ./packages/core
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm install
+          npm run build:prod
+          npm publish --dry-run
