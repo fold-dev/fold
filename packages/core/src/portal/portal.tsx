@@ -20,4 +20,4 @@ export const Portal = (props: PortalProps) => {
     }, [])
 
     return ReactDOM.createPortal(props.children, el)
-  }
+}
