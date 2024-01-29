@@ -21,7 +21,7 @@ export const docs = {
 export const Usage = () => {
     const [show, setShow] = useState(false)
     const portalRef = useRef(null)
-    
+
     return (
         <>
             <Button onClick={() => setShow(!show)}>Toggle Portal</Button>

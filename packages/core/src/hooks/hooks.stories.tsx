@@ -189,18 +189,8 @@ export const Pubsub = () => {
  * `getSafeStorage` returns an empty string if there is no value
  */
 export const Storage = () => {
-    const {
-        getStorage,
-        getSafeStorage,
-        setStorage,
-        deleteStorage,
-    } = useStorage()
-    const {
-        isCached,
-        deleteCache,
-        getSafeCache,
-        setCache,
-    } = useCacheValue('foobar')
+    const { getStorage, getSafeStorage, setStorage, deleteStorage } = useStorage()
+    const { isCached, deleteCache, getSafeCache, setCache } = useCacheValue('foobar')
 
     return <Text>Example coming soon</Text>
 }
@@ -215,14 +205,14 @@ export const TabVisibility = () => {
 
     useTabVisibility((e) => {
         const date = new Date()
-        const seconds = date.getSeconds();
-        const minutes = date.getMinutes();
-        const hour = date.getHours();
+        const seconds = date.getSeconds()
+        const minutes = date.getMinutes()
+        const hour = date.getHours()
 
         setText(`Time is ${hour}:${minutes}:${seconds}`)
     })
 
-    return <Text>{ text || 'Change tabs & come back'}</Text>
+    return <Text>{text || 'Change tabs & come back'}</Text>
 }
 
 // --
