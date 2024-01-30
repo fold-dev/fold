@@ -2,8 +2,8 @@ name: ci-tag-publish
 
 on:
   push:
-    branches:
-      - ci/github_actions_integration
+    tags:
+      - 'v*'
 
 jobs:
   publish:
@@ -28,4 +28,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm install
-          npm run publish:dry-run
+          npm run publish
