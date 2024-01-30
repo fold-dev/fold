@@ -50,9 +50,7 @@
     },
     "scripts": {
         "prepare": "husky install",
-        
-        "dev:design": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook | npm --workspace @fold-dev/design run watch",
-        "dev": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook",
+        "dev": "npm --workspace @fold-dev/core run watch:styles | npm --workspace @fold-dev/core run watch | npm run storybook | npm --workspace @fold-dev/design run watch",
         "storybook": "storybook dev -p 6006",
         "storybook:build": "npm --workspace @fold-dev/core run build:prod && storybook build -c .storybook -o storybook-static",
         "build:storybook:docs": "npm --workspace @fold-dev/core run build:styles && npm --workspace @fold-dev/core run build && npm run storybook:build",
@@ -68,17 +66,11 @@
         "lint:fix": "eslint --fix 'scripts/**/*.{ts,tsx}' 'packages/core/src/**/*.{ts,tsx}'",
         "lint:watch": "eslint --watch 'scripts/**/*.{ts,tsx}' 'packages/core/src/**/*.{ts,tsx}'",
         "test": "jest --config=jest.config.js --no-cache",
-
-
-
-        "publish:core:patch": "./scripts/publish.sh core patch",
-        "publish:core:minor": "./scripts/publish.sh core minor",
-        "publish:core:major": "./scripts/publish.sh core major",
-        "publish:design:patch": "./scripts/publish.sh design patch",
-        "publish:design:minor": "./scripts/publish.sh design minor",
-        "publish:design:major": "./scripts/publish.sh design major"
+        "publish:patch": "./scripts/publish.sh patch",
+        "publish:minor": "./scripts/publish.sh minor",
+        "publish:major": "./scripts/publish.sh major",
         "publish": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && npm --workspace @fold-dev/core publish && npm --workspace @fold-dev/design publish",
-        "publish:dry-run": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && npm --workspace @fold-dev/core publish --dry-run && npm --workspace @fold-dev/design publish --dry-run",
+        "publish:dry-run": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && npm --workspace @fold-dev/core publish --dry-run && npm --workspace @fold-dev/design publish --dry-run"
     },
     "repository": {
         "type": "git",
