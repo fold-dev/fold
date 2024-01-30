@@ -11,11 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get tag from Git
-        id: git_tag
-        run: |
-          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+      # gets the current tag name
+      # The short ref name of the branch or tag that triggered the workflow run.
+      # https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
+      # - name: Get tag from Git
+      #   id: git_tag
+      #   run: echo "$GITHUB_REF_NAME"
 
       - name: Set up Node
         uses: actions/setup-node@v3
