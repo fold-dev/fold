@@ -14,26 +14,23 @@ const stripComments = (str) => str.replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/
 const parserOptions: ParserOptions = {
     savePropValueAsString: true,
     shouldIncludePropTagMap: true,
-    propFilter: (prop: PropItem, component) => {
-        
+    propFilter: (prop: PropItem, component) => {        
         const { name, required, type, description, defaultValue, parent, declarations, tags } = prop
-
-        if (name.includes('aria-')) return false
-        if (name == 'key') return false
-        
         if (!declarations) return false
-
         const declaration = declarations[0]
-        const declarationName = declaration.name
 
-        if (declarationName == 'HTMLAttributes') return false
-        if (declarationName == 'DOMAttributes') return false
-        if (declarationName == 'AllHTMLAttributes') return false
-
-        
-                
-        return true
-        return !!declaration.fileName?.includes('.tsx')
+        if (component.name == 'View') {
+            if (!declarations) return false
+            if (name.includes('aria-')) return false
+            if (name == 'key') return false
+            if (declaration.name == 'HTMLAttributes') return false
+            if (declaration.name == 'DOMAttributes') return false
+            if (declaration.name == 'AllHTMLAttributes') return false                    
+            return true
+        } else {    
+            const { fileName } = declaration
+            return !!fileName?.includes('.tsx')
+        }
     },
 }
 
