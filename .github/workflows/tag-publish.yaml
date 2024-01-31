@@ -2,21 +2,14 @@ name: ci-tag-publish
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - '**'
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # gets the current tag name
-      # The short ref name of the branch or tag that triggered the workflow run.
-      # https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
-      # - name: Get tag from Git
-      #   id: git_tag
-      #   run: echo "$GITHUB_REF_NAME"
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -29,4 +22,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm install
-          npm run publish
+          npm run publish:dry-run
