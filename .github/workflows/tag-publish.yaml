@@ -2,8 +2,8 @@ name: Tag publish workflow
 
 on:
   push:
-    branches:
-      - '**'
+    tags:
+      - 'v*'
 
 jobs:
   build:
