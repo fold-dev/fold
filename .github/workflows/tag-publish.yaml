@@ -1,4 +1,4 @@
-name: ci-tag-publish
+name: Tag publish workflow
 
 on:
   push:
