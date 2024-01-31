@@ -131,7 +131,6 @@ export const View = forwardRef((props: ViewProps, ref) => {
     const { getColorToken } = useTheme()
     const {
         as = 'div',
-        theme,
         bg,
         bgToken,
         color,
@@ -232,7 +231,6 @@ export const View = forwardRef((props: ViewProps, ref) => {
             className,
             style,
             ref,
-            'data-theme': props.theme,
         },
         props.children
     )

@@ -15,11 +15,25 @@ const parserOptions: ParserOptions = {
     savePropValueAsString: true,
     shouldIncludePropTagMap: true,
     propFilter: (prop: PropItem, component) => {
+        
         const { name, required, type, description, defaultValue, parent, declarations, tags } = prop
+
+        if (name.includes('aria-')) return false
+        if (name == 'key') return false
+        
         if (!declarations) return false
+
         const declaration = declarations[0]
-        const { fileName } = declaration
-        return !!fileName?.includes('.tsx')
+        const declarationName = declaration.name
+
+        if (declarationName == 'HTMLAttributes') return false
+        if (declarationName == 'DOMAttributes') return false
+        if (declarationName == 'AllHTMLAttributes') return false
+
+        
+                
+        return true
+        return !!declaration.fileName?.includes('.tsx')
     },
 }
 
@@ -145,6 +159,7 @@ const generateMdx = (path) => {
                 !fileName.includes('.test') &&
                 !fileName.includes('fold.context')
             ) {
+                if (!fileName.includes('view')) return
                 console.log('exporting ', fileName)
 
                 const slug = fileName.replace('.tsx', '')
@@ -201,6 +216,7 @@ const generateMdx = (path) => {
             // hooks
             // -----------------------------
             if (fileName.includes('hooks')) {
+                return
                 console.log('exporting ', fileName)
 
                 const slug = fileName.replace('.stories.tsx', '')

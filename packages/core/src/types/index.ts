@@ -102,7 +102,6 @@ export type CoreViewProps = AriaAttributes & CommonProps & ShorthandProps & DOMA
 export type FormEvents = DOMAttributes<any>
 
 export type ShorthandProps = {
-    theme?: string
     bg?: string
     bgToken?: string
     color?: string
