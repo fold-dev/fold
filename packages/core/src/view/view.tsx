@@ -154,7 +154,6 @@ export const View = forwardRef((props: ViewProps, ref) => {
         shadow,
         border,
         transition,
-        center,
         row,
         column,
         alignContent,
