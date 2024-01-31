@@ -102,45 +102,157 @@ export type CoreViewProps = AriaAttributes & CommonProps & ShorthandProps & DOMA
 export type FormEvents = DOMAttributes<any>
 
 export type ShorthandProps = {
-    theme?: string
+    /**
+     * CSS hex color value
+     */
     bg?: string
+    /**
+     * CSS color token without the "--f-color-" prefix
+     */
     bgToken?: string
+    /**
+     * CSS hex color value
+     */
     color?: string
+    /**
+     * CSS color token without the "--f-color-" prefix
+     */
     colorToken?: string
+    /**
+     * CSS width
+     */
     width?: string | number
+    /**
+     * CSS height
+     */
     height?: string | number
+    /**
+     * CSS position
+     */
     position?: 'relative' | 'absolute' | 'fixed' | 'sticky' | 'static'
+    /**
+     * CSS display
+     */
     display?: 'block' | 'inline' | 'inline-block' | 'flex' | 'grid' | 'none'
+    /**
+     * CSS padding
+     */
     p?: string | number
+    /**
+     * CSS margin
+     */
     m?: string | number
+    /**
+     * CSS z-index
+     */
     zIndex?: string | number
+    /**
+     * CSS radius
+     */
     radius?: string | number
+    /**
+     * CSS blur
+     */
     blur?: string | number
+    /**
+     * CSS letter-spacing
+     */
     letterSpacing?: string | number
+    /**
+     * CSS line-height
+     */
     lineHeight?: string | number
+    /**
+     * CSS font-weight
+     */
     fontWeight?: string | number
+    /**
+     * CSS font-family
+     */
     font?: string
+    /**
+     * CSS font-size
+     */
     fontSize?: string | number
+    /**
+     * CSS text-decoration
+     */
     textDecoration?: 'none' | 'underline' | 'overline' | 'line-through' | 'underline' | string
+    /**
+     * CSS text-align
+     */
     textAlign?: string
+    /**
+     * CSS box-shadow
+     */
     shadow?: string | number
+    /**
+     * CSS border
+     */
     border?: string | number
+    /**
+     * CSS transition
+     */
     transition?: string | number
-    center?: boolean
+    /**
+     * add .f-row CSS class
+     */
     row?: boolean
+    /**
+     * add .f-col CSS class
+     */
     column?: boolean
+    /**
+     * CSS align-content
+     */
     alignContent?: FlexAlign
+    /**
+     * CSS align-items
+     */
     alignItems?: FlexAlign
+    /**
+     * CSS flex-basis
+     */
     basis?: string
+    /**
+     * CSS flex-direction
+     */
     flexDirection?: 'row ' | 'row-reverse' | 'column' | 'column-reverse'
+    /**
+     * CSS flex-grow
+     */
     grow?: string | number
+    /**
+     * CSS flex-shrink
+     */
     shrink?: string | number
+    /**
+     * CSS justify-content
+     */
     justifyContent?: FlexAlign
+    /**
+     * CSS flex-wrap
+     */
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
+    /**
+     * CSS flex
+     */
     flex?: number | string
+    /**
+     * CSS flow layout
+     */
     flow?: string
+    /**
+     * CSS flex alignment
+     */
     alignSelf?: FlexAlign
+    /**
+     * please see typedoc for align classes
+     */
     align?: ViewAlign
+    /**
+     * CSS flex gap
+     */
     gap?: number | string
 }
 
