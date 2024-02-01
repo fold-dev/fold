@@ -144,8 +144,10 @@ module.exports = {
                 {
                     destination: 'tokens.js',
                     format: 'javascript/module-flat',
-                    // opted for a module
-                    // format: 'javascript/es6',
+                },
+                {
+                    destination: 'tokens-es6.js',
+                    format: 'javascript/es6',                    
                 },
             ],
         },
