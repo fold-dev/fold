@@ -50,6 +50,7 @@ export type ButtonProps = {
     disabled?: boolean
     target?: LinkTarget
     href?: string
+    ellipsis?: boolean
     onClick?: any
     type?: 'button' | 'submit'
 } & CoreViewProps
@@ -72,6 +73,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
         disabled,
         target,
         href,
+        ellipsis,
         onClick,
         ...rest
     } = props
@@ -85,6 +87,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
             'is-loading': loading,
             'is-flat': flat,
             'is-underlined': underlined,
+            'has-ellipsis': ellipsis,
         },
         [size, props.className, getActionClass(variant)]
     )
@@ -109,12 +112,14 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
                 />
             )}
             {prefix && <span className="f-button__prefix f-row">{prefix}</span>}
-            <Text
-                as="span"
-                size={size}
-                className="f-button__label f-row">
-                {props.children}
-            </Text>
+            <span className="f-button__label f-row">
+                <Text
+                    as="span"
+                    className="f-row"
+                    size={size}>
+                    {props.children}
+                </Text>
+            </span>
             {suffix && <span className="f-button__suffix f-row">{suffix}</span>}
         </View>
     )

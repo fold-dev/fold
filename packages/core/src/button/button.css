@@ -13,9 +13,7 @@
 .f-button {
     width: fit-content;
     border: var(--f-button-border-width) solid;
-    cursor: pointer;
-    overflow: hidden;
-    white-space: nowrap;
+    cursor: pointer; 
     flex-shrink: 0;
     transition-property: background-color, outline;
     transition-duration: 100ms;
@@ -71,6 +69,7 @@
 
 .f-button .f-spinner-overlay {
     background-color: transparent;
+    border-radius: var(--f-button-border-radius);
 }
 
 .f-button > * {
@@ -82,13 +81,6 @@
 .f-button a {
     color: inherit;
     text-decoration: none !important; 
-}
-
-.f-button__label {
-    pointer-events: none;
-    position: relative;  
-    flex: 1;
-    flex-shrink: 0; 
 }
 
 .f-button__suffix {
@@ -107,6 +99,24 @@
     margin-right: var(--f-size-2); 
     margin-left: calc(var(--f-size-1) * -1); 
     pointer-events: none;
+}
+
+.f-button__label {
+    pointer-events: none;
+    position: relative;  
+    flex: 1;
+    flex-shrink: 0; 
+}
+
+.f-button.has-ellipsis > .f-button__label {
+    overflow: hidden;
+}
+
+.f-button.has-ellipsis > .f-button__label > .f-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 /* ********************************************* */

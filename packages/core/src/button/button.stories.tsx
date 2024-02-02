@@ -84,6 +84,20 @@ export const WithPrefixAndSuffix = () => (
 
 // --
 
+/**
+ * Sometimes you need the text of the button to wrap. For this, the Button component offers the handy `ellipsis` prop.
+ */
+export const EllipsisMode = () => (
+    <Button
+        prefix={<IconLib icon="circle" />}
+        width={150}
+        ellipsis>
+        This is some really long text!
+    </Button>
+)
+
+// --
+
 export const Subtle = () => (
     <Stack spacing={5}>
         <Button subtle>Default</Button>
