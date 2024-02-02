@@ -50,6 +50,7 @@ export type ButtonProps = {
     disabled?: boolean
     target?: LinkTarget
     href?: string
+    ellipsis?: boolean
     onClick?: any
     type?: 'button' | 'submit'
 } & CoreViewProps
@@ -72,6 +73,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
         disabled,
         target,
         href,
+        ellipsis,
         onClick,
         ...rest
     } = props
@@ -85,6 +87,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
             'is-loading': loading,
             'is-flat': flat,
             'is-underlined': underlined,
+            'has-ellipsis': ellipsis,
         },
         [size, props.className, getActionClass(variant)]
     )

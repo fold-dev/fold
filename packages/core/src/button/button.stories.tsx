@@ -29,6 +29,10 @@ export const Usage = () => <Button>Okay</Button>
 
 // --
 
+export const HasEllipsis = () => <Button width={100} ellipsis>This is some really long text!</Button>
+
+// --
+
 export const Sizes = () => (
     <Stack spacing={5}>
         <Button size="xs">Xsmall</Button>

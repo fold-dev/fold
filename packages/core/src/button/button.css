@@ -83,20 +83,6 @@
     text-decoration: none !important; 
 }
 
-.f-button__label {
-    pointer-events: none;
-    position: relative;  
-    flex: 1;
-    flex-shrink: 0; 
-    overflow: hidden;
-}
-
-.f-button__label > .f-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .f-button__suffix {
     flex-shrink: 0;
     height: fit-content;
@@ -113,6 +99,24 @@
     margin-right: var(--f-size-2); 
     margin-left: calc(var(--f-size-1) * -1); 
     pointer-events: none;
+}
+
+.f-button__label {
+    pointer-events: none;
+    position: relative;  
+    flex: 1;
+    flex-shrink: 0; 
+}
+
+.f-button.has-ellipsis > .f-button__label {
+    overflow: hidden;
+}
+
+.f-button.has-ellipsis > .f-button__label > .f-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 /* ********************************************* */
