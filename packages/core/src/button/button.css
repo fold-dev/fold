@@ -91,7 +91,7 @@
     overflow: hidden;
 }
 
-.f-button__label > span {
+.f-button__label > .f-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

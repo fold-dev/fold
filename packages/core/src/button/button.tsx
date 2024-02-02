@@ -112,6 +112,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
             <span className="f-button__label f-row">
                 <Text
                     as="span"
+                    className="f-row"
                     size={size}>
                     {props.children}
                 </Text>
