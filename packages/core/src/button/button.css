@@ -14,7 +14,6 @@
     width: fit-content;
     border: var(--f-button-border-width) solid;
     cursor: pointer; 
-    overflow: hidden;
     flex-shrink: 0;
     transition-property: background-color, outline;
     transition-duration: 100ms;
@@ -70,6 +69,7 @@
 
 .f-button .f-spinner-overlay {
     background-color: transparent;
+    border-radius: var(--f-button-border-radius);
 }
 
 .f-button > * {
