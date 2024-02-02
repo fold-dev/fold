@@ -13,9 +13,8 @@
 .f-button {
     width: fit-content;
     border: var(--f-button-border-width) solid;
-    cursor: pointer;
+    cursor: pointer; 
     overflow: hidden;
-    white-space: nowrap;
     flex-shrink: 0;
     transition-property: background-color, outline;
     transition-duration: 100ms;
@@ -89,6 +88,13 @@
     position: relative;  
     flex: 1;
     flex-shrink: 0; 
+    overflow: hidden;
+}
+
+.f-button__label > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .f-button__suffix {

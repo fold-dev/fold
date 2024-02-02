@@ -109,12 +109,13 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
                 />
             )}
             {prefix && <span className="f-button__prefix f-row">{prefix}</span>}
-            <Text
-                as="span"
-                size={size}
-                className="f-button__label f-row">
-                {props.children}
-            </Text>
+            <span className="f-button__label f-row">
+                <Text
+                    as="span"
+                    size={size}>
+                    {props.children}
+                </Text>
+            </span>
             {suffix && <span className="f-button__suffix f-row">{suffix}</span>}
         </View>
     )
