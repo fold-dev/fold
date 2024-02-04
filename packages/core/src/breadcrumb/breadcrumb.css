@@ -6,7 +6,7 @@
   --f-breadcrumb-color-active: var(--f-color-accent);
   --f-breadcrumb-spacing: var(--f-space-2);
   --f-breadcrumb-separator-spacing: calc(var(--f-space-2)*2);
-  --f-breadcrumb-separator-color: var(--f-color-text-weaker);
+  --f-breadcrumb-separator-color: var(--f-color-text-weakest);
   --f-breadcrumb-padding: 0;
 }
 

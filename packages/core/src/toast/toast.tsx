@@ -86,7 +86,7 @@ export const Toast = (props: ToastProps) => {
             {toastComponent ? toastComponent({ onDismiss }) : null}
             {!toastComponent && (
                 <>
-                    {prefix && <div className="f-toast__prefix">{prefix}</div>}
+                    {prefix && <div className="f-toast__prefix f-row">{prefix}</div>}
                     <div className="f-toast__content">
                         <Text
                             size="md"
