@@ -1,10 +1,21 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
+import fs from 'fs'
+
+let stories = [
+    '../packages/core/src/**/*.stories.tsx',
+    '../packages/core/src/**/*.mdx',
+]
+
+if (fs.existsSync('./packages/pro')) {
+    stories = [
+        ...stories,
+        '../packages/pro/src/**/*.stories.tsx',
+        '../packages/pro/src/**/*.mdx',
+    ]
+}
 
 const config: StorybookConfig = {
-    stories: [
-        '../packages/core/src/**/*.stories.tsx',
-        '../packages/core/src/**/*.mdx',
-    ],
+    stories,
     addons: [
         '@storybook/addon-links', 
         '@storybook/addon-essentials', 
