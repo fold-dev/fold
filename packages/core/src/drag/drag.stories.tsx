@@ -694,7 +694,7 @@ export const SavingAfterDrop = () => {
             row
             width="100%"
             alignItems="flex-start">
-            <DragArea width="100%">
+            <DragArea width="100%" group="save-after-drop">
                 {items.map((item, index) => (
                     <Text
                         key={index}
