@@ -67,6 +67,9 @@ export const Usage = () => (
 
 // --
 
+/**
+ * Groups allow you to seperate draggable items into different droppable areas.
+ */
 export const Groups = () => (
     <View
         row
@@ -164,6 +167,9 @@ export const Groups = () => (
 
 // --
 
+/**
+ * Variants define the style of the drag aesthetic. Possible options are `animated` (default), `lined`, `lined-focus` & `focus`.
+ */
 export const Variants = () => (
     <Stack
         direction="vertical"
@@ -324,6 +330,9 @@ export const Variants = () => (
 
 // --
 
+/**
+ * Target variants enable the dragged element to activate variants, based on the droppable `<DragArea />` group. For example; they are useful for dragging a task onto a navigation item.
+ */
 export const TargetVariants = () => (
     <View>
         <DragArea
@@ -702,8 +711,16 @@ export const SavingAfterDrop = () => {
 
 // --
 
+/**
+ * The `<DragElementArea />` & `<DragElement />` components offer a more granular control over draggable items, instead of `<DragArea />` that wraps each child in a `<DragElement />` automatically.
+ */
 export const DragElementTargetVariants = () => (
     <View>
+        <Heading
+            as="h4"
+            p={10}>
+            Draggable items that target variant groups below.
+        </Heading>
         <DragElementArea
             group="e"
             m="0 0 20px 0"
@@ -758,7 +775,12 @@ export const DragElementTargetVariants = () => (
                     <Heading
                         as="h4"
                         p={10}>
-                        Lined Focus / Lined Focus
+                        Lined Focus
+                    </Heading>
+                    <Heading
+                        as="h5"
+                        p={10}>
+                        Target variant: Lined Focus
                     </Heading>
                     <DragElementArea
                         group="d"
@@ -806,7 +828,12 @@ export const DragElementTargetVariants = () => (
                     <Heading
                         as="h4"
                         p={10}>
-                        Animated / Focus
+                        Animated
+                    </Heading>
+                    <Heading
+                        as="h5"
+                        p={10}>
+                        Target variant: Focus
                     </Heading>
                     <DragElementArea
                         group="a"
@@ -849,7 +876,12 @@ export const DragElementTargetVariants = () => (
                     <Heading
                         as="h4"
                         p={10}>
-                        Focus / Lined
+                        Focus
+                    </Heading>
+                    <Heading
+                        as="h5"
+                        p={10}>
+                        Target variant: Lined
                     </Heading>
                     <DragElementArea
                         group="b"
@@ -898,7 +930,12 @@ export const DragElementTargetVariants = () => (
                     <Heading
                         as="h4"
                         p={10}>
-                        Lined / Animated
+                        Lined
+                    </Heading>
+                    <Heading
+                        as="h5"
+                        p={10}>
+                        Target variant: Animated
                     </Heading>
                     <DragElementArea
                         group="c"
