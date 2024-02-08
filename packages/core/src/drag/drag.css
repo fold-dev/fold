@@ -1,7 +1,7 @@
 :root {
     --f-drag-speed: 0s;
     --f-drag-transition: cubic-bezier(.17,.67,.54,1.06);
-    --f-drag-indent: 4rem;
+    --f-drag-indent: 0;
 }
 
 /* area */
@@ -125,12 +125,12 @@
 .f-drag-area__element__lined-focus {
     pointer-events: none;
     position: absolute;
-    background: rgb(from var(--f-color-accent) r g b / 5%);
     z-index: 100;
     top: 0px;
     height: 100%;
     left: 0px;
     width: 100%;
+    background: rgb(from var(--f-color-accent) r g b / 5%);
     border: 0.2rem solid var(--f-color-accent);
     border-radius: var(--f-radius);
     animation: f-drag-focus 0.5s;
@@ -151,13 +151,15 @@
     content:" ";
     position: absolute;
     pointer-events: none;
-    background: var(--f-color-accent);
     z-index: 100;
     top: 0px;
     height: 100%;
     left: 0px;
     width: 100%;
-    opacity: 0.15;
+    background: rgb(from var(--f-color-accent) r g b / 5%);
+    border: 0.2rem solid var(--f-color-accent);
+    border-radius: var(--f-radius);
+    animation: f-drag-focus 0.5s; 
 }
 
 /* buffer, ghost & placeholder */
@@ -169,12 +171,9 @@
     height: 0.25rem;
     pointer-events: none;
     z-index: 10000;
-    /* background: var(--f-color-accent); */
-    background:  -webkit-linear-gradient(left, var(--f-color-accent), #11ffee00);
-    /* animation: f-drag-fadein var(--f-transition-duration-fast); */
+    background: var(--f-color-accent);
+    animation: f-drag-fadein var(--f-transition-duration-fast);
     transition: transform 0.05s var(--f-drag-transition);
-    /* background: red; */
-    /* z-index: 99999999999999; */
 }
 
 .f-drag-area__placeholder {
