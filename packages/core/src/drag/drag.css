@@ -156,11 +156,10 @@
     height: 100%;
     left: 0px;
     width: 100%;
-    opacity: 0.15;
     background: rgb(from var(--f-color-accent) r g b / 5%);
     border: 0.2rem solid var(--f-color-accent);
     border-radius: var(--f-radius);
-    animation: f-drag-focus 0.5s;
+    animation: f-drag-focus 0.5s; 
 }
 
 /* buffer, ghost & placeholder */
