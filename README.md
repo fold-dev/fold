@@ -34,7 +34,7 @@ yarn add @fold-dev/core
 ```jsx
 import React from 'react';
 import { FoldProvider, Heading, Button, Card, Input } from '@fold-dev/core';
-import '@fold-dev/core/dist/styles.css'
+import '@fold-dev/core/dist/styles.css';
 
 const App = () => {
     return (
