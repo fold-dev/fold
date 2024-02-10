@@ -99,7 +99,7 @@
     display: block;
     pointer-events: none;
     position: absolute;
-    width: 100%;
+    width:calc(96% - var(--f-date-cell-selected-space));
     height: calc(96% - var(--f-date-cell-selected-space));
     top: var(--f-date-cell-selected-space);
     left: 0;
