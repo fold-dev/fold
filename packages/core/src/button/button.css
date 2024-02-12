@@ -197,6 +197,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
+    border-radius: var(--f-button-border-radius);
 }
 
 .f-button.is-accent.is-active:after,
