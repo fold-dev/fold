@@ -190,17 +190,17 @@
 
 /* spacing using sibling selectors */
 
+/* .f-menu:not(.is-menubar) .f-menu-divider + .f-menu-item,
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-section, */
 .f-menu:not(.is-menubar) .f-menu-divider + .f-menu-optiongroup,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-heading,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-item,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-section {
+.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-heading {
     margin-top: var(--f-menu-divider-spacing);
 }
 
+/* .f-menu:not(.is-menubar) .f-menu-section + .f-menu-divider, */
 .f-menu:not(.is-menubar) .f-menu-optiongroup + .f-menu-divider,
 .f-menu:not(.is-menubar) .f-menu-item + .f-menu-divider,
-.f-menu:not(.is-menubar) .f-menu-heading + .f-menu-divider
-.f-menu:not(.is-menubar) .f-menu-section + .f-menu-divider {
+.f-menu:not(.is-menubar) .f-menu-heading + .f-menu-divider {
     margin-top: var(--f-menu-divider-spacing);
     margin-bottom: var(--f-menu-divider-spacing);
 }
