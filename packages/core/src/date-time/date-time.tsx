@@ -1,4 +1,5 @@
 import React, {
+    ReactElement,
     createContext,
     forwardRef,
     useContext,
@@ -941,7 +942,7 @@ export type ScrollingDatePickerProps = {
     weekdaysProps?: WeekdaysProps
     monthProps?: Omit<MonthProps, 'date'>
     monthNames?: string[]
-    monthTitle: (date: Date) => string
+    monthTitle: (date: Date) => ReactElement
 } & Omit<CoreViewProps, 'onChange' | 'disabled'>
 
 export const useScrollingDatePicker = () => {
@@ -1033,13 +1034,7 @@ export const ScrollingDatePicker = forwardRef((props: ScrollingDatePickerProps, 
                         key={uuid}
                         className="f-col"
                         style={{ height, width: '100%' }}>
-                        <Text
-                            as="span"
-                            className="f-scrolling-date-picker__title"
-                            size={size}
-                            width="100%">
-                            {monthTitle(month)}
-                        </Text>
+                        {monthTitle(month)}
                         <Month
                             width="100%"
                             flex={1}

@@ -264,17 +264,7 @@
 
 /* scrolling date picker */
 
-:root {
-    --f-date-scrolling-picker-title-padding: 1rem;
-}
-
 .f-scrolling-date-picker {
   position: relative;
   overflow-y: auto;
-}
-
-.f-scrolling-date-picker__title {
-    font-weight: 600;
-    display: inline-block;
-    padding: var(--f-date-scrolling-picker-title-padding);
 }
