@@ -265,7 +265,7 @@
 /* scrolling date picker */
 
 :root {
-    --f-date-scrolling-picker-title-padding: 0.25rem 0;
+    --f-date-scrolling-picker-title-padding: 1rem;
 }
 
 .f-scrolling-date-picker {
