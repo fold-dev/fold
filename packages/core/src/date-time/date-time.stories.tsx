@@ -373,7 +373,7 @@ export const ScrollingPicker = () => {
                 <Button onClick={handleTodayClick}>Go to Today</Button>
                 <ScrollingDatePicker
                     ref={ref}
-                    defaultDate={new Date()}
+                    defaultDate={today}
                     selection={selection}
                     onChange={handleSelection}
                     monthTitle={(date: Date) => '' + `${monthNames[date.getMonth()]} / ${date.getFullYear()}`}
