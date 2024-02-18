@@ -19,6 +19,7 @@ import {
     Popover,
     Stack,
     Text,
+    Textarea,
     useVisibility,
     View,
 } from '@fold-dev/core'
@@ -335,6 +336,20 @@ export const Control = () => {
                 <Input
                     placeholder="Enter your color"
                     value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+            </InputControl>
+
+            <InputControl>
+                <InputPrefix>
+                    <IconLib icon="circle" />
+                </InputPrefix>
+                <Textarea
+                    autoAdjust
+                    value={text}
+                    maxHeight={300}
+                    className="f-scrollbar"
+                    placeholder="Write message..."
                     onChange={(e) => setText(e.target.value)}
                 />
             </InputControl>

@@ -7,6 +7,7 @@
     --f-time-picker-color-hover: var(--f-color-text-weak);
     --f-time-picker-color-active: var(--f-color-accent);
     --f-time-picker-padding: var(--f-space-2) var(--f-space-5);
+    --f-time-picker-ampm-padding: var(--f-space-3);
 }
 
 .f-time-picker { 
@@ -35,7 +36,7 @@
 }
 
 .f-time-picker__ampm {
-    padding: 0 var(--f-space-3);
+    padding: var(--f-time-picker-ampm-padding);
 }
 
 /* date cell */
@@ -264,17 +265,7 @@
 
 /* scrolling date picker */
 
-:root {
-    --f-date-scrolling-picker-title-padding: 0.25rem 0;
-}
-
 .f-scrolling-date-picker {
   position: relative;
   overflow-y: auto;
-}
-
-.f-scrolling-date-picker__title {
-    font-weight: 600;
-    display: inline-block;
-    padding: var(--f-date-scrolling-picker-title-padding);
 }

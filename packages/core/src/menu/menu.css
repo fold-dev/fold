@@ -182,27 +182,12 @@
     overflow: hidden;
     display: block;
     border-top: 0.1rem solid var(--f-menu-divider-color);
+    margin-top: var(--f-menu-divider-spacing);
+    margin-bottom: var(--f-menu-divider-spacing);
 }
 
 .f-menu-divider > hr {
     display: none;
-}
-
-/* spacing using sibling selectors */
-
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-optiongroup,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-heading,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-item,
-.f-menu:not(.is-menubar) .f-menu-divider + .f-menu-section {
-    margin-top: var(--f-menu-divider-spacing);
-}
-
-.f-menu:not(.is-menubar) .f-menu-optiongroup + .f-menu-divider,
-.f-menu:not(.is-menubar) .f-menu-item + .f-menu-divider,
-.f-menu:not(.is-menubar) .f-menu-heading + .f-menu-divider
-.f-menu:not(.is-menubar) .f-menu-section + .f-menu-divider {
-    margin-top: var(--f-menu-divider-spacing);
-    margin-bottom: var(--f-menu-divider-spacing);
 }
 
 /* ************************************************************** */
@@ -227,6 +212,7 @@
 
 .f-menu-heading {
     flex-shrink: 0;
+    display: inline-block;
 }
 
 .f-menu-heading .f-menu-heading__heading {

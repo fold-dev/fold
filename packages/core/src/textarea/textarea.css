@@ -78,3 +78,26 @@
     outline-offset: 1px;
     transition: outline 100ms;
 }
+
+/*
+    Please see the <Input /> component.
+    This adds the ability wrap textarea with <InputControl />.
+    It would be better to inherit directly there - but this is more explicit.
+*/
+
+.f-input-control .f-textarea {
+    position: relative;
+    color: inherit;
+    background-color: transparent !important;
+    flex: 1;
+    height: fit-content;
+    border: 0;
+    border-color: none;
+    border-radius: 0;
+    font-weight: inherit;
+    font-family: inherit;
+    box-shadow: none;
+    transition: none;
+    outline: none !important;
+}
+

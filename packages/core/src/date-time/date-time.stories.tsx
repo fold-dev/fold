@@ -15,6 +15,7 @@ import {
     Popover,
     ScrollingDatePicker,
     Stack,
+    Text,
     TimePicker,
     useScrollingDatePicker,
     useVisibility,
@@ -373,10 +374,17 @@ export const ScrollingPicker = () => {
                 <Button onClick={handleTodayClick}>Go to Today</Button>
                 <ScrollingDatePicker
                     ref={ref}
-                    defaultDate={new Date()}
+                    defaultDate={today}
                     selection={selection}
                     onChange={handleSelection}
-                    monthTitle={(date: Date) => '' + `${monthNames[date.getMonth()]} / ${date.getFullYear()}`}
+                    monthTitle={(date: Date) => (
+                        <Text
+                            p="1rem"
+                            as="span"
+                            width="100%">
+                            {monthNames[date.getMonth()]} / {date.getFullYear()}
+                        </Text>
+                    )}
                 />
             </DateRangeProvider>
         </View>
