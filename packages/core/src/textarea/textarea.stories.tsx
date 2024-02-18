@@ -1,4 +1,4 @@
-import { Textarea, View } from '@fold-dev/core'
+import { IconLib, InputControl, InputPrefix, Textarea, View } from '@fold-dev/core'
 import React, { useState } from 'react'
 
 export default {
@@ -130,5 +130,30 @@ export const Sizes = () => {
                 onChange={(e) => setText(e.target.value)}
             />
         </View>
+    )
+}
+
+// --
+
+/**
+ * The `InputControl` component can also be used to create a `Textarea` with a prefix or suffix.
+ */
+export const WithInputControl = () => {
+    const [text, setText] = useState('')
+
+    return (
+        <InputControl>
+            <InputPrefix>
+                <IconLib icon="circle" />
+            </InputPrefix>
+            <Textarea
+                autoAdjust
+                value={text}
+                maxHeight={300}
+                className="f-scrollbar"
+                placeholder="Write message..."
+                onChange={(e) => setText(e.target.value)}
+            />
+        </InputControl>
     )
 }
