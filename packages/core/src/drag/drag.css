@@ -85,6 +85,12 @@
     in the parent DragElementArea (.f-drag-area)
 */
 
+:root {
+    --f-drag-lined-x-offset: -50%;
+    --f-drag-lined-y-offset: -50%;
+    --f-drag-lined-size: 3px;
+}
+
 .f-drag-area__element__line {
     position: absolute;
     background: var(--f-color-accent);
@@ -96,33 +102,28 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-vertical.is-last {
     bottom: 0; 
     left: 0; 
     width: 100%;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-horizontal.is-first {
     left: 0; 
     top: 0;
     height: 100%;
-    width: 0.25rem;
+    width: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-horizontal.is-last {
     right: 0; 
     top: 0; 
     height: 100%;
-    width: 0.25rem;
-}
-
-:root {
-    --f-drag-lined-x-offset: -50%;
-    --f-drag-lined-y-offset: -50%;
+    width: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-horizontal {
@@ -181,7 +182,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
     pointer-events: none;
     z-index: 10000;
     background: var(--f-color-accent);
