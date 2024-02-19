@@ -120,6 +120,19 @@
     width: 0.25rem;
 }
 
+:root {
+    --f-drag-lined-x-offset: -50%;
+    --f-drag-lined-y-offset: -50%;
+}
+
+.f-drag-area__element__line.is-horizontal {
+    transform: translateX(var(--f-drag-lined-x-offset));
+}
+
+.f-drag-area__element__line.is-vertical {
+    transform: translateY(var(--f-drag-lined-y-offset));
+}
+
 /* lined-focus variant */
 
 .f-drag-area__element__lined-focus {
