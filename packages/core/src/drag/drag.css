@@ -190,13 +190,25 @@
     transition: transform 0.05s var(--f-drag-transition);
 }
 
+:root {
+    --f-drag-placeholder-background: var(--f-color-surface-strongest);
+    --f-drag-placeholder-radius: 0;
+    --f-drag-placeholder-border: none;
+    --f-drag-placeholder-outline: none;
+    --f-drag-placeholder-margin: 0;
+}
+
 .f-drag-area__placeholder {
     position: absolute;
     top: 0px;
     left: 0px;
     pointer-events: none;
     z-index: 1;
-    background: var(--f-color-surface-stronger);
+    margin: var(--f-drag-placeholder-margin);
+    border: var(--f-drag-placeholder-border);
+    outline: var(--f-drag-placeholder-outline);
+    border-radius: var(--f-drag-placeholder-radius);
+    background: var(--f-drag-placeholder-background);
     /* animation: f-drag-fadein var(--f-transition-duration-fast); */
     /* transition: transform 0.1s var(--f-drag-transition); */
     /* background: red; */
