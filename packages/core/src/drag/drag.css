@@ -191,7 +191,7 @@
 }
 
 :root {
-    --f-drag-placeholder-background: var(--f-color-surface-strongest);
+    --f-drag-placeholder-background: var(--f-color-surface-stronger);
     --f-drag-placeholder-radius: 0;
     --f-drag-placeholder-border: none;
     --f-drag-placeholder-outline: none;
