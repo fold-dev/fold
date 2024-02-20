@@ -512,10 +512,12 @@ export const DragManager = (props: DragManagerProps) => {
                                     nextIndent,
                                 }
 
-                                // debug
-                                // for (let target of element.parentNode.children) target.style.border = 'none'
-                                // if (previous) previous.style.border = '0.2rem solid crimson'
-                                // if (next) next.style.border = '0.2rem solid darkcyan'
+                                // outline the previous & next elements
+                                if (windowObject('FOLD_DEBUG')) {
+                                    for (let target of element.parentNode.children) target.style.border = 'none'
+                                    if (previous) previous.style.border = '0.2rem solid crimson'
+                                    if (next) next.style.border = '0.2rem solid darkcyan'
+                                }
                             }
 
                             // update the drag target
