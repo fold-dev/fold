@@ -30,7 +30,7 @@ export const InputNumberControl = (props: InputNumberControlProps) => {
             className={className}>
             <button
                 onClick={onIncrease}
-                disabled={disableDecrease}
+                disabled={disableIncrease}
                 className="f-row f-buttonize">
                 <IconLib
                     size={size}
@@ -39,7 +39,7 @@ export const InputNumberControl = (props: InputNumberControlProps) => {
             </button>
             <button
                 onClick={onDecrease}
-                disabled={disableIncrease}
+                disabled={disableDecrease}
                 className="f-row f-buttonize">
                 <IconLib
                     size={size}
