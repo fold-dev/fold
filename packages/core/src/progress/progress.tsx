@@ -110,6 +110,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
 
 export type ProgressPieProps = {
     value: number
+    padding?: number
     size?: number
     variant?: Variant
 } & CoreViewProps
@@ -117,11 +118,11 @@ export type ProgressPieProps = {
 export const ProgressPie = (props: ProgressPieProps) => {
     const { 
         value = 0, 
+        padding = 5,
         size = 50, 
         variant = 'default', 
         ...rest 
     } = props
-    const radius = 90
     const className = classNames(
         {
             'f-circular-pie': true,
@@ -130,12 +131,18 @@ export const ProgressPie = (props: ProgressPieProps) => {
     )
 
     const pieChartPath = useMemo(() => {
-		const size = 160
-		const radius = size / 2	
+        const realPadding = Math.round((padding / size) * 200)
+		const viewSize = 200 - (realPadding * 2)
+		const radius = viewSize / 2	
         const x = Math.cos((2 * Math.PI)/(100/value))
         const y = Math.sin((2 * Math.PI)/(100/value))
         const longArc = (value <= 50) ? 0 : 1
-        return "M" + radius + "," + radius + " L" + radius + "," + 0 + ", A" + radius + "," + radius + " 0 " + longArc + ",1 " + (radius + y*radius) + "," + (radius - x*radius) + " z";		
+        const d = "M" + radius + "," + radius + " L" + radius + "," + 0 + ", A" + radius + "," + radius + " 0 " + longArc + ",1 " + (radius + y*radius) + "," + (radius - x*radius) + " z"
+
+        return {
+            d,
+            p: realPadding,
+        }
     }, [value])
     
     return (
@@ -149,30 +156,39 @@ export const ProgressPie = (props: ProgressPieProps) => {
             role="progressbar">
             <svg
                 id="svg"
-                style={{ border: '1px solid red' }}
                 width={size}
                 height={size}
                 viewBox="0 0 200 200"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg">
-                <g
-                    fill="grey"
-                    transform="rotate(90 0 0) translate(20 -180)">
-                    <path 
-                        style={{ border: '1px solid blue' }}
-                        d={pieChartPath}
-                        fill="red"
-                    /> 
-                </g>
-
                 <circle
-                    r={radius}
+                    r="100"
                     cx="100"
                     cy="100"
-                    fill="transparent"
-                    strokeDasharray="565.48"
-                    strokeDashoffset="0" 
+                    width="100%"
+                    height="100%"
+                    className="f-circular-pie__background"
                 />
+                {value < 100 && (
+                    <g
+                        fill="grey"
+                        className="f-circular-pie__fill"
+                        transform={`rotate(0 0 0) translate(${pieChartPath.p} ${pieChartPath.p})`}>
+                        <path 
+                            d={pieChartPath.d}
+                        /> 
+                    </g>
+                )}
+                {value >= 100 && (
+                    <circle
+                        r={100 - pieChartPath.p}
+                        cx="100"
+                        cy="100"
+                        width="100%"
+                        height="100%"
+                        className="f-circular-pie__fill"
+                    />
+                )}
             </svg>
         </View>
     )

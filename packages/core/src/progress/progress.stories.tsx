@@ -244,6 +244,11 @@ export const Pie = () => (
             size={50}
             variant="highlight"
         />
+        <ProgressPie
+            value={100}
+            size={50}
+            variant="highlight"
+        />
     </Stack>
 )
 

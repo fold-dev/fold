@@ -1,6 +1,6 @@
 :root {
     --f-progress-background: var(--f-color-surface-stronger);
-    --f-progress-active: var(--f-color-accent);
+    --f-progress-active: var(--f-color-surface-strongest);
     --f-progress-radius: var(--f-radius);
     --f-subtle-progress-padding: var(--f-space-1);
     --f-subtle-progress-opacity: 0.2;
@@ -260,4 +260,68 @@
     stroke: var(--f-color-highlight);
 }
 
+/* progress pie */
 
+.f-circular-pie .f-circular-pie__background {
+    fill: var(--f-progress-background);
+}
+
+.f-circular-pie .f-circular-pie__fill {
+    fill: var(--f-progress-active);
+}
+
+.f-circular-pie.is-accent .f-circular-pie__background {
+    fill: var(--f-color-accent-weak);
+}
+
+.f-circular-pie.is-accent .f-circular-pie__fill {
+    fill: var(--f-color-accent);
+}
+
+.f-circular-pie.is-success .f-circular-pie__background {
+    fill: var(--f-color-success-weak);
+}
+
+.f-circular-pie.is-success .f-circular-pie__fill {
+    fill: var(--f-color-success);
+}
+
+.f-circular-pie.is-neutral .f-circular-pie__background {
+    fill: var(--f-color-neutral-weak);
+}
+
+.f-circular-pie.is-neutral .f-circular-pie__fill {
+    fill: var(--f-color-neutral);
+}
+
+.f-circular-pie.is-caution .f-circular-pie__background {
+    fill: var(--f-color-caution-weak);
+}
+
+.f-circular-pie.is-caution .f-circular-pie__fill {
+    fill: var(--f-color-caution);
+}
+
+.f-circular-pie.is-warning .f-circular-pie__background {
+    fill: var(--f-color-warning-weak);
+}
+
+.f-circular-pie.is-warning .f-circular-pie__fill {
+    fill: var(--f-color-warning);
+}
+
+.f-circular-pie.is-danger .f-circular-pie__background {
+    fill: var(--f-color-danger-weak);
+}
+
+.f-circular-pie.is-danger .f-circular-pie__fill {
+    fill: var(--f-color-danger);
+}
+
+.f-circular-pie.is-highlight .f-circular-pie__background {
+    fill: var(--f-color-highlight-weak);
+}
+
+.f-circular-pie.is-highlight .f-circular-pie__fill {
+    fill: var(--f-color-highlight);
+}
