@@ -41,15 +41,21 @@ export const Progress = (props: ProgressProps) => {
     )
 }
 
-export type CircularProgressProps = {
+export type ProgressCircleProps = {
     value: number
     thickness?: number
     size?: number
     variant?: Variant
 } & CoreViewProps
 
-export const CircularProgress = (props: CircularProgressProps) => {
-    const { value = 0, thickness = '1rem', size = 50, variant = 'default', ...rest } = props
+export const ProgressCircle = (props: ProgressCircleProps) => {
+    const { 
+        value = 0, 
+        thickness = '1rem', 
+        size = 50, 
+        variant = 'default', 
+        ...rest 
+    } = props
     const radius = 90
     const circ = Math.PI * (radius * 2)
     const pct = ((100 - value) / 100) * circ
@@ -62,7 +68,7 @@ export const CircularProgress = (props: CircularProgressProps) => {
     )
 
     const pieChartPath = useMemo(() => {
-		const size = 180
+		const size = 160
 		const radius = size / 2	
         const x = Math.cos((2 * Math.PI)/(100/value))
         const y = Math.sin((2 * Math.PI)/(100/value))
@@ -89,7 +95,7 @@ export const CircularProgress = (props: CircularProgressProps) => {
                 xmlns="http://www.w3.org/2000/svg">
                 <g
                     fill="grey"
-                    transform="rotate(90 0 0) translate(10 -190)">
+                    transform="rotate(90 0 0) translate(20 -180)">
                     <path 
                         style={{ border: '1px solid blue' }}
                         d={pieChartPath}
@@ -97,7 +103,7 @@ export const CircularProgress = (props: CircularProgressProps) => {
                     /> 
                 </g>
 
-            {/*     <circle
+                <circle
                     r={radius}
                     cx="100"
                     cy="100"
@@ -105,7 +111,7 @@ export const CircularProgress = (props: CircularProgressProps) => {
                     strokeDasharray="565.48"
                     strokeDashoffset="0"
                     style={{ strokeWidth: thickness }} 
-                />
+                />{/* 
                 <circle
                     r={radius}
                     cx="100"

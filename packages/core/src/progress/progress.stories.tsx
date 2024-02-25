@@ -1,4 +1,4 @@
-import { CircularProgress, Heading, Progress, Stack, SubtleProgress, Text } from '@fold-dev/core'
+import { ProgressCircle, Heading, Progress, Stack, SubtleProgress, Text } from '@fold-dev/core'
 import React from 'react'
 
 export default {
@@ -157,7 +157,7 @@ export const States = () => (
 
 export const Circular = () => (
     <Stack spacing={10}>
-        <CircularProgress
+        <ProgressCircle
             value={20}
             size={120}
             thickness={10}>
@@ -166,38 +166,38 @@ export const Circular = () => (
                 colorToken="accent">
                 20%
             </Heading>
-        </CircularProgress>
-        <CircularProgress
+        </ProgressCircle>
+        <ProgressCircle
             value={90}
             size={120}
             thickness={10}
             variant="accent"
         />
-        <CircularProgress
+        <ProgressCircle
             value={50}
             size={80}
             thickness={10}
             variant="success"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="neutral"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="warning"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="danger"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={20}
