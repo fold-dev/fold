@@ -66,6 +66,69 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
         },
         [props.className, getActionClass(variant)]
     )
+    
+    return (
+        <View
+            {...rest}
+            className={className}
+            aria-valuetext={`${value}%`}
+            aria-valuenow={value}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            role="progressbar">
+            <svg
+                id="svg"
+                style={{ border: '1px solid red' }}
+                width={size}
+                height={size}
+                viewBox="0 0 200 200"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle
+                    r={radius}
+                    cx="100"
+                    cy="100"
+                    fill="transparent"
+                    
+                    strokeDashoffset="0"
+                    style={{ strokeWidth: thickness }} 
+                />
+                <circle
+                    r={radius}
+                    cx="100"
+                    cy="100"
+                    fill="transparent"
+                    strokeDasharray="565.48"
+                    strokeDashoffset={0}
+                    style={{ strokeWidth: thickness, strokeDashoffset: pct }}
+                    strokeLinecap="butt" 
+                />
+            </svg>
+            {!!props.children && <div className="f-circular-progress-children f-row">{props.children}</div>}
+        </View>
+    )
+}
+
+export type ProgressPieProps = {
+    value: number
+    size?: number
+    variant?: Variant
+} & CoreViewProps
+
+export const ProgressPie = (props: ProgressPieProps) => {
+    const { 
+        value = 0, 
+        size = 50, 
+        variant = 'default', 
+        ...rest 
+    } = props
+    const radius = 90
+    const className = classNames(
+        {
+            'f-circular-pie': true,
+        },
+        [props.className, getActionClass(variant)]
+    )
 
     const pieChartPath = useMemo(() => {
 		const size = 160
@@ -109,21 +172,9 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
                     cy="100"
                     fill="transparent"
                     strokeDasharray="565.48"
-                    strokeDashoffset="0"
-                    style={{ strokeWidth: thickness }} 
-                />{/* 
-                <circle
-                    r={radius}
-                    cx="100"
-                    cy="100"
-                    fill="transparent"
-                    strokeDasharray="565.48"
-                    strokeDashoffset={0}
-                    style={{ strokeWidth: thickness, strokeDashoffset: pct }}
-                    strokeLinecap="butt" 
-                /> */}
+                    strokeDashoffset="0" 
+                />
             </svg>
-            {!!props.children && <div className="f-circular-progress-children f-row">{props.children}</div>}
         </View>
     )
 }
