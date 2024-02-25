@@ -1,4 +1,4 @@
-import { ProgressCircle, Heading, Progress, Stack, SubtleProgress, Text, ProgressPie } from '@fold-dev/core'
+import { ProgressCircle, Heading, Progress, Stack, ProgressSubtle, Text, ProgressPie } from '@fold-dev/core'
 import React from 'react'
 
 export default {
@@ -253,20 +253,20 @@ export const Subtle = () => (
     <Stack
         direction="vertical"
         spacing={10}>
-        <SubtleProgress value={87}>
+        <ProgressSubtle value={87}>
             <Text>Redux</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
 
-        <SubtleProgress
+        <ProgressSubtle
             value={20}
             variant="danger">
             <Text>MobX</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
 
-        <SubtleProgress
+        <ProgressSubtle
             value={55}
             variant="highlight">
             <Text>Zustand</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
     </Stack>
 )

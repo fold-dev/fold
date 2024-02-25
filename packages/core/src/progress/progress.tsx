@@ -89,7 +89,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
                     cx="100"
                     cy="100"
                     fill="transparent"
-                    
+                    strokeDasharray="565.48"
                     strokeDashoffset="0"
                     style={{ strokeWidth: thickness }} 
                 />
@@ -179,12 +179,12 @@ export const ProgressPie = (props: ProgressPieProps) => {
     )
 }
 
-export type SubtleProgressProps = {
+export type ProgressSubtleProps = {
     value: number
     variant?: Variant
 } & CoreViewProps
 
-export const SubtleProgress = (props: SubtleProgressProps) => {
+export const ProgressSubtle = (props: ProgressSubtleProps) => {
     const { value = 0, variant = 'default', ...rest } = props
     const className = classNames(
         {
