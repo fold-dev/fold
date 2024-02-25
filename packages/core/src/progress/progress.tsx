@@ -78,7 +78,6 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
             role="progressbar">
             <svg
                 id="svg"
-                style={{ border: '1px solid red' }}
                 width={size}
                 height={size}
                 viewBox="0 0 200 200"
