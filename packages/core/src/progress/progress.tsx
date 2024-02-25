@@ -61,7 +61,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
     const pct = ((100 - value) / 100) * circ
     const className = classNames(
         {
-            'f-circular-progress': true,
+            'f-progress-circle': true,
             'f-row': true,
         },
         [props.className, getActionClass(variant)]
@@ -103,7 +103,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
                     strokeLinecap="butt" 
                 />
             </svg>
-            {!!props.children && <div className="f-circular-progress-children f-row">{props.children}</div>}
+            {!!props.children && <div className="f-progress-circle-children f-row">{props.children}</div>}
         </View>
     )
 }
@@ -125,7 +125,7 @@ export const ProgressPie = (props: ProgressPieProps) => {
     } = props
     const className = classNames(
         {
-            'f-circular-pie': true,
+            'f-progress-pie': true,
         },
         [props.className, getActionClass(variant)]
     )
@@ -167,12 +167,12 @@ export const ProgressPie = (props: ProgressPieProps) => {
                     cy="100"
                     width="100%"
                     height="100%"
-                    className="f-circular-pie__background"
+                    className="f-progress-pie__background"
                 />
                 {value < 100 && (
                     <g
                         fill="grey"
-                        className="f-circular-pie__fill"
+                        className="f-progress-pie__fill"
                         transform={`rotate(0 0 0) translate(${pieChartPath.p} ${pieChartPath.p})`}>
                         <path 
                             d={pieChartPath.d}
@@ -186,7 +186,7 @@ export const ProgressPie = (props: ProgressPieProps) => {
                         cy="100"
                         width="100%"
                         height="100%"
-                        className="f-circular-pie__fill"
+                        className="f-progress-pie__fill"
                     />
                 )}
             </svg>
@@ -203,7 +203,7 @@ export const ProgressSubtle = (props: ProgressSubtleProps) => {
     const { value = 0, variant = 'default', ...rest } = props
     const className = classNames(
         {
-            'f-subtle-progress': true,
+            'f-progress-subtle': true,
         },
         [props.className, getActionClass(variant)]
     )
@@ -214,7 +214,7 @@ export const ProgressSubtle = (props: ProgressSubtleProps) => {
             className={className}>
             <div
                 style={{ width: value + '%' }}
-                className="f-subtle-progress__bar"
+                className="f-progress-subtle__bar"
                 aria-valuetext={`${props.value}%`}
                 aria-valuenow={props.value}
                 aria-valuemin={0}

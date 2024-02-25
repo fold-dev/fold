@@ -2,8 +2,8 @@
     --f-progress-background: var(--f-color-surface-stronger);
     --f-progress-active: var(--f-color-surface-strongest);
     --f-progress-radius: var(--f-radius);
-    --f-subtle-progress-padding: var(--f-space-1);
-    --f-subtle-progress-opacity: 0.2;
+    --f-progress-subtle-padding: var(--f-space-1);
+    --f-progress-subtle-opacity: 0.2;
 }
 
 .f-progress {
@@ -105,19 +105,19 @@
 
 /* subtle */
 
-.f-subtle-progress {
+.f-progress-subtle {
     width: 100%;
-    padding: var(--f-subtle-progress-padding);
+    padding: var(--f-progress-subtle-padding);
     overflow: hidden;
     position: relative;
 }
 
-.f-subtle-progress > * {
+.f-progress-subtle > * {
     z-index: 1;
     position: relative;
 }
 
-.f-subtle-progress__bar {
+.f-progress-subtle__bar {
     z-index: 0;
     border-radius: var(--f-progress-radius);
     top: 0px;
@@ -128,41 +128,41 @@
     pointer-events: none;
 }
 
-.f-subtle-progress.is-accent .f-subtle-progress__bar,
-.f-subtle-progress.is-success .f-subtle-progress__bar,
-.f-subtle-progress.is-neutral .f-subtle-progress__bar,
-.f-subtle-progress.is-caution .f-subtle-progress__bar,
-.f-subtle-progress.is-warning .f-subtle-progress__bar,
-.f-subtle-progress.is-danger .f-subtle-progress__bar,
-.f-subtle-progress.is-highlight .f-subtle-progress__bar {
-    opacity: var(--f-subtle-progress-opacity);
+.f-progress-subtle.is-accent .f-progress-subtle__bar,
+.f-progress-subtle.is-success .f-progress-subtle__bar,
+.f-progress-subtle.is-neutral .f-progress-subtle__bar,
+.f-progress-subtle.is-caution .f-progress-subtle__bar,
+.f-progress-subtle.is-warning .f-progress-subtle__bar,
+.f-progress-subtle.is-danger .f-progress-subtle__bar,
+.f-progress-subtle.is-highlight .f-progress-subtle__bar {
+    opacity: var(--f-progress-subtle-opacity);
 }
 
-.f-subtle-progress.is-accent .f-subtle-progress__bar {
+.f-progress-subtle.is-accent .f-progress-subtle__bar {
     background: var(--f-color-accent);
 }
 
-.f-subtle-progress.is-success .f-subtle-progress__bar {
+.f-progress-subtle.is-success .f-progress-subtle__bar {
     background: var(--f-color-success);
 }
 
-.f-subtle-progress.is-neutral .f-subtle-progress__bar {
+.f-progress-subtle.is-neutral .f-progress-subtle__bar {
     background: var(--f-color-neutral);
 }
 
-.f-subtle-progress.is-caution .f-subtle-progress__bar {
+.f-progress-subtle.is-caution .f-progress-subtle__bar {
     background: var(--f-color-caution);
 }
 
-.f-subtle-progress.is-warning .f-subtle-progress__bar {
+.f-progress-subtle.is-warning .f-progress-subtle__bar {
     background: var(--f-color-warning);
 }
 
-.f-subtle-progress.is-danger .f-subtle-progress__bar {
+.f-progress-subtle.is-danger .f-progress-subtle__bar {
     background: var(--f-color-danger);
 }
 
-.f-subtle-progress.is-highlight .f-subtle-progress__bar {
+.f-progress-subtle.is-highlight .f-progress-subtle__bar {
     background: var(--f-color-highlight);
 }
 
@@ -204,26 +204,26 @@
 
 /* circular */
 
-.f-circular-progress {
+.f-progress-circle {
     position: relative;
 }
 
-.f-circular-progress svg {
+.f-progress-circle svg {
     transform: rotateZ(-90deg);
 }
 
-.f-circular-progress circle {
+.f-progress-circle circle {
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
     stroke: var(--f-progress-background);
     stroke-width: 1rem;
 }
 
-.f-circular-progress circle:last-of-type {
+.f-progress-circle circle:last-of-type {
     stroke: var(--f-progress-active);
 }
 
-.f-circular-progress-children {
+.f-progress-circle-children {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -232,96 +232,96 @@
     text-align: center;
 }
 
-.f-circular-progress.is-accent circle:last-of-type {
+.f-progress-circle.is-accent circle:last-of-type {
     stroke: var(--f-color-accent);
 }
 
-.f-circular-progress.is-success circle:last-of-type {
+.f-progress-circle.is-success circle:last-of-type {
     stroke: var(--f-color-success);
 }
 
-.f-circular-progress.is-neutral circle:last-of-type {
+.f-progress-circle.is-neutral circle:last-of-type {
     stroke: var(--f-color-neutral);
 }
 
-.f-circular-progress.is-caution circle:last-of-type {
+.f-progress-circle.is-caution circle:last-of-type {
     stroke: var(--f-color-caution);
 }
 
-.f-circular-progress.is-warning circle:last-of-type {
+.f-progress-circle.is-warning circle:last-of-type {
     stroke: var(--f-color-warning);
 }
 
-.f-circular-progress.is-danger circle:last-of-type {
+.f-progress-circle.is-danger circle:last-of-type {
     stroke: var(--f-color-danger);
 }
 
-.f-circular-progress.is-highlight circle:last-of-type {
+.f-progress-circle.is-highlight circle:last-of-type {
     stroke: var(--f-color-highlight);
 }
 
 /* progress pie */
 
-.f-circular-pie .f-circular-pie__background {
+.f-progress-pie .f-progress-pie__background {
     fill: var(--f-progress-background);
 }
 
-.f-circular-pie .f-circular-pie__fill {
+.f-progress-pie .f-progress-pie__fill {
     fill: var(--f-progress-active);
 }
 
-.f-circular-pie.is-accent .f-circular-pie__background {
+.f-progress-pie.is-accent .f-progress-pie__background {
     fill: var(--f-color-accent-weak);
 }
 
-.f-circular-pie.is-accent .f-circular-pie__fill {
+.f-progress-pie.is-accent .f-progress-pie__fill {
     fill: var(--f-color-accent);
 }
 
-.f-circular-pie.is-success .f-circular-pie__background {
+.f-progress-pie.is-success .f-progress-pie__background {
     fill: var(--f-color-success-weak);
 }
 
-.f-circular-pie.is-success .f-circular-pie__fill {
+.f-progress-pie.is-success .f-progress-pie__fill {
     fill: var(--f-color-success);
 }
 
-.f-circular-pie.is-neutral .f-circular-pie__background {
+.f-progress-pie.is-neutral .f-progress-pie__background {
     fill: var(--f-color-neutral-weak);
 }
 
-.f-circular-pie.is-neutral .f-circular-pie__fill {
+.f-progress-pie.is-neutral .f-progress-pie__fill {
     fill: var(--f-color-neutral);
 }
 
-.f-circular-pie.is-caution .f-circular-pie__background {
+.f-progress-pie.is-caution .f-progress-pie__background {
     fill: var(--f-color-caution-weak);
 }
 
-.f-circular-pie.is-caution .f-circular-pie__fill {
+.f-progress-pie.is-caution .f-progress-pie__fill {
     fill: var(--f-color-caution);
 }
 
-.f-circular-pie.is-warning .f-circular-pie__background {
+.f-progress-pie.is-warning .f-progress-pie__background {
     fill: var(--f-color-warning-weak);
 }
 
-.f-circular-pie.is-warning .f-circular-pie__fill {
+.f-progress-pie.is-warning .f-progress-pie__fill {
     fill: var(--f-color-warning);
 }
 
-.f-circular-pie.is-danger .f-circular-pie__background {
+.f-progress-pie.is-danger .f-progress-pie__background {
     fill: var(--f-color-danger-weak);
 }
 
-.f-circular-pie.is-danger .f-circular-pie__fill {
+.f-progress-pie.is-danger .f-progress-pie__fill {
     fill: var(--f-color-danger);
 }
 
-.f-circular-pie.is-highlight .f-circular-pie__background {
+.f-progress-pie.is-highlight .f-progress-pie__background {
     fill: var(--f-color-highlight-weak);
 }
 
-.f-circular-pie.is-highlight .f-circular-pie__fill {
+.f-progress-pie.is-highlight .f-progress-pie__fill {
     fill: var(--f-color-highlight);
 }
