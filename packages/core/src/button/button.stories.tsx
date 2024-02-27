@@ -255,10 +255,16 @@ export const AsLink = () => (
         <Button
             as="a"
             href="https://google.com"
+            target="_blank">
+            Default
+        </Button>
+        <Button
+            as="a"
+            href="https://google.com"
             target="_blank"
             subtle
             underlined>
-            Default
+            Subtle
         </Button>
         <Button
             as="a"
