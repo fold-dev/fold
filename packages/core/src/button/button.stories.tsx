@@ -376,12 +376,16 @@ export const ButtonGroups = () => (
         <ButtonGroup>
             <Button>Normal Button</Button>
         </ButtonGroup>
+        <ButtonGroup>
+            <Button variant="accent" outline>Accented</Button>
+            <Button variant="accent" outline>Accented</Button>
+        </ButtonGroup>
         <ButtonGroup
             direction="vertical"
             width={300}>
-            <Button variant="accent">With</Button>
-            <Button variant="accent">Direction</Button>
-            <Button variant="accent">Vertical</Button>
+            <Button variant="accent" outline>With</Button>
+            <Button variant="accent" outline>Direction</Button>
+            <Button variant="accent" outline>Vertical</Button>
         </ButtonGroup>
     </Stack>
 )

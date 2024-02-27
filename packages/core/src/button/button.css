@@ -493,17 +493,20 @@
 
 /* horizontal */
 
-.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type) {
+.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type),
+.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type)::after {
     border-radius: 0px;
     border-right: 0px;
 }
 
-.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type) {
+.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type),
+.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type)::after {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 
-.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type) {
+.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type),
+.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type)::after {
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
     border-right: 0px;
