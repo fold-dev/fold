@@ -511,3 +511,33 @@
     border-top-right-radius: 0px;
     border-right: 0px;
 }
+
+/* colors */
+
+.f-button-group .f-button.is-accent:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-accent-weak);
+}
+
+.f-button-group .f-button.is-success:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-success-weak);
+}
+
+.f-button-group .f-button.is-neutral:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-neutral-weak);
+}
+
+.f-button-group .f-button.is-caution:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-caution-weak);
+}
+
+.f-button-group .f-button.is-warning:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-warning-weak);
+}
+
+.f-button-group .f-button.is-danger:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-danger-weak);
+}
+
+.f-button-group .f-button.is-highlight:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-highlight-weak);
+}
