@@ -85,6 +85,12 @@
     in the parent DragElementArea (.f-drag-area)
 */
 
+:root {
+    --f-drag-lined-x-offset: -50%;
+    --f-drag-lined-y-offset: -50%;
+    --f-drag-lined-size: 3px;
+}
+
 .f-drag-area__element__line {
     position: absolute;
     background: var(--f-color-accent);
@@ -96,28 +102,36 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-vertical.is-last {
     bottom: 0; 
     left: 0; 
     width: 100%;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-horizontal.is-first {
     left: 0; 
     top: 0;
     height: 100%;
-    width: 0.25rem;
+    width: var(--f-drag-lined-size);
 }
 
 .f-drag-area__element__line.is-horizontal.is-last {
     right: 0; 
     top: 0; 
     height: 100%;
-    width: 0.25rem;
+    width: var(--f-drag-lined-size);
+}
+
+.f-drag-area__element__line.is-horizontal {
+    transform: translateX(var(--f-drag-lined-x-offset));
+}
+
+.f-drag-area__element__line.is-vertical {
+    transform: translateY(var(--f-drag-lined-y-offset));
 }
 
 /* lined-focus variant */
@@ -168,12 +182,20 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 0.25rem;
+    height: var(--f-drag-lined-size);
     pointer-events: none;
     z-index: 10000;
     background: var(--f-color-accent);
     animation: f-drag-fadein var(--f-transition-duration-fast);
     transition: transform 0.05s var(--f-drag-transition);
+}
+
+:root {
+    --f-drag-placeholder-background: var(--f-color-surface-stronger);
+    --f-drag-placeholder-radius: 0;
+    --f-drag-placeholder-border: none;
+    --f-drag-placeholder-outline: none;
+    --f-drag-placeholder-margin: 0;
 }
 
 .f-drag-area__placeholder {
@@ -182,7 +204,11 @@
     left: 0px;
     pointer-events: none;
     z-index: 1;
-    background: var(--f-color-surface-stronger);
+    margin: var(--f-drag-placeholder-margin);
+    border: var(--f-drag-placeholder-border);
+    outline: var(--f-drag-placeholder-outline);
+    border-radius: var(--f-drag-placeholder-radius);
+    background: var(--f-drag-placeholder-background);
     /* animation: f-drag-fadein var(--f-transition-duration-fast); */
     /* transition: transform 0.1s var(--f-drag-transition); */
     /* background: red; */

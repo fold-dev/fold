@@ -472,17 +472,20 @@
     width: 100%;
 }
 
-.f-button-group.is-vertical > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type) {
+.f-button-group.is-vertical > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type),
+.f-button-group.is-vertical > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type)::after {
     border-radius: 0px;
     border-bottom: 0px;
 }
 
-.f-button-group.is-vertical > .f-button:last-of-type:not(.f-button:first-of-type) {
+.f-button-group.is-vertical > .f-button:last-of-type:not(.f-button:first-of-type),
+.f-button-group.is-vertical > .f-button:last-of-type:not(.f-button:first-of-type)::after {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
 
-.f-button-group.is-vertical > .f-button:first-of-type:not(.f-button:last-of-type) {
+.f-button-group.is-vertical > .f-button:first-of-type:not(.f-button:last-of-type),
+.f-button-group.is-vertical > .f-button:first-of-type:not(.f-button:last-of-type)::after {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom: 0px;
@@ -490,18 +493,51 @@
 
 /* horizontal */
 
-.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type) {
+.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type),
+.f-button-group.is-horizontal > .f-button:not(.f-button:first-of-type):not(.f-button:last-of-type)::after {
     border-radius: 0px;
     border-right: 0px;
 }
 
-.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type) {
+.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type),
+.f-button-group.is-horizontal > .f-button:last-of-type:not(.f-button:first-of-type)::after {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
 
-.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type) {
+.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type),
+.f-button-group.is-horizontal > .f-button:first-of-type:not(.f-button:last-of-type)::after {
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
     border-right: 0px;
+}
+
+/* colors */
+
+.f-button-group .f-button.is-accent:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-accent-weak);
+}
+
+.f-button-group .f-button.is-success:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-success-weak);
+}
+
+.f-button-group .f-button.is-neutral:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-neutral-weak);
+}
+
+.f-button-group .f-button.is-caution:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-caution-weak);
+}
+
+.f-button-group .f-button.is-warning:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-warning-weak);
+}
+
+.f-button-group .f-button.is-danger:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-danger-weak);
+}
+
+.f-button-group .f-button.is-highlight:not(.is-subtle):not(.is-outline) {
+    border-color: var(--f-color-highlight-weak);
 }

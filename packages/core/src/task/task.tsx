@@ -4,7 +4,7 @@ import {
     AvatarGroup,
     Button,
     CheckboxAlt,
-    CircularProgress,
+    ProgressCircle,
     classNames,
     ContextMenuContext,
     CoreViewProps,
@@ -135,7 +135,7 @@ export const TaskBadge = ({ icon, label, color, progress, onClick }: TaskBadge) 
                 />
             )}
             {progress && (
-                <CircularProgress
+                <ProgressCircle
                     value={progress}
                     size={12}
                     thickness={28}

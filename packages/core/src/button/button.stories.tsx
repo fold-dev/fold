@@ -255,10 +255,16 @@ export const AsLink = () => (
         <Button
             as="a"
             href="https://google.com"
+            target="_blank">
+            Default
+        </Button>
+        <Button
+            as="a"
+            href="https://google.com"
             target="_blank"
             subtle
             underlined>
-            Default
+            Subtle
         </Button>
         <Button
             as="a"
@@ -381,7 +387,32 @@ export const ButtonGroups = () => (
             width={300}>
             <Button>With</Button>
             <Button>Direction</Button>
+            <Button>Going</Button>
             <Button>Vertical</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+            <Button variant="accent" outline>Accented</Button>
+            <Button variant="accent" outline>Accented</Button>
+        </ButtonGroup>
+        <ButtonGroup
+            direction="vertical"
+            width={300}>
+            <Button variant="highlight" outline>With</Button>
+            <Button variant="highlight" outline>Direction</Button>
+            <Button variant="highlight" outline>Going</Button>
+            <Button variant="highlight" outline>Vertical</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+            <Button variant="accent">Accented</Button>
+            <Button variant="accent">Accented</Button>
+        </ButtonGroup>
+        <ButtonGroup
+            direction="vertical"
+            width={300}>
+            <Button variant="highlight">With</Button>
+            <Button variant="highlight">Direction</Button>
+            <Button variant="highlight">Going</Button>
+            <Button variant="highlight">Vertical</Button>
         </ButtonGroup>
     </Stack>
 )

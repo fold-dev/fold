@@ -1,4 +1,4 @@
-import { CircularProgress, Heading, Progress, Stack, SubtleProgress, Text } from '@fold-dev/core'
+import { ProgressCircle, Heading, Progress, Stack, ProgressSubtle, Text, ProgressPie } from '@fold-dev/core'
 import React from 'react'
 
 export default {
@@ -155,52 +155,98 @@ export const States = () => (
 
 // --
 
-export const Circular = () => (
+export const Circle = () => (
     <Stack spacing={10}>
-        <CircularProgress
+        <ProgressCircle
             value={20}
             size={120}
-            thickness={10}>
+            thickness={20}>
             <Heading
                 as="h1"
                 colorToken="accent">
                 20%
             </Heading>
-        </CircularProgress>
-        <CircularProgress
+        </ProgressCircle>
+        <ProgressCircle
             value={90}
             size={120}
             thickness={10}
             variant="accent"
         />
-        <CircularProgress
+        <ProgressCircle
             value={50}
             size={80}
             thickness={10}
             variant="success"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="neutral"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="warning"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={10}
             variant="danger"
         />
-        <CircularProgress
+        <ProgressCircle
             value={80}
             size={50}
             thickness={20}
+            variant="highlight"
+        />
+    </Stack>
+)
+
+// --
+
+export const Pie = () => (
+    <Stack spacing={10}>
+        <ProgressPie
+            value={20}
+            size={120}
+        />
+        <ProgressPie
+            value={90}
+            size={120}
+            variant="accent"
+        />
+        <ProgressPie
+            value={50}
+            size={80}
+            variant="success"
+        />
+        <ProgressPie
+            value={80}
+            size={50}
+            variant="neutral"
+        />
+        <ProgressPie
+            value={80}
+            size={50}
+            variant="warning"
+        />
+        <ProgressPie
+            value={80}
+            size={50}
+            variant="danger"
+        />
+        <ProgressPie
+            value={80}
+            size={50}
+            variant="highlight"
+        />
+        <ProgressPie
+            value={100}
+            size={50}
             variant="highlight"
         />
     </Stack>
@@ -212,20 +258,20 @@ export const Subtle = () => (
     <Stack
         direction="vertical"
         spacing={10}>
-        <SubtleProgress value={87}>
+        <ProgressSubtle value={87}>
             <Text>Redux</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
 
-        <SubtleProgress
+        <ProgressSubtle
             value={20}
             variant="danger">
             <Text>MobX</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
 
-        <SubtleProgress
+        <ProgressSubtle
             value={55}
             variant="highlight">
             <Text>Zustand</Text>
-        </SubtleProgress>
+        </ProgressSubtle>
     </Stack>
 )
