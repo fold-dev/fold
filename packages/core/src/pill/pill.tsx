@@ -16,19 +16,18 @@ export type PillProps = {
 export const Pill = forwardRef((props: PillProps, ref) => {
     const { size = 'md', solid, outline, subtle, color, prefix, suffix, style = {}, ...rest } = props
     const isClickable = !!props.onClick
-    const accentColor = useMemo(() => {
-        if (outline || subtle) return color
-        return getForegroundColor(color)
+    const styles = useMemo(() => {
+        const accentColor = outline || subtle ? color : getForegroundColor(color)
+        const borderColor = color ? (subtle ? 'transparent' : outline ? color : 'transparent') : null
+        const backgroundColor = color ? (outline || subtle ? addAlpha(color, 0.15) : color) : null
+        return cleanObject({
+            ...style,
+            color: accentColor,
+            '--f-pill-border-color': borderColor,
+            backgroundColor,
+            outlineColor: backgroundColor,
+        })
     }, [color, outline, solid])
-    const borderColor = color ? (subtle ? 'transparent' : outline ? color : 'transparent') : null
-    const backgroundColor = color ? (outline || subtle ? addAlpha(color, 0.15) : color) : null
-    const styles = cleanObject({
-        ...style,
-        color: accentColor,
-        backgroundColor,
-        borderColor,
-        outlineColor: backgroundColor,
-    })
     const className = classNames(
         {
             'f-pill': true,
