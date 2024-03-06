@@ -141,22 +141,18 @@ export const Position = () => (
         <Badge
             variant="accent"
             anchor="top-left"
-            outline
         />
         <Badge
             variant="success"
             anchor="top-right"
-            outline
         />
         <Badge
             variant="neutral"
             anchor="bottom-left"
-            outline
         />
         <Badge
             variant="warning"
             anchor="bottom-right"
-            outline
         />
     </View>
 )
