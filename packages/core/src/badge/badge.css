@@ -160,8 +160,9 @@
 /* size */
 
 .f-badge.xs {
-    padding: 0 0.1rem;
+    padding: 0;
     font-weight: var(--f-font-weight-semibold);
+    height: var(--f-size-3);
 }
 
 .f-badge.sm {
