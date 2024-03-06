@@ -6,14 +6,15 @@
     --f-timeline-item-marker-line-spacing: 0.5rem;
     --f-timeline-item-marker-width: 1.5rem;
     --f-timeline-item-marker-spacing: var(--f-size-2);
-    --f-timeline-item-spacing: var(--f-size-3);
+    --f-timeline-item-margin: var(--f-size-3);
+    --f-timeline-item-padding: var(--f-size-4);
     --f-timeline-item-marker-top: 1px;
 }
 
 .f-timeline {}
 
 .f-timeline > .f-timeline-item + .f-timeline-item {
-    margin-top: var(--f-timeline-item-spacing);
+    margin-top: var(--f-timeline-item-margin);
 }
 
 .f-timeline-item {
@@ -35,6 +36,7 @@
     overflow: hidden;
     width: var(--f-timeline-item-marker-width);
     top: var(--f-timeline-item-marker-top); /* tiny hack to get it lined up with container start */
+    padding-bottom: var(--f-timeline-item-padding);
 }
 
 .f-timeline-item__marker > * {
