@@ -254,8 +254,11 @@ input.f-input[type=color].xl {
 
 .f-input-prefix,
 .f-input-suffix {
-    bottom: 0px;
+    background: red;
     height: 100%;
+    height: calc(var(--f-size-11) - var(--f-input-border-width));
+
+    bottom: 0px;
     width: fit-content;
     flex-wrap: wrap;
     flex-shrink: 0;

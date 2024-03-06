@@ -70,7 +70,6 @@
 
 .f-attachment__text {
     flex: 1;
-    min-height: var(--f-size-11);
     align-items: flex-start;
 }
 
