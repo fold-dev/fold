@@ -253,7 +253,7 @@
     display: block;
     position: absolute;
     height: 100%;
-    top: calc(((var(--f-menubar-padding) / 2) * -1) - 1px);
+    top: calc((((var(--f-menubar-padding)) / 2) * -1) - 4px);
     width: 1px;
     color: transparent;
     background: transparent;
