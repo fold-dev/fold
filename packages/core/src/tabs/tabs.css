@@ -2,7 +2,8 @@
     --f-tabs-color-icon: var(--f-color-text-weakest);
     --f-tabs-panel-border-color: var(--f-color-border);
     --f-tabs-panel-padding: var(--f-space-6);
-    --f-tabs-tab-padding: var(--f-space-3);
+    --f-tabs-tab-padding: var(--f-space-4);
+    --f-tabs-tab-height: var(--f-space-11);
     --f-tabs-tab-color: var(--f-color-text-weak);
     --f-tabs-tab-active: var(--f-color-accent);
     --f-tabs-tab-disabled-color: var(--f-color-text-weakest);
@@ -27,7 +28,6 @@
 
 .f-tab-list {  
     color: var(--f-tabs-color-icon);
-    
 }
 
 .f-tab-list * {
@@ -151,13 +151,14 @@
 
 .f-tab {
     background: transparent;
-    padding: var(--f-tabs-tab-padding);
+    padding: 0 var(--f-tabs-tab-padding);
     color: var(--f-tabs-tab-color);
     position: relative;
     outline: none;
     cursor: pointer;
     flex-grow: 1;
     gap: var(--f-tab-ix-spacing);
+    min-height: var(--f-tabs-tab-height);
 }
 
 .f-tab:focus,
