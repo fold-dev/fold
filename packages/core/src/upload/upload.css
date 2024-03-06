@@ -1,8 +1,8 @@
 :root {
     --f-upload-border-radius: var(--f-radius);
-    --f-upload-border: 0.2rem solid var(--f-color-border);
-    --f-upload-border-hover: 0.2rem solid var(--f-color-border-strong);
-    --f-upload-border-active: 0.2rem dashed var(--f-color-accent);
+    --f-upload-border: 1px solid var(--f-color-border);
+    --f-upload-border-hover: 1px solid var(--f-color-border-strong);
+    --f-upload-border-active: 1px dashed var(--f-color-accent);
     --f-upload-background: var(--f-color-surface-strong);
     --f-upload-color: var(--f-color-text);
     --f-upload-color-sub: var(--f-color-text-weaker);
