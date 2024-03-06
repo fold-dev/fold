@@ -14,7 +14,7 @@
     --f-navigation-item-height: fit-content;
     --f-navbar-item-padding: var(--f-space-inset-x-2);
     --f-navigation-divider-spacing: var(--f-space-2);
-    --f-navigation-divider-color: var(--f-color-surface-stronger);
+    --f-navigation-divider-color: var(--f-color-border);
     --f-navigation-item-font-weight: var(--f-font-weight-normal);
     --f-navigation-item-ix-spacing: var(--f-space-3);
     --f-sub-navigation-line-size: 0.2rem;
