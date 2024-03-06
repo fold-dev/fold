@@ -9,16 +9,16 @@ export type BadgeProps = {
     size?: Size
     variant?: Variant
     anchor?: BadgeAnchor
-    bordered?: boolean
+    outline?: boolean
 } & CoreViewProps
 
 export const Badge = (props: BadgeProps) => {
-    const { size = 'md', variant = 'default', anchor, bordered, ...rest } = props
+    const { size = 'md', variant = 'default', anchor, outline, ...rest } = props
     const className = classNames(
         {
             'f-badge': true,
             'f-row': true,
-            'is-bordered': bordered,
+            'is-outline': outline,
             'no-children': !props.children,
         },
         [props.className, getActionClass(variant), getActionClass(anchor), size]

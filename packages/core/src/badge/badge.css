@@ -21,7 +21,7 @@
     padding: 0;
 }
 
-.f-badge.is-bordered {
+.f-badge.is-outline {
     border-width: var(--f-badge-border-size);
     border-style: solid;
 }
@@ -78,13 +78,57 @@
 .f-badge.is-danger {
     background: var(--f-color-danger);
     color: var(--f-color-danger-weak);
-    border-color: var(--f-color-warning-weak);
+    border-color: var(--f-color-danger-weak);
 }
 
 .f-badge.is-highlight {
     background: var(--f-color-highlight);
     color: var(--f-color-highlight-weak);
     border-color: var(--f-color-highlight-weak);
+}
+
+/* outline */
+
+.f-badge.is-outline.is-accent {
+    background: var(--f-color-accent-weak);
+    color: var(--f-color-accent);
+    border-color: var(--f-color-accent);
+}
+
+.f-badge.is-outline.is-success {
+    background: var(--f-color-success-weak);
+    color: var(--f-color-success);
+    border-color: var(--f-color-success);
+}
+
+.f-badge.is-outline.is-neutral {
+    background: var(--f-color-neutral-weak);
+    color: var(--f-color-neutral);
+    border-color: var(--f-color-neutral);
+}
+
+.f-badge.is-outline.is-caution {
+    background: var(--f-color-caution-weak);
+    color: var(--f-color-caution);
+    border-color: var(--f-color-caution);
+}
+
+.f-badge.is-outline.is-warning {
+    background: var(--f-color-warning-weak);
+    color: var(--f-color-warning);
+    border-color: var(--f-color-warning);
+}
+
+.f-badge.is-outline.is-danger {
+    background: var(--f-color-danger-weak);
+    color: var(--f-color-danger);
+    border-color: var(--f-color-danger);
+}
+
+.f-badge.is-outline.is-highlight {
+    background: var(--f-color-highlight-weak);
+    color: var(--f-color-highlight);
+    border-color: var(--f-color-highlight);
 }
 
 /* positions */
