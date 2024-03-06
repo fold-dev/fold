@@ -48,7 +48,7 @@ input.f-select:disabled {
     top: 100%;
     width: 100%;
     position: absolute;
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-select-popover-border-color);
     border-radius: var(--f-select-popover-border-radius);
     background: var(--f-select-popover-background);

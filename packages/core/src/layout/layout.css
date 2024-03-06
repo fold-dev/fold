@@ -34,22 +34,22 @@
 }
 
 .f-sidebar.is-left {
-    border-right: 0.1rem solid var(--f-sidebar-border-color);
+    border-right: 1px solid var(--f-sidebar-border-color);
 }
 
 .f-sidebar.is-right {
-    border-left: 0.1rem solid var(--f-sidebar-border-color);
+    border-left: 1px solid var(--f-sidebar-border-color);
 }
 
 .f-header {
-    border-bottom: 0.1rem solid var(--f-header-border-color);
+    border-bottom: 1px solid var(--f-header-border-color);
     background-color: var(--f-header-background-color);
     justify-content: left;
     width: 100%;
 }
 
 .f-footer {
-    border-top: 0.1rem solid var(--f-footer-border-color);
+    border-top: 1px solid var(--f-footer-border-color);
     background-color: var(--f-footer-background-color); 
     justify-content: left;
     width: 100%;

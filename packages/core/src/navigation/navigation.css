@@ -132,7 +132,7 @@
     height: 1px;
     width: 100%;
     overflow: hidden;
-    border-top: 0.1rem solid var(--f-navigation-divider-color);
+    border-top: 1px solid var(--f-navigation-divider-color);
 }
 
 .f-navigation-divider > hr {
@@ -227,12 +227,12 @@
     display: block;
     position: absolute;
     height: 100%;
-    top: calc(((var(--f-navbar-padding) / 2) * -1) - 0.1rem);
+    top: calc(((var(--f-navbar-padding) / 2) * -1) - 1px);
     width: 1px;
     color: transparent;
     background: transparent;
     border: none;
-    border-left: 0.1rem solid var(--f-color-border);
+    border-left: 1px solid var(--f-color-border);
 }
 
 .f-navigation.is-navbar > .f-navigation-item .f-navigation-item__container {

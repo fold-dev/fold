@@ -2,7 +2,7 @@
     --f-input-background-color: var(--f-color-surface);
     --f-input-background-color-disabled: var(--f-color-surface-strong);
     --f-input-border-color: var(--f-color-border);
-    --f-input-border-width: 0.1rem;
+    --f-input-border-width: 1px;
     --f-input-border-color-active: var(--f-color-border-strong);
     --f-input-color: var(--f-color-text-weak);
     --f-input-color-placeholder: var(--f-color-text-weakest);
@@ -254,10 +254,9 @@ input.f-input[type=color].xl {
 
 .f-input-prefix,
 .f-input-suffix {
-    background: red;
     height: 100%;
-    height: calc(var(--f-size-11) - var(--f-input-border-width));
-
+    /* background: red;
+    height: calc(var(--f-size-11) - var(--f-input-border-width)); */
     bottom: 0px;
     width: fit-content;
     flex-wrap: wrap;

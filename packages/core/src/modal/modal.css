@@ -3,7 +3,7 @@
     --f-modal-box-shadow: var(--f-shadow-lg);
     --f-modal-background: var(--f-color-surface);
     --f-modal-border-color: var(--f-color-border);
-    --f-modal-border-width: 0.1rem;
+    --f-modal-border-width: 1px;
     --f-modal-border-radius: var(--f-radius);
     --f-modal-padding: var(--f-space-4);
     --f-modal-body-padding: var(--f-space-4);
@@ -101,13 +101,13 @@
 .f-modal__footer {
     padding: var(--f-modal-padding);
     justify-content: flex-start;
-    border-top: 0.1rem solid var(--f-modal-border-color);
+    border-top: 1px solid var(--f-modal-border-color);
 }
 
 .f-modal__header {
     padding: var(--f-modal-padding);
     justify-content: flex-start;   
-    border-bottom: 0.1rem solid var(--f-modal-border-color); 
+    border-bottom: 1px solid var(--f-modal-border-color); 
 }
 
 /* close button */

@@ -8,7 +8,7 @@
     --f-pagination-color-disabled: var(--f-color-text-weakest);
     --f-pagination-gap: 0.2rem;
     --f-pagination-min-width: 2.5rem;
-    --f-pagination-item-border: 0.1rem solid var(--f-color-border);
+    --f-pagination-item-border: 1px solid var(--f-color-border);
 }
 
 .f-pagination {

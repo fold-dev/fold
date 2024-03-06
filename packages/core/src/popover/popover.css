@@ -7,7 +7,7 @@
 
 .f-popover {
     position: absolute;
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-popover-border-color);
     border-radius: var(--f-popover-border-radius);
     background: var(--f-popover-background);

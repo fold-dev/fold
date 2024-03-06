@@ -1,7 +1,7 @@
 :root {
     --f-textarea-background-color: var(--f-color-surface);
     --f-textarea-border-color: var(--f-color-border);
-    --f-textarea-border-width: 0.1rem;
+    --f-textarea-border-width: 1px;
     --f-textarea-border-color-active: var(--f-color-border-strong);
     --f-textarea-color: var(--f-color-text-weak);
     --f-textarea-color-placeholder: var(--f-color-text-weakest);
