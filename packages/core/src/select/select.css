@@ -25,6 +25,10 @@
     z-index: 1;
 }
 
+.f-select-container .f-input-control {
+    cursor: pointer;
+}
+
 input.f-select {
     cursor: pointer;
     color: var(--f-select-color);
