@@ -37,7 +37,6 @@ export const Usage = () => (
             <Badge
                 variant="success"
                 anchor="bottom-right"
-                bordered
                 width={15}
                 height={15}
                 style={{
