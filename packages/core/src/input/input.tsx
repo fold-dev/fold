@@ -112,7 +112,7 @@ export const Input = forwardRef((props: InputProps, ref) => {
         [size, props.className]
     )
 
-    const onFocus = () => inputRef.current?.select()
+    const onFocus = () => selectOnFocus ? inputRef.current?.select() : null
 
     useEffect(() => {
         if (!inputRef.current) return

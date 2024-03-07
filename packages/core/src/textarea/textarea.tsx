@@ -34,7 +34,7 @@ export const Textarea = forwardRef((props: TextareaProps, ref) => {
         }
     }
 
-    const onFocus = () => textareaRef.current?.select()
+    const onFocus = () => selectOnFocus ? textareaRef.current?.select() : null
 
     useEffect(() => {
         if (!textareaRef.current) return
