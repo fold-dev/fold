@@ -202,7 +202,7 @@
 
 .f-popout-middle-left.has-arrow:after {
     top: 50%;
-    right: 1px;
+    right: 0px;
     border-left-width: 0rem;
     border-right-width: 1px;
     border-top-width: 1px;
@@ -213,7 +213,7 @@
 
 .f-popout-middle-right.has-arrow:after {
     top: 50%;
-    left: 1px;
+    left: 0px;
     border-left-width: 1px;
     border-right-width: 0rem;
     border-bottom-width: 1px;
