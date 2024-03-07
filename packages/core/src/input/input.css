@@ -35,6 +35,7 @@
     font-family: var(--f-font-body);
     box-shadow: var(--f-input-shadow);
     transition: border 0.25s;
+    cursor: text;
 }
 
 .f-input-control:not(.is-disabled):focus-within {
