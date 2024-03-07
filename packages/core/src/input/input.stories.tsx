@@ -334,8 +334,9 @@ export const Control = () => {
                     </Popover>
                 </InputPrefix>
                 <Input
+                    readOnly
                     placeholder="Enter your color"
-                    value={text}
+                    value={color}
                     onChange={(e) => setText(e.target.value)}
                 />
             </InputControl>

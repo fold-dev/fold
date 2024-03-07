@@ -144,8 +144,16 @@ export const InputPrefix = (props: InputPrefixProps) => {
         [props.className]
     )
 
+    const handleClick = (e) => {
+        const nextSibling = e.currentTarget.nextElementSibling
+        if (nextSibling) {
+            nextSibling.focus()
+        }
+    }
+
     return (
         <View
+            onClick={handleClick}
             {...props}
             className={className}
             ref={ref}
@@ -167,8 +175,16 @@ export const InputSuffix = (props: InputSuffixProps) => {
         [props.className]
     )
 
+    const handleClick = (e) => {
+        const previousSibling = e.currentTarget.previousElementSibling
+        if (previousSibling) {
+            previousSibling.focus()
+        }
+    }
+
     return (
         <View
+        onClick={handleClick}
             {...props}
             className={className}
             ref={ref}
