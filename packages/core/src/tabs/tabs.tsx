@@ -9,7 +9,7 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { IconLib, useId, View } from '..'
+import { Button, IconLib, useId, View } from '..'
 import { classNames, getActionClass, getOffset, renderChildren } from '../helpers'
 import { useResize } from '../hooks/resize.hook'
 import { Text } from '../text/text'
@@ -124,6 +124,8 @@ export const TabList = (props: TabListProps) => {
     const className = classNames(
         {
             'f-tab-list': true,
+            'is-vertical': isCol,
+            'is-horizontal': isRow,
             'f-row': isRow,
             'f-col': isCol,
             'is-stretch': stretch,
@@ -171,12 +173,14 @@ export const TabList = (props: TabListProps) => {
             className={className}
             aria-orientation={isCol ? 'vertical' : 'horizontal'}>
             {overflow && (
-                <div className="f-tab-list__icon f-row">
-                    <IconLib
-                        icon={iconMore}
-                        className="f-buttonize"
-                        onClick={handleScrollLess}
-                    />
+                <div className="f-tab-list__icon is-start f-row">
+                    <Button 
+                        size="xs" 
+                        border="none" 
+                        shadow="var(--f-shadow-lg)"
+                        onClick={handleScrollLess}>
+                        <IconLib icon={iconMore} />
+                    </Button>
                 </div>
             )}
 
@@ -207,12 +211,14 @@ export const TabList = (props: TabListProps) => {
             </div>
 
             {overflow && (
-                <div className="f-tab-list__icon f-row">
-                    <IconLib
-                        icon={iconLess}
-                        className="f-buttonize"
-                        onClick={handleScrollMore}
-                    />
+                <div className="f-tab-list__icon is-end f-row">
+                    <Button 
+                        size="xs" 
+                        border="none" 
+                        shadow="var(--f-shadow-lg)"
+                        onClick={handleScrollMore}>
+                        <IconLib icon={iconLess} />
+                    </Button>
                 </div>
             )}
         </View>

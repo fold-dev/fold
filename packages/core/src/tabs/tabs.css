@@ -8,8 +8,6 @@
     --f-tabs-tab-active: var(--f-color-accent);
     --f-tabs-tab-disabled-color: var(--f-color-text-weakest);
     --f-tabs-tab-background-hover: var(--f-color-surface-strong);
-    --f-tabs-icon-padding: var(--f-space-inset-x-2);
-    --f-tabs-arrow-padding: var(--f-space-inset-x-1);
     --f-tab-ix-spacing: 0.5rem;
     --f-tab-inner-width: fit-content;
 }
@@ -50,8 +48,33 @@
     border-top: 1px solid var(--f-tabs-panel-border-color);
 }
 
+/* overflow icon */
+
 .f-tab-list__icon {
-    padding: var(--f-tabs-arrow-padding);
+    position: absolute;
+    z-index: 10;
+}
+
+.f-tab-list__icon.is-start {
+}
+
+.f-tab-list__icon.is-end {
+}
+
+.f-tab-list.is-horizontal .f-tab-list__icon.is-start {
+    left: 0;
+}
+
+.f-tab-list.is-horizontal .f-tab-list__icon.is-end {
+    right: 0;
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-start {
+    top: 0;
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-end {
+    bottom: 0;
 }
 
 /* animated */
