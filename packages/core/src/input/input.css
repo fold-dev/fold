@@ -36,6 +36,7 @@
     box-shadow: var(--f-input-shadow);
     transition: border 0.25s;
     cursor: text;
+    align-items: stretch;
 }
 
 .f-input-control:not(.is-disabled):focus-within {
@@ -255,15 +256,13 @@ input.f-input[type=color].xl {
 
 .f-input-prefix,
 .f-input-suffix {
-    height: 100%;
-    /* background: red;
-    height: calc(var(--f-size-11) - var(--f-input-border-width)); */
+    position: relative;
     bottom: 0px;
     width: fit-content;
     flex-wrap: wrap;
     flex-shrink: 0;
     color: var(--f-input-color-placeholder);
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .f-input-prefix {
