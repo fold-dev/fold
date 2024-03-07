@@ -124,6 +124,7 @@ export const Overflow = () => {
             noStretch
             spacing={20}>
             <Tabs
+                animated
                 selected={selected}
                 onSelect={setSelected}
                 width={400}>
@@ -146,6 +147,7 @@ export const Overflow = () => {
             </Tabs>
 
             <Tabs
+                animated
                 selected={selected}
                 onSelect={setSelected}
                 layout="left"

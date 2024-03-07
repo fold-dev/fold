@@ -8,6 +8,9 @@
     --f-tabs-tab-active: var(--f-color-accent);
     --f-tabs-tab-disabled-color: var(--f-color-text-weakest);
     --f-tabs-tab-background-hover: var(--f-color-surface-strong);
+    --f-tabs-tab-scroll-button-background: var(--f-color-surface);
+    --f-tabs-tab-list-background: var(--f-color-surface);
+    --f-tabs-tab-scroll-button-padding: var(--f-size-5);
     --f-tab-ix-spacing: 0.5rem;
     --f-tab-inner-width: fit-content;
 }
@@ -26,6 +29,7 @@
 
 .f-tab-list {  
     color: var(--f-tabs-color-icon);
+    background: var(--f-tabs-tab-list-background);
 }
 
 .f-tab-list * {
@@ -52,29 +56,42 @@
 
 .f-tab-list__icon {
     position: absolute;
-    z-index: 10;
-}
-
-.f-tab-list__icon.is-start {
-}
-
-.f-tab-list__icon.is-end {
+    z-index: 2;
 }
 
 .f-tab-list.is-horizontal .f-tab-list__icon.is-start {
     left: 0;
+    height: 100%;
+    padding-right: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to right, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
 }
 
 .f-tab-list.is-horizontal .f-tab-list__icon.is-end {
     right: 0;
+    height: 100%;
+    padding-left: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to left, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
 }
 
 .f-tab-list.is-vertical .f-tab-list__icon.is-start {
     top: 0;
+    padding-bottom: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to bottom, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+    width: 100%; 
 }
 
 .f-tab-list.is-vertical .f-tab-list__icon.is-end {
     bottom: 0;
+    padding-top: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to top, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+    width: 100%; 
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-start .f-button,
+.f-tab-list.is-vertical .f-tab-list__icon.is-end .f-button {
+    max-width: 5rem;
+    width: 60%; 
+    min-width: 3rem;
 }
 
 /* animated */
