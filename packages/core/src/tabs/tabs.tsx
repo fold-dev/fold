@@ -9,7 +9,7 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { Button, IconLib, useId, View } from '..'
+import { Button, ButtonProps, IconLib, useId, View } from '..'
 import { classNames, getActionClass, getOffset, renderChildren, waitForRender } from '../helpers'
 import { useResize } from '../hooks/resize.hook'
 import { Text } from '../text/text'
@@ -93,6 +93,7 @@ export type TabListProps = {
     layout?: 'bottom' | 'top' | 'left' | 'right'
     selected?: number
     onSelect?: (index: number) => void
+    scrollButtonProps?: ButtonProps
     icons?: any
 } & Omit<CoreViewProps, 'onSelect'>
 
@@ -105,6 +106,7 @@ export const TabList = (props: TabListProps) => {
         layout = 'top',
         selected,
         onSelect,
+        scrollButtonProps = {},
         icons = {
             moreV: 'chevron-down',
             lessV: 'chevron-up',
@@ -212,7 +214,8 @@ export const TabList = (props: TabListProps) => {
                         size="xs" 
                         border="none" 
                         shadow="var(--f-shadow-lg)"
-                        onClick={handleScrollLess}>
+                        onClick={handleScrollLess}
+                        {...scrollButtonProps}>
                         <IconLib icon={iconMore} size="sm" />
                     </Button>
                 </div>
@@ -251,7 +254,8 @@ export const TabList = (props: TabListProps) => {
                         size="xs" 
                         border="none" 
                         shadow="var(--f-shadow-lg)"
-                        onClick={handleScrollMore}>
+                        onClick={handleScrollMore}
+                        {...scrollButtonProps}>
                         <IconLib icon={iconLess} size="sm" />
                     </Button>
                 </div>
