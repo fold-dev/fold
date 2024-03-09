@@ -23,6 +23,7 @@ export const Usage = () => {
             <Button onClick={show}>Show Cookie Dialog</Button>
 
             <Cookie
+                noOverlay
                 isVisible={visible}
                 onOkay={hide}
                 onCancel={hide}
