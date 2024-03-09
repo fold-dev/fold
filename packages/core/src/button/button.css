@@ -41,10 +41,6 @@
     outline-offset: 1px;
 }
 
-.f-button:active {
-    /* outline: var(--f-focus); */
-}
-
 .f-button.is-active,
 .f-button:not(:disabled):hover {
     color: var(--f-button-color-hover);
