@@ -17,6 +17,7 @@
     top: 0px;
     left: 0px;
     z-index: var(--f-index-modal);
+    pointer-events: none;
 }
 
 .f-modal__inner {
@@ -30,6 +31,7 @@
     align-content: stretch;
     animation: f-modal-fadein var(--f-transition-duration-slow);
     position: absolute;
+    pointer-events: all;
 }
 
 @keyframes f-modal-fadein {
