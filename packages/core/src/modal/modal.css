@@ -17,7 +17,11 @@
     top: 0px;
     left: 0px;
     z-index: var(--f-index-modal);
+}
+
+.f-modal.no-overlay {
     pointer-events: none;
+    background: none;
 }
 
 .f-modal__inner {
