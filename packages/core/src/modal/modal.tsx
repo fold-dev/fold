@@ -75,6 +75,7 @@ export const Modal = (props: ModalProps) => {
     }, [isVisible])
 
     const renderModal = () => {
+        const classNameOverlay = "f-modal f-row" + (noOverlay ? " no-overlay" : "")
         const className = classNames(
             {
                 'f-modal__inner': true,
@@ -87,7 +88,7 @@ export const Modal = (props: ModalProps) => {
 
         return (
             <div
-                className="f-modal f-row"
+                className={classNameOverlay}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}
