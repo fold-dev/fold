@@ -2,13 +2,15 @@
     --f-tabs-color-icon: var(--f-color-text-weakest);
     --f-tabs-panel-border-color: var(--f-color-border);
     --f-tabs-panel-padding: var(--f-space-6);
-    --f-tabs-tab-padding: var(--f-space-3);
+    --f-tabs-tab-padding: var(--f-space-4);
+    --f-tabs-tab-height: var(--f-space-11);
     --f-tabs-tab-color: var(--f-color-text-weak);
     --f-tabs-tab-active: var(--f-color-accent);
     --f-tabs-tab-disabled-color: var(--f-color-text-weakest);
     --f-tabs-tab-background-hover: var(--f-color-surface-strong);
-    --f-tabs-icon-padding: var(--f-space-inset-x-2);
-    --f-tabs-arrow-padding: var(--f-space-inset-x-1);
+    --f-tabs-tab-scroll-button-background: var(--f-color-surface);
+    --f-tabs-tab-list-background: var(--f-color-surface);
+    --f-tabs-tab-scroll-button-padding: var(--f-size-5);
     --f-tab-ix-spacing: 0.5rem;
     --f-tab-inner-width: fit-content;
 }
@@ -27,7 +29,7 @@
 
 .f-tab-list {  
     color: var(--f-tabs-color-icon);
-    
+    background: var(--f-tabs-tab-list-background);
 }
 
 .f-tab-list * {
@@ -35,23 +37,61 @@
 }
 
 .f-tab-list.is-left {
-    border-right: 0.1rem solid var(--f-tabs-panel-border-color);
+    border-right: 1px solid var(--f-tabs-panel-border-color);
 }
 
 .f-tab-list.is-right {
-    border-left: 0.1rem solid var(--f-tabs-panel-border-color);
+    border-left: 1px solid var(--f-tabs-panel-border-color);
 }
 
 .f-tab-list.is-top {
-    border-bottom: 0.1rem solid var(--f-tabs-panel-border-color);
+    border-bottom: 1px solid var(--f-tabs-panel-border-color);
 }
 
 .f-tab-list.is-bottom {
-    border-top: 0.1rem solid var(--f-tabs-panel-border-color);
+    border-top: 1px solid var(--f-tabs-panel-border-color);
 }
 
+/* overflow icon */
+
 .f-tab-list__icon {
-    padding: var(--f-tabs-arrow-padding);
+    position: absolute;
+    z-index: 2;
+}
+
+.f-tab-list.is-horizontal .f-tab-list__icon.is-start {
+    left: 0;
+    height: 100%;
+    padding-right: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to right, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+}
+
+.f-tab-list.is-horizontal .f-tab-list__icon.is-end {
+    right: 0;
+    height: 100%;
+    padding-left: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to left, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-start {
+    top: 0;
+    padding-bottom: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to bottom, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+    width: 100%; 
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-end {
+    bottom: 0;
+    padding-top: var(--f-tabs-tab-scroll-button-padding);
+    background: linear-gradient(to top, var(--f-tabs-tab-scroll-button-background) 50%, transparent 100%);
+    width: 100%; 
+}
+
+.f-tab-list.is-vertical .f-tab-list__icon.is-start .f-button,
+.f-tab-list.is-vertical .f-tab-list__icon.is-end .f-button {
+    max-width: 5rem;
+    width: 60%; 
+    min-width: 3rem;
 }
 
 /* animated */
@@ -151,13 +191,14 @@
 
 .f-tab {
     background: transparent;
-    padding: var(--f-tabs-tab-padding);
+    padding: 0 var(--f-tabs-tab-padding);
     color: var(--f-tabs-tab-color);
     position: relative;
     outline: none;
     cursor: pointer;
     flex-grow: 1;
     gap: var(--f-tab-ix-spacing);
+    min-height: var(--f-tabs-tab-height);
 }
 
 .f-tab:focus,

@@ -36,6 +36,7 @@ export type ModalProps = {
     header?: ReactElement | ReactElement[]
     borderless?: boolean
     disableBackgroundDismiss?: boolean
+    noOverlay?: boolean
     portal?: any
     onDismiss?: any
 } & CoreViewProps
@@ -49,6 +50,7 @@ export const Modal = (props: ModalProps) => {
         header,
         borderless = false,
         disableBackgroundDismiss = false,
+        noOverlay,
         portal,
         onDismiss,
         ...rest
@@ -73,18 +75,20 @@ export const Modal = (props: ModalProps) => {
     }, [isVisible])
 
     const renderModal = () => {
+        const classNameOverlay = "f-modal f-row" + (noOverlay ? " no-overlay" : "")
         const className = classNames(
             {
                 'f-modal__inner': true,
                 'f-col': true,
                 'is-borderless': borderless,
+                'no-overlay': noOverlay,
             },
             [props.className, getActionClass(anchor)]
         )
 
         return (
             <div
-                className="f-modal f-row"
+                className={classNameOverlay}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}

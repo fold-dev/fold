@@ -25,6 +25,10 @@
     z-index: 1;
 }
 
+.f-select-container .f-input-control {
+    cursor: pointer;
+}
+
 input.f-select {
     cursor: pointer;
     color: var(--f-select-color);
@@ -48,7 +52,7 @@ input.f-select:disabled {
     top: 100%;
     width: 100%;
     position: absolute;
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-select-popover-border-color);
     border-radius: var(--f-select-popover-border-radius);
     background: var(--f-select-popover-background);

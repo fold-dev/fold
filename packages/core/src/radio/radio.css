@@ -18,7 +18,7 @@ input.f-radio[type="radio"] {
     height: var(--f-size-5);
     width: var(--f-size-5);
     border-radius: var(--f-radio-border-radius); 
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-radio-border-color);
     background-color: var(--f-radio-background-color);
     display: grid;

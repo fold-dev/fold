@@ -403,8 +403,9 @@ export const ButtonGroups = () => (
             <Button variant="highlight" outline>Vertical</Button>
         </ButtonGroup>
         <ButtonGroup>
-            <Button variant="accent">Accented</Button>
-            <Button variant="accent">Accented</Button>
+            <Button variant="accent">Accented 1</Button>
+            <Button variant="accent">Accented 2</Button>
+            <Button variant="accent">Accented 3</Button>
         </ButtonGroup>
         <ButtonGroup
             direction="vertical"

@@ -9,8 +9,8 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { IconLib, useId, View } from '..'
-import { classNames, getActionClass, getOffset, renderChildren } from '../helpers'
+import { Button, ButtonProps, IconLib, useId, View } from '..'
+import { classNames, getActionClass, getOffset, renderChildren, waitForRender } from '../helpers'
 import { useResize } from '../hooks/resize.hook'
 import { Text } from '../text/text'
 import { CoreViewProps, Size } from '../types'
@@ -93,6 +93,7 @@ export type TabListProps = {
     layout?: 'bottom' | 'top' | 'left' | 'right'
     selected?: number
     onSelect?: (index: number) => void
+    scrollButtonProps?: ButtonProps
     icons?: any
 } & Omit<CoreViewProps, 'onSelect'>
 
@@ -101,10 +102,11 @@ export const TabList = (props: TabListProps) => {
         stretch,
         disableScroll,
         animated,
-        scrollJump = 100,
+        scrollJump = 120,
         layout = 'top',
         selected,
         onSelect,
+        scrollButtonProps = {},
         icons = {
             moreV: 'chevron-down',
             lessV: 'chevron-up',
@@ -115,7 +117,8 @@ export const TabList = (props: TabListProps) => {
     } = props
     const { box } = useContext(TabsContext)
     const listRef = useRef(null)
-    const [overflow, setOverflow] = useState(false)
+    const [overflowStart, setOverflowStart] = useState(false)
+    const [overflowEnd, setOverflowEnd] = useState(false)
     const isRow = layout == 'top' || layout == 'bottom'
     const isCol = layout == 'left' || layout == 'right'
     const iconMore = isRow ? icons.lessH : icons.lessV
@@ -124,6 +127,8 @@ export const TabList = (props: TabListProps) => {
     const className = classNames(
         {
             'f-tab-list': true,
+            'is-vertical': isCol,
+            'is-horizontal': isRow,
             'f-row': isRow,
             'f-col': isCol,
             'is-stretch': stretch,
@@ -155,14 +160,47 @@ export const TabList = (props: TabListProps) => {
         }
     }
 
-    useLayoutEffect(() => {
-        if (disableScroll) return
-        if (isRow) {
-            setOverflow(listRef.current?.offsetWidth < listRef.current?.scrollWidth)
-        } else {
-            setOverflow(listRef.current?.offsetHeight < listRef.current?.scrollHeight)
+    const toggleRowButtonVisibility = (element) => {
+        setOverflowStart(element.scrollLeft > 0)
+        setOverflowEnd(element.scrollLeft < element.scrollWidth - element.offsetWidth)
+    }
+
+    const toggleColButtonVisibility = (element) => {
+        setOverflowStart(element.scrollTop > 0)        
+        setOverflowEnd(element.scrollTop < element.scrollHeight - element.offsetHeight - 1) // TODO: why the +1?
+    }
+
+    const calculateScroll = () => {
+        if (disableScroll) {
+            setOverflowStart(false)
+            setOverflowEnd(false)
+            return
         }
-    }, [dimensions, disableScroll])
+
+        // if there is overflow for rows
+        if (isRow) {
+            if (listRef.current.offsetWidth < listRef.current.scrollWidth) {
+                toggleRowButtonVisibility(listRef.current)
+            } else {
+                setOverflowStart(false)
+                setOverflowEnd(false)
+            }
+        }
+
+        // if there is overflow for columns
+        if (isCol) {
+            if (listRef.current.offsetHeight < listRef.current.scrollHeight) {
+                toggleColButtonVisibility(listRef.current)
+            } else {
+                setOverflowStart(false)
+                setOverflowEnd(false)
+            }
+        }
+    }
+
+    useLayoutEffect(() => {
+        calculateScroll()
+    }, [dimensions, layout])
 
     return (
         <View
@@ -170,17 +208,21 @@ export const TabList = (props: TabListProps) => {
             role="tablist"
             className={className}
             aria-orientation={isCol ? 'vertical' : 'horizontal'}>
-            {overflow && (
-                <div className="f-tab-list__icon f-row">
-                    <IconLib
-                        icon={iconMore}
-                        className="f-buttonize"
+            {overflowStart && (
+                <div className="f-tab-list__icon is-start f-row">
+                    <Button 
+                        size="xs" 
+                        border="none" 
+                        shadow="var(--f-shadow-lg)"
                         onClick={handleScrollLess}
-                    />
+                        {...scrollButtonProps}>
+                        <IconLib icon={iconMore} size="sm" />
+                    </Button>
                 </div>
             )}
 
             <div
+                onScroll={(e) => isRow ? toggleRowButtonVisibility(e.currentTarget) : toggleColButtonVisibility(e.currentTarget)}
                 className={classNameInner}
                 ref={listRef}>
                 <div className={classNameInnerContainer}>
@@ -206,13 +248,16 @@ export const TabList = (props: TabListProps) => {
                 )}
             </div>
 
-            {overflow && (
-                <div className="f-tab-list__icon f-row">
-                    <IconLib
-                        icon={iconLess}
-                        className="f-buttonize"
+            {overflowEnd && (
+                <div className="f-tab-list__icon is-end f-row">
+                    <Button 
+                        size="xs" 
+                        border="none" 
+                        shadow="var(--f-shadow-lg)"
                         onClick={handleScrollMore}
-                    />
+                        {...scrollButtonProps}>
+                        <IconLib icon={iconLess} size="sm" />
+                    </Button>
                 </div>
             )}
         </View>

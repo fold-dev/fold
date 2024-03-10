@@ -18,7 +18,8 @@ export const Usage = () => (
     <Timeline>
         <TimelineItem colorToken="text">
             <Text fontWeight="semibold">Checked in at the hotel.</Text>
-            <Text
+            <Text   
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 6m ago
@@ -27,6 +28,7 @@ export const Usage = () => (
         <TimelineItem colorToken="text">
             <Text fontWeight="semibold">Departed JFK airport via Uber.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 56m ago
@@ -37,6 +39,7 @@ export const Usage = () => (
             <Text fontWeight="semibold">Passed through security checkpoint.</Text>
             <Text fontWeight="semibold">Entered airport facility.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 3h ago
@@ -45,6 +48,7 @@ export const Usage = () => (
         <TimelineItem>
             <Text fontWeight="semibold">Caught an Uber bound for the airport.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 6h ago
@@ -72,6 +76,7 @@ export const CustomMarkers = () => (
             }>
             <Text fontWeight="semibold">Checked in at the hotel.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 6m ago
@@ -87,6 +92,7 @@ export const CustomMarkers = () => (
             }>
             <Text fontWeight="semibold">Departed JFK airport via Uber.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 56m ago
@@ -97,6 +103,7 @@ export const CustomMarkers = () => (
             <Text fontWeight="semibold">Passed through security checkpoint.</Text>
             <Text fontWeight="semibold">Entered airport facility.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 3h ago
@@ -105,6 +112,7 @@ export const CustomMarkers = () => (
         <TimelineItem marker={<IconLib icon="moon" />}>
             <Text fontWeight="semibold">Caught an Uber bound for the airport.</Text>
             <Text
+                m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">
                 6h ago

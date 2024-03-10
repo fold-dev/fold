@@ -19,7 +19,7 @@
     position: relative;
     cursor: pointer;
     min-height: var(--f-size-12);
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-attachment-border-color);
     border-radius: var(--f-attachment-border-radius);
     padding: var(--f-space-2); 
@@ -70,14 +70,17 @@
 
 .f-attachment__text {
     flex: 1;
-    min-height: var(--f-size-11);
     align-items: flex-start;
 }
 
 /* hack to remove padding from the bottom on default settings so the icon sites flush */
 
 .f-attachment__text > * + * {
-    margin-top: -2px;
+    margin-top: 2px;
+}
+
+.f-attachment.sm .f-attachment__text > * + * {
+    margin-top: 0px;
 }
 
 .f-attachment__text-meta {
@@ -97,6 +100,7 @@
 }
 
 /* sizes */
+/* xs & xl not supported yet */
 
 .f-attachment.xs .f-attachment__icon { 
     width: var(--f-size-8); 
@@ -132,7 +136,7 @@
     color: var(--f-attachment-color);
     position: relative;
     min-height: var(--f-size-12);
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-attachment-border-color);
     border-radius: var(--f-attachment-border-radius);
     width: var(--f-attachment-thumb-size); 
@@ -182,7 +186,7 @@
     border-radius: var(--f-attachment-border-radius);
     width: 100%; 
     height: 100%; 
-    border: 0.1rem solid transparent;
+    border: 1px solid transparent;
     gap: var(--f-space-1);
 }
 

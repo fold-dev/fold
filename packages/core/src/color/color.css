@@ -3,11 +3,11 @@
     --f-color-palette-radius: var(--f-radius);
     --f-color-palette-margin: var(--f-size-1);
     --f-color-palette-border-size: 0.3rem;
-    --f-color-palette-selected: 0.15rem solid var(--f-color-surface);
+    --f-color-palette-selected: 2px solid var(--f-color-surface);
     --f-color-picker-width: 250px;
     --f-color-picker-height: 150px;
     --f-color-picker-input-border-color: var(--f-color-border);
-    --f-color-picker-input-border-width: 0.1rem;
+    --f-color-picker-input-border-width: 1px;
 }
 
 .f-color-palette {

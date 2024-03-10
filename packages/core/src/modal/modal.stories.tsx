@@ -50,6 +50,42 @@ export const Usage = () => {
 
 // --
 
+export const NoOverlay = () => {
+    const { visible, show, hide } = useVisibility(false)
+
+    return (
+        <View>
+            <Button onClick={show}>Show Modal</Button>
+
+            <Modal
+                noOverlay
+                portal={Portal}
+                width="500px"
+                height="fit-content"
+                anchor="middle-center"
+                onDismiss={hide}
+                isVisible={visible}>
+                <ModalClose onClick={hide} />
+                <View
+                    p={30}
+                    column
+                    gap={10}
+                    width="100%"
+                    alignItems="flex-start">
+                    <Heading>Not this again...</Heading>
+                    <Text>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </Text>
+                </View>
+            </Modal>
+        </View>
+    )
+}
+
+// --
+
 export const WithHeaderAndFooter = () => {
     const { visible, show, hide } = useVisibility(false)
 

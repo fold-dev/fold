@@ -69,7 +69,7 @@ table.f-table.is-striped tr:nth-child(even) td {
 }
 
 table.f-table.is-lined tr td {
-    border-top: 0.1rem solid;    
+    border-top: 1px solid;    
     border-color: var(--f-table-border-color);
 }
 

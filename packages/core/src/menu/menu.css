@@ -16,7 +16,7 @@
     --f-menu-item-height: fit-content;
     --f-menubar-item-padding: var(--f-space-2);
     --f-menu-divider-spacing: var(--f-space-2);
-    --f-menu-divider-color: var(--f-color-surface-stronger);
+    --f-menu-divider-color: var(--f-color-border);
     --f-menu-item-font-weight: var(--f-font-weight-normal);
     --f-menu-offset: 10px;
     --f-menu-item-ix-spacing: 0.75rem;
@@ -29,7 +29,7 @@
     height: fit-content;
     background-color: var(--f-menu-background-color);
     border-radius: var(--f-menu-border-radius);
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-menu-border-color);
     list-style-type: none;
     margin: 0px;
@@ -181,7 +181,7 @@
     padding: 0;
     overflow: hidden;
     display: block;
-    border-top: 0.1rem solid var(--f-menu-divider-color);
+    border-top: 1px solid var(--f-menu-divider-color);
     margin-top: var(--f-menu-divider-spacing);
     margin-bottom: var(--f-menu-divider-spacing);
 }
@@ -253,12 +253,12 @@
     display: block;
     position: absolute;
     height: 100%;
-    top: calc(((var(--f-menubar-padding) / 2) * -1) - 0.1rem);
+    top: calc((((var(--f-menubar-padding)) / 2) * -1) - 4px);
     width: 1px;
     color: transparent;
     background: transparent;
     border: none;
-    border-left: 0.1rem solid var(--f-color-border);
+    border-left: 1px solid var(--f-color-border);
 }
 
 .f-menu.is-menubar > .f-menu-item .f-menu-item__active {

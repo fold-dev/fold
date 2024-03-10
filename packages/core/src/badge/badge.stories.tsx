@@ -20,7 +20,7 @@ export const Usage = () => (
         gap={5}
         width="fit-content">
         <Badge>+34 notifications</Badge>
-        <Badge bordered>+12 bordered notifications</Badge>
+        <Badge outline>+12 outline notifications</Badge>
     </View>
 )
 
@@ -43,40 +43,40 @@ export const Variants = () => (
 
 // --
 
-export const VariantsBordered = () => (
+export const VariantsOutline = () => (
     <View
         row
         gap={5}
         width="fit-content">
-        <Badge bordered>default</Badge>
+        <Badge outline>default</Badge>
         <Badge
             variant="accent"
-            bordered>
+            outline>
             accent
         </Badge>
         <Badge
             variant="success"
-            bordered>
+            outline>
             success
         </Badge>
         <Badge
             variant="neutral"
-            bordered>
+            outline>
             neutral
         </Badge>
         <Badge
             variant="caution"
-            bordered>
+            outline>
             caution
         </Badge>
         <Badge
             variant="warning"
-            bordered>
+            outline>
             warning
         </Badge>
         <Badge
             variant="danger"
-            bordered>
+            outline>
             danger
         </Badge>
     </View>
@@ -141,22 +141,18 @@ export const Position = () => (
         <Badge
             variant="accent"
             anchor="top-left"
-            bordered
         />
         <Badge
             variant="success"
             anchor="top-right"
-            bordered
         />
         <Badge
             variant="neutral"
             anchor="bottom-left"
-            bordered
         />
         <Badge
             variant="warning"
             anchor="bottom-right"
-            bordered
         />
     </View>
 )

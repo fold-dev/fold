@@ -839,7 +839,7 @@ export const DatePicker = (props: DatePickerProps) => {
             className={className}>
             <View
                 row
-                className="f-date-picker__titles">
+                className="f-date-picker__titles f-row">
                 <Button
                     subtle
                     onClick={handleBackwardClick}>
@@ -851,7 +851,7 @@ export const DatePicker = (props: DatePickerProps) => {
                     flex={1}
                     fontWeight={600}
                     colorToken="text"
-                    className="f-date-picker__title f-row">
+                    className="f-date-picker__title">
                     {level != 'days' ? getTitleText(date) : null}
                     {level == 'days' &&
                         dates.map((date1: Date, index: number) => (
@@ -859,6 +859,7 @@ export const DatePicker = (props: DatePickerProps) => {
                                 key={index}
                                 className="f-date-picker__title-text"
                                 style={{
+                                    // TODO: do this better
                                     // 52 is the apx. width of the < > buttons
                                     paddingLeft: index != 0 ? 52 + 10 : 0,
                                     paddingRight: index != dates.length - 1 ? 52 + 10 : 0,

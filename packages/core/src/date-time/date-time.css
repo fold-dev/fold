@@ -259,8 +259,21 @@
     flex: 1;
 }
 
+.f-date-picker__titles > .f-date-picker__title .f-button__label .f-text {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    flex-direction: row;
+}
+
 .f-date-picker__titles > .f-date-picker__title .f-date-picker__title-text {
     flex: 1;
+    display: block;
+}
+
+.f-date-picker__titles > .f-date-picker__title .f-date-picker__title-text:last-child {
 }
 
 /* scrolling date picker */

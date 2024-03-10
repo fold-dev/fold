@@ -1,7 +1,7 @@
 :root {
     --f-copy-background-color: var(--f-color-surface);
     --f-copy-border-color: var(--f-color-border);
-    --f-copy-border-width: 0.1rem;
+    --f-copy-border-width: 1px;
     --f-copy-border-color-active: var(--f-color-border-strong);
     --f-copy-color: var(--f-color-accent);
     --f-copy-border-radius: var(--f-radius);

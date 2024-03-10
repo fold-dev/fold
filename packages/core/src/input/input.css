@@ -2,7 +2,7 @@
     --f-input-background-color: var(--f-color-surface);
     --f-input-background-color-disabled: var(--f-color-surface-strong);
     --f-input-border-color: var(--f-color-border);
-    --f-input-border-width: 0.1rem;
+    --f-input-border-width: 1px;
     --f-input-border-color-active: var(--f-color-border-strong);
     --f-input-color: var(--f-color-text-weak);
     --f-input-color-placeholder: var(--f-color-text-weakest);
@@ -35,6 +35,8 @@
     font-family: var(--f-font-body);
     box-shadow: var(--f-input-shadow);
     transition: border 0.25s;
+    cursor: text;
+    align-items: stretch;
 }
 
 .f-input-control:not(.is-disabled):focus-within {
@@ -254,13 +256,12 @@ input.f-input[type=color].xl {
 
 .f-input-prefix,
 .f-input-suffix {
+    position: relative;
     bottom: 0px;
-    height: 100%;
     width: fit-content;
     flex-wrap: wrap;
     flex-shrink: 0;
     color: var(--f-input-color-placeholder);
-    pointer-events: none;
 }
 
 .f-input-prefix {
@@ -269,11 +270,6 @@ input.f-input[type=color].xl {
 
 .f-input-suffix {
     padding: var(--f-input-suffix-padding);       
-}
-
-.f-input-prefix > *,
-.f-input-suffix > * {
-    pointer-events: all;
 }
 
 .f-input-suffix {

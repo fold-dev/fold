@@ -137,9 +137,9 @@
 .f-popout-bottom-left.has-arrow:after {
     top: 0px;
     left: var(--f-radius);
-    border-left-width: 0.1rem;
+    border-left-width: 1px;
     border-right-width: 0rem;
-    border-top-width: 0.1rem;
+    border-top-width: 1px;
     border-bottom-width: 0rem;
     border-top-left-radius: var(--f-radius-sm);
     transform: translateY(-50%) rotate(45deg);
@@ -148,9 +148,9 @@
 .f-popout-bottom-right.has-arrow:after {
     top: 0px;
     right: var(--f-radius);
-    border-left-width: 0.1rem;
+    border-left-width: 1px;
     border-right-width: 0rem;
-    border-top-width: 0.1rem;
+    border-top-width: 1px;
     border-bottom-width: 0rem;
     border-top-left-radius: var(--f-radius-sm);
     transform: translateY(-50%) rotate(45deg);
@@ -160,8 +160,8 @@
     top: 100%;
     left: var(--f-radius);
     border-left-width: 0rem;
-    border-right-width: 0.1rem;
-    border-bottom-width: 0.1rem;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
     border-top-width: 0rem;
     border-bottom-right-radius: var(--f-radius-sm);
     transform: translateY(-50%) rotate(45deg);
@@ -171,19 +171,19 @@
     top: 100%;
     right: var(--f-radius);
     border-left-width: 0rem;
-    border-right-width: 0.1rem;
-    border-bottom-width: 0.1rem;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
     border-top-width: 0rem;
     border-bottom-right-radius: var(--f-radius-sm);
     transform: translateY(-50%) rotate(45deg);
 }
 
 .f-popout-bottom-center.has-arrow:after {
-    top: 0%;
+    top: -1px;
     right: 50%;
-    border-left-width: 0.1rem;
+    border-left-width: 1px;
     border-right-width: 0rem;
-    border-top-width: 0.1rem;
+    border-top-width: 1px;
     border-bottom-width: 0rem;
     border-top-left-radius: var(--f-radius-sm);
     transform: translateY(-50%) translateX(50%) rotate(45deg);
@@ -193,8 +193,8 @@
     top: 100%;
     right: 50%;
     border-left-width: 0rem;
-    border-right-width: 0.1rem;
-    border-bottom-width: 0.1rem;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
     border-top-width: 0rem;
     border-bottom-right-radius: var(--f-radius-sm);
     transform: translateY(-50%) translateX(50%) rotate(45deg);
@@ -202,10 +202,10 @@
 
 .f-popout-middle-left.has-arrow:after {
     top: 50%;
-    right: 0.1rem;
+    right: -1px;
     border-left-width: 0rem;
-    border-right-width: 0.1rem;
-    border-top-width: 0.1rem;
+    border-right-width: 1px;
+    border-top-width: 1px;
     border-bottom-width: 0rem;
     border-top-right-radius: var(--f-radius-sm);
     transform: translateY(-50%) translateX(50%) rotate(45deg);
@@ -213,10 +213,10 @@
 
 .f-popout-middle-right.has-arrow:after {
     top: 50%;
-    left: 0.1rem;
-    border-left-width: 0.1rem;
+    left: -1px;
+    border-left-width: 1px;
     border-right-width: 0rem;
-    border-bottom-width: 0.1rem;
+    border-bottom-width: 1px;
     border-top-width: 0rem;
     border-bottom-left-radius: var(--f-radius-sm);
     transform: translateY(-50%) translateX(-50%) rotate(45deg);

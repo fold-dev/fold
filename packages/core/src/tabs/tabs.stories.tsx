@@ -1,4 +1,4 @@
-import { Badge, Card, Heading, IconLib, Pill, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from '@fold-dev/core'
+import { Badge, Card, Heading, IconLib, Pill, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, View } from '@fold-dev/core'
 import React, { useState } from 'react'
 
 export default {
@@ -118,27 +118,60 @@ export const Overflow = () => {
     const [selected, setSelected] = useState(0)
 
     return (
-        <Tabs
-            selected={selected}
-            onSelect={setSelected}
-            width={400}>
-            <TabList>
-                <Tab>Profile</Tab>
-                <Tab>Settings</Tab>
-                <Tab>Security</Tab>
-                <Tab>Privacy</Tab>
-                <Tab>Subscription</Tab>
-                <Tab>Overflow</Tab>
-            </TabList>
-            <TabPanels>
-                <TabPanel>Profile related content</TabPanel>
-                <TabPanel>Settings related content</TabPanel>
-                <TabPanel>Security related content</TabPanel>
-                <TabPanel>Privacy related content</TabPanel>
-                <TabPanel>Subscription related content</TabPanel>
-                <TabPanel>Overflow related content</TabPanel>
-            </TabPanels>
-        </Tabs>
+        <Stack
+            alignItems="flex-start" 
+            direction="vertical"
+            noStretch
+            spacing={20}>
+            <Tabs
+                animated
+                selected={selected}
+                onSelect={setSelected}
+                width={400}>
+                <TabList>
+                    <Tab>Profile</Tab>
+                    <Tab>Settings</Tab>
+                    <Tab>Security</Tab>
+                    <Tab>Privacy</Tab>
+                    <Tab>Subscription</Tab>
+                    <Tab>Overflow</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel>Profile related content</TabPanel>
+                    <TabPanel>Settings related content</TabPanel>
+                    <TabPanel>Security related content</TabPanel>
+                    <TabPanel>Privacy related content</TabPanel>
+                    <TabPanel>Subscription related content</TabPanel>
+                    <TabPanel>Overflow related content</TabPanel>
+                </TabPanels>
+            </Tabs>
+
+            <Tabs
+                animated
+                selected={selected}
+                onSelect={setSelected}
+                layout="left"
+                height={200}>
+                <TabList>
+                    <Tab>Profile</Tab>
+                    <Tab>Settings</Tab>
+                    <Tab>Security</Tab>
+                    <Tab>Privacy</Tab>
+                    <Tab>Subscription</Tab>
+                    <Tab>Membership</Tab>
+                    <Tab>Account</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel>Profile related content</TabPanel>
+                    <TabPanel>Settings related content</TabPanel>
+                    <TabPanel>Security related content</TabPanel>
+                    <TabPanel>Privacy related content</TabPanel>
+                    <TabPanel>Subscription related content</TabPanel>
+                    <TabPanel>Membership related content</TabPanel>
+                    <TabPanel>Account related content</TabPanel>
+                </TabPanels>
+            </Tabs>
+        </Stack>
     )
 }
 

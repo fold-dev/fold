@@ -323,7 +323,6 @@ export const DateCellVariants = () => (
                 variant="accent"
                 anchor="top-left"
                 style={{ marginLeft: 5, marginTop: 5 }}
-                bordered
             />
         </DateCell>
     </View>

@@ -3,7 +3,7 @@
 
 :root {
     --f-task-card-background: var(--f-color-surface);
-    --f-task-card-border: 0.1rem solid var(--f-color-border);
+    --f-task-card-border: 1px solid var(--f-color-border);
     --f-task-card-radius: var(--f-radius);
     --f-task-card-spacing-bottom: 0.25rem;
     --f-task-card-padding: 0.75rem;
@@ -97,7 +97,7 @@
 }
 
 .f-task-card .f-avatar {
-    border: 0.1rem solid var(--f-color-surface);
+    border: 1px solid var(--f-color-surface);
 }
 
 /* list item */
@@ -116,7 +116,7 @@
 
 .f-task-list-item {
     background: var(--f-task-li-background);
-    border-top: 0.1rem solid var(--f-color-border);
+    border-top: 1px solid var(--f-color-border);
     border-radius: var(--f-task-li-radius);
     position: relative;
     width: 100%;
@@ -156,7 +156,7 @@
 }
 
 .f-task-list-item .f-avatar {
-    border: 0.1rem solid var(--f-color-surface);
+    border: 1px solid var(--f-color-surface);
 }
 
 .f-task-list-item__title {
@@ -239,7 +239,7 @@
 }
 
 .f-task-menu-button {
-    padding: 0.1rem;
+    padding: 0.15rem;
     display: none;
     position: absolute;
     top: var(--f-task-menu-y);

@@ -7,7 +7,7 @@
 
 .f-kbd {
     padding: var(--f-space-inset-x-1);
-    border-bottom: 0.15rem solid;
+    border-bottom: 2px solid;
     border-right: 0.05rem solid;
     border-radius: var(--f-kbd-border-radius);
     border-color: var(--f-kbd-border-color);

@@ -137,14 +137,6 @@ export const Size = () => (
         gap={10}>
         <Attachment
             size="sm"
-            poster="/photos/07.jpg"
-            mime="image/png"
-            filesize={24325}
-            label="filename.png"
-            href="https://fold.dev"
-        />
-        <Attachment
-            poster="/photos/08.jpg"
             mime="image/png"
             filesize={24325}
             label="filename.png"

@@ -31,7 +31,7 @@
     height: var(--f-size-5);
     width: var(--f-size-5);
     border-radius: var(--f-checkbox-border-radius); 
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-checkbox-border-color);
     background-color: var(--f-checkbox-background-color);
     display: grid;
@@ -165,7 +165,7 @@
     cursor: pointer;
     overflow: hidden;
     transition: border 0.1s;
-    border: 0.1rem solid;
+    border: 1px solid;
     border-color: var(--f-checkbox-alt-border-color);
     background-color: var(--f-checkbox-alt-background-color);
     -webkit-user-select: none;

@@ -1,7 +1,7 @@
 :root {
     --f-accordion-border-radius: var(--f-radius);
     --f-accordion-border-color: var(--f-color-border);
-    --f-accordion-border-width: 0.1rem;
+    --f-accordion-border-width: 1px;
     --f-accordion-background: var(--f-color-surface);
     --f-accordion-color: var(--f-color-text-weak);
     --f-accordion-color-description: var(--f-color-text-weakest);
