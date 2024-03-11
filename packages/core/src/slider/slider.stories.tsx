@@ -93,6 +93,7 @@ export const Tooltips = () => {
 
     return (
         <Slider
+            showTooltip
             markers={10}
             onChange={setValue}
             values={value}
