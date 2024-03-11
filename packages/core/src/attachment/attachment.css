@@ -17,7 +17,6 @@
     text-decoration: none;
     color: var(--f-attachment-color);
     position: relative;
-    /* cursor: pointer; */
     min-height: var(--f-size-12);
     border: 1px solid;
     border-color: var(--f-attachment-border-color);
@@ -25,10 +24,6 @@
     padding: var(--f-space-2); 
     margin-bottom: var(--f-space-1);
     background: var(--f-attachment-background);
-}
-
-.f-attachment * {
-    /* cursor: pointer; */
 }
 
 .f-attachment__content {
@@ -141,10 +136,6 @@
     border-radius: var(--f-attachment-border-radius);
     width: var(--f-attachment-thumb-size); 
     height: var(--f-attachment-thumb-size); 
-}
-
-.f-attachment-thumb * {
-    /* cursor: pointer; */
 }
 
 .f-attachment-thumb .f-progress {
