@@ -5,6 +5,7 @@
     --f-link-color: var(--f-color-text-link);
     --f-text-decoration-size: default;
     --f-blockquote-width: 0.25rem;
+    --f-link-opacity: 0.9;
 }
 
 p,
@@ -59,7 +60,7 @@ a,
 
 a:hover,
 .f-text.is-link:hover {
-    opacity: 0.75;
+    opacity: var(--f-link-opacity);
 }
 
 p, 
