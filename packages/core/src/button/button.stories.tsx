@@ -213,9 +213,9 @@ export const States = () => (
             Neutral
         </Button>
         <Button
-            variant="caution"
+            variant="accent"
             active>
-            Caution
+            Active
         </Button>
         <Button
             variant="warning"

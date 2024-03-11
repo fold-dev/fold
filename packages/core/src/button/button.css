@@ -8,6 +8,7 @@
     --f-button-disabled-opacity: 0.5;
     --f-button-border-radius: var(--f-radius);
     --f-button-shadow: var(--f-shadow-sm);
+    --f-button-variant-opacity-hover: 0.1;
 }
 
 .f-button {
@@ -185,7 +186,7 @@
 .f-button.is-danger:after,
 .f-button.is-highlight:after {
     content: " ";
-    background-color: var(--f-color-surface);
+    background-color: var(--f-color-black);
     opacity: 0;
     position: absolute;
     left: 0;
@@ -194,25 +195,24 @@
     height: 100%;
     z-index: 0;
     border-radius: var(--f-button-border-radius);
-    transition-property: background-color, outline, color;
-    transition-duration: 0.1s;
+    transition: opacity 0.1s;
 }
 
-.f-button.is-accent.is-active:after,
-.f-button.is-success.is-active:after,
-.f-button.is-neutral.is-active:after,
-.f-button.is-caution.is-active:after,
-.f-button.is-warning.is-active:after,
-.f-button.is-danger.is-active:after,
-.f-button.is-highlight.is-active:after,
-.f-button.is-accent:not(:disabled):hover:after,
-.f-button.is-success:not(:disabled):hover:after,
-.f-button.is-neutral:not(:disabled):hover:after,
-.f-button.is-caution:not(:disabled):hover:after,
-.f-button.is-warning:not(:disabled):hover:after,
-.f-button.is-danger:not(:disabled):hover:after,
-.f-button.is-highlight:not(:disabled):hover:after {
-    opacity: 0.2;
+.f-button.is-default.is-accent.is-active:after,
+.f-button.is-default.is-success.is-active:after,
+.f-button.is-default.is-neutral.is-active:after,
+.f-button.is-default.is-caution.is-active:after,
+.f-button.is-default.is-warning.is-active:after,
+.f-button.is-default.is-danger.is-active:after,
+.f-button.is-default.is-highlight.is-active:after,
+.f-button.is-default.is-accent:not(:disabled):hover:after,
+.f-button.is-default.is-success:not(:disabled):hover:after,
+.f-button.is-default.is-neutral:not(:disabled):hover:after,
+.f-button.is-default.is-caution:not(:disabled):hover:after,
+.f-button.is-default.is-warning:not(:disabled):hover:after,
+.f-button.is-default.is-danger:not(:disabled):hover:after,
+.f-button.is-default.is-highlight:not(:disabled):hover:after {
+    opacity: var(--f-button-variant-opacity-hover);
 }
 
 /* ********************************************* */
