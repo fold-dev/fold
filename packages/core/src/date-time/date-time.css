@@ -53,6 +53,7 @@
     --f-date-cell-selected-background: var(--f-color-accent);
     --f-date-cell-selected-space: 1px;
     --f-date-cell-today: var(--f-color-accent);
+    --f-date-cell-selection-opacity: 0.25;
 }
 
 .f-date-cell {
@@ -107,7 +108,20 @@
     z-index: -2;
     background: var(--f-date-cell-pending-background);
     border-radius: var(--f-radius);
-    opacity: 0.25; /* instead of adding a accent-weaker token */
+    opacity: var(--f-date-cell-selection-opacity); /* instead of adding a accent-weaker token */
+    animation-name: f-date-cell-selection-fadein;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes f-date-cell-selection-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: var(--f-date-cell-selection-opacity);
+    }
 }
 
 /* selection */
@@ -128,6 +142,9 @@
     left: 0;
     z-index: -1;
     background: var(--f-date-cell-selected-background);
+    animation-name: f-date-cell-selected-fadein;
+    animation-duration: 0.05s;
+    animation-timing-function: ease-in;
 }
  
 .f-date-cell.is-start::before {
@@ -139,6 +156,16 @@
     border-top-right-radius: var(--f-radius);
     border-bottom-right-radius: var(--f-radius);
 } 
+
+@keyframes f-date-cell-selected-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 /* weekdays */
 
