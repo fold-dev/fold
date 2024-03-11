@@ -1,6 +1,6 @@
 :root {
     --f-dialog-padding: var(--f-space-inset-x-5);
-    --f-dialog-spacing: var(--f-space-4);
+    --f-dialog-spacing: var(--f-space-5);
 }
 
 .f-dialog {

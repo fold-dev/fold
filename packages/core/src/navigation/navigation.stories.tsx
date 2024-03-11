@@ -72,7 +72,7 @@ export const PrefixAndSuffix = () => (
             <NavigationItem suffix={<Badge variant="danger" />}>Projects</NavigationItem>
             <NavigationItem
                 prefix={<IconLib icon="circle" />}
-                suffix={<IconLib icon="arrow-right" />}>
+                suffix={<IconLib icon="gift" />}>
                 Products
             </NavigationItem>
         </Navigation>
