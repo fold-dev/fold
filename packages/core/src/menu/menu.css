@@ -10,6 +10,7 @@
     --f-menu-item-color: var(--f-color-text-weaker);
     --f-menu-item-color-hover: var(--f-color-text-weak);
     --f-menu-item-color-active: var(--f-color-accent);
+    --f-menu-item-color-system-active: var(--f-color-surface-stronger);
     --f-menu-item-active-size: 0.2rem;
     --f-menu-item-color-disabled: var(--f-color-text-weakest);
     --f-menu-item-padding: var(--f-space-2) var(--f-space-5);
@@ -156,6 +157,10 @@
     outline: none;
     color: var(--f-menu-item-color-hover);
     background-color: var(--f-menu-item-background-color-hover);
+}
+
+.f-menu-item:not(.is-disabled):active > .f-menu-item__container {
+    background-color: var(--f-menu-item-color-system-active);
 }
 
 .f-menu-item__container.is-disabled {

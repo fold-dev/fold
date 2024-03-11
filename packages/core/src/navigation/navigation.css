@@ -3,11 +3,12 @@
     --f-navbar-padding: var(--f-space-3);
     --f-navigation-background-color: var(--f-color-surface);
     --f-navigation-heading-color: var(--f-color-accent);
-    --f-navigation-item-background-color-hover: var(--f-color-surface-stronger);
+    --f-navigation-item-background-color-hover: var(--f-color-surface-strong);
     --f-navigation-item-background-color-active: var(--f-color-surface-strong);
     --f-navigation-item-color: var(--f-color-text-weaker);
     --f-navigation-item-color-hover: var(--f-color-text-weak);
     --f-navigation-item-color-active: var(--f-color-accent);
+    --f-navigation-item-color-system-active: var(--f-color-surface-stronger);
     --f-navigation-item-color-disabled: var(--f-color-text-weakest);
     --f-navigation-item-border-radius: var(--f-radius);
     --f-navigation-item-padding: var(--f-space-inset-x-2);
@@ -113,6 +114,10 @@
     outline: none;
     color: var(--f-navigation-item-color-hover);
     background-color: var(--f-navigation-item-background-color-hover);
+}
+
+.f-navigation-item__container:not(.is-disabled):active {
+    background-color: var(--f-navigation-item-color-system-active);
 }
 
 .f-navigation-item__container.is-disabled {
