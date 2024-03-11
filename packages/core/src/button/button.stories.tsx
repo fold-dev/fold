@@ -50,7 +50,6 @@ export const Variants = () => (
         <Button variant="caution">Caution</Button>
         <Button variant="warning">Warning</Button>
         <Button variant="danger">Danger</Button>
-        <Button variant="danger">Danger</Button>
         <Button variant="highlight">Highlight</Button>
     </Stack>
 )
@@ -132,11 +131,6 @@ export const Subtle = () => (
             Danger
         </Button>
         <Button
-            variant="danger"
-            subtle>
-            Danger
-        </Button>
-        <Button
             variant="highlight"
             subtle>
             Highlight
@@ -173,11 +167,6 @@ export const Outline = () => (
             variant="warning"
             outline>
             Warning
-        </Button>
-        <Button
-            variant="danger"
-            outline>
-            Danger
         </Button>
         <Button
             variant="danger"

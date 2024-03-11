@@ -15,8 +15,8 @@
     border: var(--f-button-border-width) solid;
     cursor: pointer; 
     flex-shrink: 0;
-    transition-property: background-color, outline;
-    transition-duration: 100ms;
+    transition-property: background-color, outline, color;
+    transition-duration: 0.1s;
     color: var(--f-button-color);
     border-color: var(--f-button-border-color);
     background-color: var(--f-button-background-color);
@@ -194,6 +194,8 @@
     height: 100%;
     z-index: 0;
     border-radius: var(--f-button-border-radius);
+    transition-property: background-color, outline, color;
+    transition-duration: 0.1s;
 }
 
 .f-button.is-accent.is-active:after,
