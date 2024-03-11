@@ -9,6 +9,7 @@
     --f-button-border-radius: var(--f-radius);
     --f-button-shadow: var(--f-shadow-sm);
     --f-button-variant-opacity-hover: 0.1;
+    --f-button-active-filter: brightness(90%) contrast(110%);
 }
 
 .f-button {
@@ -46,6 +47,10 @@
 .f-button:not(:disabled):hover {
     color: var(--f-button-color-hover);
     background-color: var(--f-button-background-color-hover);
+}
+
+.f-button:not(:disabled,.is-loading):active {
+    filter: var(--f-button-active-filter);
 }
 
 .f-button:disabled {
@@ -116,48 +121,11 @@
     display: inline-block;
 }
 
-/* active */
-  /*   content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: radial-gradient(circle, var(--f-color-surface-stronger) 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform .5s, opacity 1s; */
-
-.f-button.is-accent:active:before {
-    content: " ";
-    background-color: var(--f-color-black);
-    opacity: 0.1;
-    filter: saturate(10%);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    border-radius: var(--f-button-border-radius);
-    transition: opacity 0.1s;
-}
-
-/* .f-button:not(:disabled,.is-loading):active:before {
-    transform: scale(0, 0);
-    opacity: .1;
-    transition: 0s;
-} */
-
 /* ********************************************* */
 /* ********************************************* */
 /* ********************************************* */
 
-/* no other visual props */
+/* default */
 
 .f-button.is-accent,
 .f-button.is-accent:hover {
