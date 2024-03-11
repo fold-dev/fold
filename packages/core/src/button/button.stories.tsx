@@ -9,6 +9,7 @@ import {
     MenuItem,
     Popover,
     Stack,
+    Text,
     View,
     useVisibility,
 } from '@fold-dev/core'
@@ -440,3 +441,35 @@ export const ButtonGroupMenu = () => {
  * Fold includes a dark-mode button that automatically toggles between dark & light modes.
  */
 export const DarkMode = () => <DarkModeButton />
+
+// --
+
+/**
+ * Shorthand utility classes are available to easily apply common styles to elements that function as buttons.
+ */
+export const UtilityClasees = () => {
+    const { visible, show, hide } = useVisibility(false)
+
+    return (
+        <Stack
+            spacing={10}
+            direction="vertical">
+            <View 
+                p="1rem"
+                radius="var(--f-radius)"
+                width="fit-content"
+                border="2px solid var(--f-color-border)"
+                className="f-buttonize">
+                <Text>Button with opacity</Text>
+            </View>
+            <View 
+                p="1rem"
+                radius="var(--f-radius)"
+                width="fit-content"
+                border="2px solid var(--f-color-border)"
+                className="f-buttonize-outline">
+                <Text>Button with outline</Text>
+            </View>
+        </Stack>
+    )
+}
