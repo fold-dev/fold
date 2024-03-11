@@ -2,6 +2,7 @@
     --f-upload-border-radius: var(--f-radius);
     --f-upload-border: 1px solid var(--f-color-border);
     --f-upload-border-hover: 1px solid var(--f-color-border-strong);
+    --f-upload-border-system-active: 1px solid var(--f-color-surface-strongest);
     --f-upload-border-active: 1px dashed var(--f-color-accent);
     --f-upload-background: var(--f-color-surface-strong);
     --f-upload-color: var(--f-color-text);
@@ -34,6 +35,10 @@
 
 .f-upload:not(.is-disabled):not(.is-loading):hover {
     border: var(--f-upload-border-hover);
+}
+
+.f-upload:not(.is-disabled):not(.is-loading):active {
+    border: var(--f-upload-border-system-active);
 }
 
 .f-upload h1 {
