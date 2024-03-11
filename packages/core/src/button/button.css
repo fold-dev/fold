@@ -10,6 +10,8 @@
     --f-button-shadow: var(--f-shadow-sm);
     --f-button-variant-opacity-hover: 0.1;
     --f-button-active-filter: brightness(90%) contrast(110%);
+    --f-button-transition-delay: 0.1s;
+    --f-button-transition-delay-focus: 0.1s;
 }
 
 .f-button {
@@ -17,8 +19,8 @@
     border: var(--f-button-border-width) solid;
     cursor: pointer; 
     flex-shrink: 0;
-    transition-property: background-color, outline, color;
-    transition-duration: 0.1s;
+    transition-property: background-color, outline, color, filter, -webkit-filter;
+    transition-duration: var(--f-button-transition-delay);
     color: var(--f-button-color);
     border-color: var(--f-button-border-color);
     background-color: var(--f-button-background-color);
@@ -39,6 +41,7 @@
 }
 
 .f-button:focus {
+    transition-duration: var(--f-button-transition-delay-focus);
     outline: var(--f-focus);
     outline-offset: 1px;
 }

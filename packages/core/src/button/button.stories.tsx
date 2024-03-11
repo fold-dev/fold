@@ -43,7 +43,7 @@ export const Sizes = () => (
 
 // --
 
-export const Variants = () => (
+export const NormalVariants = () => (
     <View column gap="1rem" alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
@@ -94,7 +94,7 @@ export const Variants = () => (
 
 // --
 
-export const Subtle = () => (
+export const SubtleVariants = () => (
     <View column gap="1rem" alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
@@ -145,7 +145,7 @@ export const Subtle = () => (
 
 // --
 
-export const Outline = () => (
+export const OutlineVariants = () => (
     <View column gap="1rem" alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
