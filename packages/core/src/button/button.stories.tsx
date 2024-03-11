@@ -2,12 +2,14 @@ import {
     Button,
     ButtonGroup,
     DarkModeButton,
+    Heading,
     IconButton,
     IconLib,
     Menu,
     MenuItem,
     Popover,
     Stack,
+    View,
     useVisibility,
 } from '@fold-dev/core'
 import React from 'react'
@@ -42,57 +44,52 @@ export const Sizes = () => (
 // --
 
 export const Variants = () => (
-    <Stack spacing={5}>
-        <Button>Default</Button>
-        <Button variant="accent">Accent</Button>
-        <Button variant="success">Success</Button>
-        <Button variant="neutral">Neutral</Button>
-        <Button variant="caution">Caution</Button>
-        <Button variant="warning">Warning</Button>
-        <Button variant="danger">Danger</Button>
-        <Button variant="highlight">Highlight</Button>
-    </Stack>
-)
-
-// --
-
-export const WithPrefixAndSuffix = () => (
-    <Stack spacing={5}>
-        <Button
-            as="a"
-            href="https://google.com"
-            target="_blank"
-            prefix={<IconLib icon="circle" />}>
-            With Prefix
-        </Button>
-        <Button
-            outline
-            variant="accent"
-            suffix={<IconLib icon="circle" />}>
-            With Suffix
-        </Button>
-        <Button
-            subtle
-            variant="danger"
-            prefix={<IconLib icon="circle" />}
-            suffix={<IconLib icon="circle" />}>
-            With Prefix & Suffix
-        </Button>
-    </Stack>
-)
-
-// --
-
-/**
- * Sometimes you need the text of the button to wrap. For this, the Button component offers the handy `ellipsis` prop.
- */
-export const EllipsisMode = () => (
-    <Button
-        prefix={<IconLib icon="circle" />}
-        width={150}
-        ellipsis>
-        This is some really long text!
-    </Button>
+    <View column gap="1rem" alignItems="flex-start">
+        <Heading as="h5">Normal</Heading>
+        <Stack spacing={5}>
+            <Button>Default</Button>
+            <Button variant="accent">Accent</Button>
+            <Button variant="success">Success</Button>
+            <Button variant="neutral">Neutral</Button>
+            <Button variant="caution">Caution</Button>
+            <Button variant="warning">Warning</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="highlight">Highlight</Button>
+        </Stack>
+        <Heading as="h5">Disabled</Heading>
+        <Stack spacing={5}>
+            <Button disabled>Default</Button>
+            <Button disabled variant="accent">Accent</Button>
+            <Button disabled variant="success">Success</Button>
+            <Button disabled variant="neutral">Neutral</Button>
+            <Button disabled variant="caution">Caution</Button>
+            <Button disabled variant="warning">Warning</Button>
+            <Button disabled variant="danger">Danger</Button>
+            <Button disabled variant="highlight">Highlight</Button>
+        </Stack>
+        <Heading as="h5">Loading</Heading>
+        <Stack spacing={5}>
+            <Button loading>Default</Button>
+            <Button loading variant="accent">Accent</Button>
+            <Button loading variant="success">Success</Button>
+            <Button loading variant="neutral">Neutral</Button>
+            <Button loading variant="caution">Caution</Button>
+            <Button loading variant="warning">Warning</Button>
+            <Button loading variant="danger">Danger</Button>
+            <Button loading variant="highlight">Highlight</Button>
+        </Stack>
+        <Heading as="h5">Active</Heading>
+        <Stack spacing={5}>
+            <Button active>Default</Button>
+            <Button active variant="accent">Accent</Button>
+            <Button active variant="success">Success</Button>
+            <Button active variant="neutral">Neutral</Button>
+            <Button active variant="caution">Caution</Button>
+            <Button active variant="warning">Warning</Button>
+            <Button active variant="danger">Danger</Button>
+            <Button active variant="highlight">Highlight</Button>
+        </Stack>
+    </View>
 )
 
 // --
@@ -179,6 +176,47 @@ export const Outline = () => (
             Highlight
         </Button>
     </Stack>
+)
+
+// --
+
+export const WithPrefixAndSuffix = () => (
+    <Stack spacing={5}>
+        <Button
+            as="a"
+            href="https://google.com"
+            target="_blank"
+            prefix={<IconLib icon="circle" />}>
+            With Prefix
+        </Button>
+        <Button
+            outline
+            variant="accent"
+            suffix={<IconLib icon="circle" />}>
+            With Suffix
+        </Button>
+        <Button
+            subtle
+            variant="danger"
+            prefix={<IconLib icon="circle" />}
+            suffix={<IconLib icon="circle" />}>
+            With Prefix & Suffix
+        </Button>
+    </Stack>
+)
+
+// --
+
+/**
+ * Sometimes you need the text of the button to wrap. For this, the Button component offers the handy `ellipsis` prop.
+ */
+export const EllipsisMode = () => (
+    <Button
+        prefix={<IconLib icon="circle" />}
+        width={150}
+        ellipsis>
+        This is some really long text!
+    </Button>
 )
 
 // --
