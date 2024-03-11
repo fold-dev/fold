@@ -6,6 +6,8 @@
     --f-option-color: var(--f-color-text-weaker);
     --f-option-disabled-color: var(--f-color-text-weakest);
     --f-option-selected-color: var(--f-color-text);
+    --f-option-hover-color: var(--f-color-text);
+    --f-option-system-active-color: var(--f-color-text-weaker);
     --f-options-border-width: 1px;
     --f-options-border-color: var(--f-color-border);
     --f-options-shadow: var(--f-shadow-sm);
@@ -38,10 +40,15 @@
     flex-shrink: 0;
     white-space: nowrap;
     position: relative;
+    transition: color .2s;
 }
 
 .f-option:focus {
     outline: none;
+}
+
+.f-option:not(:disabled):active .f-option__suffix__label {
+    color: var(--f-option-system-active-color);    
 }
 
 .f-option:disabled {
@@ -50,8 +57,7 @@
 }
 
 .f-option:not(:disabled):not(.is-selected):hover {
-    opacity: 0.8;
-    transition: opacity .2s;
+    color: var(--f-option-hover-color);
 }
 
 .f-option:not(:disabled).is-selected {
