@@ -1,4 +1,5 @@
 :root {
+    --f-options-padding: var(--f-space-1);
     --f-options-spacing: var(--f-space-1);
     --f-options-border-radius: var(--f-radius);
     --f-options-background-color: var(--f-color-surface);
@@ -15,7 +16,7 @@
 }
 
 .f-options {
-    padding: var(--f-space-1);
+    padding: var(--f-options-padding);
     border-radius: var(--f-options-border-radius);
     background-color: var(--f-options-background-color);
     width: fit-content;
