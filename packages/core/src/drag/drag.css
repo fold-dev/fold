@@ -19,20 +19,24 @@
 .f-drag-area.is-dragging .f-drag-element > *,
 .f-drag-area.is-dragging .f-drag-area__element > * {
     pointer-events: none;
+    user-select: none;
 }
 
 .f-drag-area.is-dragging {
     pointer-events: all !important; 
+    user-select: all !important; 
 }
 
 /* target groups */
 
 .f-drag-area.is-dragging.no-origin-variant .f-drag-area.is-dragging:not(.no-origin-variant) {
     pointer-events: all;    
+    user-select: all;
 }
 
 .f-drag-area.is-dragging.no-origin-variant {
     pointer-events: none !important;
+    user-select: none !important;
 }
 
 /* drag element */
