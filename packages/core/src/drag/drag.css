@@ -50,8 +50,8 @@
     z-index: 2;
 }
 
-.f-drag-area.is-animated .f-drag-element,
-.f-drag-area.is-animated .f-drag-area__element {
+[data-dragginganimation = "yes"] .f-drag-area .f-drag-element,
+[data-dragginganimation = "yes"] .f-drag-area .f-drag-area__element {
     transition: transform var(--f-drag-speed) var(--f-drag-transition);
 }
 

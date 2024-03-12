@@ -595,7 +595,6 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const hitbox = useRef<any>({})
     const animateFrame = useRef(null)
     const ready = useRef(false)
-    const [animated, setAnimated] = useState(false)
     const id = useId(areaId)
     const { lastIndex, noChildren } = useMemo(() => {
         const count = Children.count(props.children)
@@ -652,7 +651,6 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
-            'is-animated': animated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
@@ -699,7 +697,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     }
 
     const handleMouseUp = (e) => {
-        setAnimated(false)
+        delete documentObject.body.dataset.dragginganimation
         ready.current = false
         clearTimeout(timeout.current)
     }
@@ -840,9 +838,13 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
         )
     }
 
-    const handleDragStart = (e) => setTimeout(() => setAnimated(true), 100)
+    const handleDragStart = (e) => {
+        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+    }
 
-    const handleDragEnd = (e) => setAnimated(false)
+    const handleDragEnd = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
     useDragEvent('onstart', handleDragStart)
     useDragEvent('onend', handleDragEnd)
@@ -943,7 +945,6 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     const { target } = getDragState('target')
     const containerRef = useRef(null)
     const bufferRef = useRef(null)
-    const [animated, setAnimated] = useState(false)
     const id = useId(areaId)
     const noChildren = useMemo(() => Children.count(props.children) == 0, [props.children])
     const { isHorizontal, isVertical, isDragging, hasOriginVariant, finalTargetVariant, placeholder } = useMemo(() => {
@@ -1009,17 +1010,22 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
-            'is-animated': animated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
     )
 
-    const handleMouseUp = (e) => setAnimated(false)
+    const handleMouseUp = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
-    const handleDragStart = (e) => setTimeout(() => setAnimated(true), 100)
+    const handleDragStart = (e) => {
+        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+    }
 
-    const handleDragEnd = (e) => setAnimated(false)
+    const handleDragEnd = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
     useDragEvent('onstart', handleDragStart)
     useDragEvent('onend', handleDragEnd)
