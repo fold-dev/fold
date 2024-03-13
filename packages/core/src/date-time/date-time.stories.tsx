@@ -87,7 +87,7 @@ export const SelectWeek = () => {
 
         return { today, tomorrow }
     }, [])
-    const [selection, setSelection] = useState<any[]>([[today, tomorrow]])
+    const [selection, setSelection] = useState<any[]>([])
 
     const handleWeekSelection = (dates: Date[]) => {
         setSelection([...selection, dates])
