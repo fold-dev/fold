@@ -42,7 +42,7 @@ export const Usage = () => {
     const [date, setDate] = useState(new Date())
     const { today, tomorrow } = useMemo(() => {
         const today = new Date()
-        const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
+        const tomorrow = new Date(today.getTime() + 4 * 24 * 60 * 60 * 1000)
 
         return { today, tomorrow }
     }, [])
