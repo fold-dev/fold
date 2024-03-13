@@ -347,7 +347,6 @@ export type DragManagerProps = {
     moveThreshold?: number
     indentThreshold?: number
     linedRegionThreshold?: number
-    indentDelay?: number
 }
 
 export const DragManager = (props: DragManagerProps) => {
@@ -357,7 +356,6 @@ export const DragManager = (props: DragManagerProps) => {
         moveThreshold = 0,
         indentThreshold = 10,
         linedRegionThreshold = 3,
-        indentDelay = 100,
     } = props
     const ghostRef = useRef<any>(null)
     const { origin } = getDragState('origin')
