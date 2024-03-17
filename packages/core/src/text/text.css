@@ -5,6 +5,7 @@
     --f-link-color: var(--f-color-text-link);
     --f-text-decoration-size: default;
     --f-blockquote-width: 0.25rem;
+    --f-link-opacity: 0.9;
 }
 
 p,
@@ -59,7 +60,7 @@ a,
 
 a:hover,
 .f-text.is-link:hover {
-    opacity: 0.75;
+    opacity: var(--f-link-opacity);
 }
 
 p, 
@@ -108,35 +109,20 @@ legend.f-text {
 
 .f-text.xs {
     font-size: var(--f-font-size-xs);
-    line-height: var(--f-font-size-xs);
 }
 
 .f-text.sm {
     font-size: var(--f-font-size-sm);
-    line-height: var(--f-font-size-sm);
 }
 
 .f-text.md {
     font-size: var(--f-font-size-md);
-    line-height: var(--f-font-size-md);
 }
 
 .f-text.lg {
     font-size: var(--f-font-size-lg);
-    line-height: var(--f-font-size-lg);
 }
 
 .f-text.xl {
     font-size: var(--f-font-size-xl);
-    line-height: var(--f-font-size-xl);
-}
-
-/* default line height */
-
-p.f-text.xs,
-p.f-text.sm,
-p.f-text.md,
-p.f-text.lg,
-p.f-text.xl {
-    line-height: default;
 }

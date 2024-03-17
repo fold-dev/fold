@@ -74,6 +74,7 @@ windowObject[FOLD_DRAG_CACHE] = {
     targetElement: null,
     targetAreaId: null,
     indent: {},
+    targetCache: {},
 }
 
 windowObject[FOLD_DRAG_STATE] = {
@@ -276,6 +277,21 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             offsetTop: mouseOffsetTop,
                         }
 
+                        // save the cache for the reset 
+                        cache.targetCache = {
+                            focus: false,
+                            moveDirection: isVertical ? 'up' : 'left',
+                            index,
+                            indent,
+                            left: el.offsetLeft,
+                            top: el.offsetTop,
+                            height,
+                            width,
+                            areaId,
+                            elementId,
+                            group,
+                        }
+
                         setOrigin({
                             targetVariant: finalTargetVariant,
                             elementId,
@@ -331,7 +347,6 @@ export type DragManagerProps = {
     moveThreshold?: number
     indentThreshold?: number
     linedRegionThreshold?: number
-    indentDelay?: number
 }
 
 export const DragManager = (props: DragManagerProps) => {
@@ -341,7 +356,6 @@ export const DragManager = (props: DragManagerProps) => {
         moveThreshold = 0,
         indentThreshold = 10,
         linedRegionThreshold = 3,
-        indentDelay = 100,
     } = props
     const ghostRef = useRef<any>(null)
     const { origin } = getDragState('origin')
@@ -350,9 +364,13 @@ export const DragManager = (props: DragManagerProps) => {
     const { endDrag, getCache, indent, outdent } = useDrag()
     const cache = getCache()
 
-    const stopDrag = () => {
+    const stopDrag = (reset = false) => {
         if (isDragging) {
-            dispatchDragEvent('ondrop', { origin, target })
+            if (reset) {
+                dispatchDragEvent('ondrop', { origin, target: cache.targetCache })
+            } else {
+                dispatchDragEvent('ondrop', { origin, target })
+            }            
             endDrag()
             setTarget({})
             setOrigin({ targetVariant: {} })
@@ -366,7 +384,7 @@ export const DragManager = (props: DragManagerProps) => {
 
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
-        if (isEscape && isDragging) stopDrag()
+        if (isEscape && isDragging) stopDrag(true)
     }
 
     const handleMouseMove = (e) => {
@@ -595,7 +613,6 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const hitbox = useRef<any>({})
     const animateFrame = useRef(null)
     const ready = useRef(false)
-    const [animated, setAnimated] = useState(false)
     const id = useId(areaId)
     const { lastIndex, noChildren } = useMemo(() => {
         const count = Children.count(props.children)
@@ -652,7 +669,6 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
-            'is-animated': animated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
@@ -699,7 +715,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     }
 
     const handleMouseUp = (e) => {
-        setAnimated(false)
+        delete documentObject.body.dataset.dragginganimation
         ready.current = false
         clearTimeout(timeout.current)
     }
@@ -761,6 +777,19 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         top: mouseTop,
                         offsetLeft: mouseOffsetLeft,
                         offsetTop: mouseOffsetTop,
+                    }
+                    cache.targetCache = {
+                        focus: false,
+                        moveDirection: isVertical ? 'up' : 'left',
+                        index,
+                        indent,
+                        left: el.offsetLeft,
+                        top: el.offsetTop,
+                        height,
+                        width,
+                        areaId,
+                        elementId,
+                        group,
                     }
                     cache.init = {
                         origin: {
@@ -840,9 +869,13 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
         )
     }
 
-    const handleDragStart = (e) => setTimeout(() => setAnimated(true), 100)
+    const handleDragStart = (e) => {
+        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+    }
 
-    const handleDragEnd = (e) => setAnimated(false)
+    const handleDragEnd = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
     useDragEvent('onstart', handleDragStart)
     useDragEvent('onend', handleDragEnd)
@@ -943,7 +976,6 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     const { target } = getDragState('target')
     const containerRef = useRef(null)
     const bufferRef = useRef(null)
-    const [animated, setAnimated] = useState(false)
     const id = useId(areaId)
     const noChildren = useMemo(() => Children.count(props.children) == 0, [props.children])
     const { isHorizontal, isVertical, isDragging, hasOriginVariant, finalTargetVariant, placeholder } = useMemo(() => {
@@ -1009,17 +1041,22 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
-            'is-animated': animated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
     )
 
-    const handleMouseUp = (e) => setAnimated(false)
+    const handleMouseUp = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
-    const handleDragStart = (e) => setTimeout(() => setAnimated(true), 100)
+    const handleDragStart = (e) => {
+        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+    }
 
-    const handleDragEnd = (e) => setAnimated(false)
+    const handleDragEnd = (e) => {
+        delete documentObject.body.dataset.dragginganimation
+    }
 
     useDragEvent('onstart', handleDragStart)
     useDragEvent('onend', handleDragEnd)

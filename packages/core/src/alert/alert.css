@@ -1,6 +1,6 @@
 :root {
     --f-alert-padding: var(--f-space-inset-x-5);
-    --f-alert-spacing: var(--f-space-4);
+    --f-alert-spacing: var(--f-space-5);
     --f-alert-icon-color: var(--f-color-text-weak);
 }
 

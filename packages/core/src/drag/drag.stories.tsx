@@ -679,6 +679,8 @@ export const SavingAfterDrop = () => {
         { id: 'id2', text: "✅ Drop off the dragon's dry cleaning at the fireproof laundromat." },
         { id: 'id3', text: '✅ Fetch a special blend of star-dust coffee beans from the celestial coffee shop.' },
         { id: 'id4', text: '✅ Deliver a message to the mermaids in the underwater kingdom.' },
+        { id: 'id5', text: '✅ Break into the secret underground hotel.' },
+        { id: 'id6', text: '✅ Clean up after my pet Pheonix.' },
     ])
 
     const handleDragOnDrop = ({ detail: { target, origin } }) => {

@@ -1,11 +1,14 @@
 :root {
+    --f-options-padding: var(--f-space-1);
     --f-options-spacing: var(--f-space-1);
     --f-options-border-radius: var(--f-radius);
     --f-options-background-color: var(--f-color-surface);
-    --f-options-active-background-color: var(--f-color-surface-strong);
+    --f-options-active-background-color: var(--f-color-accent);
     --f-option-color: var(--f-color-text-weaker);
     --f-option-disabled-color: var(--f-color-text-weakest);
-    --f-option-selected-color: var(--f-color-text);
+    --f-option-selected-color: var(--f-color-surface);
+    --f-option-hover-color: var(--f-color-text);
+    --f-option-active-opacity: 0.8;
     --f-options-border-width: 1px;
     --f-options-border-color: var(--f-color-border);
     --f-options-shadow: var(--f-shadow-sm);
@@ -13,7 +16,7 @@
 }
 
 .f-options {
-    padding: var(--f-space-1);
+    padding: var(--f-options-padding);
     border-radius: var(--f-options-border-radius);
     background-color: var(--f-options-background-color);
     width: fit-content;
@@ -38,10 +41,15 @@
     flex-shrink: 0;
     white-space: nowrap;
     position: relative;
+    transition: color .2s;
 }
 
 .f-option:focus {
     outline: none;
+}
+
+.f-option:not(:disabled):active .f-option__suffix__label {
+    opacity: var(--f-option-active-opacity);    
 }
 
 .f-option:disabled {
@@ -50,8 +58,7 @@
 }
 
 .f-option:not(:disabled):not(.is-selected):hover {
-    opacity: 0.8;
-    transition: opacity .2s;
+    color: var(--f-option-hover-color);
 }
 
 .f-option:not(:disabled).is-selected {
@@ -84,6 +91,7 @@
     color: currentColor;
     padding: 0;
     margin: 0;
+    transition: opacity 0.2s;
 }
 
 .f-option__suffix,

@@ -172,7 +172,7 @@ export type AttachmentProps = {
 
 export const Attachment = (props: AttachmentProps) => {
     const {
-        as = 'a',
+        as = 'div',
         heroPosterHeight = 150,
         heroPosterContent,
         heroPoster,
@@ -292,7 +292,7 @@ export type AttachmentThumbProps = {
 } & CoreViewProps & { href?: string }
 
 export const AttachmentThumb = (props: AttachmentThumbProps) => {
-    const { as = 'a', poster, mime, error, loading, tools, loadingProgress, label, filesize, ...rest } = props
+    const { as = 'div', poster, mime, error, loading, tools, loadingProgress, label, filesize, ...rest } = props
     const className = classNames(
         {
             'f-attachment-thumb': true,

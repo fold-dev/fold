@@ -84,6 +84,7 @@ export const Button = forwardRef((props: ButtonProps, ref) => {
             'is-active': active,
             'is-outline': outline,
             'is-subtle': subtle,
+            'is-default': !subtle && !outline,
             'is-loading': loading,
             'is-flat': flat,
             'is-underlined': underlined,

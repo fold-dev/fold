@@ -31,7 +31,7 @@ export const Usage = () => (
         bgToken="surface-strong"
         p={20}>
         <Navigation width={300}>
-            <NavigationItem href="#">Dashboard</NavigationItem>
+            <NavigationItem>Dashboard</NavigationItem>
             <NavigationItem>Projects</NavigationItem>
             <NavigationItem>Products</NavigationItem>
             <NavigationItem>Analytics</NavigationItem>
@@ -72,7 +72,7 @@ export const PrefixAndSuffix = () => (
             <NavigationItem suffix={<Badge variant="danger" />}>Projects</NavigationItem>
             <NavigationItem
                 prefix={<IconLib icon="circle" />}
-                suffix={<IconLib icon="arrow-right" />}>
+                suffix={<IconLib icon="gift" />}>
                 Products
             </NavigationItem>
         </Navigation>

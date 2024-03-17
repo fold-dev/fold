@@ -1,6 +1,8 @@
 :root {
-    --f-buttonize-opacity: 0.75;
+    --f-buttonize-opacity: 0.8;
+    --f-buttonize-opacity-active: 0.6;
     --f-buttonize-outline-size: 0.2rem;
+    --f-buttonize-outline-size-active: 0.25rem;
     --f-buttonize-outline-color: var(--f-color-accent);
 }
 
@@ -15,13 +17,24 @@
     opacity: var(--f-buttonize-opacity);
 }
 
+.f-buttonize:active {
+    opacity: var(--f-buttonize-opacity-active);
+}
+
 .f-buttonize-outline {
-    transition: outline 0.25s;
+    transition: outline, opacity 0.25s;
 }
 
 .f-buttonize-outline:hover {
     cursor: pointer;
+    transition: outline 0.1s;
     outline: var(--f-buttonize-outline-size) solid var(--f-buttonize-outline-color);
+}
+
+.f-buttonize-outline:active {
+    outline: var(--f-buttonize-outline-size-active) solid var(--f-buttonize-outline-color);
+    /* filter: brightness(90%) contrast(110%); */
+
 }
 
 /* text */

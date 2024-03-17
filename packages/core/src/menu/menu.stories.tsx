@@ -76,7 +76,7 @@ export const PrefixAndSuffix = () => (
         <MenuItem prefix={<IconLib icon="warning" />}>Delete</MenuItem>
         <MenuItem
             prefix={<IconLib icon="gift" />}
-            suffix={<IconLib icon="chevron-right" />}>
+            suffix={<IconLib icon="warning" />}>
             More
         </MenuItem>
     </Menu>

@@ -8,6 +8,7 @@
     --f-tabs-tab-active: var(--f-color-accent);
     --f-tabs-tab-disabled-color: var(--f-color-text-weakest);
     --f-tabs-tab-background-hover: var(--f-color-surface-strong);
+    --f-tabs-tab-background-active: var(--f-color-surface-stronger);
     --f-tabs-tab-scroll-button-background: var(--f-color-surface);
     --f-tabs-tab-list-background: var(--f-color-surface);
     --f-tabs-tab-scroll-button-padding: var(--f-size-5);
@@ -199,12 +200,18 @@
     flex-grow: 1;
     gap: var(--f-tab-ix-spacing);
     min-height: var(--f-tabs-tab-height);
+    transition: background-color 0.2s;
 }
 
 .f-tab:focus,
 .f-tab:not(:disabled):hover {
     outline: none;
     background: var(--f-tabs-tab-background-hover);
+} 
+
+.f-tab:not(:disabled):active {
+    outline: none;
+    background: var(--f-tabs-tab-background-active);
 } 
 
 .f-tab-list.is-left .f-tab {

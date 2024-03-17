@@ -42,7 +42,7 @@ export const Usage = () => {
     const [date, setDate] = useState(new Date())
     const { today, tomorrow } = useMemo(() => {
         const today = new Date()
-        const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
+        const tomorrow = new Date(today.getTime() + 4 * 24 * 60 * 60 * 1000)
 
         return { today, tomorrow }
     }, [])
@@ -87,7 +87,7 @@ export const SelectWeek = () => {
 
         return { today, tomorrow }
     }, [])
-    const [selection, setSelection] = useState<any[]>([[today, tomorrow]])
+    const [selection, setSelection] = useState<any[]>([])
 
     const handleWeekSelection = (dates: Date[]) => {
         setSelection([...selection, dates])
@@ -258,7 +258,7 @@ export const YearsDisplay = () => {
     const month = today.getMonth()
     const year = today.getFullYear()
     const date = new Date(year, month, 1)
-    const selectedStart = new Date(year, month, 16)
+    const selectedStart = new Date(year - 1, month, 16)
     const selectedEnd = new Date(year + 1, month, 16)
     const disabled = new Date(year + 4, month, 14)
 
@@ -337,7 +337,7 @@ export const ScrollingPicker = () => {
     const { today, tomorrow, start, end } = useMemo(() => {
         const today = new Date()
         const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
-        const start = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000)
+        const start = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
         const end = new Date(today.getTime() + 6 * 24 * 60 * 60 * 1000)
         return {
             today,
@@ -347,7 +347,6 @@ export const ScrollingPicker = () => {
         }
     }, [])
     const [selection, setSelection] = useState<any[]>([
-        [today, tomorrow],
         [start, end],
     ])
 
@@ -372,6 +371,7 @@ export const ScrollingPicker = () => {
             <DateRangeProvider>
                 <Button onClick={handleTodayClick}>Go to Today</Button>
                 <ScrollingDatePicker
+                    height={300}
                     ref={ref}
                     defaultDate={today}
                     selection={selection}
@@ -421,7 +421,7 @@ export const MultipleMonths = () => {
     const date = new Date()
     const { today, tomorrow, disabled1, disabled2 } = useMemo(() => {
         const today = new Date()
-        const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
+        const tomorrow = new Date(today.getTime() + 5 * 24 * 60 * 60 * 1000)
         const disabled1 = new Date(today.getTime() - 6 * 24 * 60 * 60 * 1000)
         const disabled2 = new Date(today.getTime() - 3 * 24 * 60 * 60 * 1000)
         return {

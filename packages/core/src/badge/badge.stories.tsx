@@ -31,13 +31,13 @@ export const Variants = () => (
         row
         gap={5}
         width="fit-content">
-        <Badge>default</Badge>
-        <Badge variant="accent">accent</Badge>
-        <Badge variant="success">success</Badge>
-        <Badge variant="neutral">neutral</Badge>
-        <Badge variant="caution">caution</Badge>
-        <Badge variant="warning">warning</Badge>
-        <Badge variant="danger">danger</Badge>
+        <Badge>Default</Badge>
+        <Badge variant="accent">Accent</Badge>
+        <Badge variant="success">Success</Badge>
+        <Badge variant="neutral">Neutral</Badge>
+        <Badge variant="caution">Caution</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="danger">Danger</Badge>
     </View>
 )
 
@@ -48,36 +48,36 @@ export const VariantsOutline = () => (
         row
         gap={5}
         width="fit-content">
-        <Badge outline>default</Badge>
+        <Badge outline>Default</Badge>
         <Badge
             variant="accent"
             outline>
-            accent
+            Accent
         </Badge>
         <Badge
             variant="success"
             outline>
-            success
+            Success
         </Badge>
         <Badge
             variant="neutral"
             outline>
-            neutral
+            Neutral
         </Badge>
         <Badge
             variant="caution"
             outline>
-            caution
+            Caution
         </Badge>
         <Badge
             variant="warning"
             outline>
-            warning
+            Warning
         </Badge>
         <Badge
             variant="danger"
             outline>
-            danger
+            Danger
         </Badge>
     </View>
 )
@@ -89,11 +89,11 @@ export const Sizes = () => (
         row
         gap={5}
         width="fit-content">
-        <Badge size="xs">extra small</Badge>
-        <Badge size="sm">small</Badge>
-        <Badge size="md">medium</Badge>
-        <Badge size="lg">large</Badge>
-        <Badge size="xl">extra large</Badge>
+        <Badge size="xs">Extra small</Badge>
+        <Badge size="sm">Small</Badge>
+        <Badge size="md">Medium</Badge>
+        <Badge size="lg">Large</Badge>
+        <Badge size="xl">Extra large</Badge>
     </View>
 )
 

@@ -15,7 +15,7 @@ export const docs = {
 }
 
 export const Usage = () => {
-    const [option, setOption] = useState(-1)
+    const [option, setOption] = useState(1)
 
     return (
         <Options
@@ -33,7 +33,7 @@ export const Usage = () => {
 // --
 
 export const States = () => {
-    const [option, setOption] = useState(-1)
+    const [option, setOption] = useState(1)
 
     return (
         <Options
@@ -52,7 +52,7 @@ export const States = () => {
 // --
 
 export const Sizes = () => {
-    const [option, setOption] = useState(-1)
+    const [option, setOption] = useState(1)
 
     return (
         <Stack
@@ -115,7 +115,7 @@ export const Sizes = () => {
 // --
 
 export const WithPrefixAndSuffix = () => {
-    const [option, setOption] = useState(-1)
+    const [option, setOption] = useState(1)
 
     return (
         <Options
@@ -130,7 +130,7 @@ export const WithPrefixAndSuffix = () => {
                 suffix={
                     <Text
                         size="sm"
-                        colorToken="text-weaker">
+                        colorToken="inherit">
                         (really?)
                     </Text>
                 }>

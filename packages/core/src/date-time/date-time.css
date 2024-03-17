@@ -49,10 +49,13 @@
     --f-date-cell-disabled-background: var(--f-color-surface-strong);
     --f-date-cell-pending: var(--f-color-accent);
     --f-date-cell-pending-background: var(--f-color-accent-weak);
-    --f-date-cell-selected: var(--f-color-accent-weak);
-    --f-date-cell-selected-background: var(--f-color-accent);
-    --f-date-cell-selected-space: 1px;
+    --f-date-cell-edge-selected: var(--f-color-accent-weak);
+    --f-date-cell-edge-selected-background: var(--f-color-accent);
+    --f-date-cell-selected: var(--f-color-accent);
+    --f-date-cell-selected-background: var(--f-color-accent-weak);
+    --f-date-cell-selected-space: 1%;
     --f-date-cell-today: var(--f-color-accent);
+    --f-date-cell-pending-opacity: 0.25;
 }
 
 .f-date-cell {
@@ -92,7 +95,7 @@
 /* pending */
 
 .f-date-cell.is-pending {
-    color: var(--f-date-cell-pending);
+    color: var(--f-date-cell-pending) !important;
 }
 
 .f-date-cell.is-pending::after {
@@ -107,7 +110,20 @@
     z-index: -2;
     background: var(--f-date-cell-pending-background);
     border-radius: var(--f-radius);
-    opacity: 0.25; /* instead of adding a accent-weaker token */
+    opacity: var(--f-date-cell-pending-opacity); /* instead of adding a accent-weaker token */
+    animation-name: f-date-cell-selection-fadein;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes f-date-cell-selection-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: var(--f-date-cell-pending-opacity);
+    }
 }
 
 /* selection */
@@ -115,6 +131,11 @@
 .f-date-cell.is-selected {
     position: relative;
     color: var(--f-date-cell-selected);
+}
+
+.f-date-cell.is-selected.is-start,
+.f-date-cell.is-selected.is-end {
+    color: var(--f-date-cell-edge-selected);
 }
 
 .f-date-cell.is-selected::before {
@@ -128,6 +149,27 @@
     left: 0;
     z-index: -1;
     background: var(--f-date-cell-selected-background);
+    animation-name: f-date-cell-selected-fadein;
+    animation-duration: 0.05s;
+    animation-timing-function: ease-in;
+}
+ 
+.f-date-cell:not(.is-unavailable).is-start::after,
+.f-date-cell:not(.is-unavailable).is-end::after {
+    border-radius: var(--f-radius);
+    content: ' ';
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: calc(96% - var(--f-date-cell-selected-space));
+    top: var(--f-date-cell-selected-space);
+    left: 0;
+    z-index: -1;
+    background: var(--f-date-cell-edge-selected-background);
+    animation-name: f-date-cell-selected-fadein;
+    animation-duration: 0.05s;
+    animation-timing-function: ease-in;
 }
  
 .f-date-cell.is-start::before {
@@ -139,6 +181,16 @@
     border-top-right-radius: var(--f-radius);
     border-bottom-right-radius: var(--f-radius);
 } 
+
+@keyframes f-date-cell-selected-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 /* weekdays */
 

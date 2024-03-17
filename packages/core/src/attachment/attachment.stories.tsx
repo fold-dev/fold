@@ -17,6 +17,7 @@ export const docs = {
 export const Usage = () => {
     return (
         <Attachment
+            as="a"
             width={500}
             heroPoster="/photos/10.jpg"
             mime="image/png"

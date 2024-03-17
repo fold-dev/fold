@@ -7,6 +7,7 @@
     --f-accordion-color-description: var(--f-color-text-weakest);
     --f-accordion-hover-border-color: var(--f-color-border-strong);
     --f-accordion-hover-background-color: var(--f-color-surface-strong);
+    --f-accordion-active-background-color: var(--f-color-surface-stronger);
     --f-accordion-disabled-color: var(--f-color-text-weakest);
     --f-accordion-active-background: var(--f-color-surface-strong);
     --f-accordion-active-color: var(--f-color-text);
@@ -49,6 +50,7 @@
     color: var(--f-accordion-color);
     font-size: inherit;
     flex-shrink: 0;
+    transition: background-color 0.1s;
 }
 
 .f-accordion__item .f-accordion-heading__heading:focus {
@@ -73,6 +75,10 @@
 .f-accordion__item .f-accordion-heading__heading:hover {
     border-color: var(--f-accordion-hover-border-color);
     background-color: var(--f-accordion-hover-background-color);
+}
+
+.f-accordion__item .f-accordion-heading__heading:active {
+    background-color: var(--f-accordion-active-background-color);
 }
 
 .f-accordion__item .f-accordion-heading__heading-text {
