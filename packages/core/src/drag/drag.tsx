@@ -1074,7 +1074,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
 
         containerRef.current.childNodes.forEach((node, index) => {
             // if its a dragelement & the right area
-            // && node.dataset.areaid == id) {
+            // previously >>> && node.dataset.areaid == id
             if (node.dataset.dragelement) { 
                 const isDragged = origin.index == index && origin.areaId == id
 
@@ -1095,7 +1095,8 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 // bufferShouldBeVisible
                 // we do this here so that they are done at the same time
                 // to avoid any glitches behaviour
-                if (isAnimated && isTargetArea && isDragged) {
+                // previously >>> && isDragged
+                if (isAnimated && isTargetArea) { 
                     bufferRef.current.style.display = 'block'
                     bufferRef.current.style.width = isVertical ? '100%' : origin.width + 'px'
                     bufferRef.current.style.height = isVertical ? origin.height + 'px' : '100%'
