@@ -126,6 +126,7 @@ export const ProgressPie = (props: ProgressPieProps) => {
     const className = classNames(
         {
             'f-progress-pie': true,
+            'f-row': true,
         },
         [props.className, getActionClass(variant)]
     )
