@@ -250,6 +250,7 @@ export const Attachment = (props: AttachmentProps) => {
                     {!loading && (
                         <>
                             <Text
+                                as="span"
                                 size={size}
                                 color="currentColor"
                                 className="f-attachment__text-label">
@@ -258,6 +259,7 @@ export const Attachment = (props: AttachmentProps) => {
                             {mime && (
                                 <Text
                                     size="sm"
+                                    as="span"
                                     className="f-attachment__text-meta">
                                     {MIME.DESCRIPTION[mime]}
                                 </Text>
@@ -265,6 +267,7 @@ export const Attachment = (props: AttachmentProps) => {
                             {filesize && (
                                 <Text
                                     size="sm"
+                                    as="span"
                                     className="f-attachment__text-meta">
                                     {bytesToSize(filesize)}
                                 </Text>
