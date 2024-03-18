@@ -954,9 +954,9 @@ export type DragElementAreaProps = {
     indent?: boolean
     areaId?: string
     group?: string
-    variant?: Omit<DragVariant, 'lined-focus'>
+    variant?: DragVariant
     targetVariant?: any
-    direction?: 'vertical' | 'horizontal'
+    direction?: 'vertical'
     startDelay?: number
     footer?: any
 } & CoreViewProps
