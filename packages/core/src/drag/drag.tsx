@@ -1074,8 +1074,9 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
 
         containerRef.current.childNodes.forEach((node, index) => {
             // if its a dragelement & the right area
-            if (node.dataset.dragelement && node.dataset.areaid == id) {
-                const isDragged = origin.index == index && target.areaId == id
+            // && node.dataset.areaid == id) {
+            if (node.dataset.dragelement) { 
+                const isDragged = origin.index == index && origin.areaId == id
 
                 // elementShouldFocus
                 // if the target has focus (isFocus/isLinedFocus)
