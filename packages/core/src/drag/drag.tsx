@@ -989,7 +989,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const isLinedFocus = originVariant == 'lined-focus'
         const isFocus = originVariant == 'focus'
         const isAnimated = originVariant == 'animated'
-        const isHorizontal = direction == 'horizontal'
+        const isHorizontal = direction != 'vertical'
         const isVertical = direction == 'vertical'
         const isTargetFocus = target.focus
         const isTargetArea = id == target.areaId
