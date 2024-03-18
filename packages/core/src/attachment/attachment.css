@@ -10,6 +10,7 @@
     --f-attachment-thumb-size: var(--f-size-28); 
     --f-attachment-thumb-overlay: var(--f-color-overlay);
     --f-attachment-padding: var(--f-size-2); 
+    --f-attachment-spacing: var(--f-size-2); 
 }
 
 .f-attachment {
@@ -30,7 +31,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    gap: var(--f-space-3);
+    gap: var(--f-attachment-spacing);
 }
 
 .f-attachment:hover {
