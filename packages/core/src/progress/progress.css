@@ -262,6 +262,10 @@
 
 /* progress pie */
 
+.f-progress-pie {
+    height: fit-content;
+}
+
 .f-progress-pie .f-progress-pie__background {
     fill: var(--f-progress-background);
 }
