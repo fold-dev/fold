@@ -232,7 +232,7 @@
     position: fixed;
     user-select: none !important;
     pointer-events: none !important;
-    z-index: 500;
+    z-index: 10000;
     will-change: transform;
     opacity: 0.5;
     /* transition: transform 1s linear;  */
