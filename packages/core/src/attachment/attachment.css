@@ -9,6 +9,8 @@
     --f-attachment-thumb-background: var(--f-color-surface);
     --f-attachment-thumb-size: var(--f-size-28); 
     --f-attachment-thumb-overlay: var(--f-color-overlay);
+    --f-attachment-padding: var(--f-size-2); 
+    --f-attachment-spacing: var(--f-size-2); 
 }
 
 .f-attachment {
@@ -21,8 +23,7 @@
     border: 1px solid;
     border-color: var(--f-attachment-border-color);
     border-radius: var(--f-attachment-border-radius);
-    padding: var(--f-space-2); 
-    margin-bottom: var(--f-space-1);
+    padding: var(--f-attachment-padding);
     background: var(--f-attachment-background);
 }
 
@@ -30,7 +31,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    gap: var(--f-space-3);
+    gap: var(--f-attachment-spacing);
 }
 
 .f-attachment:hover {
@@ -71,11 +72,11 @@
 /* hack to remove padding from the bottom on default settings so the icon sites flush */
 
 .f-attachment__text > * + * {
-    margin-top: 0px;
+    margin-top: -1px;
 }
 
 .f-attachment.sm .f-attachment__text > * + * {
-    margin-top: -0.15rem;
+    margin-top: -2.5px;
 }
 
 .f-attachment__text-meta {
@@ -97,11 +98,6 @@
 /* sizes */
 /* xs & xl not supported yet */
 
-.f-attachment.xs .f-attachment__icon { 
-    width: var(--f-size-8); 
-    height: var(--f-size-8); 
-}
-
 .f-attachment.sm .f-attachment__icon { 
     width: var(--f-size-10); 
     height: var(--f-size-10); 
@@ -115,11 +111,6 @@
 .f-attachment.lg .f-attachment__icon { 
     width: var(--f-size-14); 
     height: var(--f-size-14); 
-}
-
-.f-attachment.xl .f-attachment__icon { 
-    width: var(--f-size-16); 
-    height: var(--f-size-16); 
 }
 
 /* thumb */ 
