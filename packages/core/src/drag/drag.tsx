@@ -1072,6 +1072,8 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const originVariant: DragVariant = origin.targetVariant[group]
         const isAnimated = originVariant == 'animated'
 
+
+
         containerRef.current.childNodes.forEach((node, index) => {
             // if its a dragelement & the right area
             // previously >>> && node.dataset.areaid == id
@@ -1143,7 +1145,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 }
             })
         }, 150)
-    }, [props.children])
+    }, [props.children, id, origin])
 
     return (
         <View
