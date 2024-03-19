@@ -31,17 +31,3 @@ export const useCustomEvent = (event: string, handler, passive = false) => {
         return () => documentObject.removeEventListener(event, handler)
     })
 }
-
-// drag
-
-export type DragEventName = 'ondrop' | 'onstart' | 'onend'
-
-export const dispatchDragEvent = (eventName: DragEventName, data: any = {}) =>
-    documentObject.dispatchEvent(new CustomEvent(eventName, { detail: data }))
-
-export const useDragEvent = (event: DragEventName, handler, passive = false) => {
-    useEffect(() => {
-        documentObject.addEventListener(event, handler, passive)
-        return () => documentObject.removeEventListener(event, handler)
-    })
-}
