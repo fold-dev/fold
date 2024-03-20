@@ -64,6 +64,24 @@ export const StartAtEnd = () => {
 
     return (
         <Editable
+            cursorEnd
+            onChange={handleChange}
+            onCancel={handleCancel}>
+            <Text>This is something that is editable</Text>
+        </Editable>
+    )
+}
+
+// --
+
+export const SelectOnFocus = () => {
+    const handleChange = (content) => console.log('content changed!', content)
+
+    const handleCancel = (previousContent) => console.log(previousContent)
+
+    return (
+        <Editable
+            selectOnFocus
             onChange={handleChange}
             onCancel={handleCancel}>
             <Text>This is something that is editable</Text>
