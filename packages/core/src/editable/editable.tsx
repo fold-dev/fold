@@ -22,6 +22,10 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         [props.className]
     )
 
+    const handleChange = (value: string) => {
+        if (onChange) onChange(value)
+    }
+
     const deFocus = (target: HTMLElement, type: 'escape' | 'enter' | 'focusout') => {
         target.contentEditable = 'false'
         target.removeAttribute('tabindex')
@@ -33,9 +37,9 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
             case 'escape':
                 return onCancel ? onCancel(cache.current) : null
             case 'enter':
-                return onChange(target.innerHTML)
+                return handleChange(target.innerHTML)
             case 'focusout':
-                return onChange(target.innerHTML)
+                return handleChange(target.innerHTML)
         }
     }
 
@@ -87,7 +91,7 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         el.addEventListener('keydown', handleKeyDown)
         el.addEventListener('focusout', handleFocusOut)
         cache.current = el.innerHTML
-        setTimeout(() => el.focus(), 100)
+        setTimeout(() => el.focus(), 150)
     }
 
     useLayoutEffect(() => {

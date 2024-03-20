@@ -54,3 +54,19 @@ export const FocusEvent = () => {
         </View>
     )
 }
+
+// --
+
+export const StartAtEnd = () => {
+    const handleChange = (content) => console.log('content changed!', content)
+
+    const handleCancel = (previousContent) => console.log(previousContent)
+
+    return (
+        <Editable
+            onChange={handleChange}
+            onCancel={handleCancel}>
+            <Text>This is something that is editable</Text>
+        </Editable>
+    )
+}
