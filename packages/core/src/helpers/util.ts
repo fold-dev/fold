@@ -601,3 +601,23 @@ export const timezones = [
 ]
 
 export const waitForRender = (cb, t = 0) => setTimeout(cb, t)
+
+export const setCaretToTheEnd = (element) => {
+    const position = element.textContent.length
+    const [childNode] = element.childNodes
+    const range = document.createRange()
+    const selection = window.getSelection()
+    range.setStart(childNode, position)
+    range.setEnd(childNode, position)
+    range.collapse(true)
+    selection.removeAllRanges()
+    selection.addRange(range)
+}
+
+export const selectElementContents = (el) => {
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    const sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+}

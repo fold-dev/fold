@@ -1,16 +1,25 @@
 import React, { forwardRef, useLayoutEffect, useRef } from 'react'
 import { View } from '..'
-import { classNames, getKey, mergeRefs } from '../helpers'
+import { classNames, getKey, mergeRefs, selectElementContents, setCaretToTheEnd } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export type EditableProps = {
+    selectOnFocus?: boolean
+    cursorEnd?: boolean
     disabled?: boolean
     onChange?: any
     onCancel?: any
 } & CoreViewProps
 
 export const Editable = forwardRef((props: EditableProps, ref) => {
-    const { onChange, onCancel, disabled, ...rest } = props
+    const { 
+        onChange, 
+        onCancel, 
+        disabled, 
+        selectOnFocus,
+        cursorEnd,
+        ...rest 
+    } = props
     const elementRef = useRef(null)
     const childRef = useRef(null)
     const cache = useRef('')
@@ -21,6 +30,10 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         },
         [props.className]
     )
+
+    const handleChange = (value: string) => {
+        if (onChange) onChange(value)
+    }
 
     const deFocus = (target: HTMLElement, type: 'escape' | 'enter' | 'focusout') => {
         target.contentEditable = 'false'
@@ -33,9 +46,9 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
             case 'escape':
                 return onCancel ? onCancel(cache.current) : null
             case 'enter':
-                return onChange(target.innerHTML)
+                return handleChange(target.innerHTML)
             case 'focusout':
-                return onChange(target.innerHTML)
+                return handleChange(target.innerHTML)
         }
     }
 
@@ -87,7 +100,11 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         el.addEventListener('keydown', handleKeyDown)
         el.addEventListener('focusout', handleFocusOut)
         cache.current = el.innerHTML
-        setTimeout(() => el.focus(), 100)
+        setTimeout(() => {
+            el.focus()
+            if (cursorEnd) setCaretToTheEnd(el)
+            if (selectOnFocus) selectElementContents(el)
+        }, 150)
     }
 
     useLayoutEffect(() => {
