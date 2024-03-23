@@ -1,7 +1,7 @@
 :root {
     --f-drag-speed: 0s;
     --f-drag-transition: cubic-bezier(.17,.67,.54,1.06);
-    --f-drag-indent: 0;
+    --f-drag-indent: 0px;
 }
 
 /* area */
@@ -232,7 +232,7 @@
     position: fixed;
     user-select: none !important;
     pointer-events: none !important;
-    z-index: 500;
+    z-index: 10000;
     will-change: transform;
     opacity: 0.5;
     /* transition: transform 1s linear;  */
