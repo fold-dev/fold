@@ -5,6 +5,7 @@
     --f-avatar-group-overlap: -1rem;
     --f-avatar-group-overlap-small: -0.66rem;
     --f-avatar-group-spacing: 1px;
+    --f-avatar-badge-outline: 0.2rem solid var(--f-color-surface);
 }
 
 .f-avatar {

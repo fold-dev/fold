@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useMemo, useState } from 'react'
-import { IconLib, Image, ImageProps, View } from '../'
+import { Badge, IconLib, Image, ImageProps, View } from '../'
 import { classNames, cleanObject, documentObject, getForegroundColor } from '../helpers'
 import { Text, TextProps } from '../text/text'
 import { CoreViewProps, Size } from '../types'
@@ -13,6 +13,7 @@ export type AvatarProps = {
     src?: string
     textProps?: TextProps
     imageProps?: ImageProps
+    presence?: 'online' | 'busy' | 'away'
 } & CoreViewProps
 
 export const Avatar = forwardRef((props: AvatarProps, ref) => {
@@ -26,6 +27,7 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
         imageProps = {},
         style = {},
         textProps = {},
+        presence,
         ...rest
     } = props
     const initials = useMemo(() => {
@@ -36,6 +38,23 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
             .join('')
             .toUpperCase()
     }, [name])
+    const presenceVariant = useMemo(() => {
+        switch (presence) {
+            case 'online': return 'success'
+            case 'away': return 'warning'
+            case 'busy': return 'danger'
+            default: return
+        }
+    }, [presence])
+    const presenceBadgeDistance = useMemo(() => {
+        switch (size) {
+            case 'xs': return '0.3rem'
+            case 'sm': return '0.15rem'
+            case 'lg': return '-0.05rem'
+            case 'xl': return '-0.3rem'
+            default: return '0.1rem'
+        }
+    }, [size])
     const styles = useMemo(() => {
         if (color) {
             const foreground = getForegroundColor(color)
@@ -106,6 +125,20 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
 
             {/* Otherwise, display children */}
             {props.children}
+
+            {presence && (
+                <Badge
+                    variant={presenceVariant}
+                    anchor="bottom-right"
+                    width={10}
+                    height={10}
+                    zIndex={10}
+                    style={{
+                        '--f-badge-dot-distance': presenceBadgeDistance,
+                        outline: 'var(--f-avatar-badge-outline)',
+                    }}
+                />
+            )}
         </View>
     )
 })
