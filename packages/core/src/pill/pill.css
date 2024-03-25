@@ -6,7 +6,7 @@
     --f-pill-border-radius: var(--f-radius-full);
     --f-pill-color: var(--f-color-text-weaker);
     --f-pill-color-subtle: var(--f-color-text-weaker);
-    --f-pill-background-color: var(--f-color-surface-stronger);
+    --f-pill-background-color: var(--f-color-surface-strong);
     --f-pill-background-color-subtle: var(--f-color-surface-strong);
     --f-pill-border-color: var(--f-color-surface-strongest);
     --f-pill-inner-background-color: rgba(0,0,0,0.1);
@@ -35,7 +35,7 @@
     border-radius: var(--f-pill-border-radius);
     border: none;  
     color: var(--f-pill-color);
-    background-color: var(--f-pill-background-color-subtle);
+    background-color: transparent;
 }
 
 .f-pill:focus {
