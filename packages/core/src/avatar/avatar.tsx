@@ -130,8 +130,8 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
                 <Badge
                     variant={presenceVariant}
                     anchor="bottom-right"
-                    width={10}
-                    height={10}
+                    width={8}
+                    height={8}
                     zIndex={10}
                     style={{
                         '--f-badge-dot-distance': presenceBadgeDistance,
