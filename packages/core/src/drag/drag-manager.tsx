@@ -19,7 +19,7 @@ import {
 } from '..'
 import { windowObject } from '../helpers'
 
-export const FOLD_DRAG_SELECTION_COUNT = 'FOLD_DRAG_SELECTION_COUNT'
+export const FOLD_DRAG_COUNT = 'FOLD_DRAG_COUNT'
 export const FOLD_DRAG_CACHE = 'FOLD_DRAG_CACHE'
 export const FOLD_DRAG_STATE = 'FOLD_DRAG_STATE'
 
