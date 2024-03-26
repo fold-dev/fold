@@ -1,7 +1,7 @@
 import { documentObject, windowObject } from '../helpers'
 import React, { useEffect } from 'react'
 
-export type DragEventName = 'ondrop' | 'onstart' | 'onend'
+export type DragEventName = 'ondrop' | 'onstart' | 'onend' | 'outdent' | 'indent'
 
 export const dispatchDragEvent = (eventName: DragEventName, data: any = {}) =>
     documentObject.dispatchEvent(new CustomEvent(eventName, { detail: data }))
