@@ -97,6 +97,10 @@
     margin-right: var(--f-avatar-group-spacing);
 }
 
+.f-avatar-group.is-animated:hover .f-avatar:last-child {
+    margin-right: var(--f-avatar-group-overlap);
+}
+
 .f-avatar-group.is-inverted {
      flex-direction: row-reverse; 
 }
