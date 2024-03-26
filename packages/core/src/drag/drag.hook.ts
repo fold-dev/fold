@@ -6,7 +6,6 @@ import {
     dispatchDragEvent,
     documentObject,
     FOLD_DRAG_CACHE,
-    FOLD_DRAG_COUNT,
     FOLD_DRAG_STATE,
     getBoundingClientRect,
     globalCursor,
@@ -20,10 +19,6 @@ import { getButton, waitForRender, windowObject } from '../helpers'
 export const useDrag = (args: any = { indentDelay: 100 }) => {
     const ghostRef = useRef(null)
     const { indentDelay } = args
-
-    const setCount = (count: number) => {
-        windowObject[FOLD_DRAG_COUNT] = count
-    }
 
     const getStaticState = (): any => windowObject[FOLD_DRAG_STATE]
 
@@ -199,7 +194,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }, [])
 
     return {
-        setCount,
         getStaticState,
         getCache,
         getGhostElement,
