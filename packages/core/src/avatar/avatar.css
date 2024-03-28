@@ -5,6 +5,7 @@
     --f-avatar-group-overlap: -1rem;
     --f-avatar-group-overlap-small: -0.66rem;
     --f-avatar-group-spacing: 1px;
+    --f-avatar-badge-outline: 0.2rem solid var(--f-color-surface);
 }
 
 .f-avatar {
@@ -94,6 +95,10 @@
 
 .f-avatar-group.is-animated:hover .f-avatar {
     margin-right: var(--f-avatar-group-spacing);
+}
+
+.f-avatar-group.is-animated:hover .f-avatar:last-child {
+    margin-right: var(--f-avatar-group-overlap);
 }
 
 .f-avatar-group.is-inverted {

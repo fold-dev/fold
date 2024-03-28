@@ -100,11 +100,12 @@ export const WithPrefixAndSuffix = () => (
 
 // --
 
-export const Variants = () => (
+export const Styles = () => (
     <Stack spacing={5}>
         <Pill>React</Pill>
         <Pill subtle>VueJS</Pill>
         <Pill outline>Svelte</Pill>
+        <Pill solid>SolidJS</Pill>
     </Stack>
 )
 
@@ -115,16 +116,23 @@ export const Variants = () => (
  */
 export const Color = () => (
     <Stack spacing={5}>
-        <Pill color={Token.ColorElectric400}>React</Pill>
-        <Pill
-            color={Token.ColorPurple400}
-            subtle>
-            VueJS
+        <Pill color={Token.ColorElectric200}>
+            React
         </Pill>
         <Pill
-            color={Token.ColorTeal400}
-            outline>
+            outline
+            color={Token.ColorTeal500}>
             Svelte
+        </Pill>
+        <Pill 
+            subtle
+            color={Token.ColorViolet500}>
+            Angular
+        </Pill>
+        <Pill
+            solid
+            color={Token.ColorNeonpink500}>
+            VueJS
         </Pill>
     </Stack>
 )
