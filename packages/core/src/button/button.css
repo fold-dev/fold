@@ -359,6 +359,7 @@
     background: transparent;
     transition-property: background-color, outline, color, filter, -webkit-filter;
     transition-duration: var(--f-button-transition-delay);
+    border-color: var(--f-button-color);
 }
 
 .f-button.is-outline:disabled:hover,
