@@ -567,7 +567,7 @@
 /* TODO: find a better way to handle this */
 
 .f-button-group.is-horizontal .f-button.is-accent:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-accent-weak);
+    border-left-color: var(--f-color-accent-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-accent:not(.is-subtle):not(.is-outline):first-child {
@@ -575,7 +575,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-success:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-success-weak);
+    border-left-color: var(--f-color-success-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-success:not(.is-subtle):not(.is-outline):first-child {
@@ -583,7 +583,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-neutral:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-neutral-weak);
+    border-left-color: var(--f-color-neutral-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-neutral:not(.is-subtle):not(.is-outline):first-child {
@@ -591,7 +591,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-caution:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-caution-weak);
+    border-left-color: var(--f-color-caution-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-caution:not(.is-subtle):not(.is-outline):first-child {
@@ -599,7 +599,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-warning:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-warning-weak);
+    border-left-color: var(--f-color-warning-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-warning:not(.is-subtle):not(.is-outline):first-child {
@@ -607,7 +607,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-danger:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-danger-weak);
+    border-left-color: var(--f-color-danger-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-danger:not(.is-subtle):not(.is-outline):first-child {
@@ -615,7 +615,7 @@
 }
 
 .f-button-group.is-horizontal  .f-button.is-highlight:not(.is-subtle):not(.is-outline) {
-    border-left-color: var(--f-color-highlight-weak);
+    border-left-color: var(--f-color-highlight-subtle);
 }
 
 .f-button-group.is-horizontal .f-button.is-highlight:not(.is-subtle):not(.is-outline):first-child {
@@ -625,7 +625,7 @@
 /* colors - vertical */
 
 .f-button-group.is-vertical .f-button.is-accent:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-accent-weak);
+    border-top-color: var(--f-color-accent-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-accent:not(.is-subtle):not(.is-outline):first-child {
@@ -633,7 +633,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-success:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-success-weak);
+    border-top-color: var(--f-color-success-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-success:not(.is-subtle):not(.is-outline):first-child {
@@ -641,7 +641,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-neutral:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-neutral-weak);
+    border-top-color: var(--f-color-neutral-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-neutral:not(.is-subtle):not(.is-outline):first-child {
@@ -649,7 +649,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-caution:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-caution-weak);
+    border-top-color: var(--f-color-caution-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-caution:not(.is-subtle):not(.is-outline):first-child {
@@ -657,7 +657,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-warning:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-warning-weak);
+    border-top-color: var(--f-color-warning-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-warning:not(.is-subtle):not(.is-outline):first-child {
@@ -665,7 +665,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-danger:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-danger-weak);
+    border-top-color: var(--f-color-danger-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-danger:not(.is-subtle):not(.is-outline):first-child {
@@ -673,7 +673,7 @@
 }
 
 .f-button-group.is-vertical  .f-button.is-highlight:not(.is-subtle):not(.is-outline) {
-    border-top-color: var(--f-color-highlight-weak);
+    border-top-color: var(--f-color-highlight-subtle);
 }
 
 .f-button-group.is-vertical .f-button.is-highlight:not(.is-subtle):not(.is-outline):first-child {

@@ -6,36 +6,43 @@
             "background": { "value": "{color.base.50}" },
             "accent": {
                 " ": { "value": "{color.accent.500}" },
+                "subtle": { "value": "{color.accent.300}", "subtle": true },
                 "strong": { "value": "{color.accent.600}" },
                 "weak": { "value": "{color.accent.100}" }
             },
             "success": {
                 " ": { "value": "{color.teal.400}" },
+                "subtle": { "value": "{color.teal.300}", "subtle": true },
                 "strong": { "value": "{color.teal.600}" },
                 "weak": { "value": "{color.teal.100}" }
             },
             "neutral": {
                 " ": { "value": "{color.gray.400}" },
+                "subtle": { "value": "{color.gray.300}", "subtle": true },
                 "strong": { "value": "{color.gray.600}" },
                 "weak": { "value": "{color.gray.100}" }
             },
             "caution": {
                 " ": { "value": "{color.yellow.400}" },
+                "subtle": { "value": "{color.yellow.300}", "subtle": true },
                 "strong": { "value": "{color.yellow.600}" },
                 "weak": { "value": "{color.yellow.100}" }
             },
             "warning": {
                 " ": { "value": "{color.orange.400}" },
+                "subtle": { "value": "{color.orange.300}", "subtle": true },
                 "strong": { "value": "{color.orange.600}" },
                 "weak": { "value": "{color.orange.100}" }
             },
             "danger": {
                 " ": { "value": "{color.red.400}" },
+                "subtle": { "value": "{color.red.300}", "subtle": true },
                 "strong": { "value": "{color.red.600}" },
                 "weak": { "value": "{color.red.100}" }
             },
             "highlight": {
                 " ": { "value": "{color.purple.400}" },
+                "subtle": { "value": "{color.purple.200}", "subtle": true },
                 "strong": { "value": "{color.purple.600}" },
                 "weak": { "value": "{color.purple.100}" }
             },
