@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.f-rate svg {
+    display: inline-block !important;
+}
+
 .f-rate > .f-rate-icon {
     margin: var(--f-size-1);
 }
