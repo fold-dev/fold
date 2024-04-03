@@ -1,5 +1,9 @@
 /* popout */
 
+:root {
+    --f-popout-buffer: 0px;
+}
+
 .f-popout-content {
     display: none;
     animation: f-popout-content-fadein var(--f-transition-duration-fast); 
@@ -136,7 +140,7 @@
 
 .f-popout-bottom-left.has-arrow:after {
     top: 0px;
-    left: var(--f-radius);
+    left: calc(var(--f-radius) + var(--f-popout-buffer));
     border-left-width: 1px;
     border-right-width: 0rem;
     border-top-width: 1px;
@@ -147,7 +151,7 @@
 
 .f-popout-bottom-right.has-arrow:after {
     top: 0px;
-    right: var(--f-radius);
+    right: calc(var(--f-radius) + var(--f-popout-buffer));
     border-left-width: 1px;
     border-right-width: 0rem;
     border-top-width: 1px;
@@ -158,7 +162,7 @@
 
 .f-popout-top-left.has-arrow:after {
     top: 100%;
-    left: var(--f-radius);
+    left: calc(var(--f-radius) + var(--f-popout-buffer));
     border-left-width: 0rem;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -169,7 +173,7 @@
 
 .f-popout-top-right.has-arrow:after {
     top: 100%;
-    right: var(--f-radius);
+    right: calc(var(--f-radius) + var(--f-popout-buffer));
     border-left-width: 0rem;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -180,7 +184,7 @@
 
 .f-popout-bottom-center.has-arrow:after {
     top: -1px;
-    right: 50%;
+    right: calc(50% + var(--f-popout-buffer));
     border-left-width: 1px;
     border-right-width: 0rem;
     border-top-width: 1px;
@@ -191,7 +195,7 @@
 
 .f-popout-top-center.has-arrow:after {
     top: 100%;
-    right: 50%;
+    right: calc(50% + var(--f-popout-buffer));
     border-left-width: 0rem;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -201,7 +205,7 @@
 }
 
 .f-popout-middle-left.has-arrow:after {
-    top: 50%;
+    top: calc(50% + var(--f-popout-buffer));
     right: -1px;
     border-left-width: 0rem;
     border-right-width: 1px;
@@ -212,7 +216,7 @@
 }
 
 .f-popout-middle-right.has-arrow:after {
-    top: 50%;
+    top: calc(50% + var(--f-popout-buffer));
     left: -1px;
     border-left-width: 1px;
     border-right-width: 0rem;
