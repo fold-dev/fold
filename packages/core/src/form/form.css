@@ -71,19 +71,23 @@
     gap: 0.1rem;
 }
 
-.f-form-helper-text.is-info {
+.f-form-helper-text.is-info,
+.f-form-helper-text.is-info span {
     color: var(--f-form-control-color-info);
 }
 
-.f-form-helper-text.is-error {
+.f-form-helper-text.is-error,
+.f-form-helper-text.is-error span {
     color: var(--f-form-control-color-error);
 }
 
-.f-form-helper-text.is-warning {
+.f-form-helper-text.is-warning,
+.f-form-helper-text.is-warning span {
     color: var(--f-form-control-color-warning);
 }
 
-.f-form-helper-text.is-success {
+.f-form-helper-text.is-success,
+.f-form-helper-text.is-success span {
     color: var(--f-form-control-color-success);   
 }
 
