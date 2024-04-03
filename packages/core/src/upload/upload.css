@@ -23,6 +23,7 @@
     padding: var(--f-upload-padding);
     gap: var(--f-upload-gap);    
     transition: border 0.3s;
+    position: relative;
 }
 
 .f-upload .f-progress {
