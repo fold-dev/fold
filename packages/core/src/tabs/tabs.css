@@ -29,6 +29,7 @@
 /**************************************/
 
 .f-tab-list {  
+    position: relative;
     color: var(--f-tabs-color-icon);
     background: var(--f-tabs-tab-list-background);
 }
