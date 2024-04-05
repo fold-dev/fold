@@ -172,12 +172,18 @@ export const NavigationHeading = (props: NavigationHeadingProps) => {
             as="span"
             role="presentation"
             className="f-navigation-heading">
+            {prefix && (
+                <span className="f-navigatio-heading__prefix">{prefix}</span>
+            )}
             <Heading
                 {...headingProps}
                 as="h6"
                 className="f-navigation-heading__heading">
                 {props.children}
             </Heading>
+            {suffix && (
+                <span className="f-navigatio-heading__suffix">{suffix}</span>
+            )}
         </View>
     )
 }

@@ -443,7 +443,7 @@ export type MenuHeadingProps = {
 } & CoreViewProps
 
 export const MenuHeading = (props: MenuHeadingProps) => {
-    const { headingProps = {}, ...rest } = props
+    const { prefix, suffix, headingProps = {}, ...rest } = props
 
     return (
         <View
@@ -451,12 +451,18 @@ export const MenuHeading = (props: MenuHeadingProps) => {
             as="span"
             role="none"
             className="f-menu-heading">
+            {prefix && (
+                <span className="f-menu-heading__prefix">{prefix}</span>
+            )}
             <Heading
                 {...headingProps}
                 as="h6"
                 className="f-menu-heading__heading">
                 {props.children}
             </Heading>
+            {suffix && (
+                <span className="f-menu-heading__suffix">{suffix}</span>
+            )}
         </View>
     )
 }
