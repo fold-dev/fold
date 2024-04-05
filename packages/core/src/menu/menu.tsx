@@ -436,7 +436,13 @@ export const MenuItem = (props: MenuItemProps) => {
     )
 }
 
-export const MenuHeading = (props: { headingProps?: HeadingProps } & CoreViewProps) => {
+export type MenuHeadingProps = {
+    headingProps?: HeadingProps
+    prefix?: ReactElement
+    suffix?: ReactElement
+} & CoreViewProps
+
+export const MenuHeading = (props: MenuHeadingProps) => {
     const { headingProps = {}, ...rest } = props
 
     return (

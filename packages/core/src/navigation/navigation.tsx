@@ -157,8 +157,14 @@ export const NavigationItem = (props: NavigationItemProps) => {
     )
 }
 
-export const NavigationHeading = (props: { headingProps?: HeadingProps } & CoreViewProps) => {
-    const { headingProps = {}, ...rest } = props
+export type NavigationHeadingProps = {
+    headingProps?: HeadingProps
+    prefix?: ReactElement
+    suffix?: ReactElement
+} & CoreViewProps
+
+export const NavigationHeading = (props: NavigationHeadingProps) => {
+    const { prefix, suffix, headingProps = {}, ...rest } = props
 
     return (
         <View
