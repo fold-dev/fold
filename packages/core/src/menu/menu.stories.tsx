@@ -68,6 +68,11 @@ export const DisableAutoFocus = () => (
 
 export const PrefixAndSuffix = () => (
     <Menu>
+        <MenuHeading 
+            prefix={<IconLib icon="circle" />}
+            suffix={<IconLib icon="circle" />}>
+            Core
+        </MenuHeading>
         <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
         <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
         <MenuItem prefix={<IconLib icon="bin" />}>Cut</MenuItem>

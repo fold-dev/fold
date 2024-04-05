@@ -182,14 +182,26 @@
 
 .f-navigation-heading {
     flex-shrink: 0;
-    display: inline-block;
     width: 100%;
+    padding: var(--f-navigation-item-padding);
+    gap: var(--f-navigation-item-ix-spacing);
+    color: var(--f-navigation-heading-color);
 }
 
 .f-navigation-heading .f-navigation-heading__heading {
-    color: var(--f-navigation-heading-color);
     font-weight: var(--f-font-weight-medium);
-    padding: var(--f-navigation-item-padding);
+    flex: 1;
+    color: inherit;
+}
+
+.f-navigation-heading .f-navigation-heading__suffix {
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.f-navigation-heading .f-navigation-heading__prefix {
+    color: inherit;
 }
 
 /* ************************************************************** */
