@@ -1,16 +1,16 @@
 const StyleDictionary = require('style-dictionary')
+const chroma = require('chroma-js')
 const fs = require('fs')
 const dir = 'tokens/theme'
 const extension = '.json'
-const format = { 
+const format = {
     cssTheme: (dictionary, options) => {
         const theme = dictionary.allTokens[0].path[0]
         const tokens = dictionary.allTokens.map((token) => {
-            return { 
-                ...token, 
-                value: token.value, 
-                name: token.name.replace(`-${theme}`, '')
-
+            return {
+                ...token,
+                value: token.value,
+                name: token.name.replace(`-${theme}`, ''),
             }
         })
         const file = StyleDictionary.format['css/variables']({ dictionary: { allTokens: tokens } })
@@ -21,17 +21,14 @@ const format = {
         } else {
             return file.replace(':root', dataAttribute)
         }
-    
-        
     },
-    cssShorthand: cssShorthand = (dictionary, options) => {
+    cssShorthand: (cssShorthand = (dictionary, options) => {
         return dictionary.allProperties
-            .map(token => {
-                
+            .map((token) => {
                 const { name, value } = token
                 const lastTokenName = name.split('-')[name.split('-').length - 1]
                 const secondLastTokenName = name.split('-')[name.split('-').length - 2]
-    
+
                 if (name.includes('color')) {
                     if (secondLastTokenName != 'color') {
                         return `
@@ -45,50 +42,50 @@ const format = {
                         `
                     }
                 }
-    
+
                 if (name.includes('line-height')) {
                     return `\n.f-line-${lastTokenName} { line-height: ${value}; }`
                 }
-    
+
                 if (name.includes('letter-spacing')) {
                     return `\n.f-letter-${lastTokenName} { letter-spacing: ${value}; }`
                 }
-    
+
                 if (name.includes('shadow')) {
                     return `\n.f-shadow-${lastTokenName} { box-shadow: ${value}; }`
                 }
-    
+
                 if (name.includes('radius')) {
                     return `\n.f-radius-${lastTokenName} { border-radius: ${value}; }`
                 }
-    
+
                 if (name.includes('blur')) {
                     return `\n.f-blur-${lastTokenName} { filter: blur(${value}); }`
                 }
-    
+
                 if (name.includes('font-weight')) {
                     return `\n.f-weight-${lastTokenName} { font-weight: ${value}; }`
                 }
-    
+
                 if (name.includes('font-size')) {
                     return `\n.f-size-${lastTokenName} { font-size: ${value}; }`
                 }
-    
+
                 if (name.includes('font')) {
                     return `\n.f-font-${lastTokenName} { font-family: ${value}; }`
                 }
-    
+
                 if (name.includes('icon-size')) {
                     return `\n.f-icon-${lastTokenName} { width: ${value}; height: ${value}; }`
                 }
-    
+
                 if (name.includes('size')) {
                     return `
                     .f-h-${lastTokenName} { height: ${value}; }
                     .f-w-${lastTokenName} { width: ${value}; }
                     `
                 }
-    
+
                 if (name.includes('space') && !name.includes('inset')) {
                     return `
                     .f-m-${lastTokenName} { margin: ${value}; }
@@ -103,26 +100,27 @@ const format = {
                     .f-pr-${lastTokenName} { padding-right: ${value}; }
                     `
                 }
-    
+
                 if (name.includes('space') && name.includes('inset')) {
                     return `
                     .f-m-inset-${lastTokenName} { margin: ${value}; }
                     .f-p-inset-${lastTokenName} { padding: ${value}; }
                     `
                 }
-    
+
                 if (name.includes('index')) {
                     return `\n.f-index-${lastTokenName} { z-index: ${value}; }`
                 }
-    
+
                 return ''
-            }) 
-            .join('');
-    }
+            })
+            .join('')
+    }),
 }
+
 const files = fs
     .readdirSync(dir)
-    .filter(fn => fn.endsWith(extension))
+    .filter((fn) => fn.endsWith(extension))
     .map((filename) => {
         const theme = filename.split('.')[0]
 
@@ -135,6 +133,17 @@ const files = fs
 
 module.exports = {
     source: ['tokens/**/*.json'],
+    transform: {
+        'colorTransform': {
+            type: `value`,
+            transitive: true,
+            matcher: (token) => token.subtle,
+            transformer: (token) => chroma(token.value).alpha(0.5).hex(),
+        },
+        'color/css': Object.assign({}, StyleDictionary.transform[`color/css`], {
+            transitive: true,
+        }),
+    },
     format,
     platforms: {
         js: {
@@ -147,11 +156,12 @@ module.exports = {
                 },
                 {
                     destination: 'tokens-es6.js',
-                    format: 'javascript/es6',                    
+                    format: 'javascript/es6',
                 },
             ],
         },
         css: {
+            transforms: [`attribute/cti`, `name/cti/kebab`, `colorTransform`, `color/css`],
             transformGroup: 'css',
             buildPath: '',
             prefix: 'f-',

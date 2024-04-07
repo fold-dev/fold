@@ -157,21 +157,33 @@ export const NavigationItem = (props: NavigationItemProps) => {
     )
 }
 
-export const NavigationHeading = (props: { headingProps?: HeadingProps } & CoreViewProps) => {
-    const { headingProps = {}, ...rest } = props
+export type NavigationHeadingProps = {
+    headingProps?: HeadingProps
+    prefix?: ReactElement
+    suffix?: ReactElement
+} & CoreViewProps
+
+export const NavigationHeading = (props: NavigationHeadingProps) => {
+    const { prefix, suffix, headingProps = {}, ...rest } = props
 
     return (
         <View
             {...rest}
             as="span"
             role="presentation"
-            className="f-navigation-heading">
+            className="f-navigation-heading f-row">
+            {prefix && (
+                <span className="f-navigation-heading__prefix">{prefix}</span>
+            )}
             <Heading
                 {...headingProps}
                 as="h6"
-                className="f-navigation-heading__heading">
+                className="f-navigation-heading__heading f-ellipsis">
                 {props.children}
             </Heading>
+            {suffix && (
+                <span className="f-navigation-heading__suffix">{suffix}</span>
+            )}
         </View>
     )
 }

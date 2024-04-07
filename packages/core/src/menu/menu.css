@@ -36,6 +36,7 @@
     margin: 0px;
     padding: var(--f-menu-padding) 0;
     z-index: var(--f-index-menu);
+    position: relative;
 }
 
 .f-menu:not(.is-menubar) {
@@ -217,13 +218,26 @@
 
 .f-menu-heading {
     flex-shrink: 0;
-    display: inline-block;
+    width: 100%;
+    padding: var(--f-menu-item-padding);
+    gap: var(--f-menu-item-ix-spacing);
+    color: var(--f-menu-heading-color);
 }
 
 .f-menu-heading .f-menu-heading__heading {
-    color: var(--f-menu-heading-color);
     font-weight: var(--f-font-weight-medium);
-    padding: var(--f-menu-item-padding);
+    flex: 1;
+    color: inherit;
+}
+
+.f-menu-heading .f-menu-heading__suffix {
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.f-menu-heading .f-menu-heading__prefix {
+    color: inherit;
 }
 
 /* ************************************************************** */

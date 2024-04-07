@@ -5,6 +5,7 @@
     --f-avatar-group-overlap: -1rem;
     --f-avatar-group-overlap-small: -0.66rem;
     --f-avatar-group-spacing: 1px;
+    --f-avatar-badge-outline: 0.2rem solid var(--f-color-surface);
 }
 
 .f-avatar {
@@ -57,45 +58,36 @@
 
 /* group */
 
-.f-avatar-group {
-    width: fit-content;
-    z-index: 1;
-}
-
-.f-avatar-group:not(.is-inverted)::after {
-    content: ' ';
-    width: calc(var(--f-avatar-group-overlap) * -1);
-    height: 1rem;
-    display: block;
-}
-
-.f-avatar-group.is-inverted::before {
-    content: ' ';
-    width: calc(var(--f-avatar-group-overlap) * -1);
-    height: 1rem;
-    display: block;
-}
-
-/* adjust spacing for small ones  */
-
 .f-avatar.xs,
 .f-avatar.sm {
     --f-avatar-group-overlap: var(--f-avatar-group-overlap-small);
 }
 
-.f-avatar-group .f-avatar {
-    margin-right: var(--f-avatar-group-overlap);
+.f-avatar-group {
+    width: fit-content;
+    z-index: 1;
 }
 
-.f-avatar-group.is-animated .f-avatar {
-    margin-right: var(--f-avatar-group-overlap);
-    transition: margin-right .1s;
+.f-avatar-group > .f-avatar + .f-avatar {
+    margin-left: var(--f-avatar-group-overlap);
 }
 
-.f-avatar-group.is-animated:hover .f-avatar {
-    margin-right: var(--f-avatar-group-spacing);
+.f-avatar-group.is-animated:hover > .f-avatar + .f-avatar {
+    margin-left: var(--f-avatar-group-spacing);
+    transition: margin-left .1s;
 }
 
 .f-avatar-group.is-inverted {
      flex-direction: row-reverse; 
+}
+
+.f-avatar-group.is-inverted > .f-avatar + .f-avatar {
+    margin-right: var(--f-avatar-group-overlap) !important;
+    margin-left: 0 !important;
+}
+
+.f-avatar-group.is-inverted.is-animated:hover > .f-avatar + .f-avatar {
+    margin-right: 0 !important;
+    margin-left: var(--f-avatar-group-spacing);
+    transition: margin-right .1s;
 }

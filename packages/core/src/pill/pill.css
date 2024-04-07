@@ -4,11 +4,13 @@
     --f-pill-buffer-icon: var(--f-space-1);
     --f-pill-border-width: 1px;
     --f-pill-border-radius: var(--f-radius-full);
+    --f-pill-border-color: var(--f-color-surface-strongest);
     --f-pill-color: var(--f-color-text-weaker);
     --f-pill-color-subtle: var(--f-color-text-weaker);
-    --f-pill-background-color: var(--f-color-surface-stronger);
+    --f-pill-color-color: var(--f-color-text-on-color);
+    --f-pill-background-color: var(--f-color-surface-strong);
     --f-pill-background-color-subtle: var(--f-color-surface-strong);
-    --f-pill-border-color: var(--f-color-surface-strongest);
+    --f-pill-background-color-solid: var(--f-color-surface-inverse);
     --f-pill-inner-background-color: rgba(0,0,0,0.1);
 }
 
@@ -24,19 +26,23 @@
 }
 
 .f-pill.is-subtle {
-    border-radius: var(--f-pill-border-radius);
     border: none;  
     color: var(--f-pill-color-subtle);
     background-color: var(--f-pill-background-color-subtle);
 }
 
 .f-pill.is-outline {
-    border: var(--f-pill-border-width) solid var(--f-pill-border-color) !important;  
-    border-radius: var(--f-pill-border-radius);
-    border: none;  
     color: var(--f-pill-color);
-    background-color: var(--f-pill-background-color-subtle);
+    background-color: transparent;
 }
+
+.f-pill.is-solid {
+    border: none;  
+    background-color: var(--f-pill-background-color-solid);
+    color: var(--f-pill-color-color);
+}
+
+
 
 .f-pill:focus {
     outline: var(--f-focus);

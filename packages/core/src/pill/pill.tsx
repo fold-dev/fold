@@ -4,30 +4,64 @@ import { addAlpha, classNames, cleanObject, getForegroundColor } from '../helper
 import { CoreViewProps, Size } from '../types'
 
 export type PillProps = {
+    as?: 'button' | 'span'
     size?: Size
-    solid?: boolean
+    
+    
     outline?: boolean
     subtle?: boolean
+    solid?: boolean
+    
     color?: string
     prefix?: ReactElement
     suffix?: ReactElement
-} & CoreViewProps
+} & Omit<CoreViewProps, 'as'>
 
 export const Pill = forwardRef((props: PillProps, ref) => {
-    const { size = 'md', solid, outline, subtle, color, prefix, suffix, style = {}, ...rest } = props
-    const isClickable = !!props.onClick
+    const { 
+        as = 'span',
+        size = 'md', 
+        outline, 
+        subtle, 
+        solid,
+        color, 
+        prefix, 
+        suffix, 
+        style = {}, 
+        ...rest 
+    } = props
+    const isClickable = as == 'button'
     const styles = useMemo(() => {
-        const accentColor = outline || subtle ? color : getForegroundColor(color)
-        const borderColor = color ? (subtle ? 'transparent' : outline ? color : 'transparent') : null
-        const backgroundColor = color ? (outline || subtle ? addAlpha(color, 0.15) : color) : null
+        if (!color) return { ...style } 
+
+        let textColor = null
+        let borderColor = null
+        let backgroundColor = null
+        const foregroundColor = getForegroundColor(color)
+
+        if (!outline && !subtle && !solid) { 
+            textColor = foregroundColor
+            backgroundColor = color
+            borderColor = foregroundColor
+        } else if (subtle) {
+            textColor = color
+            backgroundColor = addAlpha(color, 0.15)
+        } else if (outline)  {
+            textColor = color
+            borderColor = color
+        } else if (solid) {
+            textColor = foregroundColor
+            backgroundColor = color
+        }
+
         return cleanObject({
             ...style,
-            color: accentColor,
-            '--f-pill-border-color': borderColor,
+            color: textColor,
             backgroundColor,
+            '--f-pill-border-color': borderColor,
             outlineColor: backgroundColor,
         })
-    }, [color, outline, solid])
+    }, [color, outline, subtle, solid])
     const className = classNames(
         {
             'f-pill': true,
@@ -43,7 +77,7 @@ export const Pill = forwardRef((props: PillProps, ref) => {
     return (
         <View
             ref={ref}
-            as={isClickable ? 'button' : 'span'}
+            as={as}
             {...rest}
             className={className}
             style={styles}>

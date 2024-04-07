@@ -121,7 +121,6 @@
     align-items: center;
     align-content: center;
     justify-content: center;
-    position: relative;
 }
 
 .f-row {
@@ -130,7 +129,6 @@
     align-items: center;
     align-content: center;
     justify-content: center; 
-    position: relative;
 }
 
 /* basic fade in */

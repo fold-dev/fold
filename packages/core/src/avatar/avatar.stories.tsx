@@ -182,3 +182,43 @@ export const GroupInverted = () => {
         </AvatarGroup>
     )
 }
+
+// --
+
+export const Presence = () => (
+    <View
+        row
+        gap={5}
+        width="fit-content">
+        <Avatar
+            size="xs"
+            name="Etienne Dreyer"
+            presence="online"
+            src="/men/01.jpg"
+        />
+        <Avatar
+            size="sm"
+            name="Aubrey Moagi"
+            presence="away"
+            src="/men/02.jpg"
+        />
+        <Avatar
+            size="md"
+            name="Patrick Anthony"
+            presence="busy"
+            src="/men/03.jpg"
+        />
+        <Avatar
+            size="lg"
+            name="Charlene Singh"
+            presence="online"
+            src="/men/04.jpg"
+        />
+        <Avatar
+            size="xl"
+            name="Craig Pather"
+            presence="away"
+            src="/men/05.jpg"
+        />
+    </View>
+)

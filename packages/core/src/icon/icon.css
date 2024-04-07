@@ -14,8 +14,7 @@
 
 .f-icon {
     position: relative;
-    overflow: hidden;
-    display: inline-block;
+    display: block;
     flex-shrink: 0;
 }
 

@@ -436,21 +436,33 @@ export const MenuItem = (props: MenuItemProps) => {
     )
 }
 
-export const MenuHeading = (props: { headingProps?: HeadingProps } & CoreViewProps) => {
-    const { headingProps = {}, ...rest } = props
+export type MenuHeadingProps = {
+    headingProps?: HeadingProps
+    prefix?: ReactElement
+    suffix?: ReactElement
+} & CoreViewProps
+
+export const MenuHeading = (props: MenuHeadingProps) => {
+    const { prefix, suffix, headingProps = {}, ...rest } = props
 
     return (
         <View
             {...rest}
             as="span"
             role="none"
-            className="f-menu-heading">
+            className="f-menu-heading f-row">
+            {prefix && (
+                <span className="f-menu-heading__prefix">{prefix}</span>
+            )}
             <Heading
                 {...headingProps}
                 as="h6"
-                className="f-menu-heading__heading">
+                className="f-menu-heading__heading f-ellipsis">
                 {props.children}
             </Heading>
+            {suffix && (
+                <span className="f-menu-heading__suffix">{suffix}</span>
+            )}
         </View>
     )
 }
