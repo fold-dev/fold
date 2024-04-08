@@ -3,10 +3,10 @@
     --f-options-spacing: var(--f-space-1);
     --f-options-border-radius: var(--f-radius);
     --f-options-background-color: var(--f-color-surface);
-    --f-options-active-background-color: var(--f-color-accent);
+    --f-options-active-background-color: var(--f-color-surface-stronger);
     --f-option-color: var(--f-color-text-weaker);
     --f-option-disabled-color: var(--f-color-text-weakest);
-    --f-option-selected-color: var(--f-color-surface);
+    --f-option-selected-color: var(--f-color-text);
     --f-option-hover-color: var(--f-color-text);
     --f-option-active-opacity: 0.8;
     --f-options-border-width: 1px;
