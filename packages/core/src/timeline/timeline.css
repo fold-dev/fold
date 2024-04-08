@@ -41,7 +41,6 @@
 
 .f-timeline-item__marker > * {
     z-index: 1;
-    display: block;
     margin-right: auto;
     margin-left: auto;
 }
