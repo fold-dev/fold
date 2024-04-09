@@ -573,7 +573,6 @@ export const LabelSelect = (props: LabelSelectProps) => {
             }}
             comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
-                if (!!labels.find((label: any) => label.id == option.key)) return
                 clear()
                 onLabelAdd(availableLabels.find((availableLabel: any) => availableLabel.id == option.key))
                 if (notFound) setNotFound(null)
@@ -690,7 +689,6 @@ export const UserSelect = (props: UserSelectProps) => {
             selectListProps={{ noOptionsComponent: <Text p="var(--f-select-option-padding)">No users available</Text> }}
             comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
-                if (!!users.find((user: any) => user.id == option.key)) return
                 clear()
                 onUserAdd(availableUsers.find((availableUser: any) => availableUser.id == option.key))
                 if (notFound) setNotFound(null)
