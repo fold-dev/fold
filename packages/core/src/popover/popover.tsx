@@ -12,6 +12,9 @@ import {
 } from '../helpers'
 import { useEvent } from '../hooks/event.hook'
 import { CoreViewProps, PopoutPosition } from '../types'
+import { dispatchPopoverEvent } from './popover.event'
+
+export * from './popover.event'
 
 export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
     <View
@@ -60,21 +63,26 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         [props.className, getPopoutClass(finalAnchor)]
     )
 
-    const handleHideDropdown = (e) => {
-        const { isEscape } = getKey(e)
-        if (isEscape && onDismiss) onDismiss(e)
+    const dismissPopover = (e) => {
+        dispatchPopoverEvent('ondismiss', e)
+        onDismiss(e)
     }
 
-    const handleClickOutside = (e) => {
+    const handleKeyDown = (e) => {
+        const { isEscape } = getKey(e)
+        if (isEscape && onDismiss) dismissPopover(e)
+    }
+
+    const handleClick = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                if (onDismiss) onDismiss(e)
+                if (onDismiss) dismissPopover(e)
             }
         }
     }
 
-    useEvent('keydown', handleHideDropdown, true)
-    useEvent('click', handleClickOutside, true)
+    useEvent('keydown', handleKeyDown, true)
+    useEvent('click', handleClick, true)
 
     useEffect(() => {
         if (!id) return
