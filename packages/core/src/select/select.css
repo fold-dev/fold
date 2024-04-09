@@ -5,7 +5,7 @@
     --f-select-color-disabled: var(--f-color-text-weakest);
     --f-select-color-selected: var(--f-color-accent);
     --f-select-background-selected: var(--f-color-surface-strong);
-    --f-select-option-focus: var(--f-color-surface-strong); 
+    --f-select-option-focus: var(--f-color-surface-stronger); 
     --f-select-option-active-size: 0.2rem;
     --f-select-option-hover: var(--f-color-surface-strong);
     --f-select-option-active: var(--f-color-surface-stronger);
@@ -147,6 +147,11 @@ li.f-select-list-option-container {
 .f-select-list-option.is-selected {
     background-color: var(--f-select-background-selected);
     color: var(--f-select-color-selected);
+}
+
+.f-select-list-option-container:focus .f-select-list-option.is-selected,
+.f-select-list-option-container.is-focused .f-select-list-option.is-selected {
+    background-color: var(--f-select-option-focus);
 }
 
 .f-select-list-option:not(.is-disabled):focus {
