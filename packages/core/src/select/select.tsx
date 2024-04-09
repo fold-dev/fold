@@ -505,7 +505,7 @@ export type LabelSelectProps = {
     onLabelAdd: any
     onLabelDelete: any
     onFilter?: any
-} & CoreViewProps
+} & Omit<SelectProps, 'placeholder' | 'selected' | 'options' | 'onSelect'>
 
 export const LabelSelect = (props: LabelSelectProps) => {
     const {
