@@ -515,6 +515,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
         labels = [],
         availableLabels = [],
         inputPlaceholder = 'Filter labels',
+        comboInputFieldProps = {},
         actionPrefix = 'Create',
         onLabelAdd,
         onLabelDelete,
@@ -570,7 +571,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
             selectListProps={{
                 noOptionsComponent: <Text p="var(--f-select-option-padding)">No labels available</Text>,
             }}
-            comboInputFieldProps={{ onKeyDown: handleInputKeyDown }}
+            comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
                 if (!!labels.find((label: any) => label.id == option.key)) return
                 clear()
@@ -632,6 +633,7 @@ export const UserSelect = (props: UserSelectProps) => {
         users = [],
         availableUsers = [],
         inputPlaceholder = 'Filter users',
+        comboInputFieldProps = {},
         actionPrefix = 'Add',
         onUserAdd,
         onUserDelete,
@@ -686,7 +688,7 @@ export const UserSelect = (props: UserSelectProps) => {
             options={options}
             filterDelay={1000}
             selectListProps={{ noOptionsComponent: <Text p="var(--f-select-option-padding)">No users available</Text> }}
-            comboInputFieldProps={{ onKeyDown: handleInputKeyDown }}
+            comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
                 if (!!users.find((user: any) => user.id == option.key)) return
                 clear()

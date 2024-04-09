@@ -293,6 +293,7 @@ export type ComboInputProps = {
 
 export const ComboInput = forwardRef((props: ComboInputProps, ref) => {
     const { render, size = 'md', disabled, ...rest } = props
+    console.log(props)
     const className = classNames(
         {
             'f-combo-input': true,
