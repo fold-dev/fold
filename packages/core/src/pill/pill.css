@@ -42,8 +42,6 @@
     color: var(--f-pill-color-color);
 }
 
-
-
 .f-pill:focus {
     outline: var(--f-focus);
     outline-offset: 1px;
