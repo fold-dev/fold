@@ -59,7 +59,7 @@ import {
     setFoldIcons,
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
-import { DialogOptions } from 'dialog/dialog'
+import { DialogOptions } from '../dialog/dialog'
 
 export const defaultIcons = {
     'cog': FICog,
