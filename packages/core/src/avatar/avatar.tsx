@@ -80,6 +80,7 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
 
     useEffect(() => {
         setImageFailed(false)
+        if (!src) return
         const image = documentObject.createElement('img')
         image.src = src
         image.onerror = (e) => setImageFailed(true)
