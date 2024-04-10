@@ -1,7 +1,21 @@
 import { classNames } from '../helpers'
-import React from 'react'
-import { Heading, Modal, ModalClose, Text, useId } from '../'
+import React, { useContext } from 'react'
+import { FoldContext, Heading, Modal, ModalClose, Text, useId } from '../'
 import { CommonProps } from '../types'
+
+export type DialogOptions = {
+    title?: string
+    description?: string
+    footer?: any
+    header?: any
+    closeButton?: boolean
+    portal?: any
+}
+
+export const useDialog = () => {
+    const { setDialog, closeDialog } = useContext(FoldContext)
+    return { setDialog, closeDialog }
+}
 
 export type DialogProps = {
     isVisible: boolean
