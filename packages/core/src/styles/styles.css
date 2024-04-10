@@ -80,7 +80,6 @@ we don't want to use !important
 @import '../steps/steps.css';
 @import '../table/table.css';
 @import '../tabs/tabs.css';
-@import '../task/task.css';
 @import '../textarea/textarea.css';
 @import '../timeline/timeline.css';
 @import '../toast/toast.css';
