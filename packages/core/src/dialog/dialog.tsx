@@ -4,18 +4,17 @@ import { FoldContext, Heading, Modal, ModalClose, Text, useId } from '../'
 import { CommonProps } from '../types'
 
 export type DialogOptions = {
-    icon?: string
-    color?: string
     title?: string
     description?: string
-    button?: string
+    footer?: any
+    header?: any
     closeButton?: boolean
-    onDismiss?: any
+    portal?: any
 }
 
 export const useDialog = () => {
-    const { dialog, setDialog } = useContext(FoldContext)
-    return { dialog, setDialog }
+    const { setDialog, closeDialog } = useContext(FoldContext)
+    return { setDialog, closeDialog }
 }
 
 export type DialogProps = {

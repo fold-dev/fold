@@ -59,7 +59,7 @@ import {
     setFoldIcons,
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
-import { DialogOptions } from '../dialog/dialog'
+import { Dialog, DialogOptions } from '../dialog/dialog'
 
 export const defaultIcons = {
     'cog': FICog,
@@ -131,6 +131,7 @@ export type FoldContext = {
     setAlert: (alert: AlertOptions) => void
     dialog: DialogOptions
     setDialog: (dialog: DialogOptions) => void
+    closeDialog: () => void
     setConfig: any
 }
 
@@ -140,6 +141,7 @@ export const FoldContext = React.createContext<FoldContext>({
     setAlert: () => null,
     dialog: {},
     setDialog: () => null,
+    closeDialog: () => null,
     setConfig: (fold: Partial<FoldApp>) => null,
 })
 
@@ -155,6 +157,8 @@ export const FoldProvider = (props: any) => {
     const [alert, setAlert] = useState<AlertOptions>({})
     const [dialog, setDialog] = useState<DialogOptions>({})
     const { setTheme, getSystemTheme, getStoredTheme } = useTheme()
+
+    const closeDialog = () => setDialog({})
 
     const handleAlertDismiss = () => {
         if (alert.onDismiss) alert.onDismiss()
@@ -180,6 +184,7 @@ export const FoldProvider = (props: any) => {
                 setAlert,
                 dialog,
                 setDialog,
+                closeDialog,
                 setConfig,
             }}>
             {props.children}
@@ -189,6 +194,18 @@ export const FoldProvider = (props: any) => {
                 alert={alert}
                 onDismiss={handleAlertDismiss}
             />
+            {!!dialog.title && (
+                <Dialog
+                    isVisible={true}
+                    portal={dialog.portal}
+                    closeButton={dialog.closeButton}
+                    title={dialog.title}
+                    description={dialog.description}
+                    onDismiss={() => setDialog({})}
+                    footer={dialog.footer}
+                    header={dialog.header}
+                />
+            )}
         </FoldContext.Provider>
     )
 }
