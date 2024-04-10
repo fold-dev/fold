@@ -11,6 +11,7 @@ import {
     InputProps,
     InputSuffix,
     Pill,
+    PillProps,
     Text,
     useEvent,
     useId,
@@ -505,6 +506,7 @@ export type LabelSelectProps = {
     onLabelAdd: any
     onLabelDelete: any
     onFilter?: any
+    pillProps?: PillProps
 } & Omit<SelectProps, 'placeholder' | 'selected' | 'options' | 'onSelect'>
 
 export const LabelSelect = (props: LabelSelectProps) => {
@@ -520,6 +522,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
         onLabelAdd,
         onLabelDelete,
         onFilter,
+        pillProps = {},
         ...rest
     } = props
     const selected = useMemo(() => labels.map((label: LabelSelectLabel) => label.id), [labels])
@@ -598,7 +601,8 @@ export const LabelSelect = (props: LabelSelectProps) => {
                                 className="f-buttonize"
                                 onClick={() => onLabelDelete(label)}
                             />
-                        }>
+                        }
+                        {...pillProps}>
                         {label.text}
                     </Pill>
                 ))
@@ -622,6 +626,7 @@ export type UserSelectProps = {
     onUserAdd: any
     onUserDelete: any
     onFilter?: any
+    pillProps?: PillProps
 } & Omit<SelectProps, 'placeholder' | 'selected' | 'options' | 'onSelect'>
 
 export const UserSelect = (props: UserSelectProps) => {
@@ -637,6 +642,7 @@ export const UserSelect = (props: UserSelectProps) => {
         onUserAdd,
         onUserDelete,
         onFilter,
+        pillProps = {},
         ...rest
     } = props
     const selected = useMemo(() => users.map((user: UserSelectUser) => user.id), [users])
@@ -720,7 +726,8 @@ export const UserSelect = (props: UserSelectProps) => {
                                 className="f-buttonize"
                                 onClick={() => onUserDelete(user)}
                             />
-                        }>
+                        }
+                        {...pillProps}>
                         {user.name}
                     </Pill>
                 ))
