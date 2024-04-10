@@ -13,7 +13,7 @@ export type AlertOptions = {
 }
 
 export const useAlert = () => {
-    const { alert, setAlert } = useContext(FoldContext)
+    const { setAlert } = useContext(FoldContext)
     return { alert: setAlert }
 }
 
