@@ -59,6 +59,7 @@ import {
     setFoldIcons,
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
+import { DialogOptions } from 'dialog/dialog'
 
 export const defaultIcons = {
     'cog': FICog,
@@ -127,7 +128,9 @@ export type FoldApp = {
 export type FoldContext = {
     fold: FoldApp
     alert: AlertOptions
-    setAlert: any
+    setAlert: (alert: AlertOptions) => void
+    dialog: DialogOptions
+    setDialog: (dialog: DialogOptions) => void
     setConfig: any
 }
 
@@ -135,6 +138,8 @@ export const FoldContext = React.createContext<FoldContext>({
     fold: {},
     alert: {},
     setAlert: () => null,
+    dialog: {},
+    setDialog: () => null,
     setConfig: (fold: Partial<FoldApp>) => null,
 })
 
@@ -148,6 +153,7 @@ export const FoldProvider = (props: any) => {
     const { license, theme, dragOptions = {} } = props
     const [fold, setFold] = useState<FoldApp>({})
     const [alert, setAlert] = useState<AlertOptions>({})
+    const [dialog, setDialog] = useState<DialogOptions>({})
     const { setTheme, getSystemTheme, getStoredTheme } = useTheme()
 
     const handleAlertDismiss = () => {
@@ -172,6 +178,8 @@ export const FoldProvider = (props: any) => {
                 fold,
                 alert,
                 setAlert,
+                dialog,
+                setDialog,
                 setConfig,
             }}>
             {props.children}
