@@ -7,6 +7,7 @@ import {
     FIArrowLeft,
     FIArrowRight,
     FIArrowUp,
+    FIAudio,
     FIBin,
     FICheck,
     FICheckCircle,
@@ -54,6 +55,7 @@ import {
     FITime,
     FIUpload,
     FIUser,
+    FIVideo,
     FIWarning,
     FIX,
     setFoldIcons,
@@ -116,6 +118,8 @@ export const defaultIcons = {
     'search': FISearch,
     'user': FIUser,
     'star': FIStar,
+    'audio': FIAudio,
+    'video': FIVideo,
 }
 
 setFoldIcons(defaultIcons)

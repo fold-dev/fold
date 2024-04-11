@@ -93,9 +93,9 @@ export const States = () => (
         width={500}>
         <Attachment
             width={500}
-            mime="image/png"
+            mime="video/mpeg"
             filesize={24325}
-            label="filename.png"
+            label="filename.mpg"
             href="https://fold.dev"
         />
         <Attachment
