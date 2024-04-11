@@ -491,7 +491,6 @@ export type LabelSelectLabel = {
     id: string | number
     icon?: string
     color?: string
-    subtle?: boolean
     text: string
 }
 
@@ -593,7 +592,6 @@ export const LabelSelect = (props: LabelSelectProps) => {
                     <Pill
                         key={index}
                         color={label.color}
-                        subtle={label.subtle}
                         size={size}
                         suffix={
                             <IconLib
@@ -711,7 +709,6 @@ export const UserSelect = (props: UserSelectProps) => {
                 users.map((user: UserSelectUser, index: number) => (
                     <Pill
                         key={index}
-                        subtle
                         size={size}
                         prefix={
                             <Avatar
