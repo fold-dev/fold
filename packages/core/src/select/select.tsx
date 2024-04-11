@@ -615,6 +615,7 @@ export type UserSelectUser = {
     id: string | number
     name: string
     image?: string
+    subtle?: boolean
 }
 
 export type UserSelectProps = {
@@ -711,7 +712,7 @@ export const UserSelect = (props: UserSelectProps) => {
                 users.map((user: UserSelectUser, index: number) => (
                     <Pill
                         key={index}
-                        subtle
+                        subtle={user.subtle}
                         size={size}
                         prefix={
                             <Avatar
