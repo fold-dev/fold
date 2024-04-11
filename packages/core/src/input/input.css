@@ -10,7 +10,7 @@
     --f-input-border-radius: var(--f-radius);
     --f-input-base-padding: var(--f-space-4);
     --f-input-padding: 0 var(--f-input-base-padding);
-    --f-input-padding-combo: var(--f-space-1) var(--f-space-2);
+    --f-input-padding-combo: 0.2rem var(--f-space-2);
     --f-input-shadow: var(--f-shadow-sm);
     --f-combo-input-min-width: 50px;
     --f-combo-input-spacing: var(--f-space-1);
