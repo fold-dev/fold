@@ -14,11 +14,12 @@ export type DragElementProps = {
     indent?: number
     noDrop?: boolean
     noDrag?: boolean
+    noFocus?: boolean
     noIndent?: boolean
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = (props: DragElementProps) => {
-    const { id, indent = 0, noIndent, noDrop, noDrag, style = {}, ...rest } = props
+    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp } = useDrag()
     const elementRef = useRef(null)
@@ -45,6 +46,7 @@ export const DragElement = (props: DragElementProps) => {
             data-indent={indent}
             data-nodrop={noDrop}
             data-nodrag={noDrag}
+            data-nofocus={noFocus}
             data-fallbackdisplay={fallbackDisplay} // see DragElementArea
             data-dragelement={true}
             onMouseDown={onMouseDown}
