@@ -130,6 +130,7 @@ export const DragManager = (props: DragManagerProps) => {
                     // must be a dragelement and not non-droppable
                     const isDragElement = !!element.dataset.dragelement
                     const isDroppable = !element.dataset.nodrop
+                    const isFocus = !element.dataset.nofocus
 
                     // stop if the target isn't a drag-element
                     if (isDragElement && isDroppable) {
@@ -161,7 +162,7 @@ export const DragManager = (props: DragManagerProps) => {
                             // this calculates where the cursor falls on the target element
                             // if it's just focus - then there is no regionSize because we want all of the area
                             // TODO: extend to accommodate vertical directions
-                            if (elementParentVariant == 'lined-focus' || elementParentVariant == 'focus') {
+                            if ((elementParentVariant == 'lined-focus' || elementParentVariant == 'focus') && isFocus) {
                                 const box = element.getBoundingClientRect()
                                 const regionSize =
                                     elementParentVariant == 'focus' ? 0 : Math.round(box.height / linedRegionThreshold)
