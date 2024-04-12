@@ -92,7 +92,7 @@
 :root {
     --f-drag-lined-x-offset: -50%;
     --f-drag-lined-y-offset: -50%;
-    --f-drag-lined-size: 6px;
+    --f-drag-lined-size: 3px;
 }
 
 .f-drag-area__element__line {
@@ -189,8 +189,7 @@
     height: var(--f-drag-lined-size);
     pointer-events: none;
     z-index: 10000;
-    /* background: var(--f-color-accent); */
-    background: red;
+    background: var(--f-color-accent);
     animation: f-drag-fadein var(--f-transition-duration-fast);
     transition: transform 0.05s var(--f-drag-transition);
 }
