@@ -795,12 +795,12 @@ export const DragElementTargetVariants = () => (
                                 ✅ Retrieve a book on "How to Train Your Pet Rock" from the library.
                             </Text>
                         </DragElement>
-                        <DragElement>
+                        <DragElement noFocus>
                             <Text
                                 p={10}
                                 bgToken="surface-strong"
                                 width="100%">
-                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene.
+                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene. (not focusable)
                             </Text>
                         </DragElement>
                         <DragElement>
