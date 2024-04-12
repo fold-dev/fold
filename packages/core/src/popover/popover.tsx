@@ -68,6 +68,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     const dismissPopover = (e) => {
         dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
+        setReady(false)
     }
 
     const handleKeyDown = (e) => {
