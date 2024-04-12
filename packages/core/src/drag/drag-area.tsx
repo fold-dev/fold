@@ -357,6 +357,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         data-id={child.props['data-id']}
                         data-nodrop={child.props['data-nodrop']}
                         data-nodrag={child.props['data-nodrag']}
+                        data-nofocus={child.props['data-nofocus']}
                         className="f-drag-area__element"
                         onMouseDown={(e) => (noDrag ? null : handleMouseDown(e, index))}
                         style={{

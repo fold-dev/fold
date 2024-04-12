@@ -28,6 +28,10 @@ export type DragElementAreaProps = {
     direction?: 'vertical'
     startDelay?: number
     footer?: any
+    /**
+     * This value needs to be the same as `--f-drag-lined-size` 
+     */
+    linedVariantPlaceholderSize?: number
 } & CoreViewProps
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
@@ -38,6 +42,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         targetVariant = {},
         direction = 'vertical',
         startDelay = 100,
+        linedVariantPlaceholderSize = 3,
         footer,
         ...rest
     } = props
@@ -47,7 +52,18 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     const bufferRef = useRef(null)
     const id = useId(areaId)
     const noChildren = useMemo(() => Children.count(props.children) == 0, [props.children])
-    const { isHorizontal, isVertical, isDragging, hasOriginVariant, finalTargetVariant, placeholder } = useMemo(() => {
+    const { 
+        isHorizontal, 
+        isVertical, 
+        isDragging, 
+        hasOriginVariant, 
+        finalTargetVariant, 
+        placeholder,
+        isLinedFocus,
+        isLined,
+        isFocus,
+        isAnimated, 
+    } = useMemo(() => {
         // variant is when the origin's DragArea specifies a variant
         // via "targetVariant" that affects this DragArea
         // finalTargetVariant = make sure to add THIS group's variant
@@ -63,6 +79,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const isTargetFocus = target.focus
         const isTargetArea = id == target.areaId
         const isDragging = !!origin.areaId
+        const linedVariantPlaceholderSizeOffset = linedVariantPlaceholderSize / 2
 
         // moves to where the cursor is
         const placeholder: any = {
@@ -79,9 +96,9 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 : isVertical
                 ? `translateY(${
                       target.moveDirection == 'down'
-                          ? target.top + target.height
+                          ? target.top + target.height + linedVariantPlaceholderSizeOffset
                           : target.moveDirection == 'up'
-                          ? target.top
+                          ? target.top - linedVariantPlaceholderSizeOffset
                           : 0
                   }px)`
                 : `translateX(${
@@ -100,6 +117,10 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             hasOriginVariant,
             finalTargetVariant,
             placeholder,
+            isLinedFocus,
+            isLined,
+            isFocus,
+            isAnimated,
         }
     }, [id, origin, target, direction, targetVariant, variant])
     const className = classNames(
@@ -226,7 +247,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             data-direction={direction}
             data-targetvariant={finalTargetVariant}>
             {props.children}
-
+            
             {placeholder.visible && (
                 <div
                     className={placeholder.className}

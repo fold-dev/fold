@@ -237,8 +237,9 @@ export const Variants = () => (
                     <Text
                         p={10}
                         bgToken="surface-strong"
-                        width="100%">
-                        ✅ Purchase a left-handed screwdriver and a bucket of steam at the hardware store.
+                        width="100%"
+                        data-nofocus={true}>
+                        ✅ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
                     </Text>
                     <Text
                         p={10}
@@ -795,12 +796,12 @@ export const DragElementTargetVariants = () => (
                                 ✅ Retrieve a book on "How to Train Your Pet Rock" from the library.
                             </Text>
                         </DragElement>
-                        <DragElement>
+                        <DragElement noFocus>
                             <Text
                                 p={10}
                                 bgToken="surface-strong"
                                 width="100%">
-                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene.
+                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene (not focusable).
                             </Text>
                         </DragElement>
                         <DragElement>
