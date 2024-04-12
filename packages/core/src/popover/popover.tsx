@@ -51,6 +51,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     const containerRef = useRef(null)
     const childRef = useRef(null)
     const [box, setBox] = useState<any>({})
+    const [ready, setReady] = useState(false)
     const [finalAnchor, setFinalAnchor] = useState('')
     const id = useId(targetId)
     const showPopover = isVisible && id && finalAnchor
@@ -59,6 +60,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         {
             'f-popover': true,
             'has-arrow': arrow,
+            'is-ready': ready,
         },
         [props.className, getPopoutClass(finalAnchor)]
     )
@@ -112,8 +114,9 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         const autoPosition = `${vertical}-${horizontal}`
         const finalAnchor = anchor ? anchor : autoPosition
 
+        setReady(!!Object.keys(popoverRect).length)
         setFinalAnchor(finalAnchor)
-    }, [showPopover, content, fixPosition, props.children])
+    }, [showPopover, content, fixPosition, props.children, ready])
 
     // TODO: refine
     // this is reponsible for detection buffers in top offscreen
@@ -121,13 +124,15 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         if (!id) return
         if (!isVisible) return
         if (!finalAnchor) return
+
         const { top } = getBoundingClientRect(containerRef.current)
+
         if (top < 0) {
             containerRef.current.style.top = top * -1 + 'px'
         } else {
             containerRef.current.style.removeProperty('top')
         }
-    }, [showPopover, fixPosition, props.children])
+    }, [showPopover, fixPosition, props.children, ready])
 
     return (
         <>
