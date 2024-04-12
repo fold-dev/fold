@@ -19,8 +19,8 @@
     pointer-events: all;
 }
 
-.f-popover.is-fixed {
-    position: fixed;
+.f-popover:not(.is-ready) {
+    visibility: hidden;
 }
 
 @keyframes f-popover-fadein {
