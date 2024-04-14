@@ -852,7 +852,11 @@ export const DatePicker = (props: DatePickerProps) => {
                     fontWeight={600}
                     colorToken="text"
                     className="f-date-picker__title">
-                    {level != 'days' ? getTitleText(date) : null}
+                    {level != 'days' ? (
+                        <span className="f-flexer">
+                            {getTitleText(date)}
+                        </span>
+                    ) : null}
                     {level == 'days' &&
                         dates.map((date1: Date, index: number) => (
                             <span
