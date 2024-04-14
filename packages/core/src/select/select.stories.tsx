@@ -614,9 +614,9 @@ export const CustomComponent = () => {
 // --
 
 /**
- * The Combo select uses the ComboInput component to enable a common tag-like user experience
+ * The Tag select uses the TagInput component to enable a common tag-like user experience
  */
-export const Combo = () => {
+export const Tag = () => {
     const labels = [
         'component',
         'frontend',
@@ -683,7 +683,7 @@ export const Combo = () => {
 
     return (
         <Select
-            combo
+            tag
             as="default"
             width={500}
             placeholder="Select a label"
@@ -692,7 +692,7 @@ export const Combo = () => {
             selected={selected}
             options={[...notFoundItem(), ...options]}
             filterDelay={1000}
-            comboInputFieldProps={{ onKeyDown: handleInputKeyDown }}
+            tagInputFieldProps={{ onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
                 clear()
                 setSelected([...selected, option.key])

@@ -10,10 +10,10 @@
     --f-input-border-radius: var(--f-radius);
     --f-input-base-padding: var(--f-space-4);
     --f-input-padding: 0 var(--f-input-base-padding);
-    --f-input-padding-combo: 0.2rem var(--f-space-2);
+    --f-input-padding-tag: 0.2rem var(--f-space-2);
     --f-input-shadow: var(--f-shadow-sm);
-    --f-combo-input-min-width: 50px;
-    --f-combo-input-spacing: var(--f-space-1);
+    --f-tag-input-min-width: 50px;
+    --f-tag-input-spacing: var(--f-space-1);
     --f-input-prefix-padding: 0 0 0 var(--f-input-base-padding);
     --f-input-suffix-padding: 0  var(--f-input-base-padding) 0 0;
 }
@@ -302,43 +302,43 @@ input.f-input[type=color].xl {
 
 /* multi input */
 
-.f-combo-input {
+.f-tag-input {
     cursor: pointer;
     flex-wrap: wrap;
-    gap: var(--f-combo-input-spacing);
-    padding: var(--f-input-padding-combo);
+    gap: var(--f-tag-input-spacing);
+    padding: var(--f-input-padding-tag);
 }
 
-.f-combo-input.is-disabled > * {
+.f-tag-input.is-disabled > * {
     pointer-events: none;
 }
 
-.f-combo-input:not(.is-disabled):hover {
+.f-tag-input:not(.is-disabled):hover {
     border-color: var(--f-input-border-color-active);
 }
 
-.f-combo-input.is-disabled,
-.f-combo-input.is-disabled input::placeholder {
+.f-tag-input.is-disabled,
+.f-tag-input.is-disabled input::placeholder {
     color: var(--f-input-color-disabled);
     background-color: var(--f-input-background-color-disabled);
     cursor: not-allowed;
 }
 
-.f-combo-input input::placeholder {
+.f-tag-input input::placeholder {
     color: var(--f-input-color-placeholder);
 }
 
-.f-combo-input:not(.is-disabled):focus-within {
+.f-tag-input:not(.is-disabled):focus-within {
     outline: var(--f-focus);
     outline-offset: 1px;
     transition: outline 100ms;
 }
 
-.f-combo-input input {
+.f-tag-input input {
     cursor: pointer;
     padding: 0;
     flex: 1;
-    min-width: var(--f-combo-input-min-width);
+    min-width: var(--f-tag-input-min-width);
     color: currentColor;
     background: transparent;
     border: none;
@@ -350,41 +350,41 @@ input.f-input[type=color].xl {
     font-size: inherit;
 }
 
-.f-combo-input input:focus {
+.f-tag-input input:focus {
     outline: none;
 }
 
-.f-combo-input.xs {
+.f-tag-input.xs {
     font-size: var(--f-font-size-xs);
     min-height: var(--f-size-8);
 }
 
-.f-combo-input.sm {
+.f-tag-input.sm {
     font-size: var(--f-font-size-sm);
     min-height: var(--f-size-9);
 }
 
-.f-combo-input.md {
+.f-tag-input.md {
     font-size: var(--f-font-size-md);
     min-height: var(--f-size-11); 
 }
 
-.f-combo-input.lg {
+.f-tag-input.lg {
     font-size: var(--f-font-size-lg);
     min-height: var(--f-size-13); 
 }
 
-.f-combo-input.xl {
+.f-tag-input.xl {
     font-size: var(--f-font-size-xl);
     min-height: var(--f-size-15); 
 }
 
-.f-combo-input input[type=search]:not(.show-indicator)::-ms-clear { display: none; width : 0; height: 0; }
-.f-combo-input input[type=search]:not(.show-indicator)::-ms-reveal { display: none; width : 0; height: 0; }
-.f-combo-input input[type="search"]:not(.show-indicator)::-webkit-search-decoration,
-.f-combo-input input[type="search"]:not(.show-indicator)::-webkit-search-cancel-button,
-.f-combo-input input[type="search"]:not(.show-indicator)::-webkit-search-results-button,
-.f-combo-input input[type="search"]:not(.show-indicator)::-webkit-search-results-decoration { display: none; }
+.f-tag-input input[type=search]:not(.show-indicator)::-ms-clear { display: none; width : 0; height: 0; }
+.f-tag-input input[type=search]:not(.show-indicator)::-ms-reveal { display: none; width : 0; height: 0; }
+.f-tag-input input[type="search"]:not(.show-indicator)::-webkit-search-decoration,
+.f-tag-input input[type="search"]:not(.show-indicator)::-webkit-search-cancel-button,
+.f-tag-input input[type="search"]:not(.show-indicator)::-webkit-search-results-button,
+.f-tag-input input[type="search"]:not(.show-indicator)::-webkit-search-results-decoration { display: none; }
 
 /* **************************** */
 

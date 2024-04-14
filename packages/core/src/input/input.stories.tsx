@@ -1,7 +1,7 @@
 import {
     ColorPicker,
-    ComboInput,
-    ComboInputField,
+    TagInput,
+    TagInputField,
     focusInputAtEnd,
     getKey,
     Heading,
@@ -503,7 +503,7 @@ export const WithPopover = () => {
 
 // --
 
-export const Combo = () => {
+export const Tag = () => {
     const [selected, setSelected] = useState<any>(['React', 'Svelte', 'Vue'])
     const [text, setText] = useState<any>('')
 
@@ -518,7 +518,7 @@ export const Combo = () => {
     }
 
     return (
-        <ComboInput
+        <TagInput
             render={() => {
                 return selected.map((name, index) => (
                     <Pill
@@ -528,12 +528,12 @@ export const Combo = () => {
                     </Pill>
                 ))
             }}>
-            <ComboInputField
+            <TagInputField
                 value={text}
                 placeholder="Type..."
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
-        </ComboInput>
+        </TagInput>
     )
 }
