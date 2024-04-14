@@ -1,10 +1,10 @@
 import React, { forwardRef, ReactElement, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
     Avatar,
-    ComboInput,
-    ComboInputField,
-    ComboInputFieldProps,
-    ComboInputProps,
+    TagInput,
+    TagInputField,
+    TagInputFieldProps,
+    TagInputProps,
     Input,
     InputControl,
     InputPrefix,
@@ -52,14 +52,14 @@ export type SelectProps = {
     inputProps?: InputProps
     prefix?: any
     suffix?: any
-    comboInputProps?: ComboInputProps
-    comboInputFieldProps?: ComboInputFieldProps
+    tagInputProps?: TagInputProps
+    tagInputFieldProps?: TagInputFieldProps
     selectListProps?: SelectListProps
     virtualProps?: SelectListVirtual
     optionComponent?: any
     noOptionsComponent?: any
     render?: any
-    combo?: boolean
+    tag?: boolean
 } & Omit<CoreViewProps, 'onSelect'>
 
 export const Select = (props: SelectProps) => {
@@ -82,14 +82,14 @@ export const Select = (props: SelectProps) => {
         inputProps,
         prefix,
         suffix,
-        comboInputProps = {},
-        comboInputFieldProps = {},
+        tagInputProps = {},
+        tagInputFieldProps = {},
         selectListProps = {},
         virtualProps = { maxHeight: 300, itemHeight: 35 },
         optionComponent,
         noOptionsComponent,
         render,
-        combo,
+        tag,
         ...rest
     } = props
     const selectedAmount = selected.length
@@ -198,23 +198,23 @@ export const Select = (props: SelectProps) => {
     }
 
     const renderInput = () => {
-        if (combo) {
+        if (tag) {
             return (
-                <ComboInput
+                <TagInput
                     size={size}
                     id={popupId}
                     disabled={disabled}
                     onFocus={handleFocus}
                     className="f-select"
                     render={render}
-                    {...comboInputProps}>
-                    <ComboInputField
+                    {...tagInputProps}>
+                    <TagInputField
                         value={text}
                         onChange={handleChange}
                         placeholder={placeholder}
-                        {...comboInputFieldProps}
+                        {...tagInputFieldProps}
                     />
-                </ComboInput>
+                </TagInput>
             )
         } else {
             return (
@@ -516,7 +516,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
         labels = [],
         availableLabels = [],
         inputPlaceholder = 'Filter labels',
-        comboInputFieldProps = {},
+        tagInputFieldProps = {},
         actionPrefix = 'Create',
         onLabelAdd,
         onLabelDelete,
@@ -563,7 +563,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
     return (
         <Select
             {...rest}
-            combo
+            tag
             size={size}
             variant={variant}
             placeholder={inputPlaceholder}
@@ -573,7 +573,7 @@ export const LabelSelect = (props: LabelSelectProps) => {
             selectListProps={{
                 noOptionsComponent: <Text p="var(--f-select-option-padding)">No labels available</Text>,
             }}
-            comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
+            tagInputFieldProps={{ ...tagInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
                 clear()
                 onLabelAdd(availableLabels.find((availableLabel: any) => availableLabel.id == option.key))
@@ -635,7 +635,7 @@ export const UserSelect = (props: UserSelectProps) => {
         users = [],
         availableUsers = [],
         inputPlaceholder = 'Filter users',
-        comboInputFieldProps = {},
+        tagInputFieldProps = {},
         actionPrefix = 'Add',
         onUserAdd,
         onUserDelete,
@@ -683,7 +683,7 @@ export const UserSelect = (props: UserSelectProps) => {
     return (
         <Select
             {...rest}
-            combo
+            tag
             size={size}
             variant={variant}
             placeholder={inputPlaceholder}
@@ -691,7 +691,7 @@ export const UserSelect = (props: UserSelectProps) => {
             options={options}
             filterDelay={1000}
             selectListProps={{ noOptionsComponent: <Text p="var(--f-select-option-padding)">No users available</Text> }}
-            comboInputFieldProps={{ ...comboInputFieldProps, onKeyDown: handleInputKeyDown }}
+            tagInputFieldProps={{ ...tagInputFieldProps, onKeyDown: handleInputKeyDown }}
             onSelect={(option, dismiss, clear) => {
                 clear()
                 onUserAdd(availableUsers.find((availableUser: any) => availableUser.id == option.key))

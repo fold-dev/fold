@@ -272,9 +272,9 @@ export const PinInput = (props: PinInputProps) => {
 
 /* multi */
 
-export type ComboInputFieldProps = CoreViewProps & CoreInputProps
+export type TagInputFieldProps = CoreViewProps & CoreInputProps
 
-export const ComboInputField = (props: ComboInputFieldProps) => {
+export const TagInputField = (props: TagInputFieldProps) => {
     return (
         <View
             {...props}
@@ -285,17 +285,17 @@ export const ComboInputField = (props: ComboInputFieldProps) => {
     )
 }
 
-export type ComboInputProps = {
+export type TagInputProps = {
     render: any
     size?: Size
     disabled?: boolean
 } & CoreViewProps
 
-export const ComboInput = forwardRef((props: ComboInputProps, ref) => {
+export const TagInput = forwardRef((props: TagInputProps, ref) => {
     const { render, size = 'md', disabled, ...rest } = props
     const className = classNames(
         {
-            'f-combo-input': true,
+            'f-tag-input': true,
             'f-input-common': true,
             'f-align-h-middle-left': true,
             'is-disabled': disabled,
