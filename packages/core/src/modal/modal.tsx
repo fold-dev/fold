@@ -36,6 +36,7 @@ export type ModalProps = {
     header?: ReactElement | ReactElement[]
     borderless?: boolean
     disableBackgroundDismiss?: boolean
+    disableBackgroundEventPropagation?: boolean
     noOverlay?: boolean
     portal?: any
     onDismiss?: any
@@ -50,6 +51,7 @@ export const Modal = (props: ModalProps) => {
         header,
         borderless = false,
         disableBackgroundDismiss = false,
+        disableBackgroundEventPropagation = false,
         noOverlay,
         portal,
         onDismiss,
@@ -60,8 +62,10 @@ export const Modal = (props: ModalProps) => {
 
     const handleBackgroundClick = (e: any) => {
         // seems necessary when nesting modals/dialogs/alerts
-        e.preventDefault()
-        e.stopPropagation()
+        if (disableBackgroundEventPropagation) {
+            e.preventDefault()
+            e.stopPropagation()
+        }
 
         if (!disableBackgroundDismiss) {
             if (!contentRef.current.contains(e?.target)) {
