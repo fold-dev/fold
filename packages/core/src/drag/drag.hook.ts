@@ -48,38 +48,32 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         waitForRender(() => (cache.indentLock = false), indentDelay)
     }
 
+    const getNextIndent = ({ indent, previous, previousIndent, next, nextIndent }) => {
+        const maximumIndent = previous ? (previousIndent < nextIndent ? nextIndent : previousIndent + 1) : indent
+        const targetIndent = indent < maximumIndent ? indent + 1 : maximumIndent
+        return targetIndent
+    }
+
+    const getNextOutdent = ({ indent, previous, previousIndent, next, nextIndent }) => {
+        const maximumOutdent = next ? nextIndent : 0
+        const targetOutdent = indent > maximumOutdent ? indent - 1 : maximumOutdent
+        return targetOutdent
+    }
+
     const outdent = () => {
         const cache = getCache()
-
         if (cache.indentLock) return
         cache.indentLock = true
-
         const { index, indent, areaId, previous, previousIndent, next, nextIndent } = cache.indent
-
-        // calculate max outdent level
-        const maximumOutdent = next ? nextIndent : 0
-
-        // calculate next outdent level
-        const targetOutdent = indent > maximumOutdent ? indent - 1 : maximumOutdent
-
-        updateTargetIndent(targetOutdent)
+        updateTargetIndent(getNextOutdent({ indent, previous, previousIndent, next, nextIndent }))
     }
 
     const indent = () => {
         const cache = getCache()
-
         if (cache.indentLock) return
         cache.indentLock = true
-
         const { index, indent, areaId, previous, previousIndent, next, nextIndent } = cache.indent
-
-        // calculate max indent level
-        const maximumIndent = previous ? (previousIndent < nextIndent ? nextIndent : previousIndent + 1) : indent
-
-        // calculate next indent level
-        const targetIndent = indent < maximumIndent ? indent + 1 : maximumIndent
-
-        updateTargetIndent(targetIndent)
+        updateTargetIndent(getNextIndent({ indent, previous, previousIndent, next, nextIndent }))
     }
 
     const onMouseUp = (e: any) => {
@@ -200,7 +194,9 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         setGhostElement,
         startDrag,
         endDrag,
+        getNextOutdent,
         outdent,
+        getNextIndent,
         indent,
         onMouseDown,
         onMouseUp,
