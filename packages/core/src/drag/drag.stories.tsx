@@ -1,4 +1,5 @@
 import {
+    Card,
     DragArea,
     DragElement,
     DragElementArea,
@@ -10,6 +11,7 @@ import {
     useDragEvent,
 } from '@fold-dev/core'
 import React, { useState } from 'react'
+import { renderToString } from 'react-dom/server'
 
 export default {
     title: 'Components/Drag',
@@ -698,6 +700,60 @@ export const SavingAfterDrop = () => {
             width="100%"
             alignItems="flex-start">
             <DragArea width="100%" group="save-after-drop">
+                {items.map((item, index) => (
+                    <Text
+                        key={index}
+                        p={10}
+                        bgToken="surface-strong"
+                        width="100%">
+                        {item.text} (index #{index})
+                    </Text>
+                ))}
+            </DragArea>
+        </View>
+    )
+}
+
+// --
+
+export const CustomGhostElement = () => {
+    const [items, setItems] = useState([
+        { id: 'id1', text: 'Swing by the intergalactic post office to mail a package to Mars.' },
+        { id: 'id2', text: "Drop off the dragon's dry cleaning at the fireproof laundromat." },
+        { id: 'id3', text: 'Fetch a special blend of star-dust coffee beans from the celestial coffee shop.' },
+        { id: 'id4', text: 'Deliver a message to the mermaids in the underwater kingdom.' },
+        { id: 'id5', text: 'Break into the secret underground hotel.' },
+        { id: 'id6', text: 'Clean up after my pet Pheonix.' },
+    ])
+
+    const handleDragOnDrop = ({ detail: { target, origin } }) => {
+        if (origin.group == 'custom-ghost-element') {
+            setItems(moveElementInArray(items, origin, target))
+        }
+    }
+
+    useDragEvent('ondrop', handleDragOnDrop)
+
+    return (
+        <View
+            row
+            width="100%"
+            alignItems="flex-start">
+            <DragArea 
+                variant="lined"
+                width="100%" 
+                group="custom-ghost-element"
+                customGhost={(e, { index, elementId }) => {
+                    return renderToString(
+                        <div 
+                            className="f-card f-text" 
+                            style={{ padding: 10, width: 'fit-content' }}>
+                            <div className="f-text">
+                                Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                            </div>
+                        </div>
+                    )
+                }}>
                 {items.map((item, index) => (
                     <Text
                         key={index}

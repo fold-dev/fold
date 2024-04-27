@@ -35,6 +35,7 @@ export type DragAreaProps = {
     direction?: 'vertical' | 'horizontal'
     startDelay?: number
     footer?: any
+    customGhost?: (value, dragData) => void
 } & CoreViewProps
 
 export const DragArea = forwardRef((props: DragAreaProps, ref) => {
@@ -46,6 +47,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
         direction = 'vertical',
         startDelay = 100,
         footer,
+        customGhost,
         ...rest
     } = props
     const { origin } = getDragState('origin')
@@ -192,17 +194,18 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
 
                 // set up the initial data
                 const { width, height, left, top } = getBoundingClientRect(el)
-                const mouseOffsetLeft = mouseLeft - left
-                const mouseOffsetTop = mouseTop - top
+                const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                const mouseOffsetTop = customGhost ? 0 : mouseTop - top
                 const x = mouseLeft - mouseOffsetLeft
                 const y = mouseTop - mouseOffsetTop
                 const newNode = el.cloneNode(true)
                 const indent = +el.dataset.indent
                 const elementId = el.dataset.id
                 const ghost = getGhostElement()
+                const ghostElement = customGhost ? customGhost(e, { index, elementId }) : newNode.outerHTML
 
                 // set the contents
-                setGhostElement(newNode.outerHTML)
+                setGhostElement(ghostElement)
 
                 // make sure the new node + ghost element are the same size
                 resizeDOMElement(width, height, newNode)
