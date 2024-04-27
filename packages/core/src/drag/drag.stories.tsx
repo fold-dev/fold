@@ -736,7 +736,7 @@ export const CustomGhostElement = () => {
 
     return (
         <View
-            row
+            //row
             width="100%"
             alignItems="flex-start">
             <DragArea 
@@ -754,6 +754,21 @@ export const CustomGhostElement = () => {
                         </div>
                     )
                 }}>
+                {items.map((item, index) => (
+                    <Text
+                        key={index}
+                        p={10}
+                        bgToken="surface-strong"
+                        width="100%">
+                        {item.text} (index #{index})
+                    </Text>
+                ))}
+            </DragArea>
+            <br/><br/><br/><br/>
+            <DragArea 
+                variant="animated"
+                width="100%" 
+                group="custom-ghost-element">
                 {items.map((item, index) => (
                     <Text
                         key={index}

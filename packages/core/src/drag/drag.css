@@ -71,15 +71,13 @@
     height: 100%;
 }
 
-/* why? */
-.f-drag-element *:focus,
-.f-drag-area__element *:focus {
-    /* outline: var(--f-focus); */
-    /* outline-offset: 4px; */
-}
-
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
+    opacity: 0.5;
+}
+
+.f-drag-area.is-animated .f-drag-element.is-dragged,
+.f-drag-area.is-animated .f-drag-area__element.is-dragged {
     display: none;
 }
 

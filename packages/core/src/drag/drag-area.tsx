@@ -115,6 +115,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
+            'is-animated': isAnimated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
@@ -347,8 +348,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const isDragged = origin.index == index && origin.areaId == id
                 const showFocused = target.focus && isTargetArea && index == target.index
                 const showFirstPlaceholder = (isLinedFocus || isLined) && isTargetArea && index == target.index
-                const showLastPlaceholder =
-                    (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
+                const showLastPlaceholder = (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
                 const noDrag = !!child.props['data-nodrag']
 
                 return (
@@ -358,14 +358,12 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         data-areaid={id}
                         data-dragelement={true}
                         data-id={child.props['data-id']}
-                        data-nodrop={child.props['data-nodrop']}
+                        data-nodrop={child.props['data-nodrop'] || isDragged ? "yes" : undefined}
                         data-nodrag={child.props['data-nodrag']}
                         data-nofocus={child.props['data-nofocus']}
-                        className="f-drag-area__element"
+                        className={isDragged ? "f-drag-area__element is-dragged" : "f-drag-area__element"}
                         onMouseDown={(e) => (noDrag ? null : handleMouseDown(e, index))}
                         style={{
-                            paddingLeft: `calc(var(--f-drag-indent) * ${indent})`,
-                            display: isAnimated && isDragged ? 'none' : 'flex',
                             transform: isAnimated
                                 ? isTargetArea && index >= target.index
                                     ? direction == 'vertical'
