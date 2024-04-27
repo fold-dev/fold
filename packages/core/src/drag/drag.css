@@ -216,7 +216,7 @@
     --f-drag-placeholder-border: none;
     --f-drag-placeholder-outline: none;
     --f-drag-placeholder-margin: 0;
-    --f-drag-ghost-opacity: 0.5;
+    --f-drag-ghost-opacity: 1;
     --f-drag-ghost-rotation: 2deg;
 }
 

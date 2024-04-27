@@ -736,9 +736,11 @@ export const CustomGhostElement = () => {
 
     return (
         <View
-            //row
+            column
+            gap="1rem"
             width="100%"
             alignItems="flex-start">
+            <Heading as="h4">Drag Area</Heading>
             <DragArea 
                 variant="lined"
                 width="100%" 
@@ -764,21 +766,23 @@ export const CustomGhostElement = () => {
                     </Text>
                 ))}
             </DragArea>
-            <br/><br/><br/><br/>
-            <DragArea 
+            <Heading as="h4">Drag Element Area</Heading>
+            <DragElementArea 
                 variant="animated"
                 width="100%" 
                 group="custom-ghost-element">
                 {items.map((item, index) => (
-                    <Text
-                        key={index}
-                        p={10}
-                        bgToken="surface-strong"
-                        width="100%">
-                        {item.text} (index #{index})
-                    </Text>
+                    <DragElement key={index}>
+                        <Text
+                            key={index}
+                            p={10}
+                            bgToken="surface-strong"
+                            width="100%">
+                            {item.text} (index #{index})
+                        </Text>
+                    </DragElement>
                 ))}
-            </DragArea>
+            </DragElementArea>
         </View>
     )
 }
