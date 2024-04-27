@@ -241,7 +241,7 @@ export const Variants = () => (
                         bgToken="surface-strong"
                         width="100%"
                         data-nofocus={true}>
-                        ✅ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
+                        ❌ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
                     </Text>
                     <Text
                         p={10}

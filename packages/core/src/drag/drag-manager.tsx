@@ -42,7 +42,6 @@ windowObject[FOLD_DRAG_STATE] = {
 }
 
 export type DragManagerProps = {
-    rotation?: number
     animation?: number
     moveThreshold?: number
     indentThreshold?: number
@@ -51,7 +50,6 @@ export type DragManagerProps = {
 
 export const DragManager = (props: DragManagerProps) => {
     const {
-        rotation = 2,
         animation = 200,
         moveThreshold = 0,
         indentThreshold = 10,
@@ -98,7 +96,7 @@ export const DragManager = (props: DragManagerProps) => {
 
             // position the ghost element first
             // syncronously with a callback so that it's smooth for the user
-            positionDOMElement(x, y, rotation, ghostRef.current, () => {
+            positionDOMElement(x, y, ghostRef.current, () => {
                 // calculate normal mouse movement
                 if (mouseX < cache.mouse.x - moveThreshold) moveDirection = 'left'
                 if (mouseX > cache.mouse.x + moveThreshold) moveDirection = 'right'

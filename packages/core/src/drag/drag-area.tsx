@@ -217,7 +217,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
 
                 // set the intial ghost position (based on the current x/y)
                 // again - synced for performance in the UI
-                positionDOMElement(x, y, 0, ghost, () => {
+                positionDOMElement(x, y, ghost, () => {
                     cache.targetElement = el
                     cache.mouse = { x: mouseLeft, y: mouseTop }
                     cache.originMouse = {
@@ -358,7 +358,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         data-areaid={id}
                         data-dragelement={true}
                         data-id={child.props['data-id']}
-                        data-nodrop={child.props['data-nodrop'] || isDragged ? "yes" : undefined}
+                        data-nodrop={child.props['data-nodrop']}
                         data-nodrag={child.props['data-nodrag']}
                         data-nofocus={child.props['data-nofocus']}
                         className={isDragged ? "f-drag-area__element is-dragged" : "f-drag-area__element"}
@@ -372,7 +372,9 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                                     : null
                                 : null,
                         }}>
-                        {showFocused && isVertical && <div className="f-drag-area__element__lined-focus" />}
+                        {showFocused && isVertical && (
+                            <div className="f-drag-area__element__lined-focus" />
+                        )}
                         {showFirstPlaceholder && !showFocused && isVertical && (
                             <div className="f-drag-area__element__line is-vertical is-first" />
                         )}

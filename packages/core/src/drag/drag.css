@@ -73,7 +73,8 @@
 
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
-    opacity: 0.5;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .f-drag-area.is-animated .f-drag-element.is-dragged,
@@ -215,7 +216,8 @@
     --f-drag-placeholder-border: none;
     --f-drag-placeholder-outline: none;
     --f-drag-placeholder-margin: 0;
-    --f-drag-ghost-opacity: 1;
+    --f-drag-ghost-opacity: 0.5;
+    --f-drag-ghost-rotation: 2deg;
 }
 
 .f-drag-area__placeholder {

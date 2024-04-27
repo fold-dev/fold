@@ -127,7 +127,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
                     // set the intial ghost position (based on the current x/y)
                     // again - synced for performance in the UI
-                    positionDOMElement(x, y, 0, ghost, () => {
+                    positionDOMElement(x, y, ghost, () => {
                         cache.targetElement = el
                         cache.mouse = { x: mouseLeft, y: mouseTop }
                         cache.originMouse = {
