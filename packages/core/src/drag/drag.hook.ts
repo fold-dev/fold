@@ -23,45 +23,30 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     const ghostRef = useRef(null)
     const { indentDelay } = args
 
-    const setIndentation = (element, elementIndent, elementAreaId, targetIndex, moveDirection) => {
+    const setInitialIndentation = (element, elementIndent, elementAreaId, targetIndex, moveDirection) => {
         const cache = windowObject[FOLD_DRAG_CACHE]
 
         // default indent is one from the target index/element
         let targetIndent = elementIndent
 
-        // get this from the cache and use it if there is one
-        // this will get set in updateTargetIndent() above
-        const indentIsCached = cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
+        const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
+        const previousIndent = previous ? +previous.dataset.indent : 0
+        const nextIndent = next ? +next.dataset.indent : 0
 
-        // if it's cached then update the target with the cached level
-        if (indentIsCached) {
-            targetIndent = cache.indent.indent
-        } else {
-            // otherwise calculate the correct indent level based on the siblings
-            const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
-            const previousIndent = previous ? +previous.dataset.indent : 0
-            const nextIndent = next ? +next.dataset.indent : 0
+        // if the target index is part of a nested region
+        // then always take the bottom indent level - this is to keep the indent
+        // from breaking the hierarchy by auto-assuming the parent indent position
+        if (nextIndent > previousIndent) targetIndent = nextIndent
 
-            // if the target index is part of a nested region
-            // then always take the bottom indent level - this is to keep the indent
-            // from breaking the hierarchy by auto-assuming the parent indent position
-            if (nextIndent > previousIndent) targetIndent = nextIndent
-
-            // cache the newly calculated indent level
-            cache.indent = {
-                index: targetIndex,
-                indent: targetIndent,
-                areaId: elementAreaId,
-                previous,
-                previousIndent,
-                next,
-                nextIndent,
-            }
-
-            // outline the previous & next elements
-            // for (let target of element.parentNode.children) target.style.outline = 'none'
-            // if (previous) previous.style.outline = '0.2rem solid crimson'
-            // if (next) next.style.outline = '0.2rem solid darkcyan'
+        // cache the newly calculated indent level
+        cache.indent = {
+            index: targetIndex,
+            indent: targetIndent,
+            areaId: elementAreaId,
+            previous,
+            previousIndent,
+            next,
+            nextIndent,
         }
     }
 
@@ -238,7 +223,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             group,
                         })
 
-                        setIndentation(el, indent, areaId, index, moveDirection)
+                        setInitialIndentation(el, indent, areaId, index, moveDirection)
 
                         startDrag()
                     })
@@ -252,7 +237,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }, [])
 
     return {
-        setIndentation,
+        setInitialIndentation,
         getStaticState,
         getCache,
         getGhostElement,

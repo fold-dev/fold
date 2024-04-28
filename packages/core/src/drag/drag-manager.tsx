@@ -59,7 +59,7 @@ export const DragManager = (props: DragManagerProps) => {
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
     const isDragging = !!origin.areaId
-    const { endDrag, getCache, indent, outdent, setIndentation } = useDrag()
+    const { endDrag, getCache, indent, outdent } = useDrag()
     const cache = getCache()
 
     const stopDrag = (reset = false) => {
@@ -198,9 +198,6 @@ export const DragManager = (props: DragManagerProps) => {
                             // ------------------------------------------------------------
                             // indentation calculation & caching start
                             // ------------------------------------------------------------
-
-                            // set indentation parameters
-                            // setIndentation(element, elementIndent, elementAreaId, targetIndex, moveDirection, () => null)
 
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
