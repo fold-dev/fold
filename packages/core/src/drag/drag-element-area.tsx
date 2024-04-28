@@ -20,7 +20,7 @@ import {
 } from '../'
 
 export type DragElementAreaProps = {
-    indent?: boolean
+    noIndent?: boolean
     areaId?: string
     group?: string
     variant?: DragVariant
@@ -32,6 +32,7 @@ export type DragElementAreaProps = {
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
     const {
+        noIndent,
         areaId,
         group = 'default',
         variant = 'animated',

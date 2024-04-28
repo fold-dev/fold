@@ -27,7 +27,7 @@ import {
 import { getButton } from '../helpers'
 
 export type DragAreaProps = {
-    indent?: boolean
+    noIndent?: boolean
     areaId?: string
     group?: string
     variant?: DragVariant
@@ -39,6 +39,7 @@ export type DragAreaProps = {
 
 export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const {
+        noIndent,
         areaId,
         group = 'default',
         variant = 'animated',
