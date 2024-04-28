@@ -177,9 +177,9 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                         }
 
                         // outline the previous & next elements
-                        for (let target of el.parentNode.children) target.style.border = 'none'
-                        if (previous) previous.style.border = '0.2rem solid crimson'
-                        if (next) next.style.border = '0.2rem solid darkcyan'
+                        // for (let target of el.parentNode.children) target.style.border = 'none'
+                        // if (previous) previous.style.border = '0.2rem solid crimson'
+                        // if (next) next.style.border = '0.2rem solid darkcyan'
 
                         // save the cache for the reset
                         cache.targetCache = {
