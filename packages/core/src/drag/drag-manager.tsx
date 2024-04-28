@@ -193,7 +193,7 @@ export const DragManager = (props: DragManagerProps) => {
                             }
 
                             // ------------------------------------------------------------
-                            // indentation calculation & caching
+                            // indentation calculation & caching start
                             // ------------------------------------------------------------
 
                             // default indent is one from the target index/element
@@ -230,9 +230,13 @@ export const DragManager = (props: DragManagerProps) => {
                                 }
 
                                 // outline the previous & next elements
-                                // for (let target of element.parentNode.children) target.style.border = 'none'
-                                // if (previous) previous.style.border = '0.2rem solid crimson'
-                                // if (next) next.style.border = '0.2rem solid darkcyan'
+                                for (let target of element.parentNode.children) target.style.border = 'none'
+                                if (previous) previous.style.border = '0.2rem solid crimson'
+                                if (next) next.style.border = '0.2rem solid darkcyan'
+
+                                // ------------------------------------------------------------
+                                // end
+                                // ------------------------------------------------------------
                             }
 
                             // update the drag target
