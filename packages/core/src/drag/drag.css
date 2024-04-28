@@ -109,6 +109,7 @@
     to { opacity: 1; }
 }
 
+.f-drag-area__placeholder-lined::after,
 .f-drag-area__element__line::after {
     content: ' ';
     position: absolute;
@@ -210,7 +211,6 @@
     z-index: 10000;
     background: var(--f-color-accent);
     animation: f-drag-fadein var(--f-transition-duration-fast);
-    transition: transform 0.05s var(--f-drag-transition);
 }
 
 :root {
