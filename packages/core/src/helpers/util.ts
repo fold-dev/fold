@@ -7,8 +7,8 @@ export const rotate = (x, y, angle) => {
     }
 }
 
-export const positionDOMElement = (x, y, r, el, callback) => {
-    el.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`
+export const positionDOMElement = (x, y, el, callback) => {
+    el.style.transform = `translate(${x}px, ${y}px) rotate(var(--f-drag-ghost-rotation))`
     callback()
 }
 

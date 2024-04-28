@@ -1,4 +1,5 @@
 import {
+    Card,
     DragArea,
     DragElement,
     DragElementArea,
@@ -7,9 +8,11 @@ import {
     Text,
     View,
     moveElementInArray,
+    useDrag,
     useDragEvent,
 } from '@fold-dev/core'
 import React, { useState } from 'react'
+import { renderToString } from 'react-dom/server'
 
 export default {
     title: 'Components/Drag',
@@ -239,7 +242,7 @@ export const Variants = () => (
                         bgToken="surface-strong"
                         width="100%"
                         data-nofocus={true}>
-                        ✅ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
+                        ❌ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
                     </Text>
                     <Text
                         p={10}
@@ -708,6 +711,93 @@ export const SavingAfterDrop = () => {
                     </Text>
                 ))}
             </DragArea>
+        </View>
+    )
+}
+
+// --
+
+export const CustomGhostElement = () => {
+    const { setCustomGhostElement } = useDrag()
+    const [items, setItems] = useState([
+        { id: 'id1', text: 'Swing by the intergalactic post office to mail a package to Mars.' },
+        { id: 'id2', text: "Drop off the dragon's dry cleaning at the fireproof laundromat." },
+        { id: 'id3', text: 'Fetch a special blend of star-dust coffee beans from the celestial coffee shop.' },
+        { id: 'id4', text: 'Deliver a message to the mermaids in the underwater kingdom.' },
+        { id: 'id5', text: 'Break into the secret underground hotel.' },
+        { id: 'id6', text: 'Clean up after my pet Pheonix.' },
+    ])
+
+    const handleDragOnDrop = ({ detail: { target, origin } }) => {
+        if (origin.group == 'custom-ghost-element') {
+            setItems(moveElementInArray(items, origin, target))
+        }
+    }
+
+    useDragEvent('ondrop', handleDragOnDrop)
+
+    return (
+        <View
+            column
+            gap="1rem"
+            width="100%"
+            alignItems="flex-start">
+            <Heading as="h4">Drag Area</Heading>
+            <DragArea 
+                variant="lined"
+                width="100%" 
+                group="custom-ghost-element">
+                {items.map((item, index) => (
+                    <Text
+                        key={index}
+                        p={10}
+                        bgToken="surface-strong"
+                        width="100%"
+                        onMouseDown={(e) => {
+                            console.log('1')
+                            setCustomGhostElement(renderToString(
+                                <div 
+                                    className="f-card f-text" 
+                                    style={{ padding: 10, width: 'fit-content' }}>
+                                    <div className="f-text">
+                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                    </div>
+                                </div>
+                            ))
+                        }}>
+                        {item.text} (index #{index})
+                    </Text>
+                ))}
+            </DragArea>
+            <Heading as="h4">Drag Element Area</Heading>
+            <DragElementArea 
+                variant="animated"
+                width="100%" 
+                group="custom-ghost-element">
+                {items.map((item, index) => (
+                    <DragElement 
+                        key={index}
+                        onMouseDown={(e) => {
+                            setCustomGhostElement(renderToString(
+                                <div 
+                                    className="f-card f-text" 
+                                    style={{ padding: 10, width: 'fit-content' }}>
+                                    <div className="f-text">
+                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                    </div>
+                                </div>
+                            ))
+                        }}>
+                        <Text
+                            key={index}
+                            p={10}
+                            bgToken="surface-strong"
+                            width="100%">
+                            {item.text} (index #{index})
+                        </Text>
+                    </DragElement>
+                ))}
+            </DragElementArea>
         </View>
     )
 }

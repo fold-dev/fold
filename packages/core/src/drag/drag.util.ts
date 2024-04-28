@@ -9,7 +9,7 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
     let previous = parent.children[targetIndex - 1]
     let next = parent.children[targetIndex]
 
-    if (next) {
+    if (!!next) {
         if (moveDirection == 'down' && originIndex == +next.dataset.index) {
             next = parent.children[targetIndex + 1]
         }
@@ -19,7 +19,7 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
         }
     }
 
-    if (previous) {
+    if (!!previous) {
         if (moveDirection == 'up' && originIndex == +previous.dataset.index) {
             previous = parent.children[targetIndex - 2]
         }

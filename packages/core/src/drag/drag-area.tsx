@@ -50,7 +50,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     } = props
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
-    const { getGhostElement, setGhostElement, startDrag, getCache } = useDrag()
+    const { getGhostElement, setGhostElement, startDrag, getCache, hasCustomGhostElement } = useDrag()
     const cache = getCache()
     const containerRef = useRef(null)
     const timeout = useRef(null)
@@ -113,6 +113,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             'is-dragging': isDragging,
             'is-horizontal': isHorizontal,
             'is-vertical': isVertical,
+            'is-animated': isAnimated,
             'no-origin-variant': !hasOriginVariant,
         },
         [props.className]
@@ -190,10 +191,13 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             timeout.current = setTimeout(() => {
                 ready.current = true
 
+                console.log('2')
+
                 // set up the initial data
+                const customGhost = hasCustomGhostElement()
                 const { width, height, left, top } = getBoundingClientRect(el)
-                const mouseOffsetLeft = mouseLeft - left
-                const mouseOffsetTop = mouseTop - top
+                const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                const mouseOffsetTop = customGhost ? 0 : mouseTop - top
                 const x = mouseLeft - mouseOffsetLeft
                 const y = mouseTop - mouseOffsetTop
                 const newNode = el.cloneNode(true)
@@ -202,18 +206,18 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const ghost = getGhostElement()
 
                 // set the contents
-                setGhostElement(newNode.outerHTML)
+                if (!customGhost) setGhostElement(newNode.outerHTML)
 
                 // make sure the new node + ghost element are the same size
                 resizeDOMElement(width, height, newNode)
                 resizeDOMElement(width, height, ghost)
 
                 // for indentation
-                ghost.firstChild.style.margin = '0px'
+                if (!customGhost) ghost.firstChild.style.margin = '0px'
 
                 // set the intial ghost position (based on the current x/y)
                 // again - synced for performance in the UI
-                positionDOMElement(x, y, 0, ghost, () => {
+                positionDOMElement(x, y, ghost, () => {
                     cache.targetElement = el
                     cache.mouse = { x: mouseLeft, y: mouseTop }
                     cache.originMouse = {
@@ -344,8 +348,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const isDragged = origin.index == index && origin.areaId == id
                 const showFocused = target.focus && isTargetArea && index == target.index
                 const showFirstPlaceholder = (isLinedFocus || isLined) && isTargetArea && index == target.index
-                const showLastPlaceholder =
-                    (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
+                const showLastPlaceholder = (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
                 const noDrag = !!child.props['data-nodrag']
 
                 return (
@@ -358,11 +361,9 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         data-nodrop={child.props['data-nodrop']}
                         data-nodrag={child.props['data-nodrag']}
                         data-nofocus={child.props['data-nofocus']}
-                        className="f-drag-area__element"
+                        className={isDragged ? "f-drag-area__element is-dragged" : "f-drag-area__element"}
                         onMouseDown={(e) => (noDrag ? null : handleMouseDown(e, index))}
                         style={{
-                            paddingLeft: `calc(var(--f-drag-indent) * ${indent})`,
-                            display: isAnimated && isDragged ? 'none' : 'flex',
                             transform: isAnimated
                                 ? isTargetArea && index >= target.index
                                     ? direction == 'vertical'
@@ -371,7 +372,9 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                                     : null
                                 : null,
                         }}>
-                        {showFocused && isVertical && <div className="f-drag-area__element__lined-focus" />}
+                        {showFocused && isVertical && (
+                            <div className="f-drag-area__element__lined-focus" />
+                        )}
                         {showFirstPlaceholder && !showFocused && isVertical && (
                             <div className="f-drag-area__element__line is-vertical is-first" />
                         )}

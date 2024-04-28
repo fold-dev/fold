@@ -16,6 +16,8 @@ import {
 } from '../'
 import { getButton, waitForRender, windowObject } from '../helpers'
 
+const FOLD_CUSTOM_GHOST_ELEMENT = 'FOLD_CUSTOM_GHOST_ELEMENT'
+
 export const useDrag = (args: any = { indentDelay: 100 }) => {
     const ghostRef = useRef(null)
     const { indentDelay } = args
@@ -28,6 +30,20 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
     const setGhostElement = (html: string = null) => (ghostRef.current.innerHTML = html)
 
+    const setCustomGhostElement = (html: string = null) => {
+        windowObject[FOLD_CUSTOM_GHOST_ELEMENT] = true
+        setGhostElement(html)
+    }
+
+    const clearGhostElement = () => {
+        windowObject[FOLD_CUSTOM_GHOST_ELEMENT] = undefined
+        setGhostElement('')
+    }
+
+    const hasCustomGhostElement = () => {
+        return windowObject[FOLD_CUSTOM_GHOST_ELEMENT]
+    }
+
     const startDrag = () => {
         documentObject.body.dataset.dragging = 'yes'
         globalCursor.add('grabbing')
@@ -36,6 +52,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
     const endDrag = () => {
         delete documentObject.body.dataset.dragging
+        clearGhostElement()
         globalCursor.remove('grabbing')
         dispatchDragEvent('onend', null)
     }
@@ -105,9 +122,10 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
             setTimeout(() => {
                 if (cache.mouseDown) {
+                    const customGhost = hasCustomGhostElement()
                     const { width, height, left, top } = getBoundingClientRect(el)
-                    const mouseOffsetLeft = mouseLeft - left
-                    const mouseOffsetTop = mouseTop - top
+                    const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                    const mouseOffsetTop = customGhost ? 0 : mouseTop - top
                     const x = mouseLeft - mouseOffsetLeft
                     const y = mouseTop - mouseOffsetTop
                     const newNode = el.cloneNode(true)
@@ -116,18 +134,18 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                     const ghost = getGhostElement()
 
                     // set the contents
-                    setGhostElement(newNode.outerHTML)
+                    if (!customGhost) setGhostElement(newNode.outerHTML)
 
                     // make sure the new node + ghost element are the same size
                     resizeDOMElement(width, height, newNode)
                     resizeDOMElement(width, height, ghost)
 
                     // for indentation (and other margine)
-                    ghost.firstChild.style.margin = '0px'
+                    if (!customGhost) ghost.firstChild.style.margin = '0px'
 
                     // set the intial ghost position (based on the current x/y)
                     // again - synced for performance in the UI
-                    positionDOMElement(x, y, 0, ghost, () => {
+                    positionDOMElement(x, y, ghost, () => {
                         cache.targetElement = el
                         cache.mouse = { x: mouseLeft, y: mouseTop }
                         cache.originMouse = {
@@ -192,6 +210,9 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         getCache,
         getGhostElement,
         setGhostElement,
+        clearGhostElement,
+        hasCustomGhostElement,
+        setCustomGhostElement,
         startDrag,
         endDrag,
         getNextOutdent,

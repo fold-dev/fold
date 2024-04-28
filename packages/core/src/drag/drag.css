@@ -71,15 +71,17 @@
     height: 100%;
 }
 
-/* why? */
-.f-drag-element *:focus,
-.f-drag-area__element *:focus {
-    /* outline: var(--f-focus); */
-    /* outline-offset: 4px; */
-}
+/* is dragged */
+/* NOTE: this only works for dragarea (not dragelementarea) */
 
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.f-drag-area.is-animated .f-drag-element.is-dragged,
+.f-drag-area.is-animated .f-drag-area__element.is-dragged {
     display: none;
 }
 
@@ -92,7 +94,7 @@
 :root {
     --f-drag-lined-x-offset: -50%;
     --f-drag-lined-y-offset: -50%;
-    --f-drag-lined-size: 3px;
+    --f-drag-lined-size: 2px;
 }
 
 .f-drag-area__element__line {
@@ -100,6 +102,23 @@
     background: var(--f-color-accent);
     z-index: 100;
     animation: f-drag-fadein var(--f-transition-duration-slow);
+}
+
+@keyframes f-drag-fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.f-drag-area__element__line::after {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translate(-100%, calc(var(--f-drag-lined-size) * -1));
+    width: 4px;
+    height: 4px;
+    outline: var(--f-drag-lined-size) solid var(--f-color-accent);
+    border-radius: 50%;
 }
 
 .f-drag-area__element__line.is-vertical.is-first {
@@ -200,6 +219,8 @@
     --f-drag-placeholder-border: none;
     --f-drag-placeholder-outline: none;
     --f-drag-placeholder-margin: 0;
+    --f-drag-ghost-opacity: 1;
+    --f-drag-ghost-rotation: 2deg;
 }
 
 .f-drag-area__placeholder {
@@ -234,6 +255,6 @@
     pointer-events: none !important;
     z-index: 10000;
     will-change: transform;
-    opacity: 0.5;
+    opacity: var(--f-drag-ghost-opacity);
     /* transition: transform 1s linear;  */
 }
