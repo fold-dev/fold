@@ -28,10 +28,6 @@ export type DragElementAreaProps = {
     direction?: 'vertical'
     startDelay?: number
     footer?: any
-    /**
-     * This value needs to be the same as `--f-drag-lined-size` 
-     */
-    linedVariantPlaceholderSize?: number
 } & CoreViewProps
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
@@ -42,7 +38,6 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         targetVariant = {},
         direction = 'vertical',
         startDelay = 100,
-        linedVariantPlaceholderSize = 3,
         footer,
         ...rest
     } = props
