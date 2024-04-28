@@ -289,7 +289,7 @@ export const Variants = () => (
                         p={10}
                         bgToken="surface-strong"
                         width="100%">
-                        ✅ GVisit the enchanted forest to exchange potions with the woodland creatures.
+                        ✅ Go visit the enchanted forest to exchange potions with the woodland creatures.
                     </Text>
                 </DragArea>
             </View>
@@ -488,7 +488,7 @@ export const TargetVariants = () => (
                             p={10}
                             bgToken="surface-strong"
                             width="100%">
-                            ✅ GVisit the enchanted forest to exchange potions with the woodland creatures.
+                            ✅ Go visit the enchanted forest to exchange potions with the woodland creatures.
                         </Text>
                     </DragArea>
                 </View>
@@ -635,7 +635,7 @@ export const BasicKanban = () => (
                     p={10}
                     bgToken="surface-strong"
                     width="100%">
-                    ✅ GVisit the enchanted forest to exchange potions with the woodland creatures.
+                    ✅ Go visit the enchanted forest to exchange potions with the woodland creatures.
                 </Text>
             </DragArea>
         </View>
@@ -907,7 +907,7 @@ export const DragElementTargetVariants = () => (
                                 p={10}
                                 bgToken="surface-strong"
                                 width="100%">
-                                ✅ GVisit the enchanted forest to exchange potions with the woodland creatures.
+                                ✅ Go visit the enchanted forest to exchange potions with the woodland creatures.
                             </Text>
                         </DragElement>
                     </DragElementArea>
@@ -1062,7 +1062,7 @@ export const DragElementTargetVariants = () => (
                                 p={10}
                                 bgToken="surface-strong"
                                 width="100%">
-                                ✅ GVisit the enchanted forest to exchange potions with the woodland creatures.
+                                ✅ Go visit the enchanted forest to exchange potions with the woodland creatures.
                             </Text>
                         </DragElement>
                     </DragElementArea>
