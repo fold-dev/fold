@@ -240,7 +240,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
                         setIndentation(el, indent, areaId, index, moveDirection)
 
-                        startDrag()                        
+                        startDrag()
                     })
                 }
             }, 150)

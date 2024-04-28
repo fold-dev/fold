@@ -194,15 +194,13 @@ export const DragManager = (props: DragManagerProps) => {
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
-
-                            // set indentation parameters
-                            setIndentation(element, elementIndent, elementAreaId, targetIndex, moveDirection)
                             
-                            /* 
-
                             // ------------------------------------------------------------
                             // indentation calculation & caching start
                             // ------------------------------------------------------------
+
+                            // set indentation parameters
+                            // setIndentation(element, elementIndent, elementAreaId, targetIndex, moveDirection, () => null)
 
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
@@ -234,12 +232,10 @@ export const DragManager = (props: DragManagerProps) => {
                                 }
 
                                 // outline the previous & next elements
-                                for (let target of element.parentNode.children) target.style.border = 'none'
-                                if (previous) previous.style.border = '0.2rem solid crimson'
-                                if (next) next.style.border = '0.2rem solid darkcyan'
+                                // for (let target of element.parentNode.children) target.style.border = 'none'
+                                // if (previous) previous.style.border = '0.2rem solid crimson'
+                                // if (next) next.style.border = '0.2rem solid darkcyan'
                             }
-
-                            */
 
                             // ------------------------------------------------------------
                             // end
