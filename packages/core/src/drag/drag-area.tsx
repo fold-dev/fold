@@ -35,7 +35,6 @@ export type DragAreaProps = {
     direction?: 'vertical' | 'horizontal'
     startDelay?: number
     footer?: any
-    customGhost?: (value, dragData) => void
 } & CoreViewProps
 
 export const DragArea = forwardRef((props: DragAreaProps, ref) => {
@@ -47,12 +46,11 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
         direction = 'vertical',
         startDelay = 100,
         footer,
-        customGhost,
         ...rest
     } = props
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
-    const { getGhostElement, setGhostElement, startDrag, getCache } = useDrag()
+    const { getGhostElement, setGhostElement, startDrag, getCache, hasCustomGhostElement } = useDrag()
     const cache = getCache()
     const containerRef = useRef(null)
     const timeout = useRef(null)
@@ -193,7 +191,10 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             timeout.current = setTimeout(() => {
                 ready.current = true
 
+                console.log('2')
+
                 // set up the initial data
+                const customGhost = hasCustomGhostElement()
                 const { width, height, left, top } = getBoundingClientRect(el)
                 const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
                 const mouseOffsetTop = customGhost ? 0 : mouseTop - top
@@ -203,17 +204,16 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const indent = +el.dataset.indent
                 const elementId = el.dataset.id
                 const ghost = getGhostElement()
-                const ghostElement = customGhost ? customGhost(e, { index, elementId }) : newNode.outerHTML
 
                 // set the contents
-                setGhostElement(ghostElement)
+                if (!customGhost) setGhostElement(newNode.outerHTML)
 
                 // make sure the new node + ghost element are the same size
                 resizeDOMElement(width, height, newNode)
                 resizeDOMElement(width, height, ghost)
 
                 // for indentation
-                ghost.firstChild.style.margin = '0px'
+                if (!customGhost) ghost.firstChild.style.margin = '0px'
 
                 // set the intial ghost position (based on the current x/y)
                 // again - synced for performance in the UI

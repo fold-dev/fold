@@ -27,7 +27,7 @@ export const DragElement = (props: DragElementProps) => {
         () => ({
             ...style,
             width: indent ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
-            marginLeft: indent && !noIndent ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
+            marginLeft: indent && !noIndent ? `calc(var(--f-drag-indent) * ${indent})` : undefined, 
         }),
         [style, indent]
     )
@@ -37,6 +37,16 @@ export const DragElement = (props: DragElementProps) => {
         },
         [props.className]
     )
+
+    const handleMouseUp = (e) => {
+        if (props.onMouseUp) props.onMouseUp(e)
+        onMouseUp(e)
+    }
+
+    const handleMouseDown = (e) => {
+        if (props.onMouseDown) props.onMouseDown(e)
+        onMouseDown(e)
+    }
 
     return (
         <View
@@ -49,8 +59,8 @@ export const DragElement = (props: DragElementProps) => {
             data-nofocus={noFocus}
             data-fallbackdisplay={fallbackDisplay} // see DragElementArea
             data-dragelement={true}
-            onMouseDown={onMouseDown}
-            onMouseUp={onMouseUp}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
             style={styles}
             ref={elementRef}
             className={className}>

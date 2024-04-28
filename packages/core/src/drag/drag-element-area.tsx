@@ -79,7 +79,6 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const isTargetFocus = target.focus
         const isTargetArea = id == target.areaId
         const isDragging = !!origin.areaId
-        const linedVariantPlaceholderSizeOffset = linedVariantPlaceholderSize / 2
 
         // moves to where the cursor is
         const placeholder: any = {
@@ -96,9 +95,9 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 : isVertical
                 ? `translateY(${
                       target.moveDirection == 'down'
-                          ? target.top + target.height + linedVariantPlaceholderSizeOffset
+                          ? target.top + target.height
                           : target.moveDirection == 'up'
-                          ? target.top - linedVariantPlaceholderSizeOffset
+                          ? target.top
                           : 0
                   }px)`
                 : `translateX(${
@@ -195,6 +194,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
 
                 // animate the node up or down
                 // this is main drag animation (if it's isAnimated)
+                // TODO: implement horizontal
                 node.style.transform = isAnimated
                     ? isTargetArea && index >= target.index
                         ? direction == 'vertical'
@@ -206,7 +206,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         })
 
         // if the buffer remains unaffected during transform
-        // then hideh it because it's probably in another area
+        // then hide it because it's probably in another area
         if (!bufferHasBeenMadeVisible) bufferRef.current.style.display = 'none'
     }, [props.children, id, origin, target])
 

@@ -71,6 +71,9 @@
     height: 100%;
 }
 
+/* is dragged */
+/* NOTE: this only works for dragarea (not dragelementarea) */
+
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
     opacity: 1;

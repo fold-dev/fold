@@ -8,6 +8,7 @@ import {
     Text,
     View,
     moveElementInArray,
+    useDrag,
     useDragEvent,
 } from '@fold-dev/core'
 import React, { useState } from 'react'
@@ -717,6 +718,7 @@ export const SavingAfterDrop = () => {
 // --
 
 export const CustomGhostElement = () => {
+    const { setCustomGhostElement } = useDrag()
     const [items, setItems] = useState([
         { id: 'id1', text: 'Swing by the intergalactic post office to mail a package to Mars.' },
         { id: 'id2', text: "Drop off the dragon's dry cleaning at the fireproof laundromat." },
@@ -744,24 +746,25 @@ export const CustomGhostElement = () => {
             <DragArea 
                 variant="lined"
                 width="100%" 
-                group="custom-ghost-element"
-                customGhost={(e, { index, elementId }) => {
-                    return renderToString(
-                        <div 
-                            className="f-card f-text" 
-                            style={{ padding: 10, width: 'fit-content' }}>
-                            <div className="f-text">
-                                Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
-                            </div>
-                        </div>
-                    )
-                }}>
+                group="custom-ghost-element">
                 {items.map((item, index) => (
                     <Text
                         key={index}
                         p={10}
                         bgToken="surface-strong"
-                        width="100%">
+                        width="100%"
+                        onMouseDown={(e) => {
+                            console.log('1')
+                            setCustomGhostElement(renderToString(
+                                <div 
+                                    className="f-card f-text" 
+                                    style={{ padding: 10, width: 'fit-content' }}>
+                                    <div className="f-text">
+                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                    </div>
+                                </div>
+                            ))
+                        }}>
                         {item.text} (index #{index})
                     </Text>
                 ))}
@@ -772,7 +775,19 @@ export const CustomGhostElement = () => {
                 width="100%" 
                 group="custom-ghost-element">
                 {items.map((item, index) => (
-                    <DragElement key={index}>
+                    <DragElement 
+                        key={index}
+                        onMouseDown={(e) => {
+                            setCustomGhostElement(renderToString(
+                                <div 
+                                    className="f-card f-text" 
+                                    style={{ padding: 10, width: 'fit-content' }}>
+                                    <div className="f-text">
+                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                    </div>
+                                </div>
+                            ))
+                        }}>
                         <Text
                             key={index}
                             p={10}
