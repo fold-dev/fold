@@ -8,6 +8,7 @@ import {
     FOLD_DRAG_CACHE,
     FOLD_DRAG_STATE,
     getBoundingClientRect,
+    getPreviousNextElements,
     globalCursor,
     positionDOMElement,
     resizeDOMElement,
@@ -111,6 +112,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         const finalTargetVariant = JSON.parse(parent.dataset.targetvariant)
         const isHorizontal = direction == 'horizontal'
         const isVertical = direction == 'vertical'
+        const moveDirection = isVertical ? 'up' : 'left'
         const index = +el.dataset.index
         const noDrag = !!el.dataset.nodrag
         const noDrop = !!el.dataset.nodrop
@@ -155,10 +157,34 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             offsetTop: mouseOffsetTop,
                         }
 
-                        // save the cache for the reset 
+                        // cache the indentation parameters
+                        let targetIndent = indent
+                        const previous = el.previousSibling
+                        const next = el.nextSibling
+                        const previousIndent = previous ? +previous.dataset.indent : 0
+                        const nextIndent = next ? +next.dataset.indent : 0
+
+                        if (nextIndent > previousIndent) targetIndent = nextIndent
+
+                        cache.indent = {
+                            index,
+                            indent: targetIndent,
+                            areaId,
+                            previous,
+                            previousIndent,
+                            next,
+                            nextIndent,
+                        }
+
+                        // outline the previous & next elements
+                        for (let target of el.parentNode.children) target.style.border = 'none'
+                        if (previous) previous.style.border = '0.2rem solid crimson'
+                        if (next) next.style.border = '0.2rem solid darkcyan'
+
+                        // save the cache for the reset
                         cache.targetCache = {
                             focus: false,
-                            moveDirection: isVertical ? 'up' : 'left',
+                            moveDirection,
                             index,
                             indent,
                             left: el.offsetLeft,
@@ -182,7 +208,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
                         setTarget({
                             focus: false,
-                            moveDirection: isVertical ? 'up' : 'left',
+                            moveDirection,
                             index,
                             indent,
                             left: el.offsetLeft,
