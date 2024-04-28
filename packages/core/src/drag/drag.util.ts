@@ -27,3 +27,8 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
 
     return { previous, next }
 }
+
+export const positionDOMElement = (x, y, el, callback) => {
+    el.style.transform = `translate(${x}px, ${y}px) rotate(var(--f-drag-ghost-rotation))`
+    callback()
+}
