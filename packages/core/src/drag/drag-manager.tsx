@@ -59,7 +59,7 @@ export const DragManager = (props: DragManagerProps) => {
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
     const isDragging = !!origin.areaId
-    const { endDrag, getCache, indent, outdent } = useDrag()
+    const { endDrag, getCache, indent, outdent, setIndentation } = useDrag()
     const cache = getCache()
 
     const stopDrag = (reset = false) => {
@@ -192,17 +192,21 @@ export const DragManager = (props: DragManagerProps) => {
                                 moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
                             }
 
+                            // default indent is one from the target index/element
+                            let targetIndent = elementIndent
+
+                            // set indentation parameters
+                            setIndentation(element, elementIndent, elementAreaId, targetIndex, moveDirection)
+                            
+                            /* 
+
                             // ------------------------------------------------------------
                             // indentation calculation & caching start
                             // ------------------------------------------------------------
 
-                            // default indent is one from the target index/element
-                            let targetIndent = elementIndent
-
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
-                            const indentIsCached =
-                                cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
+                            const indentIsCached = cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
 
                             // if it's cached then update the target with the cached level
                             if (indentIsCached) {
@@ -233,11 +237,13 @@ export const DragManager = (props: DragManagerProps) => {
                                 for (let target of element.parentNode.children) target.style.border = 'none'
                                 if (previous) previous.style.border = '0.2rem solid crimson'
                                 if (next) next.style.border = '0.2rem solid darkcyan'
-
-                                // ------------------------------------------------------------
-                                // end
-                                // ------------------------------------------------------------
                             }
+
+                            */
+
+                            // ------------------------------------------------------------
+                            // end
+                            // ------------------------------------------------------------
 
                             // update the drag target
                             setTarget({
