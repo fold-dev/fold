@@ -272,7 +272,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const renderPlaceholder = () => {
         if (!showBufferAndPlaceholder) return null
 
-        const marginLeft = target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0
+        const marginLeft = noIndent ? 0 : target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0
         const position = noChildren ? 'relative' : 'absolute'
         const width = isVertical ? target.width || origin.width : origin.width
         const height = isVertical ? origin.height : target.height || origin.height
