@@ -27,7 +27,7 @@ import {
 import { getButton } from '../helpers'
 
 export type DragAreaProps = {
-    noIndent?: boolean
+    indent?: boolean
     areaId?: string
     group?: string
     variant?: DragVariant
@@ -39,7 +39,7 @@ export type DragAreaProps = {
 
 export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const {
-        noIndent,
+        indent,
         areaId,
         group = 'default',
         variant = 'animated',
@@ -192,8 +192,6 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
             timeout.current = setTimeout(() => {
                 ready.current = true
 
-                console.log('2')
-
                 // set up the initial data
                 const customGhost = hasCustomGhostElement()
                 const { width, height, left, top } = getBoundingClientRect(el)
@@ -272,7 +270,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const renderPlaceholder = () => {
         if (!showBufferAndPlaceholder) return null
 
-        const marginLeft = noIndent ? 0 : target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0
+        const marginLeft = indent ? target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0 : 0
         const position = noChildren ? 'relative' : 'absolute'
         const width = isVertical ? target.width || origin.width : origin.width
         const height = isVertical ? origin.height : target.height || origin.height

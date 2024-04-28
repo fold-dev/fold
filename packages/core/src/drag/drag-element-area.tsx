@@ -20,7 +20,7 @@ import {
 } from '../'
 
 export type DragElementAreaProps = {
-    noIndent?: boolean
+    indent?: boolean
     areaId?: string
     group?: string
     variant?: DragVariant
@@ -32,7 +32,7 @@ export type DragElementAreaProps = {
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
     const {
-        noIndent,
+        indent,
         areaId,
         group = 'default',
         variant = 'animated',
@@ -80,7 +80,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: noIndent ? 0 : target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0,
+            marginLeft: indent ? target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0 : 0,
             width: target.indent ? `calc(100% - var(--f-drag-indent) * ${target.indent})` : '100%',
             // this needs to be considered at some point:
             // width: isVertical ? target.width || origin.width : origin.width,
