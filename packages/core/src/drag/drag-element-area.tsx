@@ -28,21 +28,17 @@ export type DragElementAreaProps = {
     direction?: 'vertical'
     startDelay?: number
     footer?: any
-    /**
-     * This value needs to be the same as `--f-drag-lined-size` 
-     */
-    linedVariantPlaceholderSize?: number
 } & CoreViewProps
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
     const {
+        indent,
         areaId,
         group = 'default',
         variant = 'animated',
         targetVariant = {},
         direction = 'vertical',
         startDelay = 100,
-        linedVariantPlaceholderSize = 3,
         footer,
         ...rest
     } = props
@@ -84,7 +80,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0,
+            marginLeft: indent ? target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0 : 0,
             width: target.indent ? `calc(100% - var(--f-drag-indent) * ${target.indent})` : '100%',
             // this needs to be considered at some point:
             // width: isVertical ? target.width || origin.width : origin.width,
