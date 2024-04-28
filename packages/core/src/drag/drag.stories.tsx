@@ -771,7 +771,7 @@ export const CustomGhostElement = () => {
             </DragArea>
             <Heading as="h4">Drag Element Area</Heading>
             <DragElementArea 
-                variant="animated"
+                variant="lined"
                 width="100%" 
                 group="custom-ghost-element">
                 {items.map((item, index) => (

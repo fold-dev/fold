@@ -158,19 +158,28 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                         }
 
                         // cache the indentation parameters
-                        const { previous, next } = getPreviousNextElements(index, el, moveDirection)
+                        let targetIndent = indent
+                        const previous = el.previousSibling
+                        const next = el.nextSibling
                         const previousIndent = previous ? +previous.dataset.indent : 0
                         const nextIndent = next ? +next.dataset.indent : 0
 
+                        if (nextIndent > previousIndent) targetIndent = nextIndent
+
                         cache.indent = {
                             index,
-                            indent: nextIndent > previousIndent ? nextIndent : indent,
+                            indent: targetIndent,
                             areaId,
                             previous,
                             previousIndent,
                             next,
                             nextIndent,
                         }
+
+                        // outline the previous & next elements
+                        for (let target of el.parentNode.children) target.style.border = 'none'
+                        if (previous) previous.style.border = '0.2rem solid crimson'
+                        if (next) next.style.border = '0.2rem solid darkcyan'
 
                         // save the cache for the reset
                         cache.targetCache = {
