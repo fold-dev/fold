@@ -157,11 +157,11 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             offsetTop: mouseOffsetTop,
                         }
 
+                        // cache the indentation parameters
                         const { previous, next } = getPreviousNextElements(index, el, moveDirection)
                         const previousIndent = previous ? +previous.dataset.indent : 0
                         const nextIndent = next ? +next.dataset.indent : 0
 
-                        // cache the newly calculated indent level
                         cache.indent = {
                             index,
                             indent: nextIndent > previousIndent ? nextIndent : indent,
@@ -172,7 +172,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             nextIndent,
                         }
 
-                        // save the cache for the reset 
+                        // save the cache for the reset
                         cache.targetCache = {
                             focus: false,
                             moveDirection,
