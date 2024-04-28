@@ -23,33 +23,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     const ghostRef = useRef(null)
     const { indentDelay } = args
 
-    const setInitialIndentation = (element, elementIndent, elementAreaId, targetIndex, moveDirection) => {
-        const cache = windowObject[FOLD_DRAG_CACHE]
-
-        // default indent is one from the target index/element
-        let targetIndent = elementIndent
-
-        const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
-        const previousIndent = previous ? +previous.dataset.indent : 0
-        const nextIndent = next ? +next.dataset.indent : 0
-
-        // if the target index is part of a nested region
-        // then always take the bottom indent level - this is to keep the indent
-        // from breaking the hierarchy by auto-assuming the parent indent position
-        if (nextIndent > previousIndent) targetIndent = nextIndent
-
-        // cache the newly calculated indent level
-        cache.indent = {
-            index: targetIndex,
-            indent: targetIndent,
-            areaId: elementAreaId,
-            previous,
-            previousIndent,
-            next,
-            nextIndent,
-        }
-    }
-
     const getStaticState = (): any => windowObject[FOLD_DRAG_STATE]
 
     const getCache = (): any => windowObject[FOLD_DRAG_CACHE]
@@ -184,6 +157,21 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             offsetTop: mouseOffsetTop,
                         }
 
+                        const { previous, next } = getPreviousNextElements(index, el, moveDirection)
+                        const previousIndent = previous ? +previous.dataset.indent : 0
+                        const nextIndent = next ? +next.dataset.indent : 0
+
+                        // cache the newly calculated indent level
+                        cache.indent = {
+                            index,
+                            indent: nextIndent > previousIndent ? nextIndent : indent,
+                            areaId,
+                            previous,
+                            previousIndent,
+                            next,
+                            nextIndent,
+                        }
+
                         // save the cache for the reset 
                         cache.targetCache = {
                             focus: false,
@@ -223,8 +211,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             group,
                         })
 
-                        setInitialIndentation(el, indent, areaId, index, moveDirection)
-
                         startDrag()
                     })
                 }
@@ -237,7 +223,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }, [])
 
     return {
-        setInitialIndentation,
         getStaticState,
         getCache,
         getGhostElement,
