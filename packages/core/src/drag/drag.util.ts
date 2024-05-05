@@ -1,5 +1,6 @@
 import { windowObject } from '../helpers'
 import { FOLD_DRAG_STATE } from './drag-manager'
+import { FOLD_GHOST_ELEMENT_ROTATION } from './drag.hook'
 
 export const getPreviousNextElements = (targetIndex, targetElement, moveDirection) => {
     const { origin } = windowObject[FOLD_DRAG_STATE]
@@ -29,6 +30,7 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
 }
 
 export const positionDOMElement = (x, y, el, callback) => {
-    el.style.transform = `translate(${x}px, ${y}px) rotate(var(--f-drag-ghost-rotation))`
+    const rotation = windowObject[FOLD_GHOST_ELEMENT_ROTATION] || '2deg'
+    el.style.transform = `translate(${x}px, ${y}px) rotate(${rotation})`
     callback()
 }

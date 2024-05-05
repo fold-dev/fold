@@ -17,7 +17,8 @@ import {
 } from '../'
 import { getButton, waitForRender, windowObject } from '../helpers'
 
-const FOLD_CUSTOM_GHOST_ELEMENT = 'FOLD_CUSTOM_GHOST_ELEMENT'
+export const FOLD_CUSTOM_GHOST_ELEMENT = 'FOLD_CUSTOM_GHOST_ELEMENT'
+export const FOLD_GHOST_ELEMENT_ROTATION = 'FOLD_GHOST_ELEMENT_ROTATION'
 
 export const useDrag = (args: any = { indentDelay: 100 }) => {
     const ghostRef = useRef(null)
@@ -29,14 +30,21 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
     const getGhostElement = () => ghostRef.current
 
-    const setGhostElement = (html: string = null) => (ghostRef.current.innerHTML = html)
+    const setGhostElement = (html: string = null) => {
+        ghostRef.current.innerHTML = html
+    }
 
     const setCustomGhostElement = (html: string = null) => {
         windowObject[FOLD_CUSTOM_GHOST_ELEMENT] = true
         setGhostElement(html)
     }
 
+    const setCustomGhostElementRotation = (rotation: string = '2deg') => {
+        windowObject[FOLD_GHOST_ELEMENT_ROTATION] = rotation
+    }
+
     const clearGhostElement = () => {
+        windowObject[FOLD_GHOST_ELEMENT_ROTATION] = null
         windowObject[FOLD_CUSTOM_GHOST_ELEMENT] = undefined
         setGhostElement('')
     }
@@ -238,6 +246,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         getCache,
         getGhostElement,
         setGhostElement,
+        setCustomGhostElementRotation,
         clearGhostElement,
         hasCustomGhostElement,
         setCustomGhostElement,
