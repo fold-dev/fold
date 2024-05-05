@@ -152,6 +152,10 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     // --------------------------------------------------------------------------
 
     useEffect(() => {
+        // always set this to off when the component mounts
+        // or if children change
+        bufferRef.current.style.display = 'none'
+        
         let bufferHasBeenMadeVisible = false
         const isTargetArea = id == target.areaId
         const originVariant: DragVariant = origin.targetVariant[group]
@@ -211,10 +215,6 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     // ---------------------------------------------------------------------
 
     useLayoutEffect(() => {
-        // always set this to off when the component mounts
-        // or if children change
-        bufferRef.current.style.display = 'none'
-
         // wait for the dom to render the children first
         // 150ms is good estimate - might need to be adjusted
         // TODO: actually rework this
