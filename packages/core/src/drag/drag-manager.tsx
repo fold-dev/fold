@@ -18,7 +18,7 @@ import {
     useDragEvent,
     useWindowEvent
 } from '..'
-import { windowObject } from '../helpers'
+import { globalCursor, windowObject } from '../helpers'
 
 export const FOLD_DRAG_CACHE = 'FOLD_DRAG_CACHE'
 export const FOLD_DRAG_STATE = 'FOLD_DRAG_STATE'
@@ -59,7 +59,7 @@ export const DragManager = (props: DragManagerProps) => {
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
     const isDragging = !!origin.areaId
-    const { endDrag, getCache, indent, outdent } = useDrag()
+    const { endDrag, getCache, indent, outdent, clearGhostElement } = useDrag()
     const cache = getCache()
 
     const stopDrag = (reset = false) => {
@@ -73,6 +73,13 @@ export const DragManager = (props: DragManagerProps) => {
             setTarget({})
             setOrigin({ targetVariant: {} })
             cache.mouseDown = false
+        } else {
+            // some components might set the ghost element
+            // straight away - so clear it just to be safe
+            delete documentObject.body.dataset.dragging
+            clearGhostElement()
+            globalCursor.remove('grabbing')
+
         }
     }
 
