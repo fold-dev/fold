@@ -45,18 +45,6 @@ export type ImageProps = {
 
 export const TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
 
-/**
- *
- * Code blocks are great for examples
- *
- * ``` ts
- * // run typedoc --help for a list of supported languages
- * const instance = new MyClass();
- * return <Input />
- * ```
- * @id thisistheid
- * @title image component
- */
 export const Image = forwardRef((props: ImageProps, ref) => {
     const {
         // from CoreViewProps:
