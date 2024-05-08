@@ -50,7 +50,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     const hasCustomGhostElement = () => {
-        return windowObject[FOLD_CUSTOM_GHOST_ELEMENT]
+        return !!windowObject[FOLD_CUSTOM_GHOST_ELEMENT]
     }
 
     const startDrag = () => {
