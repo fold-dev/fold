@@ -343,6 +343,10 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
         'is-virtual': isVirtual,
     })
 
+    useEffect(() => {
+        containerRef.current?.focus()
+    }, [])
+
     return (
         <View
             {...rest}
