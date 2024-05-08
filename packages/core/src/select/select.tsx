@@ -344,7 +344,7 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     })
 
     useEffect(() => {
-        containerRef.current.focus()
+        containerRef.current?.focus()
     }, [])
 
     return (
