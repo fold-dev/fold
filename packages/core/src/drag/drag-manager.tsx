@@ -22,7 +22,6 @@ import { globalCursor, windowObject } from '../helpers'
 
 export const FOLD_DRAG_CACHE = 'FOLD_DRAG_CACHE'
 export const FOLD_DRAG_STATE = 'FOLD_DRAG_STATE'
-export const FOLD_DRAG_STOP_RESET = 'FOLD_DRAG_STOP_RESET'
 
 windowObject[FOLD_DRAG_CACHE] = {
     mouseDown: false,
@@ -41,8 +40,6 @@ windowObject[FOLD_DRAG_STATE] = {
     target: {},
     origin: { targetVariant: {} },
 }
-
-windowObject[FOLD_DRAG_STOP_RESET] = false
 
 export type DragManagerProps = {
     animation?: number
@@ -75,7 +72,7 @@ export const DragManager = (props: DragManagerProps) => {
             endDrag()
             setTarget({})
             setOrigin({ targetVariant: {} })
-            cache.mouseDown = false
+            cache.mouseDown = false            
         } else {
             endDrag()
         }

@@ -1,24 +1,21 @@
 import React, {
     Children,
     forwardRef,
-    useEffect,
     useLayoutEffect,
     useMemo,
     useRef
 } from 'react'
 import {
-    classNames,
     CoreViewProps,
-    documentObject,
     DragVariant,
-    FOLD_DRAG_STOP_RESET,
+    View,
+    classNames,
+    documentObject,
     getDragState,
     mergeRefs,
     useDragEvent,
     useId,
-    useWindowEvent,
-    View,
-    windowObject
+    useWindowEvent
 } from '../'
 
 export type DragElementAreaProps = {
@@ -153,7 +150,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     // manage buffer element & element transforms (reacting to the target index)
     // --------------------------------------------------------------------------
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // always set this to off when the component mounts
         // or if children change
         bufferRef.current.style.display = 'none'
