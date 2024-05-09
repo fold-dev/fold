@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
 import { Button, Icon, useFocus, ButtonProps, View, IconButton } from '../'
 import { CoreViewProps } from '../types'
-import { classNames, getActionClass } from '../helpers'
+import { classNames, getActionClass, getKey } from '../helpers'
 import { FICircle, FIX } from '../icon'
 
 export type ModalCloseProps = ButtonProps
@@ -29,6 +29,7 @@ export type ModalAnchor =
     | 'bottom-right'
 
 export type ModalProps = {
+    dismissOnEscape?: boolean
     focusTrap?: boolean
     anchor?: ModalAnchor
     isVisible: boolean
@@ -44,6 +45,7 @@ export type ModalProps = {
 
 export const Modal = (props: ModalProps) => {
     const {
+        dismissOnEscape,
         focusTrap = false,
         anchor = 'middle-center',
         isVisible = false,
@@ -59,6 +61,11 @@ export const Modal = (props: ModalProps) => {
     } = props
     const contentRef: any = useRef()
     const { trapFocus } = useFocus()
+
+    const handleKeyDown = (e) => {
+        const { isEscape } = getKey(e)
+        if (isEscape && dismissOnEscape) onDismiss()
+    }
 
     const handleBackgroundClick = (e: any) => {
         // seems necessary when nesting modals/dialogs/alerts
@@ -92,7 +99,9 @@ export const Modal = (props: ModalProps) => {
 
         return (
             <div
+                tabIndex={0}
                 className={classNameOverlay}
+                onKeyUp={handleKeyDown}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}
