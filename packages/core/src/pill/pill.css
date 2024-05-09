@@ -11,7 +11,6 @@
     --f-pill-background-color: var(--f-color-surface-strong);
     --f-pill-background-color-subtle: var(--f-color-surface-strong);
     --f-pill-background-color-solid: var(--f-color-surface-inverse);
-    --f-pill-inner-background-color: rgba(0,0,0,0.1);
 }
 
 .f-pill {
@@ -69,21 +68,6 @@
     height: fit-content;
     width: fit-content;
     color: currentColor;
-}
-
-.f-pill__label *, 
-.f-pill__suffix *,
-.f-pill__prefix * { 
-    color: inherit;
-    border-width: 0;
-    border-radius: var(--f-pill-border-radius);
-    background-color: transparent !important; 
-}
-
-.f-pill__label > .f-avatar, 
-.f-pill__suffix > .f-avatar,
-.f-pill__prefix > .f-avatar { 
-    background-color: var(--f-pill-inner-background-color) !important; 
 }
 
 .f-pill__suffix > *:last-child:not(.f-avatar) {
