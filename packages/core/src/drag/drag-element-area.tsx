@@ -11,12 +11,14 @@ import {
     CoreViewProps,
     documentObject,
     DragVariant,
+    FOLD_DRAG_STOP_RESET,
     getDragState,
     mergeRefs,
     useDragEvent,
     useId,
     useWindowEvent,
-    View
+    View,
+    windowObject
 } from '../'
 
 export type DragElementAreaProps = {
