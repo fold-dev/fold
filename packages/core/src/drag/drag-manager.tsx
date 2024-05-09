@@ -72,14 +72,9 @@ export const DragManager = (props: DragManagerProps) => {
             endDrag()
             setTarget({})
             setOrigin({ targetVariant: {} })
-            cache.mouseDown = false
+            cache.mouseDown = false            
         } else {
-            // some components might set the ghost element
-            // straight away - so clear it just to be safe
-            delete documentObject.body.dataset.dragging
-            clearGhostElement()
-            globalCursor.remove('grabbing')
-
+            endDrag()
         }
     }
 
@@ -276,9 +271,6 @@ export const DragManager = (props: DragManagerProps) => {
     useWindowEvent('mousemove', handleMouseMove)
     useWindowEvent('mouseup', handleMouseUp)
     useWindowEvent('keydown', handleKeyDown)
-
-    useDragEvent('indent', () => indent())
-    useDragEvent('outdent', () => outdent)
 
     useEffect(() => {
         documentObject.documentElement.style.cssText = `--f-drag-speed: ${animation}ms`
