@@ -207,7 +207,21 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         // if the buffer remains unaffected during transform
         // then hide it because it's probably in another area
         if (!bufferHasBeenMadeVisible) bufferRef.current.style.display = 'none'
+
+        // we manually add the attr. for perfornace
+        // instead of calculating each iteration (above)
+        containerRef.current.childNodes.forEach((node, index) => {
+            // only if its a dragelement - ignore buffer elements
+            if (node.dataset.dragelement) {
+                node.dataset.index = index
+                node.dataset.areaid = id
+            }
+        })
     }, [props.children, id, origin, target])
+
+    /* 
+
+    for now we have moved this to the top
 
     // ---------------------------------------------------------------------
     // generate indexes on each element after it renders & before it paints
@@ -229,6 +243,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             })
         }, 150)
     }, [props.children, id, origin])
+    */
 
     return (
         <View
