@@ -87,7 +87,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     useEvent('keydown', handleKeyDown, true)
     useEvent('click', handleClick, true)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!id) return
         if (!isVisible) return
 
@@ -95,45 +95,41 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         const popoverEl = containerRef.current
         const childRect = getBoundingClientRect(childEl)
         const popoverRect = getBoundingClientRect(popoverEl)
-
-        setBox({
+        const box = {
             top: fixPosition ? fixPosition.top : childEl.offsetTop,
             left: fixPosition ? fixPosition.left : childEl.offsetLeft,
             width: fixPosition ? 1 : childEl.offsetWidth,
             height: fixPosition ? 1 : childEl.offsetHeight,
-        })
-
+        }
         const offscreen = isBoxOffScreen({
             top: fixPosition ? fixPosition.top : childRect.bottom,
             left: fixPosition ? fixPosition.left : childRect.left,
             width: popoverRect.width,
             height: popoverRect.height,
         })
-
         const horizontal = offscreen.x ? 'right' : 'left'
         const vertical = offscreen.y ? 'top' : 'bottom'
         const autoPosition = `${vertical}-${horizontal}`
         const finalAnchor = anchor ? anchor : autoPosition
 
+        setBox(box)
         setReady(!!Object.keys(popoverRect).length)
         setFinalAnchor(finalAnchor)
-    }, [showPopover, content, fixPosition, props.children, ready])
 
-    // TODO: refine
-    // this is reponsible for detection buffers in top offscreen
-    useEffect(() => {
-        if (!id) return
-        if (!isVisible) return
+        // adjust for the top going offscreen
         if (!finalAnchor) return
+        if (!containerRef.current) return
 
-        const { top } = getBoundingClientRect(containerRef.current)
-
-        if (top < 0) {
-            containerRef.current.style.top = top * -1 + 'px'
-        } else {
-            containerRef.current.style.removeProperty('top')
+        // only focus on top vertical for now
+        // TODO: extend for horizontal (less likely - except mobile!)
+        if (finalAnchor.includes('top')) {
+            const { height } = popoverRect
+            const top = box.top - height
+            if (top < 0) containerRef.current.style.top = top * -1 + 'px'
         }
-    }, [showPopover, fixPosition, props.children, ready])
+
+        return () => containerRef.current?.style.removeProperty('top')
+    }, [showPopover, content, fixPosition, props.children, ready])
 
     return (
         <>
