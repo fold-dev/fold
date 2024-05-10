@@ -95,13 +95,14 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         const popoverEl = containerRef.current
         const childRect = getBoundingClientRect(childEl)
         const popoverRect = getBoundingClientRect(popoverEl)
-
-        setBox({
+        const box = {
             top: fixPosition ? fixPosition.top : childEl.offsetTop,
             left: fixPosition ? fixPosition.left : childEl.offsetLeft,
             width: fixPosition ? 1 : childEl.offsetWidth,
             height: fixPosition ? 1 : childEl.offsetHeight,
-        })
+        }
+
+        setBox(box)
 
         const offscreen = isBoxOffScreen({
             top: fixPosition ? fixPosition.top : childRect.bottom,
@@ -117,11 +118,25 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
         setReady(!!Object.keys(popoverRect).length)
         setFinalAnchor(finalAnchor)
+
+        if (!finalAnchor) return
+        if (!containerRef.current) return
+
+        // adjust for the top going offscreen
+        if (finalAnchor.includes('top')) {
+            const { top, height } = popoverRect
+            const realTop = box.top - height
+            if (realTop < 0) containerRef.current.style.top = realTop * -1 + 'px'
+        }
+
+        return () => {
+            containerRef.current?.style.removeProperty('top')
+        }
     }, [showPopover, content, fixPosition, props.children, ready])
 
     // TODO: refine
     // this is reponsible for detection buffers in top offscreen
-    useEffect(() => {
+/*     useEffect(() => {
         if (!id) return
         if (!isVisible) return
         if (!finalAnchor) return
@@ -133,7 +148,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         } else {
             containerRef.current.style.removeProperty('top')
         }
-    }, [showPopover, fixPosition, props.children, ready])
+    }, [showPopover, fixPosition, props.children, ready]) */
 
     return (
         <>
