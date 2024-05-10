@@ -101,21 +101,18 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             width: fixPosition ? 1 : childEl.offsetWidth,
             height: fixPosition ? 1 : childEl.offsetHeight,
         }
-
-        setBox(box)
-
         const offscreen = isBoxOffScreen({
             top: fixPosition ? fixPosition.top : childRect.bottom,
             left: fixPosition ? fixPosition.left : childRect.left,
             width: popoverRect.width,
             height: popoverRect.height,
         })
-
         const horizontal = offscreen.x ? 'right' : 'left'
         const vertical = offscreen.y ? 'top' : 'bottom'
         const autoPosition = `${vertical}-${horizontal}`
         const finalAnchor = anchor ? anchor : autoPosition
 
+        setBox(box)
         setReady(!!Object.keys(popoverRect).length)
         setFinalAnchor(finalAnchor)
 
@@ -126,14 +123,12 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         // only focus on top vertical for now
         // TODO: extend for horizontal (less likely - except mobile!)
         if (finalAnchor.includes('top')) {
-            const { top, height } = popoverRect
-            const realTop = box.top - height
-            if (realTop < 0) containerRef.current.style.top = realTop * -1 + 'px'
+            const { height } = popoverRect
+            const top = box.top - height
+            if (top < 0) containerRef.current.style.top = top * -1 + 'px'
         }
 
-        return () => {
-            containerRef.current?.style.removeProperty('top')
-        }
+        return () => containerRef.current?.style.removeProperty('top')
     }, [showPopover, content, fixPosition, props.children, ready])
 
     return (
