@@ -87,7 +87,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     useEvent('keydown', handleKeyDown, true)
     useEvent('click', handleClick, true)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!id) return
         if (!isVisible) return
 
@@ -119,10 +119,12 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         setReady(!!Object.keys(popoverRect).length)
         setFinalAnchor(finalAnchor)
 
+        // adjust for the top going offscreen
         if (!finalAnchor) return
         if (!containerRef.current) return
 
-        // adjust for the top going offscreen
+        // only focus on top vertical for now
+        // TODO: extend for horizontal (less likely - except mobile!)
         if (finalAnchor.includes('top')) {
             const { top, height } = popoverRect
             const realTop = box.top - height
@@ -133,22 +135,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             containerRef.current?.style.removeProperty('top')
         }
     }, [showPopover, content, fixPosition, props.children, ready])
-
-    // TODO: refine
-    // this is reponsible for detection buffers in top offscreen
-/*     useEffect(() => {
-        if (!id) return
-        if (!isVisible) return
-        if (!finalAnchor) return
-
-        const { top } = getBoundingClientRect(containerRef.current)
-
-        if (top < 0) {
-            containerRef.current.style.top = top * -1 + 'px'
-        } else {
-            containerRef.current.style.removeProperty('top')
-        }
-    }, [showPopover, fixPosition, props.children, ready]) */
 
     return (
         <>
