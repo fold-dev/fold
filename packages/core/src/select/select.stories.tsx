@@ -683,7 +683,8 @@ export const Tag = () => {
 
     return (
         <Select
-            tag
+            tagInput
+            noListFocus
             as="default"
             width={500}
             placeholder="Select a label"

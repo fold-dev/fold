@@ -33,6 +33,7 @@ import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
+    noListFocus?: boolean
     hideSelected?: boolean
     as?: 'default' | 'virtual'
     variant?: 'default' | 'static'
@@ -59,11 +60,12 @@ export type SelectProps = {
     optionComponent?: any
     noOptionsComponent?: any
     render?: any
-    tag?: boolean
+    tagInput?: boolean
 } & Omit<CoreViewProps, 'onSelect'>
 
 export const Select = (props: SelectProps) => {
     const {
+        noListFocus,
         hideSelected = false,
         as = 'default',
         variant = 'default',
@@ -89,7 +91,7 @@ export const Select = (props: SelectProps) => {
         optionComponent,
         noOptionsComponent,
         render,
-        tag,
+        tagInput,
         ...rest
     } = props
     const selectedAmount = selected.length
@@ -198,7 +200,7 @@ export const Select = (props: SelectProps) => {
     }
 
     const renderInput = () => {
-        if (tag) {
+        if (tagInput) {
             return (
                 <TagInput
                     size={size}
@@ -281,6 +283,7 @@ export const Select = (props: SelectProps) => {
                     ref={popoverRef}
                     className={popoverClassName}>
                     <SelectList
+                        noFocus={noListFocus}
                         as={as}
                         ref={listRef}
                         cursor={cursor}
@@ -303,6 +306,7 @@ export const Select = (props: SelectProps) => {
 }
 
 export type SelectListProps = {
+    noFocus?: boolean
     as?: 'default' | 'virtual'
     cursor?: number
     options?: SelectOption[]
@@ -318,6 +322,7 @@ export type SelectListProps = {
 
 export const SelectList = forwardRef((props: SelectListProps, ref) => {
     const {
+        noFocus,
         as = 'default',
         cursor = 0,
         options = [],
@@ -344,8 +349,8 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     })
 
     useEffect(() => {
-        containerRef.current?.focus()
-    }, [])
+        if (!noFocus) containerRef.current?.focus()
+    }, [noFocus])
 
     return (
         <View
@@ -567,7 +572,8 @@ export const LabelSelect = (props: LabelSelectProps) => {
     return (
         <Select
             {...rest}
-            tag
+            tagInput
+            noListFocus
             size={size}
             variant={variant}
             placeholder={inputPlaceholder}
@@ -687,7 +693,8 @@ export const UserSelect = (props: UserSelectProps) => {
     return (
         <Select
             {...rest}
-            tag
+            tagInput
+            noListFocus
             size={size}
             variant={variant}
             placeholder={inputPlaceholder}
