@@ -1,13 +1,10 @@
 import React, {
-    ReactElement,
     createContext,
-    forwardRef,
     useContext,
     useEffect,
-    useLayoutEffect,
     useMemo,
     useRef,
-    useState,
+    useState
 } from 'react'
 import {
     FDate,
@@ -18,10 +15,9 @@ import {
     isDayInsideRange,
     isMonthInsideRange,
     isYearInsideRange,
-    mergeRefs,
-    scrollToCenter,
+    scrollToCenter
 } from '../helpers'
-import { Button, ButtonGroup, IconLib, Stack, Text, TextProps, View, useResize } from '../index'
+import { Button, ButtonGroup, IconLib, Text, TextProps, View, useResize } from '../index'
 import { CoreViewProps, Size } from '../types'
 
 /**
@@ -928,135 +924,3 @@ export const DatePicker = (props: DatePickerProps) => {
         </View>
     )
 }
-
-/**
- * scrolling date picker
- */
-
-export type ScrollingDatePickerProps = {
-    width?: number
-    height?: number
-    scrollThreshold?: number
-    size?: Size
-    selection?: DateSelection[]
-    disabled?: DateSelection[]
-    defaultDate?: Date
-    onChange?: any
-    renderDay?: any
-    dateCellProps?: DateCellProps
-    weekdaysProps?: WeekdaysProps
-    monthProps?: Omit<MonthProps, 'date'>
-    monthNames?: string[]
-    monthTitle: (date: Date) => ReactElement
-} & Omit<CoreViewProps, 'onChange' | 'disabled'>
-
-export const useScrollingDatePicker = () => {
-    const goToToday = (el) => {
-        const { parentNode } = el.querySelector('*[data-today="true"]')
-        if (!parentNode) return
-        const { offsetTop } = parentNode
-        el.scrollTo({ top: offsetTop })
-    }
-
-    return { goToToday }
-}
-
-export const ScrollingDatePicker = forwardRef((props: ScrollingDatePickerProps, ref) => {
-    const {
-        width = '100%',
-        height = 250,
-        scrollThreshold = 100,
-        size,
-        selection = [],
-        disabled = [],
-        defaultDate = new Date(),
-        onChange,
-        renderDay,
-        dateCellProps = {},
-        weekdaysProps = {},
-        monthProps = {},
-        monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        monthTitle,
-        ...rest
-    } = props
-    const date = useMemo(() => new Date(defaultDate.getFullYear(), defaultDate.getMonth(), 15), [defaultDate])
-    const lockedRef = useRef(null)
-    const calendarsRef = useRef(null)
-    const [months, setMonths] = useState<Date[]>([
-        FDate(date).subtract(1, 'month'),
-        new Date(date),
-        FDate(date).add(1, 'month'),
-    ])
-    const className = classNames(
-        {
-            'f-scrolling-date-picker': true,
-            'f-scrollbar': true,
-        },
-        [props.className]
-    )
-
-    const handleScroll = (e) => {
-        if (lockedRef.current) return
-
-        const offsetHeight = calendarsRef.current.scrollHeight - calendarsRef.current.scrollTop
-        const loadTop = calendarsRef.current.scrollTop <= scrollThreshold
-        const loadBottom = calendarsRef.current.offsetHeight >= offsetHeight - scrollThreshold
-
-        if (loadTop) {
-            const earliestMonth: Date = months[0]
-            const previousMonth = FDate(earliestMonth).subtract(1, 'month')
-            setMonths([previousMonth, ...months])
-        }
-
-        if (loadBottom) {
-            const latestMonth = months[months.length - 1]
-            const nextMonth = FDate(latestMonth).add(1, 'month')
-            setMonths([...months, nextMonth])
-        }
-    }
-
-    useLayoutEffect(() => {
-        const { offsetHeight } = calendarsRef.current
-        calendarsRef.current.scrollTo({ top: offsetHeight })
-        setTimeout(() => (lockedRef.current = false), 100)
-    }, [date])
-
-    return (
-        <View
-            {...rest}
-            width={width}
-            height={height}
-            className={className}
-            ref={mergeRefs([calendarsRef, ref])}
-            onScroll={handleScroll}>
-            {months.map((month: Date, index: number) => {
-                const uuid = month.getMonth() + '-' + month.getFullYear()
-                const today =
-                    new Date().getMonth() == month.getMonth() && new Date().getFullYear() == month.getFullYear()
-
-                return (
-                    <div
-                        key={uuid}
-                        className="f-col"
-                        style={{ height, width: '100%' }}>
-                        {monthTitle(month)}
-                        <Month
-                            width="100%"
-                            flex={1}
-                            id={uuid}
-                            size={size}
-                            date={month}
-                            selection={selection}
-                            onChange={onChange}
-                            disabled={disabled}
-                            data-today={today ? 'true' : 'false'}
-                            dateCellProps={dateCellProps}
-                            renderDay={renderDay}
-                            {...monthProps}
-                        />
-                    </div>
-                )
-            })}
-        </View>
-    )
-})

@@ -327,10 +327,3 @@
 
 .f-date-picker__titles > .f-date-picker__title .f-date-picker__title-text:last-child {
 }
-
-/* scrolling date picker */
-
-.f-scrolling-date-picker {
-  position: relative;
-  overflow-y: auto;
-}

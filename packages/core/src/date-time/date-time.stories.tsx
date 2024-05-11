@@ -1,6 +1,5 @@
 import {
     Badge,
-    Button,
     Card,
     DateCell,
     DatePicker,
@@ -13,17 +12,14 @@ import {
     Months,
     pad,
     Popover,
-    ScrollingDatePicker,
     Stack,
-    Text,
     TimePicker,
-    useScrollingDatePicker,
     useVisibility,
     View,
     Weekdays,
-    Years,
+    Years
 } from '@fold-dev/core'
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 export default {
     title: 'Components/DateTime',
@@ -327,68 +323,6 @@ export const DateCellVariants = () => (
         </DateCell>
     </View>
 )
-
-// --
-
-export const ScrollingPicker = () => {
-    const { goToToday } = useScrollingDatePicker()
-    const ref = useRef(null)
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    const { today, tomorrow, start, end } = useMemo(() => {
-        const today = new Date()
-        const tomorrow = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
-        const start = new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000)
-        const end = new Date(today.getTime() + 6 * 24 * 60 * 60 * 1000)
-        return {
-            today,
-            tomorrow,
-            start,
-            end,
-        }
-    }, [])
-    const [selection, setSelection] = useState<any[]>([
-        [start, end],
-    ])
-
-    const handleSelection = (date: Date) => {
-        if (selection.length == 0) {
-            setSelection([[date, null]])
-        } else {
-            const selected = selection[0]
-            if (!selected[0]) return setSelection([date, null])
-            if (!!selected[0] && !!selected[1]) return setSelection([[date, null]])
-            if (!!selected[0] && !selected[1])
-                return setSelection(selected[0] > date ? [[date, selected[0]]] : [[selected[0], date]])
-        }
-    }
-
-    const handleTodayClick = (e) => {
-        goToToday(ref.current)
-    }
-
-    return (
-        <View width={300}>
-            <DateRangeProvider>
-                <Button onClick={handleTodayClick}>Go to Today</Button>
-                <ScrollingDatePicker
-                    height={300}
-                    ref={ref}
-                    defaultDate={today}
-                    selection={selection}
-                    onChange={handleSelection}
-                    monthTitle={(date: Date) => (
-                        <Text
-                            p="1rem"
-                            as="span"
-                            width="100%">
-                            {monthNames[date.getMonth()]} / {date.getFullYear()}
-                        </Text>
-                    )}
-                />
-            </DateRangeProvider>
-        </View>
-    )
-}
 
 // --
 
