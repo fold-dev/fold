@@ -151,7 +151,7 @@ export type FoldProviderProps = {
 }
 
 export const FoldProvider = (props: any) => {
-    const { license, theme, dragOptions = {} } = props
+    const { license = '', theme, dragOptions = {} } = props
     const [fold, setFold] = useState<FoldApp>({})
     const [alert, setAlert] = useState<AlertOptions>({})
     const [dialog, setDialog] = useState<DialogOptions>({})
