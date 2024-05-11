@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { getKey } from '../helpers'
+import { documentObject, getKey } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export const FOCUSABLE =
@@ -22,10 +22,10 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
         const elements: any[] = Array.from(focusableEls.current)
 
         if (isTab) {
-            if (e.shiftKey && document.activeElement === firstFocusableEl.current) {
+            if (e.shiftKey && documentObject.activeElement === firstFocusableEl.current) {
                 e.preventDefault()
                 lastFocusableEl.current?.focus()
-            } else if (!e.shiftKey && document.activeElement === lastFocusableEl.current) {
+            } else if (!e.shiftKey && documentObject.activeElement === lastFocusableEl.current) {
                 e.preventDefault()
                 firstFocusableEl.current?.focus()
             }

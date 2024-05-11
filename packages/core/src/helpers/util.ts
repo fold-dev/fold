@@ -13,7 +13,7 @@ export const resizeDOMElement = (width, height, el) => {
 }
 
 export const selectText = (element) => {
-    const range = document.createRange()
+    const range = documentObject.createRange()
     range.selectNode(element)
     windowObject.getSelection().removeAllRanges()
     windowObject.getSelection().addRange(range)
@@ -600,8 +600,8 @@ export const waitForRender = (cb, t = 0) => setTimeout(cb, t)
 export const setCaretToTheEnd = (element) => {
     const position = element.textContent.length
     const [childNode] = element.childNodes
-    const range = document.createRange()
-    const selection = window.getSelection()
+    const range = documentObject.createRange()
+    const selection = windowObject.getSelection()
     range.setStart(childNode, position)
     range.setEnd(childNode, position)
     range.collapse(true)
@@ -610,9 +610,9 @@ export const setCaretToTheEnd = (element) => {
 }
 
 export const selectElementContents = (el) => {
-    const range = document.createRange()
+    const range = documentObject.createRange()
     range.selectNodeContents(el)
-    const sel = window.getSelection()
+    const sel = windowObject.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
 }
