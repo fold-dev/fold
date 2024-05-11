@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { Alert, AlertOptions } from '../alert/alert'
+import { Dialog, DialogOptions } from '../dialog/dialog'
 import { DragManager, DragManagerProps } from '../drag/drag'
 import { useTheme } from '../hooks/theme.hook'
 import {
@@ -29,8 +30,6 @@ import {
     FIFlag,
     FIGift,
     FIImage,
-    FIKanbanMaximize,
-    FIKanbanMinimize,
     FILink,
     FILinkOut,
     FIMaximize,
@@ -58,10 +57,9 @@ import {
     FIVideo,
     FIWarning,
     FIX,
-    setFoldIcons,
+    setFoldIcons
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
-import { Dialog, DialogOptions } from '../dialog/dialog'
 
 export const defaultIcons = {
     'cog': FICog,
@@ -82,10 +80,7 @@ export const defaultIcons = {
     'chevron-up': FIChevronUp,
     'image': FIImage,
     'minimize': FIMinimize,
-    'todo-collapse': FIChevronDown,
-    'kanban-minimize': FIKanbanMinimize,
     'maximize': FIMaximize,
-    'kanban-maximize': FIKanbanMaximize,
     'more-h': FIMoreH,
     'more-v': FIMoreV,
     'check': FICheck,
