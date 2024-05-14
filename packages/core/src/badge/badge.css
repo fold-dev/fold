@@ -162,13 +162,13 @@
 .f-badge.xs {
     padding: 0;
     font-weight: var(--f-font-weight-semibold);
-    height: var(--f-size-3);
+    height: var(--f-size-4);
 }
 
 .f-badge.sm {
     padding: 0 0.1rem;
     font-weight: var(--f-font-weight-medium);
-    height: var(--f-size-4);
+    height: var(--f-size-5);
 }
 
 .f-badge.md {
