@@ -4,6 +4,7 @@
     --f-accordion-border-width: 1px;
     --f-accordion-background: var(--f-color-surface);
     --f-accordion-color: var(--f-color-text-weak);
+    --f-accordion-color-heading: var(--f-color-text);
     --f-accordion-color-description: var(--f-color-text-weakest);
     --f-accordion-hover-border-color: var(--f-color-border-strong);
     --f-accordion-hover-background-color: var(--f-color-surface-strong);
@@ -47,10 +48,14 @@
     position: relative;
     justify-content: flex-start;
     background: transparent;
-    color: var(--f-accordion-color);
+    color: var(--f-accordion-color-heading);
     font-size: inherit;
     flex-shrink: 0;
     transition: background-color 0.1s;
+}
+
+.f-accordion__item .f-accordion-heading__heading > * {
+    color: var(--f-accordion-color-heading);
 }
 
 .f-accordion__item .f-accordion-heading__heading:focus {
@@ -97,6 +102,7 @@
 
 /* disabled */
 
+.f-accordion__item.is-disabled .f-accordion-heading__heading > *,
 .f-accordion__item.is-disabled .f-accordion-heading__heading {
     color: var(--f-accordion-disabled-color);
     cursor: not-allowed;
@@ -109,7 +115,7 @@
     border-bottom-right-radius: 0; 
 }
 
-.f-accordion__item.is-active .f-accordion-heading__heading > .f-accordion-heading__heading-text,
+.f-accordion__item.is-active .f-accordion-heading__heading > *,
 .f-accordion__item.is-active .f-accordion-heading__heading {
     color: var(--f-accordion-active-color);
 }
