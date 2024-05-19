@@ -133,6 +133,8 @@ const createMdxFile = (slug, stories, dependenciesText, docsText, propsText, ins
     fs.writeFileSync(`./docs-output/${slug}.mdx`, fileExport)
 }
 
+
+
 const generateMdx = (path) => {
     fs.readdirSync(path, { withFileTypes: true }).map(async (d) => {
         const fileName: any = d.name
@@ -141,6 +143,7 @@ const generateMdx = (path) => {
         const { resolve } = require('path')
 
         if (!isFile) {
+            console.log(fileName)
             generateMdx(filePath)
         } else {
             // general components
@@ -151,10 +154,18 @@ const generateMdx = (path) => {
                 !fileName.includes('.test') &&
                 !fileName.includes('fold.context')
             ) {
+                return
                 console.log('exporting ', fileName)
+
+                if (!fileName.includes('drag')) return
 
                 const slug = fileName.replace('.tsx', '')
                 const componentDoc: ComponentDoc[] = docgen.parse(filePath, parserOptions)
+
+                //console.log(fileName, componentDoc)
+
+
+                return 
 
                 // 1) export props as json
                 const propsText = 'export const props = ' + JSON.stringify(componentDoc)

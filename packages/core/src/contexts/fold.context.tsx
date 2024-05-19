@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { Alert, AlertOptions } from '../alert/alert'
 import { Dialog, DialogOptions } from '../dialog/dialog'
-import { DragManager, DragManagerProps } from '../drag/drag'
+import { DragManager, DragManagerProps } from '../drag'
 import { useTheme } from '../hooks/theme.hook'
 import {
     FIArrowDown,
