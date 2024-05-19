@@ -54,7 +54,6 @@
         "storybook": "storybook dev -p 6006",
         "storybook:build": "npm --workspace @fold-dev/design run build:prod && npm --workspace @fold-dev/core run build:prod && storybook build -c .storybook -o storybook-static",
         "build:docs": "ts-node ./scripts/docgen/build.ts --path=./packages/core/src",
-        "build:docs:pro": "ts-node ./scripts/docgen/build.ts --path=./packages/pro/src",
         "build:typedoc": "typedoc --options ./typedoc.json",
         "build:typedoc:md": "typedoc --plugin typedoc-plugin-markdown",
         "build-storybook": "storybook build",
