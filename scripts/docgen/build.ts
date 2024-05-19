@@ -185,23 +185,26 @@ const generateMdx = (path) => {
 
                 // parse the storyfile
                 const storyFile = resolve(filePath.replace('tsx', 'stories.tsx'))
-                const storyFileContents = fs.readFileSync(storyFile, { encoding: 'utf8', flag: 'r' })
 
-                // get all of the stories & misc. data to use as blocks
-                // the fileParts expects a certain format - check each storyfile
-                const fileParts = storyFileContents.split('\n\n').filter((chunk) => !!chunk)
-                const onlyStories = fileParts.filter((_, index) => index > 2).join('\n\n')
-                const stories = onlyStories.split('// --')
-                const module = require(storyFile)
+                if (fs.existsSync(storyFile)) {
+                    const storyFileContents = fs.readFileSync(storyFile, { encoding: 'utf8', flag: 'r' })
 
-                // get special docs stored in the story file
-                const storyTypeDocs = docgen.parse(storyFile, parserOptions)
+                    // get all of the stories & misc. data to use as blocks
+                    // the fileParts expects a certain format - check each storyfile
+                    const fileParts = storyFileContents.split('\n\n').filter((chunk) => !!chunk)
+                    const onlyStories = fileParts.filter((_, index) => index > 2).join('\n\n')
+                    const stories = onlyStories.split('// --')
+                    const module = require(storyFile)
 
-                // 3) push this component to the navigation
-                navigation.push({ slug, ...module.docs })
+                    // get special docs stored in the story file
+                    const storyTypeDocs = docgen.parse(storyFile, parserOptions)
 
-                // write the mdx file
-                createMdxFile(slug, stories, fileParts[0], fileParts[2], propsText, installText, cssText, storyTypeDocs)
+                    // 3) push this component to the navigation
+                    navigation.push({ slug, ...module.docs })
+
+                    // write the mdx file
+                    createMdxFile(slug, stories, fileParts[0], fileParts[2], propsText, installText, cssText, storyTypeDocs)
+                }
             }
 
             // hooks
