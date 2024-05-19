@@ -266,7 +266,7 @@ const generateMdx = (path) => {
     })
 }
 
-generateMdx('./packages/core/src')
+generateMdx(process.argv[2].split('=')[1])
 
 const navigationFile = prettier.format(`export const navigation = ${JSON.stringify(navigation)}`, {
     parser: 'typescript',
