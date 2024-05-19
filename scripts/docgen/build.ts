@@ -1,10 +1,8 @@
-import * as path from 'path'
 import * as fs from 'fs'
-import { Method, ParserOptions, StringIndexedObject } from 'react-docgen-typescript/lib/parser'
-import * as Handlebars from 'handlebars'
-import { ComponentDoc, Props, PropItem } from 'react-docgen-typescript'
-import * as docgen from 'react-docgen-typescript'
 import * as prettier from 'prettier'
+import * as docgen from 'react-docgen-typescript'
+import { ComponentDoc, PropItem } from 'react-docgen-typescript'
+import { ParserOptions } from 'react-docgen-typescript/lib/parser'
 import * as ts from 'typescript'
 
 const addSpaces = (s: string) => s.replace(/([A-Z])/g, ' $1').trim()
