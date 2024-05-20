@@ -33,7 +33,7 @@ const navigation = []
 
 const createMdxFile = (slug, stories, dependenciesText, docsText, propsText, installText, cssText, storyTypeDocs) => {
     let fileExport = ''
-    fileExport += "import { CodeComponent } from '@/pages/components/code.component'\n"
+    fileExport += "import { CodeComponent } from '@/components/code.component'\n"
     fileExport += "import DocsLayout from '@/layouts/docs.layout'\n"
     fileExport += "import ComponentLayout from '@/layouts/component.layout'\n"
 
