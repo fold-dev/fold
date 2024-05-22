@@ -21,7 +21,6 @@ import {
     FIClipboard,
     FICog,
     FICopy,
-    FIDataGridSort,
     FIDate,
     FIDateDots,
     FIEye,
@@ -32,6 +31,8 @@ import {
     FIImage,
     FILink,
     FILinkOut,
+    FILockClosed,
+    FILockOpen,
     FIMaximize,
     FIMenu,
     FIMinimize,
@@ -62,8 +63,9 @@ import {
 import { ToastContainer } from '../toast/toast'
 
 export const defaultIcons = {
+    'lock-closed': FILockClosed,
+    'lock-open': FILockOpen,
     'cog': FICog,
-    'data-grid-sort': FIDataGridSort,
     'rotate-left': FIRotateLeft,
     'rotate-right': FIRotateRight,
     'eye': FIEye,

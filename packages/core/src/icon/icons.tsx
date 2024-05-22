@@ -1,21 +1,32 @@
 import React from 'react'
 
-export const FIDataGridSort = (props: any) => (
+export const FILockOpen = (props: any) => (
     <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
         {...props}>
-        <g
-            fill="none"
-            fillRule="evenodd"
-            stroke="none">
-            <g
-                fill="currentColor"
-                transform="translate(32 42.667)">
-                <path d="M246.313 5.629a42.667 42.667 0 0115.876 15.876l182.478 319.336c11.691 20.46 4.583 46.523-15.876 58.214a42.667 42.667 0 01-21.169 5.622H42.667C19.103 404.677 0 385.574 0 362.01a42.667 42.667 0 015.622-21.169L188.099 21.505C199.79 1.046 225.854-6.062 246.313 5.63z" />
-            </g>
-        </g>
+        <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" 
+        />
+    </svg>
+)
+
+export const FILockClosed = (props: any) => (
+    <svg
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        {...props}>
+        <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" 
+        />
     </svg>
 )
 
