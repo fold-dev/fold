@@ -39,6 +39,7 @@ export type ModalProps = {
     disableBackgroundDismiss?: boolean
     disableBackgroundEventPropagation?: boolean
     noOverlay?: boolean
+    noDocumentScrolling?: boolean
     portal?: any
     onDismiss?: any
 } & CoreViewProps
@@ -55,6 +56,7 @@ export const Modal = (props: ModalProps) => {
         disableBackgroundDismiss = false,
         disableBackgroundEventPropagation = false,
         noOverlay,
+        noDocumentScrolling,
         portal = Portal,
         onDismiss,
         ...rest
@@ -83,12 +85,12 @@ export const Modal = (props: ModalProps) => {
 
     useEffect(() => {
         if (focusTrap && isVisible && contentRef.current) trapFocus(contentRef.current)
-        if (isVisible) {
+        if (isVisible && noDocumentScrolling) {
             documentObject.documentElement.style.overflow = 'hidden'
         } else {
             documentObject.documentElement.style.removeProperty('overflow')
         }
-    }, [isVisible])
+    }, [isVisible, noDocumentScrolling])
 
     const renderModal = () => {
         const classNameOverlay = 'f-modal f-row' + (noOverlay ? ' no-overlay' : '')
