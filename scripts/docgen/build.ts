@@ -146,7 +146,7 @@ const generateMdx = (path) => {
         const slug = dirName
 
         if (!dirName.includes('hooks')) {
-            // props 
+            // props
             const componentDoc: ComponentDoc[] = docgen.parse(indexFile, parserOptions)
             const propsText = 'export const props = ' + JSON.stringify(componentDoc)
 

@@ -12,14 +12,7 @@ export type EditableProps = {
 } & CoreViewProps
 
 export const Editable = forwardRef((props: EditableProps, ref) => {
-    const { 
-        onChange, 
-        onCancel, 
-        disabled, 
-        selectOnFocus,
-        cursorEnd,
-        ...rest 
-    } = props
+    const { onChange, onCancel, disabled, selectOnFocus, cursorEnd, ...rest } = props
     const elementRef = useRef(null)
     const childRef = useRef(null)
     const cache = useRef('')

@@ -1,13 +1,5 @@
-import React, {
-    useMemo,
-    useRef
-} from 'react'
-import {
-    classNames,
-    CoreViewProps,
-    useDrag,
-    View
-} from '../'
+import React, { useMemo, useRef } from 'react'
+import { classNames, CoreViewProps, useDrag, View } from '../'
 
 export type DragElementProps = {
     id?: string
@@ -27,7 +19,7 @@ export const DragElement = (props: DragElementProps) => {
         () => ({
             ...style,
             width: indent ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
-            marginLeft: indent && !noIndent ? `calc(var(--f-drag-indent) * ${indent})` : undefined, 
+            marginLeft: indent && !noIndent ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
         }),
         [style, indent]
     )

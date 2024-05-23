@@ -166,7 +166,7 @@ export const TabList = (props: TabListProps) => {
     }
 
     const toggleColButtonVisibility = (element) => {
-        setOverflowStart(element.scrollTop > 0)        
+        setOverflowStart(element.scrollTop > 0)
         setOverflowEnd(element.scrollTop < element.scrollHeight - element.offsetHeight - 1) // TODO: why the +1?
     }
 
@@ -210,19 +210,24 @@ export const TabList = (props: TabListProps) => {
             aria-orientation={isCol ? 'vertical' : 'horizontal'}>
             {overflowStart && (
                 <div className="f-tab-list__icon is-start f-row">
-                    <Button 
-                        size="xs" 
-                        border="none" 
+                    <Button
+                        size="xs"
+                        border="none"
                         shadow="var(--f-shadow-lg)"
                         onClick={handleScrollLess}
                         {...scrollButtonProps}>
-                        <IconLib icon={iconMore} size="sm" />
+                        <IconLib
+                            icon={iconMore}
+                            size="sm"
+                        />
                     </Button>
                 </div>
             )}
 
             <div
-                onScroll={(e) => isRow ? toggleRowButtonVisibility(e.currentTarget) : toggleColButtonVisibility(e.currentTarget)}
+                onScroll={(e) =>
+                    isRow ? toggleRowButtonVisibility(e.currentTarget) : toggleColButtonVisibility(e.currentTarget)
+                }
                 className={classNameInner}
                 ref={listRef}>
                 <div className={classNameInnerContainer}>
@@ -250,13 +255,16 @@ export const TabList = (props: TabListProps) => {
 
             {overflowEnd && (
                 <div className="f-tab-list__icon is-end f-row">
-                    <Button 
-                        size="xs" 
-                        border="none" 
+                    <Button
+                        size="xs"
+                        border="none"
                         shadow="var(--f-shadow-lg)"
                         onClick={handleScrollMore}
                         {...scrollButtonProps}>
-                        <IconLib icon={iconLess} size="sm" />
+                        <IconLib
+                            icon={iconLess}
+                            size="sm"
+                        />
                     </Button>
                 </div>
             )}

@@ -1,13 +1,5 @@
-import {
-    useState
-} from 'react'
-import {
-    dispatchPubsub,
-    DragOrigin,
-    DragTarget,
-    FOLD_DRAG_STATE,
-    usePubsub
-} from '../'
+import { useState } from 'react'
+import { dispatchPubsub, DragOrigin, DragTarget, FOLD_DRAG_STATE, usePubsub } from '../'
 import { windowObject } from '../helpers'
 
 export const setDragState = (data) => {

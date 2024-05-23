@@ -40,19 +40,28 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
     }, [name])
     const presenceVariant = useMemo(() => {
         switch (presence) {
-            case 'online': return 'success'
-            case 'away': return 'warning'
-            case 'busy': return 'danger'
-            default: return
+            case 'online':
+                return 'success'
+            case 'away':
+                return 'warning'
+            case 'busy':
+                return 'danger'
+            default:
+                return
         }
     }, [presence])
     const presenceBadgeDistance = useMemo(() => {
         switch (size) {
-            case 'xs': return '0.3rem'
-            case 'sm': return '0.15rem'
-            case 'lg': return '-0.05rem'
-            case 'xl': return '-0.3rem'
-            default: return '0.1rem'
+            case 'xs':
+                return '0.3rem'
+            case 'sm':
+                return '0.15rem'
+            case 'lg':
+                return '-0.05rem'
+            case 'xl':
+                return '-0.3rem'
+            default:
+                return '0.1rem'
         }
     }, [size])
     const styles = useMemo(() => {
@@ -136,7 +145,7 @@ export const Avatar = forwardRef((props: AvatarProps, ref) => {
                     zIndex={10}
                     style={{
                         '--f-badge-dot-distance': presenceBadgeDistance,
-                        outline: 'var(--f-avatar-badge-outline)',
+                        'outline': 'var(--f-avatar-badge-outline)',
                     }}
                 />
             )}

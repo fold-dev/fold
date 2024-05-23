@@ -6,47 +6,35 @@ import { CoreViewProps, Size } from '../types'
 export type PillProps = {
     as?: 'button' | 'span'
     size?: Size
-    
-    
+
     outline?: boolean
     subtle?: boolean
     solid?: boolean
-    
+
     color?: string
     prefix?: ReactElement
     suffix?: ReactElement
 } & Omit<CoreViewProps, 'as'>
 
 export const Pill = forwardRef((props: PillProps, ref) => {
-    const { 
-        as = 'span',
-        size = 'md', 
-        outline, 
-        subtle, 
-        solid,
-        color, 
-        prefix, 
-        suffix, 
-        style = {}, 
-        ...rest 
-    } = props
+    const { as = 'span', size = 'md', outline, subtle, solid, color, prefix, suffix, style = {}, ...rest } = props
     const isClickable = as == 'button'
     const styles = useMemo(() => {
-        if (!color) return { ...style } 
+        if (!color) return { ...style }
 
         let textColor = null
         let borderColor = null
         let backgroundColor = null
         const foregroundColor = getForegroundColor(color)
 
-        if (!outline && !subtle && !solid) { 
+        if (!outline && !subtle && !solid) {
             textColor = foregroundColor
             backgroundColor = color
             borderColor = foregroundColor
         } else if (subtle) {
             textColor = color
             backgroundColor = addAlpha(color, 0.15)
-        } else if (outline)  {
+        } else if (outline) {
             textColor = color
             borderColor = color
         } else if (solid) {
@@ -56,10 +44,10 @@ export const Pill = forwardRef((props: PillProps, ref) => {
 
         return cleanObject({
             ...style,
-            color: textColor,
+            'color': textColor,
             backgroundColor,
             '--f-pill-border-color': borderColor,
-            outlineColor: backgroundColor,
+            'outlineColor': backgroundColor,
         })
     }, [color, outline, subtle, solid])
     const className = classNames(

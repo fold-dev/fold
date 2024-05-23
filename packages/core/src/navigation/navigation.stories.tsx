@@ -68,7 +68,7 @@ export const PrefixAndSuffix = () => (
         bgToken="surface-strong"
         p={20}>
         <Navigation width={300}>
-            <NavigationHeading 
+            <NavigationHeading
                 prefix={<IconLib icon="circle" />}
                 suffix={<IconLib icon="circle" />}>
                 Core

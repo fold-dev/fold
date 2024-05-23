@@ -91,7 +91,7 @@ export const Modal = (props: ModalProps) => {
     }, [isVisible])
 
     const renderModal = () => {
-        const classNameOverlay = "f-modal f-row" + (noOverlay ? " no-overlay" : "")
+        const classNameOverlay = 'f-modal f-row' + (noOverlay ? ' no-overlay' : '')
         const className = classNames(
             {
                 'f-modal__inner': true,

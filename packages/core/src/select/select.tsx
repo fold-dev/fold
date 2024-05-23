@@ -15,7 +15,7 @@ import {
     useTimer,
     useVisibility,
     View,
-    Virtual
+    Virtual,
 } from '../'
 import {
     classNames,

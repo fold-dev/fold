@@ -58,7 +58,7 @@ import {
     FIVideo,
     FIWarning,
     FIX,
-    setFoldIcons
+    setFoldIcons,
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
 

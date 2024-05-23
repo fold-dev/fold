@@ -112,7 +112,7 @@ export const Input = forwardRef((props: InputProps, ref) => {
         [size, props.className]
     )
 
-    const onFocus = () => selectOnFocus ? inputRef.current?.select() : null
+    const onFocus = () => (selectOnFocus ? inputRef.current?.select() : null)
 
     useEffect(() => {
         if (!inputRef.current) return
@@ -184,7 +184,7 @@ export const InputSuffix = (props: InputSuffixProps) => {
 
     return (
         <View
-        onClick={handleClick}
+            onClick={handleClick}
             {...props}
             className={className}
             ref={ref}

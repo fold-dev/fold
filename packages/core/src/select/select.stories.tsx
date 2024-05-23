@@ -13,7 +13,7 @@ import {
     Stack,
     Text,
     timezones,
-    View
+    View,
 } from '@fold-dev/core'
 import * as Token from '@fold-dev/design/tokens'
 import React, { useMemo, useRef, useState } from 'react'

@@ -1,7 +1,4 @@
-import React, {
-    useEffect,
-    useRef
-} from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
     DragVariant,
     MoveDirection,
@@ -16,7 +13,7 @@ import {
     setTarget,
     useDrag,
     useDragEvent,
-    useWindowEvent
+    useWindowEvent,
 } from '..'
 import { globalCursor, windowObject } from '../helpers'
 
@@ -49,12 +46,7 @@ export type DragManagerProps = {
 }
 
 export const DragManager = (props: DragManagerProps) => {
-    const {
-        animation = 200,
-        moveThreshold = 0,
-        indentThreshold = 10,
-        linedRegionThreshold = 3,
-    } = props
+    const { animation = 200, moveThreshold = 0, indentThreshold = 10, linedRegionThreshold = 3 } = props
     const ghostRef = useRef<any>(null)
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
@@ -68,11 +60,11 @@ export const DragManager = (props: DragManagerProps) => {
                 dispatchDragEvent('ondrop', { origin, target: cache.targetCache })
             } else {
                 dispatchDragEvent('ondrop', { origin, target })
-            }            
+            }
             endDrag()
             setTarget({})
             setOrigin({ targetVariant: {} })
-            cache.mouseDown = false            
+            cache.mouseDown = false
         } else {
             endDrag()
         }
@@ -196,14 +188,15 @@ export const DragManager = (props: DragManagerProps) => {
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
-                            
+
                             // ------------------------------------------------------------
                             // indentation calculation & caching start
                             // ------------------------------------------------------------
 
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
-                            const indentIsCached = cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
+                            const indentIsCached =
+                                cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
 
                             // if it's cached then update the target with the cached level
                             if (indentIsCached) {
