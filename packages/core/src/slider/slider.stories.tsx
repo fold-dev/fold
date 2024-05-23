@@ -153,7 +153,7 @@ export const WithColorAndLabels = () => {
 
     return (
         <>
-            <Text>{value} with color and labels</Text>
+            <Text>{Math.round(value[0] * 100) / 100} & {Math.round(value[1] * 100) / 100} with color and labels</Text>
             <Slider
                 showTooltip
                 markers={11}
