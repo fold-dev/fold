@@ -41,17 +41,15 @@
 }
 
 .f-notification__content {
+    color: currentColor;
     padding: 0;
+    flex: 1;
 }
 
+.f-notification__content a,
 .f-notification__content .f-text,
 .f-notification__content .f-heading {
     color: currentColor;
-}
-
-.f-notification__content {
-    color: currentColor;
-    flex: 1;
 }
 
 .f-notification.is-accent {
