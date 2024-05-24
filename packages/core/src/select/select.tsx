@@ -46,6 +46,8 @@ export type SelectProps = {
     header?: ReactElement | null
     onSelect: any
     onFilter?: any
+    onOpen?: () => void
+    onClose?: () => void
     filterDelay?: number
     inputProps?: InputProps
     prefix?: any
@@ -77,6 +79,8 @@ export const Select = (props: SelectProps) => {
         header,
         onSelect,
         onFilter,
+        onOpen,
+        onClose,
         filterDelay = 1000,
         inputProps,
         prefix,
@@ -249,6 +253,14 @@ export const Select = (props: SelectProps) => {
             if (onFilter && !!text) onFilter(text)
         }, filterDelay)
     }, [text])
+
+    useEffect(() => {
+        if (visible) {
+            if (onOpen) onOpen()
+        } else {
+            if (onClose) onClose()
+        }
+    }, [visible])
 
     useEffect(() => {
         setCursor(0)
