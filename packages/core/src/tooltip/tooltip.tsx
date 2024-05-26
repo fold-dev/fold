@@ -50,6 +50,7 @@ export type TooltipProps = {
     alwaysVisible?: boolean
     content?: ReactElement
     delay?: number
+    contentProps?: TooltipContentProps
     onDismiss?: any
 } & CoreViewProps
 
@@ -61,6 +62,7 @@ export const Tooltip = (props: TooltipProps) => {
         alwaysVisible = false,
         content,
         delay = 500,
+        contentProps = {},
         onDismiss,
         ...rest
     } = props
@@ -147,7 +149,8 @@ export const Tooltip = (props: TooltipProps) => {
                         role="tooltip">
                         <TooltipContent
                             anchor={anchor}
-                            arrow={arrow}>
+                            arrow={arrow}
+                            {...contentProps}>
                             {content ? content : <Text>{text}</Text>}
                         </TooltipContent>
                     </View>
