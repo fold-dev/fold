@@ -21,12 +21,12 @@ const REPOSITION_INTERVAL = 100
 export type TooltipAnchor = PopoutPosition
 
 export type TooltipContentProps = {
-    anchor: TooltipAnchor
+    anchor?: TooltipAnchor
     arrow?: boolean
 } & CoreViewProps
 
 export const TooltipContent = (props: TooltipContentProps) => {
-    const { anchor, arrow = true, ...rest } = props
+    const { anchor = 'top-center', arrow = true, ...rest } = props
     const className = classNames(
         {
             'f-tooltip-content': true,

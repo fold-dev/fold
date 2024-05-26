@@ -1,11 +1,11 @@
 import { CoreViewProps, ListStyleType } from '../types'
 import { classNames } from '../helpers'
-import React, { useMemo } from 'react'
+import React, { forwardRef, useMemo } from 'react'
 import { View } from '..'
 
 export type LiProps = {} & CoreViewProps
 
-export const Li = (props: LiProps) => {
+export const Li = forwardRef((props: LiProps, ref) => {
     const className = classNames(
         {
             'f-li': true,
@@ -16,11 +16,12 @@ export const Li = (props: LiProps) => {
     return (
         <View
             {...props}
+            ref={ref}
             as="li"
             className={className}
         />
     )
-}
+})
 
 export type ListProps = {
     as?: 'ul' | 'ol'
@@ -28,7 +29,7 @@ export type ListProps = {
     bullet?: string
 } & CoreViewProps
 
-export const List = (props: ListProps) => {
+export const List = forwardRef((props: ListProps, ref) => {
     const { as, bullet = null, type = 'default', style = {}, ...rest } = props
     const className = classNames(
         {
@@ -50,9 +51,10 @@ export const List = (props: ListProps) => {
     return (
         <View
             {...rest}
+            ref={ref}
             as={as}
             className={className}
             style={styles}
         />
     )
-}
+})
