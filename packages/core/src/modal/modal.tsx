@@ -57,7 +57,7 @@ export const Modal = (props: ModalProps) => {
         disableBackgroundEventPropagation = false,
         noOverlay,
         noDocumentScrolling,
-        portal = Portal,
+        portal,
         onDismiss,
         ...rest
     } = props
