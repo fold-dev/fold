@@ -362,6 +362,12 @@
     border-color: var(--f-button-color);
 }
 
+.f-button.is-outline:not(:disabled):hover,
+.f-button.is-outline.is-active:not(:disabled) {
+    background: var(--f-button-color);
+    color: var(--f-color-text-on-color); 
+}
+
 .f-button.is-outline:disabled:hover,
 .f-button.is-accent.is-outline:disabled:hover,
 .f-button.is-success.is-outline:disabled:hover,

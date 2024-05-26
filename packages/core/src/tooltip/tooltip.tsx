@@ -21,12 +21,12 @@ const REPOSITION_INTERVAL = 100
 export type TooltipAnchor = PopoutPosition
 
 export type TooltipContentProps = {
-    anchor: TooltipAnchor
+    anchor?: TooltipAnchor
     arrow?: boolean
 } & CoreViewProps
 
 export const TooltipContent = (props: TooltipContentProps) => {
-    const { anchor, arrow = true, ...rest } = props
+    const { anchor = 'top-center', arrow = true, ...rest } = props
     const className = classNames(
         {
             'f-tooltip-content': true,
@@ -50,6 +50,7 @@ export type TooltipProps = {
     alwaysVisible?: boolean
     content?: ReactElement
     delay?: number
+    contentProps?: TooltipContentProps
     onDismiss?: any
 } & CoreViewProps
 
@@ -61,6 +62,7 @@ export const Tooltip = (props: TooltipProps) => {
         alwaysVisible = false,
         content,
         delay = 500,
+        contentProps = {},
         onDismiss,
         ...rest
     } = props
@@ -147,7 +149,8 @@ export const Tooltip = (props: TooltipProps) => {
                         role="tooltip">
                         <TooltipContent
                             anchor={anchor}
-                            arrow={arrow}>
+                            arrow={arrow}
+                            {...contentProps}>
                             {content ? content : <Text>{text}</Text>}
                         </TooltipContent>
                     </View>

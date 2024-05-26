@@ -242,7 +242,8 @@ export const Variants = () => (
                         bgToken="surface-strong"
                         width="100%"
                         data-nofocus={true}>
-                        ❌ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not focusable).
+                        ❌ Purchase a left-handed screwdriver and a bucket of steam at the hardware store (not
+                        focusable).
                     </Text>
                     <Text
                         p={10}
@@ -700,7 +701,9 @@ export const SavingAfterDrop = () => {
             row
             width="100%"
             alignItems="flex-start">
-            <DragArea width="100%" group="save-after-drop">
+            <DragArea
+                width="100%"
+                group="save-after-drop">
                 {items.map((item, index) => (
                     <Text
                         key={index}
@@ -743,9 +746,9 @@ export const CustomGhostElement = () => {
             width="100%"
             alignItems="flex-start">
             <Heading as="h4">Drag Area</Heading>
-            <DragArea 
+            <DragArea
                 variant="lined"
-                width="100%" 
+                width="100%"
                 group="custom-ghost-element">
                 {items.map((item, index) => (
                     <Text
@@ -755,38 +758,42 @@ export const CustomGhostElement = () => {
                         width="100%"
                         onMouseDown={(e) => {
                             console.log('1')
-                            setCustomGhostElement(renderToString(
-                                <div 
-                                    className="f-card f-text" 
-                                    style={{ padding: 10, width: 'fit-content' }}>
-                                    <div className="f-text">
-                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                            setCustomGhostElement(
+                                renderToString(
+                                    <div
+                                        className="f-card f-text"
+                                        style={{ padding: 10, width: 'fit-content' }}>
+                                        <div className="f-text">
+                                            Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                        </div>
                                     </div>
-                                </div>
-                            ))
+                                )
+                            )
                         }}>
                         {item.text} (index #{index})
                     </Text>
                 ))}
             </DragArea>
             <Heading as="h4">Drag Element Area</Heading>
-            <DragElementArea 
+            <DragElementArea
                 variant="lined"
-                width="100%" 
+                width="100%"
                 group="custom-ghost-element">
                 {items.map((item, index) => (
-                    <DragElement 
+                    <DragElement
                         key={index}
                         onMouseDown={(e) => {
-                            setCustomGhostElement(renderToString(
-                                <div 
-                                    className="f-card f-text" 
-                                    style={{ padding: 10, width: 'fit-content' }}>
-                                    <div className="f-text">
-                                        Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                            setCustomGhostElement(
+                                renderToString(
+                                    <div
+                                        className="f-card f-text"
+                                        style={{ padding: 10, width: 'fit-content' }}>
+                                        <div className="f-text">
+                                            Dragging {items[index].text.toLowerCase().substring(0, 10)} ...
+                                        </div>
                                     </div>
-                                </div>
-                            ))
+                                )
+                            )
                         }}>
                         <Text
                             key={index}
@@ -891,7 +898,8 @@ export const DragElementTargetVariants = () => (
                                 p={10}
                                 bgToken="surface-strong"
                                 width="100%">
-                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene (not focusable).
+                                ✅ Attend a top-secret meeting with the Tooth Fairy to discuss dental hygiene (not
+                                focusable).
                             </Text>
                         </DragElement>
                         <DragElement>

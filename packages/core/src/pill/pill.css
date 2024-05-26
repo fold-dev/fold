@@ -83,7 +83,7 @@
 .f-pill.xs {
     padding: 0 0.1rem;
     font-weight: var(--f-font-weight-semibold);
-    height: var(--f-size-6);
+    height: var(--f-size-5);
 }
 
 .f-pill.sm {

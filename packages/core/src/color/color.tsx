@@ -54,7 +54,6 @@ export const ColorPicker = (props: ColorPickerProps) => {
     const { dragging, startDragging, stopDragging } = useDragging()
     const colorRef = useRef(null)
     const hasEyeDropperSupport = 'EyeDropper' in window
-    const [dimensions, setDimensions] = useState<any>({ width: 0, height: 0, top: 0, left: 0 })
     const [backgroundColor, setBackgroundColor] = useState('')
     const [handle, setHandle] = useState({ top: 0, left: 0 })
     const mousePosition = useRef({ x: 0, y: 0 })
@@ -71,6 +70,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
     )
 
     const updateHandle = (hsl, hsb) => {
+        const dimensions = getBoundingClientRect(colorRef.current)
         const left = (hsl.s / 100) * dimensions.width
         const top = ((100 - hsb.b) / 100) * dimensions.height
 
@@ -110,6 +110,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
             onChange(hex)
 
             executeLast(() => {
+                const dimensions = getBoundingClientRect(colorRef.current)
                 const { top, left, right, bottom, width, height } = dimensions
                 const { x, y } = mousePosition.current
                 const mouseIsOnCanvas = x >= left && x <= right && y >= top && y <= bottom
@@ -134,6 +135,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
     const handleMouseMove = (e) => {
         if (!dragging) return
 
+        const dimensions = getBoundingClientRect(colorRef.current)
         const { top, left, width, height } = dimensions
         const x = e.clientX - left
         const y = e.clientY - top
@@ -196,7 +198,6 @@ export const ColorPicker = (props: ColorPickerProps) => {
         const top = ((100 - hsb.b) / 100) * dimensions.height
 
         setHandle({ top, left })
-        setDimensions(dimensions)
         setRange(hsb.h)
     }, [])
 

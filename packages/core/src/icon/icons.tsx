@@ -1,21 +1,32 @@
 import React from 'react'
 
-export const FIDataGridSort = (props: any) => (
+export const FILockOpen = (props: any) => (
     <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
         {...props}>
-        <g
-            fill="none"
-            fillRule="evenodd"
-            stroke="none">
-            <g
-                fill="currentColor"
-                transform="translate(32 42.667)">
-                <path d="M246.313 5.629a42.667 42.667 0 0115.876 15.876l182.478 319.336c11.691 20.46 4.583 46.523-15.876 58.214a42.667 42.667 0 01-21.169 5.622H42.667C19.103 404.677 0 385.574 0 362.01a42.667 42.667 0 015.622-21.169L188.099 21.505C199.79 1.046 225.854-6.062 246.313 5.63z" />
-            </g>
-        </g>
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+        />
+    </svg>
+)
+
+export const FILockClosed = (props: any) => (
+    <svg
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        {...props}>
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+        />
     </svg>
 )
 
@@ -265,36 +276,6 @@ export const FIImage = (props: any) => (
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-        />
-    </svg>
-)
-
-export const FIKanbanMinimize = (props: any) => (
-    <svg
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        {...props}>
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-        />
-    </svg>
-)
-
-export const FIKanbanMaximize = (props: any) => (
-    <svg
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        {...props}>
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
         />
     </svg>
 )
@@ -827,10 +808,10 @@ export const FIVideo = (props: any) => (
         viewBox="0 0 24 24"
         stroke="currentColor"
         {...props}>
-        <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" 
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
         />
     </svg>
 )
@@ -842,10 +823,10 @@ export const FIAudio = (props: any) => (
         viewBox="0 0 24 24"
         stroke="currentColor"
         {...props}>
-        <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" 
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
         />
     </svg>
 )

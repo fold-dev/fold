@@ -1,4 +1,3 @@
-import * as Token from '@fold-dev/design/tokens'
 import {
     Avatar,
     Divider,
@@ -6,8 +5,6 @@ import {
     Heading,
     Icon,
     IconLib,
-    LabelSelect,
-    LabelSelectLabel,
     Pill,
     Select,
     SelectList,
@@ -16,10 +13,9 @@ import {
     Stack,
     Text,
     timezones,
-    UserSelect,
-    UserSelectUser,
     View,
 } from '@fold-dev/core'
+import * as Token from '@fold-dev/design/tokens'
 import React, { useMemo, useRef, useState } from 'react'
 
 export default {
@@ -683,7 +679,8 @@ export const Tag = () => {
 
     return (
         <Select
-            tag
+            tagInput
+            noListFocus
             as="default"
             width={500}
             placeholder="Select a label"
@@ -728,76 +725,5 @@ export const Tag = () => {
                 )
             }}
         />
-    )
-}
-
-// --
-
-/**
- * The user & label Select component are prepackaged select formats specifically for
- * use in-product, they are 100% reproducable simply using a normal Select component
- * Please note these examples are a work-in-progress.
- */
-export const UserAndLabelSelect = () => {
-    const labels: LabelSelectLabel[] = [
-        { id: 'l1', color: Token.ColorElectric400, icon: 'star', text: 'Shopping' },
-        { id: 'l2', color: Token.ColorYellow400, text: 'Groceries' },
-        { id: 'l3', color: Token.ColorNeonpink400, text: 'Housework' },
-        { id: 'l4', icon: 'building', text: 'Office' },
-        { id: 'l5', text: 'Everything else' },
-    ]
-
-    const selectedLabels = [
-        { id: 'l1', color: Token.ColorElectric400, icon: 'star', text: 'Shopping' },
-        { id: 'l4', icon: 'building', text: 'Office' },
-        { id: 'l5', text: 'Everything else' },
-    ]
-
-    const users: UserSelectUser[] = [
-        { id: 'u1', name: 'John', image: '/men/01.jpg' },
-        { id: 'u2', name: 'Ben', image: '/men/02.jpg' },
-        { id: 'u3', name: 'Derek', image: '/men/03.jpg' },
-        { id: 'u4', name: 'Samantha', image: '/women/01.jpg' },
-        { id: 'u5', name: 'Sarah', image: '/women/02.jpg' },
-        { id: 'u6', name: 'Byron', image: '/men/04.jpg' },
-        { id: 'u7', name: 'Andrew', image: '/men/05.jpg' },
-        { id: 'u8', name: 'Peter' },
-    ]
-
-    const selectedUsers = [
-        { id: 'u1', name: 'John', image: '/men/07.jpg' },
-        { id: 'u2', name: 'Ben', image: '/men/08.jpg' },
-        { id: 'u5', name: 'Timothy', image: '/men/09.jpg' },
-    ]
-
-    return (
-        <View
-            row
-            gap={10}
-            alignItems="flex-start"
-            justifyContent="flex-start">
-            <View width={300}>
-                <LabelSelect
-                    width={300}
-                    labels={selectedLabels}
-                    availableLabels={labels}
-                    inputPlaceholder="Add label..."
-                    onLabelAdd={(label) => console.log('label add', label)}
-                    onLabelDelete={(label) => console.log('label delete', label)}
-                    onFilter={(value) => console.log('search ', value)}
-                />
-            </View>
-            <View width={300}>
-                <UserSelect
-                    width={300}
-                    users={selectedUsers}
-                    availableUsers={users}
-                    inputPlaceholder="Add user..."
-                    onUserAdd={(user) => console.log('user add', user)}
-                    onUserDelete={(user) => console.log('user delete', user)}
-                    onFilter={(value) => console.log('search ', value)}
-                />
-            </View>
-        </View>
     )
 }

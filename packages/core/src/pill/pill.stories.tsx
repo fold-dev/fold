@@ -116,15 +116,13 @@ export const Styles = () => (
  */
 export const Color = () => (
     <Stack spacing={5}>
-        <Pill color={Token.ColorElectric200}>
-            React
-        </Pill>
+        <Pill color={Token.ColorElectric200}>React</Pill>
         <Pill
             outline
             color={Token.ColorTeal500}>
             Svelte
         </Pill>
-        <Pill 
+        <Pill
             subtle
             color={Token.ColorViolet500}>
             Angular

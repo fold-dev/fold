@@ -49,13 +49,7 @@ export type ProgressCircleProps = {
 } & CoreViewProps
 
 export const ProgressCircle = (props: ProgressCircleProps) => {
-    const { 
-        value = 0, 
-        thickness = '1rem', 
-        size = 50, 
-        variant = 'default', 
-        ...rest 
-    } = props
+    const { value = 0, thickness = '1rem', size = 50, variant = 'default', ...rest } = props
     const radius = 90
     const circ = Math.PI * (radius * 2)
     const pct = ((100 - value) / 100) * circ
@@ -66,7 +60,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
         },
         [props.className, getActionClass(variant)]
     )
-    
+
     return (
         <View
             {...rest}
@@ -90,7 +84,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
                     fill="transparent"
                     strokeDasharray="565.48"
                     strokeDashoffset="0"
-                    style={{ strokeWidth: thickness }} 
+                    style={{ strokeWidth: thickness }}
                 />
                 <circle
                     r={radius}
@@ -100,7 +94,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
                     strokeDasharray="565.48"
                     strokeDashoffset={0}
                     style={{ strokeWidth: thickness, strokeDashoffset: pct }}
-                    strokeLinecap="butt" 
+                    strokeLinecap="butt"
                 />
             </svg>
             {!!props.children && <div className="f-progress-circle-children f-row">{props.children}</div>}
@@ -116,13 +110,7 @@ export type ProgressPieProps = {
 } & CoreViewProps
 
 export const ProgressPie = (props: ProgressPieProps) => {
-    const { 
-        value = 0, 
-        padding = 5,
-        size = 50, 
-        variant = 'default', 
-        ...rest 
-    } = props
+    const { value = 0, padding = 5, size = 50, variant = 'default', ...rest } = props
     const className = classNames(
         {
             'f-progress-pie': true,
@@ -133,19 +121,38 @@ export const ProgressPie = (props: ProgressPieProps) => {
 
     const pieChartPath = useMemo(() => {
         const realPadding = Math.round((padding / size) * 200)
-		const viewSize = 200 - (realPadding * 2)
-		const radius = viewSize / 2	
-        const x = Math.cos((2 * Math.PI)/(100/value))
-        const y = Math.sin((2 * Math.PI)/(100/value))
-        const longArc = (value <= 50) ? 0 : 1
-        const d = "M" + radius + "," + radius + " L" + radius + "," + 0 + ", A" + radius + "," + radius + " 0 " + longArc + ",1 " + (radius + y*radius) + "," + (radius - x*radius) + " z"
+        const viewSize = 200 - realPadding * 2
+        const radius = viewSize / 2
+        const x = Math.cos((2 * Math.PI) / (100 / value))
+        const y = Math.sin((2 * Math.PI) / (100 / value))
+        const longArc = value <= 50 ? 0 : 1
+        const d =
+            'M' +
+            radius +
+            ',' +
+            radius +
+            ' L' +
+            radius +
+            ',' +
+            0 +
+            ', A' +
+            radius +
+            ',' +
+            radius +
+            ' 0 ' +
+            longArc +
+            ',1 ' +
+            (radius + y * radius) +
+            ',' +
+            (radius - x * radius) +
+            ' z'
 
         return {
             d,
             p: realPadding,
         }
     }, [value])
-    
+
     return (
         <View
             {...rest}
@@ -175,9 +182,7 @@ export const ProgressPie = (props: ProgressPieProps) => {
                         fill="grey"
                         className="f-progress-pie__fill"
                         transform={`rotate(0 0 0) translate(${pieChartPath.p} ${pieChartPath.p})`}>
-                        <path 
-                            d={pieChartPath.d}
-                        /> 
+                        <path d={pieChartPath.d} />
                     </g>
                 )}
                 {value >= 100 && (

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
-import { Button, Icon, useFocus, ButtonProps, View, IconButton } from '../'
+import { Button, Icon, useFocus, ButtonProps, View, IconButton, Portal } from '../'
 import { CoreViewProps } from '../types'
-import { classNames, getActionClass, getKey } from '../helpers'
+import { classNames, documentObject, getActionClass, getKey } from '../helpers'
 import { FICircle, FIX } from '../icon'
 
 export type ModalCloseProps = ButtonProps
@@ -39,6 +39,7 @@ export type ModalProps = {
     disableBackgroundDismiss?: boolean
     disableBackgroundEventPropagation?: boolean
     noOverlay?: boolean
+    noDocumentScrolling?: boolean
     portal?: any
     onDismiss?: any
 } & CoreViewProps
@@ -55,6 +56,7 @@ export const Modal = (props: ModalProps) => {
         disableBackgroundDismiss = false,
         disableBackgroundEventPropagation = false,
         noOverlay,
+        noDocumentScrolling,
         portal,
         onDismiss,
         ...rest
@@ -83,10 +85,15 @@ export const Modal = (props: ModalProps) => {
 
     useEffect(() => {
         if (focusTrap && isVisible && contentRef.current) trapFocus(contentRef.current)
-    }, [isVisible])
+        if (isVisible && noDocumentScrolling) {
+            documentObject.documentElement.style.overflow = 'hidden'
+        } else {
+            documentObject.documentElement.style.removeProperty('overflow')
+        }
+    }, [isVisible, noDocumentScrolling])
 
     const renderModal = () => {
-        const classNameOverlay = "f-modal f-row" + (noOverlay ? " no-overlay" : "")
+        const classNameOverlay = 'f-modal f-row' + (noOverlay ? ' no-overlay' : '')
         const className = classNames(
             {
                 'f-modal__inner': true,

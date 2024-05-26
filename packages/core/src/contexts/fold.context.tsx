@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import { Alert, AlertOptions } from '../alert/alert'
-import { DragManager, DragManagerProps } from '../drag/drag'
+import { Dialog, DialogOptions } from '../dialog/dialog'
+import { DragManager, DragManagerProps } from '../drag'
 import { useTheme } from '../hooks/theme.hook'
 import {
     FIArrowDown,
@@ -20,7 +21,6 @@ import {
     FIClipboard,
     FICog,
     FICopy,
-    FIDataGridSort,
     FIDate,
     FIDateDots,
     FIEye,
@@ -29,10 +29,10 @@ import {
     FIFlag,
     FIGift,
     FIImage,
-    FIKanbanMaximize,
-    FIKanbanMinimize,
     FILink,
     FILinkOut,
+    FILockClosed,
+    FILockOpen,
     FIMaximize,
     FIMenu,
     FIMinimize,
@@ -61,11 +61,11 @@ import {
     setFoldIcons,
 } from '../icon'
 import { ToastContainer } from '../toast/toast'
-import { Dialog, DialogOptions } from '../dialog/dialog'
 
 export const defaultIcons = {
+    'lock-closed': FILockClosed,
+    'lock-open': FILockOpen,
     'cog': FICog,
-    'data-grid-sort': FIDataGridSort,
     'rotate-left': FIRotateLeft,
     'rotate-right': FIRotateRight,
     'eye': FIEye,
@@ -82,10 +82,7 @@ export const defaultIcons = {
     'chevron-up': FIChevronUp,
     'image': FIImage,
     'minimize': FIMinimize,
-    'todo-collapse': FIChevronDown,
-    'kanban-minimize': FIKanbanMinimize,
     'maximize': FIMaximize,
-    'kanban-maximize': FIKanbanMaximize,
     'more-h': FIMoreH,
     'more-v': FIMoreV,
     'check': FICheck,
@@ -125,7 +122,6 @@ export const defaultIcons = {
 setFoldIcons(defaultIcons)
 
 export type FoldApp = {
-    license?: string
     theme?: string
 }
 
@@ -150,13 +146,12 @@ export const FoldContext = React.createContext<FoldContext>({
 })
 
 export type FoldProviderProps = {
-    license?: string
     theme?: string
     dragOptions?: DragManagerProps
 }
 
 export const FoldProvider = (props: any) => {
-    const { license, theme, dragOptions = {} } = props
+    const { theme, dragOptions = {} } = props
     const [fold, setFold] = useState<FoldApp>({})
     const [alert, setAlert] = useState<AlertOptions>({})
     const [dialog, setDialog] = useState<DialogOptions>({})
@@ -177,8 +172,8 @@ export const FoldProvider = (props: any) => {
     useLayoutEffect(() => {
         const theme = getStoredTheme() || getSystemTheme()
         setTheme(theme)
-        setFold({ theme, license })
-    }, [theme, license])
+        setFold({ theme })
+    }, [theme])
 
     return (
         <FoldContext.Provider

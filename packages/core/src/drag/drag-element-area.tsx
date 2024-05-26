@@ -1,10 +1,4 @@
-import React, {
-    Children,
-    forwardRef,
-    useLayoutEffect,
-    useMemo,
-    useRef
-} from 'react'
+import React, { Children, forwardRef, useLayoutEffect, useMemo, useRef } from 'react'
 import {
     CoreViewProps,
     DragVariant,
@@ -15,7 +9,7 @@ import {
     mergeRefs,
     useDragEvent,
     useId,
-    useWindowEvent
+    useWindowEvent,
 } from '../'
 
 export type DragElementAreaProps = {
@@ -47,17 +41,17 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     const bufferRef = useRef(null)
     const id = useId(areaId)
     const noChildren = useMemo(() => Children.count(props.children) == 0, [props.children])
-    const { 
-        isHorizontal, 
-        isVertical, 
-        isDragging, 
-        hasOriginVariant, 
-        finalTargetVariant, 
+    const {
+        isHorizontal,
+        isVertical,
+        isDragging,
+        hasOriginVariant,
+        finalTargetVariant,
         placeholder,
         isLinedFocus,
         isLined,
         isFocus,
-        isAnimated, 
+        isAnimated,
     } = useMemo(() => {
         // variant is when the origin's DragArea specifies a variant
         // via "targetVariant" that affects this DragArea
@@ -79,7 +73,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: indent ? target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0 : 0,
+            marginLeft: indent ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) : 0,
             width: target.indent ? `calc(100% - var(--f-drag-indent) * ${target.indent})` : '100%',
             // this needs to be considered at some point:
             // width: isVertical ? target.width || origin.width : origin.width,
@@ -135,7 +129,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     }
 
     const handleDragStart = (e) => {
-        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+        setTimeout(() => (documentObject.body.dataset.dragginganimation = 'yes'), startDelay)
     }
 
     const handleDragEnd = (e) => {
@@ -154,7 +148,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         // always set this to off when the component mounts
         // or if children change
         bufferRef.current.style.display = 'none'
-        
+
         let bufferHasBeenMadeVisible = false
         const isTargetArea = id == target.areaId
         const originVariant: DragVariant = origin.targetVariant[group]
@@ -163,7 +157,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         containerRef.current.childNodes.forEach((node, index) => {
             // if its a dragelement & the right area
             // previously >>> && node.dataset.areaid == id
-            if (node.dataset.dragelement) { 
+            if (node.dataset.dragelement) {
                 const isDragged = origin.index == index && origin.areaId == id
 
                 // elementShouldFocus
@@ -184,7 +178,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 // we do this here so that they are done at the same time
                 // to avoid any glitches behaviour
                 // previously >>> && isDragged
-                if (isAnimated && isTargetArea) { 
+                if (isAnimated && isTargetArea) {
                     bufferRef.current.style.display = 'block'
                     bufferRef.current.style.width = isVertical ? '100%' : origin.width + 'px'
                     bufferRef.current.style.height = isVertical ? origin.height + 'px' : '100%'
@@ -257,7 +251,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             data-direction={direction}
             data-targetvariant={finalTargetVariant}>
             {props.children}
-            
+
             {placeholder.visible && (
                 <div
                     className={placeholder.className}

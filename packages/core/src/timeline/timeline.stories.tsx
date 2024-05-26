@@ -18,7 +18,7 @@ export const Usage = () => (
     <Timeline>
         <TimelineItem colorToken="text">
             <Text fontWeight="semibold">Checked in at the hotel.</Text>
-            <Text   
+            <Text
                 m="0.25rem 0 0 0"
                 size="sm"
                 colorToken="text-weaker">

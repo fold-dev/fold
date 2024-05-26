@@ -451,18 +451,14 @@ export const MenuHeading = (props: MenuHeadingProps) => {
             as="span"
             role="none"
             className="f-menu-heading f-row">
-            {prefix && (
-                <span className="f-menu-heading__prefix">{prefix}</span>
-            )}
+            {prefix && <span className="f-menu-heading__prefix">{prefix}</span>}
             <Heading
                 {...headingProps}
                 as="h6"
                 className="f-menu-heading__heading f-ellipsis">
                 {props.children}
             </Heading>
-            {suffix && (
-                <span className="f-menu-heading__suffix">{suffix}</span>
-            )}
+            {suffix && <span className="f-menu-heading__suffix">{suffix}</span>}
         </View>
     )
 }

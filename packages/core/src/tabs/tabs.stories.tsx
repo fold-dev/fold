@@ -1,4 +1,17 @@
-import { Badge, Card, Heading, IconLib, Pill, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, View } from '@fold-dev/core'
+import {
+    Badge,
+    Card,
+    Heading,
+    IconLib,
+    Pill,
+    Stack,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs,
+    View,
+} from '@fold-dev/core'
 import React, { useState } from 'react'
 
 export default {
@@ -119,7 +132,7 @@ export const Overflow = () => {
 
     return (
         <Stack
-            alignItems="flex-start" 
+            alignItems="flex-start"
             direction="vertical"
             noStretch
             spacing={20}>

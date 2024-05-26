@@ -1,10 +1,4 @@
-import React, {
-    Children,
-    forwardRef,
-    ReactElement,
-    useMemo,
-    useRef
-} from 'react'
+import React, { Children, forwardRef, ReactElement, useMemo, useRef } from 'react'
 import {
     classNames,
     CoreViewProps,
@@ -22,7 +16,7 @@ import {
     useDragEvent,
     useId,
     useWindowEvent,
-    View
+    View,
 } from '..'
 import { getButton } from '../helpers'
 
@@ -270,7 +264,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     const renderPlaceholder = () => {
         if (!showBufferAndPlaceholder) return null
 
-        const marginLeft = indent ? target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0 : 0
+        const marginLeft = indent ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) : 0
         const position = noChildren ? 'relative' : 'absolute'
         const width = isVertical ? target.width || origin.width : origin.width
         const height = isVertical ? origin.height : target.height || origin.height
@@ -317,7 +311,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
     }
 
     const handleDragStart = (e) => {
-        setTimeout(() => documentObject.body.dataset.dragginganimation = 'yes', startDelay)
+        setTimeout(() => (documentObject.body.dataset.dragginganimation = 'yes'), startDelay)
     }
 
     const handleDragEnd = (e) => {
@@ -347,7 +341,8 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const isDragged = origin.index == index && origin.areaId == id
                 const showFocused = target.focus && isTargetArea && index == target.index
                 const showFirstPlaceholder = (isLinedFocus || isLined) && isTargetArea && index == target.index
-                const showLastPlaceholder = (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
+                const showLastPlaceholder =
+                    (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
                 const noDrag = !!child.props['data-nodrag']
 
                 return (
@@ -360,7 +355,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                         data-nodrop={child.props['data-nodrop']}
                         data-nodrag={child.props['data-nodrag']}
                         data-nofocus={child.props['data-nofocus']}
-                        className={isDragged ? "f-drag-area__element is-dragged" : "f-drag-area__element"}
+                        className={isDragged ? 'f-drag-area__element is-dragged' : 'f-drag-area__element'}
                         onMouseDown={(e) => (noDrag ? null : handleMouseDown(e, index))}
                         style={{
                             transform: isAnimated
@@ -371,9 +366,7 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                                     : null
                                 : null,
                         }}>
-                        {showFocused && isVertical && (
-                            <div className="f-drag-area__element__lined-focus" />
-                        )}
+                        {showFocused && isVertical && <div className="f-drag-area__element__lined-focus" />}
                         {showFirstPlaceholder && !showFocused && isVertical && (
                             <div className="f-drag-area__element__line is-vertical is-first" />
                         )}

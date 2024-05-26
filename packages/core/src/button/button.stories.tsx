@@ -45,7 +45,10 @@ export const Sizes = () => (
 // --
 
 export const NormalVariants = () => (
-    <View column gap="1rem" alignItems="flex-start">
+    <View
+        column
+        gap="1rem"
+        alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
             <Button>Default</Button>
@@ -60,35 +63,119 @@ export const NormalVariants = () => (
         <Heading as="h5">Disabled</Heading>
         <Stack spacing={5}>
             <Button disabled>Default</Button>
-            <Button disabled variant="accent">Accent</Button>
-            <Button disabled variant="success">Success</Button>
-            <Button disabled variant="neutral">Neutral</Button>
-            <Button disabled variant="caution">Caution</Button>
-            <Button disabled variant="warning">Warning</Button>
-            <Button disabled variant="danger">Danger</Button>
-            <Button disabled variant="highlight">Highlight</Button>
+            <Button
+                disabled
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                disabled
+                variant="success">
+                Success
+            </Button>
+            <Button
+                disabled
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                disabled
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                disabled
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                disabled
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                disabled
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
         <Stack spacing={5}>
             <Button loading>Default</Button>
-            <Button loading variant="accent">Accent</Button>
-            <Button loading variant="success">Success</Button>
-            <Button loading variant="neutral">Neutral</Button>
-            <Button loading variant="caution">Caution</Button>
-            <Button loading variant="warning">Warning</Button>
-            <Button loading variant="danger">Danger</Button>
-            <Button loading variant="highlight">Highlight</Button>
+            <Button
+                loading
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                loading
+                variant="success">
+                Success
+            </Button>
+            <Button
+                loading
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                loading
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                loading
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                loading
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                loading
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
         <Stack spacing={5}>
             <Button active>Default</Button>
-            <Button active variant="accent">Accent</Button>
-            <Button active variant="success">Success</Button>
-            <Button active variant="neutral">Neutral</Button>
-            <Button active variant="caution">Caution</Button>
-            <Button active variant="warning">Warning</Button>
-            <Button active variant="danger">Danger</Button>
-            <Button active variant="highlight">Highlight</Button>
+            <Button
+                active
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                active
+                variant="success">
+                Success
+            </Button>
+            <Button
+                active
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                active
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                active
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                active
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                active
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
     </View>
 )
@@ -96,50 +183,198 @@ export const NormalVariants = () => (
 // --
 
 export const SubtleVariants = () => (
-    <View column gap="1rem" alignItems="flex-start">
+    <View
+        column
+        gap="1rem"
+        alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
             <Button subtle>Default</Button>
-            <Button subtle variant="accent">Accent</Button>
-            <Button subtle variant="success">Success</Button>
-            <Button subtle variant="neutral">Neutral</Button>
-            <Button subtle variant="caution">Caution</Button>
-            <Button subtle variant="warning">Warning</Button>
-            <Button subtle variant="danger">Danger</Button>
-            <Button subtle variant="highlight">Highlight</Button>
+            <Button
+                subtle
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                subtle
+                variant="success">
+                Success
+            </Button>
+            <Button
+                subtle
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                subtle
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                subtle
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                subtle
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                subtle
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Disabled</Heading>
         <Stack spacing={5}>
-            <Button subtle disabled>Default</Button>
-            <Button subtle disabled variant="accent">Accent</Button>
-            <Button subtle disabled variant="success">Success</Button>
-            <Button subtle disabled variant="neutral">Neutral</Button>
-            <Button subtle disabled variant="caution">Caution</Button>
-            <Button subtle disabled variant="warning">Warning</Button>
-            <Button subtle disabled variant="danger">Danger</Button>
-            <Button subtle disabled variant="highlight">Highlight</Button>
+            <Button
+                subtle
+                disabled>
+                Default
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="success">
+                Success
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                subtle
+                disabled
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
         <Stack spacing={5}>
-            <Button subtle loading>Default</Button>
-            <Button subtle loading variant="accent">Accent</Button>
-            <Button subtle loading variant="success">Success</Button>
-            <Button subtle loading variant="neutral">Neutral</Button>
-            <Button subtle loading variant="caution">Caution</Button>
-            <Button subtle loading variant="warning">Warning</Button>
-            <Button subtle loading variant="danger">Danger</Button>
-            <Button subtle loading variant="highlight">Highlight</Button>
+            <Button
+                subtle
+                loading>
+                Default
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="success">
+                Success
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                subtle
+                loading
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
         <Stack spacing={5}>
-            <Button subtle active>Default</Button>
-            <Button subtle active variant="accent">Accent</Button>
-            <Button subtle active variant="success">Success</Button>
-            <Button subtle active variant="neutral">Neutral</Button>
-            <Button subtle active variant="caution">Caution</Button>
-            <Button subtle active variant="warning">Warning</Button>
-            <Button subtle active variant="danger">Danger</Button>
-            <Button subtle active variant="highlight">Highlight</Button>
+            <Button
+                subtle
+                active>
+                Default
+            </Button>
+            <Button
+                subtle
+                active
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                subtle
+                active
+                variant="success">
+                Success
+            </Button>
+            <Button
+                subtle
+                active
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                subtle
+                active
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                subtle
+                active
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                subtle
+                active
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                subtle
+                active
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
     </View>
 )
@@ -147,50 +382,198 @@ export const SubtleVariants = () => (
 // --
 
 export const OutlineVariants = () => (
-    <View column gap="1rem" alignItems="flex-start">
+    <View
+        column
+        gap="1rem"
+        alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
         <Stack spacing={5}>
             <Button outline>Default</Button>
-            <Button outline variant="accent">Accent</Button>
-            <Button outline variant="success">Success</Button>
-            <Button outline variant="neutral">Neutral</Button>
-            <Button outline variant="caution">Caution</Button>
-            <Button outline variant="warning">Warning</Button>
-            <Button outline variant="danger">Danger</Button>
-            <Button outline variant="highlight">Highlight</Button>
+            <Button
+                outline
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                outline
+                variant="success">
+                Success
+            </Button>
+            <Button
+                outline
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                outline
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                outline
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                outline
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                outline
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Disabled</Heading>
         <Stack spacing={5}>
-            <Button outline disabled>Default</Button>
-            <Button outline disabled variant="accent">Accent</Button>
-            <Button outline disabled variant="success">Success</Button>
-            <Button outline disabled variant="neutral">Neutral</Button>
-            <Button outline disabled variant="caution">Caution</Button>
-            <Button outline disabled variant="warning">Warning</Button>
-            <Button outline disabled variant="danger">Danger</Button>
-            <Button outline disabled variant="highlight">Highlight</Button>
+            <Button
+                outline
+                disabled>
+                Default
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="success">
+                Success
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                outline
+                disabled
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
         <Stack spacing={5}>
-            <Button outline loading>Default</Button>
-            <Button outline loading variant="accent">Accent</Button>
-            <Button outline loading variant="success">Success</Button>
-            <Button outline loading variant="neutral">Neutral</Button>
-            <Button outline loading variant="caution">Caution</Button>
-            <Button outline loading variant="warning">Warning</Button>
-            <Button outline loading variant="danger">Danger</Button>
-            <Button outline loading variant="highlight">Highlight</Button>
+            <Button
+                outline
+                loading>
+                Default
+            </Button>
+            <Button
+                outline
+                loading
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                outline
+                loading
+                variant="success">
+                Success
+            </Button>
+            <Button
+                outline
+                loading
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                outline
+                loading
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                outline
+                loading
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                outline
+                loading
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                outline
+                loading
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
         <Stack spacing={5}>
-            <Button outline active>Default</Button>
-            <Button outline active variant="accent">Accent</Button>
-            <Button outline active variant="success">Success</Button>
-            <Button outline active variant="neutral">Neutral</Button>
-            <Button outline active variant="caution">Caution</Button>
-            <Button outline active variant="warning">Warning</Button>
-            <Button outline active variant="danger">Danger</Button>
-            <Button outline active variant="highlight">Highlight</Button>
+            <Button
+                outline
+                active>
+                Default
+            </Button>
+            <Button
+                outline
+                active
+                variant="accent">
+                Accent
+            </Button>
+            <Button
+                outline
+                active
+                variant="success">
+                Success
+            </Button>
+            <Button
+                outline
+                active
+                variant="neutral">
+                Neutral
+            </Button>
+            <Button
+                outline
+                active
+                variant="caution">
+                Caution
+            </Button>
+            <Button
+                outline
+                active
+                variant="warning">
+                Warning
+            </Button>
+            <Button
+                outline
+                active
+                variant="danger">
+                Danger
+            </Button>
+            <Button
+                outline
+                active
+                variant="highlight">
+                Highlight
+            </Button>
         </Stack>
     </View>
 )
@@ -379,16 +762,40 @@ export const ButtonGroups = () => (
             <Button>Vertical</Button>
         </ButtonGroup>
         <ButtonGroup>
-            <Button variant="accent" outline>Accented</Button>
-            <Button variant="accent" outline>Accented</Button>
+            <Button
+                variant="accent"
+                outline>
+                Accented
+            </Button>
+            <Button
+                variant="accent"
+                outline>
+                Accented
+            </Button>
         </ButtonGroup>
         <ButtonGroup
             direction="vertical"
             width={300}>
-            <Button variant="highlight" outline>With</Button>
-            <Button variant="highlight" outline>Direction</Button>
-            <Button variant="highlight" outline>Going</Button>
-            <Button variant="highlight" outline>Vertical</Button>
+            <Button
+                variant="highlight"
+                outline>
+                With
+            </Button>
+            <Button
+                variant="highlight"
+                outline>
+                Direction
+            </Button>
+            <Button
+                variant="highlight"
+                outline>
+                Going
+            </Button>
+            <Button
+                variant="highlight"
+                outline>
+                Vertical
+            </Button>
         </ButtonGroup>
         <ButtonGroup>
             <Button variant="accent">Accented 1</Button>
@@ -454,7 +861,7 @@ export const UtilityClasees = () => {
         <Stack
             spacing={10}
             direction="vertical">
-            <View 
+            <View
                 p="1rem"
                 radius="var(--f-radius)"
                 width="fit-content"
@@ -462,7 +869,7 @@ export const UtilityClasees = () => {
                 className="f-buttonize">
                 <Text>Button with opacity</Text>
             </View>
-            <View 
+            <View
                 p="1rem"
                 radius="var(--f-radius)"
                 width="fit-content"

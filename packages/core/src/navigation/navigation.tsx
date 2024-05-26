@@ -4,12 +4,11 @@ import { classNames, renderWithProps } from '../helpers'
 import { CoreViewProps, Size } from '../types'
 
 export type NavigationProps = {
-    transparent?: boolean
     variant?: 'navigation' | 'navbar'
 } & CoreViewProps
 
 export const Navigation = (props: NavigationProps) => {
-    const { transparent = false, variant = 'navigation', ...rest } = props
+    const { variant = 'navigation', ...rest } = props
     const isNavbar = variant == 'navbar'
     const role = isNavbar ? 'navbar' : 'navigation'
     const navigationRef = useRef(null)
@@ -18,7 +17,6 @@ export const Navigation = (props: NavigationProps) => {
             'f-navigation': true,
             'f-row': isNavbar,
             'is-navbar': isNavbar,
-            'is-transparent': transparent,
         },
         [props.className]
     )
@@ -172,18 +170,14 @@ export const NavigationHeading = (props: NavigationHeadingProps) => {
             as="span"
             role="presentation"
             className="f-navigation-heading f-row">
-            {prefix && (
-                <span className="f-navigation-heading__prefix">{prefix}</span>
-            )}
+            {prefix && <span className="f-navigation-heading__prefix">{prefix}</span>}
             <Heading
                 {...headingProps}
                 as="h6"
                 className="f-navigation-heading__heading f-ellipsis">
                 {props.children}
             </Heading>
-            {suffix && (
-                <span className="f-navigation-heading__suffix">{suffix}</span>
-            )}
+            {suffix && <span className="f-navigation-heading__suffix">{suffix}</span>}
         </View>
     )
 }

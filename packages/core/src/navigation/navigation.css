@@ -35,12 +35,6 @@
     position: relative;
 }
 
-.f-navigation.is-transparent {
-    --f-navigation-background-color: transparent;
-    --f-navigation-item-background-color-active: transparent;
-    --f-navigation-item-background-color-hover: transparent;
-}
-
 /* ************************************************************** */
 /* ************************************************************** */
 /* ************************************************************** */

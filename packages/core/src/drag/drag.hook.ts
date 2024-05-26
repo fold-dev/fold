@@ -1,7 +1,4 @@
-import {
-    useEffect,
-    useRef
-} from 'react'
+import { useEffect, useRef } from 'react'
 import {
     dispatchDragEvent,
     documentObject,
@@ -13,7 +10,7 @@ import {
     positionDOMElement,
     resizeDOMElement,
     setOrigin,
-    setTarget
+    setTarget,
 } from '../'
 import { getButton, waitForRender, windowObject } from '../helpers'
 

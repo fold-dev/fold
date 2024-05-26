@@ -11,17 +11,6 @@
     --f-checkbox-check-color: var(--f-color-surface-stronger);
     --f-checkbox-clippath-check: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     --f-checkbox-clippath-indeterminate: polygon(90% 40%, 90% 70%, 10% 70%, 10% 40%);
-
-    --f-checkbox-alt-border-radius: var(--f-radius-full); 
-    --f-checkbox-alt-border-color: var(--f-color-border);
-    --f-checkbox-alt-border-color-hover: var(--f-color-border-strong);
-    --f-checkbox-alt-background-color: var(--f-color-surface);
-    --f-checkbox-alt-active-background-color: var(--f-color-accent-weak);
-    --f-checkbox-alt-active-border-color: var(--f-color-accent);
-    --f-checkbox-alt-active-color: var(--f-color-accent);
-    --f-checkbox-alt-disabled-background-color: var(--f-color-surface-strong);
-    --f-checkbox-alt-disabled-border-color: var(--f-color-border);
-    --f-checkbox-alt-disabled-color: var(--f-color-border);
 }
 
 .f-checkbox[type="checkbox"] {
@@ -157,6 +146,19 @@
 }
 
 /* *************************************************** */
+
+:root {
+    --f-checkbox-alt-border-radius: var(--f-radius-full); 
+    --f-checkbox-alt-border-color: var(--f-color-border);
+    --f-checkbox-alt-border-color-hover: var(--f-color-border-strong);
+    --f-checkbox-alt-background-color: var(--f-color-surface);
+    --f-checkbox-alt-active-background-color: var(--f-color-accent-weak);
+    --f-checkbox-alt-active-border-color: var(--f-color-accent);
+    --f-checkbox-alt-active-color: var(--f-color-accent);
+    --f-checkbox-alt-disabled-background-color: var(--f-color-surface-strong);
+    --f-checkbox-alt-disabled-border-color: var(--f-color-border);
+    --f-checkbox-alt-disabled-color: var(--f-color-border);
+}
 
 /* alt */
 

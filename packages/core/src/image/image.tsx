@@ -67,7 +67,7 @@ export const Image = forwardRef((props: ImageProps, ref) => {
         errorContent,
         ...rest
     } = props
-    const isEmpty = useMemo(() => (src == '') && (srcSet.length == 0), [src, srcSet.length])
+    const isEmpty = useMemo(() => src == '' && srcSet.length == 0, [src, srcSet.length])
     const [source, setSource] = useState(fallbackSrc)
     const [loading1, setLoading1] = useState(true)
     const [error, setError] = useState(false)

@@ -1,17 +1,14 @@
 import React, { forwardRef, ReactElement, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
-    Avatar,
-    TagInput,
-    TagInputField,
-    TagInputFieldProps,
-    TagInputProps,
     Input,
     InputControl,
     InputPrefix,
     InputProps,
     InputSuffix,
-    Pill,
-    PillProps,
+    TagInput,
+    TagInputField,
+    TagInputFieldProps,
+    TagInputProps,
     Text,
     useEvent,
     useId,
@@ -33,6 +30,7 @@ import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
+    noListFocus?: boolean
     hideSelected?: boolean
     as?: 'default' | 'virtual'
     variant?: 'default' | 'static'
@@ -48,6 +46,8 @@ export type SelectProps = {
     header?: ReactElement | null
     onSelect: any
     onFilter?: any
+    onOpen?: () => void
+    onClose?: () => void
     filterDelay?: number
     inputProps?: InputProps
     prefix?: any
@@ -59,11 +59,12 @@ export type SelectProps = {
     optionComponent?: any
     noOptionsComponent?: any
     render?: any
-    tag?: boolean
+    tagInput?: boolean
 } & Omit<CoreViewProps, 'onSelect'>
 
 export const Select = (props: SelectProps) => {
     const {
+        noListFocus,
         hideSelected = false,
         as = 'default',
         variant = 'default',
@@ -78,6 +79,8 @@ export const Select = (props: SelectProps) => {
         header,
         onSelect,
         onFilter,
+        onOpen,
+        onClose,
         filterDelay = 1000,
         inputProps,
         prefix,
@@ -89,7 +92,7 @@ export const Select = (props: SelectProps) => {
         optionComponent,
         noOptionsComponent,
         render,
-        tag,
+        tagInput,
         ...rest
     } = props
     const selectedAmount = selected.length
@@ -198,7 +201,7 @@ export const Select = (props: SelectProps) => {
     }
 
     const renderInput = () => {
-        if (tag) {
+        if (tagInput) {
             return (
                 <TagInput
                     size={size}
@@ -252,6 +255,14 @@ export const Select = (props: SelectProps) => {
     }, [text])
 
     useEffect(() => {
+        if (visible) {
+            if (onOpen) onOpen()
+        } else {
+            if (onClose) onClose()
+        }
+    }, [visible])
+
+    useEffect(() => {
         setCursor(0)
     }, [text, visible])
 
@@ -281,6 +292,7 @@ export const Select = (props: SelectProps) => {
                     ref={popoverRef}
                     className={popoverClassName}>
                     <SelectList
+                        noFocus={noListFocus}
                         as={as}
                         ref={listRef}
                         cursor={cursor}
@@ -303,6 +315,7 @@ export const Select = (props: SelectProps) => {
 }
 
 export type SelectListProps = {
+    noFocus?: boolean
     as?: 'default' | 'virtual'
     cursor?: number
     options?: SelectOption[]
@@ -318,6 +331,7 @@ export type SelectListProps = {
 
 export const SelectList = forwardRef((props: SelectListProps, ref) => {
     const {
+        noFocus,
         as = 'default',
         cursor = 0,
         options = [],
@@ -344,8 +358,8 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     })
 
     useEffect(() => {
-        containerRef.current?.focus()
-    }, [])
+        if (!noFocus) containerRef.current?.focus()
+    }, [noFocus])
 
     return (
         <View
@@ -484,255 +498,5 @@ export const SelectListOption = (props: SelectOptionProps) => {
             />
             {suffix && <span className="f-select-list-option__suffix f-row">{suffix}</span>}
         </p>
-    )
-}
-
-/**
- * Select menus
- */
-
-export type LabelSelectLabel = {
-    id: string | number
-    icon?: string
-    color?: string
-    text: string
-}
-
-export type LabelSelectProps = {
-    size?: Size
-    enableNotFound?: boolean
-    variant?: 'default' | 'static'
-    labels: LabelSelectLabel[]
-    inputPlaceholder?: string
-    actionPrefix?: string
-    availableLabels?: LabelSelectLabel[]
-    onLabelAdd: any
-    onLabelDelete: any
-    onFilter?: any
-    pillProps?: PillProps
-} & Omit<SelectProps, 'placeholder' | 'selected' | 'options' | 'onSelect'>
-
-export const LabelSelect = (props: LabelSelectProps) => {
-    const {
-        size,
-        enableNotFound,
-        variant = 'static',
-        labels = [],
-        availableLabels = [],
-        inputPlaceholder = 'Filter labels',
-        tagInputFieldProps = {},
-        actionPrefix = 'Create',
-        onLabelAdd,
-        onLabelDelete,
-        onFilter,
-        pillProps = {},
-        ...rest
-    } = props
-    const selected = useMemo(() => labels.map((label: LabelSelectLabel) => label.id), [labels])
-    const [notFound, setNotFound] = useState<any>(null)
-    const options: any = useMemo(() => {
-        const labels: any = availableLabels.map((label: LabelSelectLabel) => ({
-            key: label.id,
-            label: label.text,
-            suffix: (
-                <IconLib
-                    icon={label.icon || 'tag'}
-                    color={label.color}
-                />
-            ),
-        }))
-
-        if (notFound && enableNotFound) {
-            labels.push({
-                key: notFound,
-                label: `${actionPrefix} <strong>${notFound}</strong>`,
-                suffix: (
-                    <IconLib
-                        icon="plus"
-                        strokeWidth={2}
-                    />
-                ),
-                sticky: true,
-            })
-        }
-
-        return labels
-    }, [notFound, availableLabels])
-
-    const handleInputKeyDown = (e) => {
-        const { isBackspace } = getKey(e)
-        if (isBackspace && !e.target.value) onLabelDelete(labels[labels.length - 1])
-    }
-
-    return (
-        <Select
-            {...rest}
-            tag
-            size={size}
-            variant={variant}
-            placeholder={inputPlaceholder}
-            selected={selected}
-            options={options}
-            filterDelay={1000}
-            selectListProps={{
-                noOptionsComponent: <Text p="var(--f-select-option-padding)">No labels available</Text>,
-            }}
-            tagInputFieldProps={{ ...tagInputFieldProps, onKeyDown: handleInputKeyDown }}
-            onSelect={(option, dismiss, clear) => {
-                clear()
-                onLabelAdd(availableLabels.find((availableLabel: any) => availableLabel.id == option.key))
-                if (notFound) setNotFound(null)
-            }}
-            onFilter={(text: string) => {
-                onFilter(text)
-                setNotFound(
-                    options.filter((option) => option.label.toLowerCase().includes(text.toLowerCase())).length == 0
-                        ? text
-                        : null
-                )
-            }}
-            render={() =>
-                labels.map((label: LabelSelectLabel, index: number) => (
-                    <Pill
-                        key={index}
-                        color={label.color}
-                        size={size}
-                        suffix={
-                            <IconLib
-                                icon="x"
-                                className="f-buttonize"
-                                onClick={() => onLabelDelete(label)}
-                            />
-                        }
-                        {...pillProps}>
-                        {label.text}
-                    </Pill>
-                ))
-            }
-        />
-    )
-}
-
-export type UserSelectUser = {
-    id: string | number
-    name: string
-    image?: string
-}
-
-export type UserSelectProps = {
-    enableNotFound?: boolean
-    users: UserSelectUser[]
-    inputPlaceholder?: string
-    actionPrefix?: string
-    availableUsers?: UserSelectUser[]
-    onUserAdd: any
-    onUserDelete: any
-    onFilter?: any
-    pillProps?: PillProps
-} & Omit<SelectProps, 'placeholder' | 'selected' | 'options' | 'onSelect'>
-
-export const UserSelect = (props: UserSelectProps) => {
-    const {
-        size,
-        enableNotFound,
-        variant = 'static',
-        users = [],
-        availableUsers = [],
-        inputPlaceholder = 'Filter users',
-        tagInputFieldProps = {},
-        actionPrefix = 'Add',
-        onUserAdd,
-        onUserDelete,
-        onFilter,
-        pillProps = {},
-        ...rest
-    } = props
-    const selected = useMemo(() => users.map((user: UserSelectUser) => user.id), [users])
-    const [notFound, setNotFound] = useState<any>(null)
-    const options: any = useMemo(() => {
-        const users: any = availableUsers.map((user: UserSelectUser) => ({
-            key: user.id,
-            label: user.name,
-            prefix: (
-                <Avatar
-                    src={user.image}
-                    name={user.name}
-                    size="xs"
-                />
-            ),
-        }))
-
-        if (notFound && enableNotFound) {
-            users.push({
-                key: notFound,
-                label: `${actionPrefix} <strong>${notFound}</strong>`,
-                suffix: (
-                    <IconLib
-                        icon="plus"
-                        strokeWidth={2}
-                    />
-                ),
-                sticky: true,
-            })
-        }
-
-        return users
-    }, [notFound, availableUsers])
-
-    const handleInputKeyDown = (e) => {
-        const { isBackspace } = getKey(e)
-        if (isBackspace && !e.target.value) onUserDelete(users[users.length - 1])
-    }
-
-    return (
-        <Select
-            {...rest}
-            tag
-            size={size}
-            variant={variant}
-            placeholder={inputPlaceholder}
-            selected={selected}
-            options={options}
-            filterDelay={1000}
-            selectListProps={{ noOptionsComponent: <Text p="var(--f-select-option-padding)">No users available</Text> }}
-            tagInputFieldProps={{ ...tagInputFieldProps, onKeyDown: handleInputKeyDown }}
-            onSelect={(option, dismiss, clear) => {
-                clear()
-                onUserAdd(availableUsers.find((availableUser: any) => availableUser.id == option.key))
-                if (notFound) setNotFound(null)
-            }}
-            onFilter={(text: string) => {
-                onFilter(text)
-                setNotFound(
-                    options.filter((option) => option.label.toLowerCase().includes(text.toLowerCase())).length == 0
-                        ? text
-                        : null
-                )
-            }}
-            render={() =>
-                users.map((user: UserSelectUser, index: number) => (
-                    <Pill
-                        key={index}
-                        size={size}
-                        prefix={
-                            <Avatar
-                                src={user.image}
-                                name={user.name}
-                                size="xs"
-                            />
-                        }
-                        suffix={
-                            <IconLib
-                                icon="x"
-                                className="f-buttonize"
-                                onClick={() => onUserDelete(user)}
-                            />
-                        }
-                        {...pillProps}>
-                        {user.name}
-                    </Pill>
-                ))
-            }
-        />
     )
 }

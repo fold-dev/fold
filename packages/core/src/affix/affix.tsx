@@ -11,7 +11,6 @@ export const Affix = forwardRef((props: AffixProps, ref) => {
     const { children, ...rest } = props
     const containerRef = useRef(null)
     const [stuck, setStuck] = useState(false)
-    const observerRef = useRef(null)
     const className = classNames(
         {
             'f-affix': true,
@@ -20,16 +19,17 @@ export const Affix = forwardRef((props: AffixProps, ref) => {
         [props.className]
     )
 
-    const handleIntersection = (entries) => setStuck(entries[0].intersectionRatio < 1)
-
     useEffect(() => {
-        observerRef.current = new IntersectionObserver(handleIntersection, { threshold: [1] })
+        setTimeout(() => {
+            const cachedRef = containerRef.current
+            const observer = new IntersectionObserver(([e]) => setStuck(e.intersectionRatio < 1), {
+                threshold: [1],
+            })
+            observer.observe(cachedRef)
+
+            return () => observer.unobserve(cachedRef)
+        }, 10)
     }, [])
-
-    useEffect(() => {
-        observerRef.current.observe(containerRef.current)
-        return () => observerRef.current.disconnect()
-    })
 
     return (
         <View
