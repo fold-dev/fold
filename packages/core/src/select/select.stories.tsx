@@ -445,6 +445,7 @@ export const StandaloneListDefault = () => {
 
     return (
         <SelectList
+            noFocus
             ref={listRef}
             as="default"
             cursor={cursor}
@@ -477,6 +478,7 @@ export const StandaloneListVirtual = () => {
 
     return (
         <SelectList
+            noFocus
             as="virtual"
             options={options}
             selected={selected}
@@ -682,7 +684,7 @@ export const Tag = () => {
             tagInput
             noListFocus
             as="default"
-            width={500}
+            width="100%"
             placeholder="Select a label"
             disabled={false}
             readOnly={false}

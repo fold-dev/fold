@@ -23,7 +23,8 @@ export const Usage = () => {
 
             <Drawer
                 anchor="right"
-                width={400}
+                width="80%"
+                style={{ maxWidth: 500 }}
                 onDismiss={hide}
                 isVisible={visible}>
                 <View

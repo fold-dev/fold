@@ -192,9 +192,11 @@ export const CardLists = () => (
 export const CardGrid = () => (
     <View
         row
-        justifyContent="space-between">
+        wrap="wrap"
+        gap="1rem"
+        justifyContent="flex-start">
         <Card
-            width="24%"
+            width={165}
             height={200}
             column
             alignItems="flex-start"
@@ -215,7 +217,7 @@ export const CardGrid = () => (
             </View>
         </Card>
         <Card
-            width="24%"
+            width={165}
             height={200}
             column
             alignItems="flex-start"
@@ -236,7 +238,7 @@ export const CardGrid = () => (
             </View>
         </Card>
         <Card
-            width="24%"
+            width={165}
             height={200}
             column
             alignItems="flex-start"
@@ -257,7 +259,7 @@ export const CardGrid = () => (
             </View>
         </Card>
         <Card
-            width="24%"
+            width={165}
             height={200}
             column
             alignItems="flex-start"

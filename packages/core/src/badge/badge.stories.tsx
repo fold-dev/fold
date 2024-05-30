@@ -17,6 +17,7 @@ export const docs = {
 export const Usage = () => (
     <View
         row
+        wrap="wrap"
         gap={5}
         width="fit-content">
         <Badge>+34 notifications</Badge>
@@ -29,6 +30,7 @@ export const Usage = () => (
 export const Variants = () => (
     <View
         row
+        wrap="wrap"
         gap={5}
         width="fit-content">
         <Badge>Default</Badge>
@@ -46,6 +48,7 @@ export const Variants = () => (
 export const VariantsOutline = () => (
     <View
         row
+        wrap="wrap"
         gap={5}
         width="fit-content">
         <Badge outline>Default</Badge>
@@ -87,6 +90,7 @@ export const VariantsOutline = () => (
 export const Sizes = () => (
     <View
         row
+        wrap="wrap"
         gap={5}
         width="fit-content">
         <Badge size="xs">Extra small</Badge>
@@ -105,6 +109,7 @@ export const Sizes = () => (
 export const Indicator = () => (
     <View
         row
+        wrap="wrap"
         gap={5}
         width="fit-content">
         <Badge

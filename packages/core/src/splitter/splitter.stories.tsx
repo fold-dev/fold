@@ -18,7 +18,7 @@ export const docs = {
 export const Usage = () => (
     <Splitter
         snap
-        width={700}
+        width="100%"
         height={300}
         start={0.5}
         direction="horizontal">

@@ -17,7 +17,8 @@ export const docs = {
 export const Usage = () => {
     return (
         <Audio
-            width={500}
+            style={{ maxWidth: 400 }}
+            width="100%"
             loader
             muted
             controls
@@ -39,7 +40,8 @@ export const Usage = () => {
 export const Waveform = () => {
     return (
         <Card
-            width={300}
+            style={{ maxWidth: 400 }}
+            width="100%"
             p={20}
             column>
             <AudioWaveform
@@ -62,7 +64,8 @@ export const Waveform = () => {
 export const Flatten = () => {
     return (
         <Card
-            width={300}
+            style={{ maxWidth: 400 }}
+            width="100%"
             p={20}
             column>
             <AudioWaveform
@@ -86,12 +89,13 @@ export const Flatten = () => {
 export const CustomPinHeight = () => {
     return (
         <Card
-            width="fit-content"
+            style={{ maxWidth: 400 }}
+            width="100%"
             p={20}
             column>
             <AudioWaveform
                 style={{ '--f-audio-waveform-pin-height': '5rem' }}
-                width={500}
+                width="100%"
                 height={70}
                 samples={100}
                 strokeWidth={3}

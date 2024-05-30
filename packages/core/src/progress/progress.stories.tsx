@@ -156,7 +156,7 @@ export const States = () => (
 // --
 
 export const Circle = () => (
-    <Stack spacing={10}>
+    <Stack spacing={10} wrap="wrap">
         <ProgressCircle
             value={20}
             size={120}
@@ -209,7 +209,7 @@ export const Circle = () => (
 // --
 
 export const Pie = () => (
-    <Stack spacing={10}>
+    <Stack spacing={10} wrap="wrap">
         <ProgressPie
             value={20}
             size={120}

@@ -24,7 +24,8 @@ export const Usage = () => {
 
             <Modal
                 portal={Portal}
-                width="500px"
+                width="80%"
+                style={{ maxWidth: 500 }}
                 height="fit-content"
                 anchor="middle-center"
                 onDismiss={hide}
@@ -60,7 +61,8 @@ export const NoOverlay = () => {
             <Modal
                 noOverlay
                 portal={Portal}
-                width="500px"
+                width="80%"
+                style={{ maxWidth: 500 }}
                 height="fit-content"
                 anchor="middle-center"
                 onDismiss={hide}
@@ -95,7 +97,8 @@ export const WithHeaderAndFooter = () => {
 
             <Modal
                 portal={Portal}
-                width="500px"
+                width="80%"
+                style={{ maxWidth: 500 }}
                 height="fit-content"
                 anchor="middle-center"
                 onDismiss={hide}

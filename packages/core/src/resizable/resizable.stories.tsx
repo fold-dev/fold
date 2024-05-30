@@ -57,8 +57,9 @@ export const Vertical = () => (
  */
 export const Rail = () => (
     <View
-        width={500}
+        width="100%"
         height={500}
+        style={{ maxWidth: 500 }}
         bgToken="surface-strong"
         position="relative">
         <ResizableRail

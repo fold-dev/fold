@@ -32,7 +32,7 @@ export const Usage = () => (
 // --
 
 export const Sizes = () => (
-    <Stack spacing={5}>
+    <Stack spacing={5} wrap="wrap">
         <Pill size="xs">React</Pill>
         <Pill size="sm">VueJS</Pill>
         <Pill size="md">Svelte</Pill>
@@ -44,7 +44,7 @@ export const Sizes = () => (
 // --
 
 export const WithPrefixAndSuffix = () => (
-    <Stack spacing={5}>
+    <Stack spacing={5} wrap="wrap">
         <Pill
             suffix={
                 <IconLib
@@ -101,7 +101,7 @@ export const WithPrefixAndSuffix = () => (
 // --
 
 export const Styles = () => (
-    <Stack spacing={5}>
+    <Stack spacing={5} wrap="wrap">
         <Pill>React</Pill>
         <Pill subtle>VueJS</Pill>
         <Pill outline>Svelte</Pill>
@@ -115,7 +115,7 @@ export const Styles = () => (
  * The Pill component takes a hex-code value for the color.
  */
 export const Color = () => (
-    <Stack spacing={5}>
+    <Stack spacing={5} wrap="wrap">
         <Pill color={Token.ColorElectric200}>React</Pill>
         <Pill
             outline

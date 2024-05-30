@@ -1,6 +1,7 @@
 import {
     Button,
     Input,
+    Stack,
     Text,
     View,
     dispatchPubsub,
@@ -109,37 +110,38 @@ export const Focus = () => {
     const ref = useRef(null)
     const { trapFocus } = useFocus()
 
-    useEffect(() => {
-        trapFocus(ref.current)
-    }, [])
-
     return (
-        <View
-            ref={ref}
-            column
-            gap={5}
-            width="100%">
-            <Input
-                placeholder="Line 1"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <Input
-                placeholder="Line 2"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <Input
-                placeholder="Line 3"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-            <Input
-                placeholder="Line 4"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
-        </View>
+        <Stack direction="vertical" spacing={5}>  
+            <Button onClick={() => trapFocus(ref.current)}>
+                Trap Focus
+            </Button>
+            <View
+                ref={ref}
+                column
+                gap={5}
+                width="100%">
+                <Input
+                    placeholder="Line 1"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <Input
+                    placeholder="Line 2"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <Input
+                    placeholder="Line 3"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <Input
+                    placeholder="Line 4"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+            </View>
+        </Stack>
     )
 }
 

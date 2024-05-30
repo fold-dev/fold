@@ -538,6 +538,7 @@ export const TargetVariants = () => (
 export const BasicKanban = () => (
     <View
         row
+        wrap="wrap"
         alignItems="flex-start"
         gap={5}>
         <View flex={1}>
