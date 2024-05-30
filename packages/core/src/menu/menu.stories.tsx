@@ -67,7 +67,7 @@ export const DisableAutoFocus = () => (
 // --
 
 export const PrefixAndSuffix = () => (
-    <Menu>
+    <Menu disableAutoFocus>
         <MenuHeading
             prefix={<IconLib icon="circle" />}
             suffix={<IconLib icon="circle" />}>
@@ -90,7 +90,7 @@ export const PrefixAndSuffix = () => (
 // --
 
 export const States = () => (
-    <Menu>
+    <Menu disableAutoFocus>
         <MenuItem>Normal</MenuItem>
         <MenuItem active>Active</MenuItem>
         <MenuItem disabled>Disabled</MenuItem>
@@ -100,7 +100,7 @@ export const States = () => (
 // --
 
 export const OptionGroup = () => (
-    <Menu>
+    <Menu disableAutoFocus>
         <MenuOptionGroup
             title="Favourite State Manager"
             defaultValue="Context"
@@ -117,7 +117,7 @@ export const OptionGroup = () => (
 // --
 
 export const Submenu = () => (
-    <Menu>
+    <Menu disableAutoFocus>
         <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
         <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
         <MenuItem prefix={<IconLib icon="bin" />}>Cut</MenuItem>
@@ -203,7 +203,7 @@ export const DropdownMenuButton = () => (
 // --
 
 export const MenuBar = () => (
-    <Menu variant="menubar">
+    <Menu variant="menubar" disableAutoFocus>
         <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
         <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
         <MenuItem prefix={<IconLib icon="bin" />}>Cut</MenuItem>

@@ -445,6 +445,7 @@ export const StandaloneListDefault = () => {
 
     return (
         <SelectList
+            noFocus
             ref={listRef}
             as="default"
             cursor={cursor}
@@ -477,6 +478,7 @@ export const StandaloneListVirtual = () => {
 
     return (
         <SelectList
+            noFocus
             as="virtual"
             options={options}
             selected={selected}
