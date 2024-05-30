@@ -18,10 +18,10 @@ export const docs = {
 export const WidthBased = () => {
     return (
         <AspectRatio
-            width={500}
+            width={200}
             ratio={3 / 4}
             bgToken="surface-strong">
-            500px x 375px
+            200px x 150px
         </AspectRatio>
     )
 }

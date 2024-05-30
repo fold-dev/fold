@@ -19,7 +19,7 @@ export const Usage = () => {
     const { current, setCurrent } = useCarousel(0)
 
     return (
-        <View width={500}>
+        <View width="100%" style={{ maxWidth: 500 }}>
             <Carousel
                 width="100%"
                 height={400}
@@ -93,7 +93,8 @@ export const VerticalLayout = () => {
 
     return (
         <View
-            width={600}
+            width="100%"
+            style={{ maxWidth: 500 }}
             row>
             <Carousel
                 width="100%"
@@ -177,7 +178,7 @@ export const ImageGallery = () => {
     const { current, setCurrent } = useCarousel(0)
 
     return (
-        <View width={500}>
+        <View width="100%" style={{ maxWidth: 500 }}>
             <Carousel
                 width="100%"
                 height={400}

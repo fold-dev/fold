@@ -16,7 +16,8 @@ export const docs = {
 
 export const Usage = () => (
     <View
-        width={500}
+    width="100%"
+    style={{ maxWidth: 500 }}
         height={400}>
         <Cropper
             src="/photos/01.jpg"
@@ -32,7 +33,8 @@ export const CustomToolbar = () => {
 
     return (
         <View
-            width={500}
+            width="100%"
+            style={{ maxWidth: 500 }}
             height={400}>
             <Cropper
                 defaultZoom={1}

@@ -252,6 +252,7 @@
     flex-shrink: 0;
     justify-content: flex-start;
     padding: var(--f-menubar-padding);
+    flex-wrap: wrap;
 }
 
 .f-menu.is-menubar > .f-menu-item {

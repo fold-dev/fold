@@ -18,7 +18,7 @@ export const Usage = () => {
     return (
         <Attachment
             as="a"
-            width={500}
+            width="100%"
             heroPoster="/photos/10.jpg"
             mime="image/png"
             filesize={24325}
@@ -47,7 +47,7 @@ export const Usage = () => {
 export const HeroPosterOverlay = () => {
     return (
         <Attachment
-            width={500}
+        width="100%"
             heroPoster="/photos/04.jpg"
             heroPosterContent={
                 <View
@@ -90,16 +90,16 @@ export const States = () => (
     <View
         column
         gap={10}
-        width={500}>
+        width="100%">
         <Attachment
-            width={500}
+            width="100%"
             mime="video/mpeg"
             filesize={24325}
             label="filename.mpg"
             href="https://fold.dev"
         />
         <Attachment
-            width={500}
+            width="100%"
             poster="/photos/01.jpg"
             mime="image/png"
             filesize={24325}
@@ -111,13 +111,13 @@ export const States = () => (
         <Attachment
             error
             mime="image/png"
-            width={500}
+            width="100%"
             filesize={24325}
             label="filename.png"
             href="https://fold.dev"
         />
         <Attachment
-            width={500}
+            width="100%"
             poster="/photos/01.jpg"
             mime="image/png"
             filesize={24325}
@@ -168,6 +168,7 @@ export const Thumbnail = () => (
     <View
         row
         gap={10}
+        wrap="wrap"
         justifyContent="flex-start">
         <AttachmentThumb
             poster="/photos/09.jpg"
