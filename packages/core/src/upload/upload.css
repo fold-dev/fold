@@ -48,7 +48,7 @@
 
 .f-upload p {
     color: var(--f-upload-color-sub);
-    text-align: center !important;
+    text-align: center;
 }
 
 .f-upload.is-disabled {
