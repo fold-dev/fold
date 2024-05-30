@@ -18,7 +18,12 @@ export const Usage = () => {
     const [page, setPage] = useState(1)
 
     return (
-        <View row>
+        <View 
+            p="1rem 0" 
+            width="100%" 
+            className="f-overflow-x-auto" 
+            row
+            justifyContent="flex-start">
             <Pagination
                 width={500}
                 pageSize={5}

@@ -18,22 +18,26 @@ export const Usage = () => {
     return (
         <View
             row
+            wrap="wrap"
             gap={50}
             justifyContent="stretch"
             width="100%">
             <Stat
+                style={{ maxWidth: 150 }}
                 icon="user"
                 label="Visitors"
                 description="3 Dec 2022"
                 number="41,841"
             />
             <Stat
+                style={{ maxWidth: 150 }}
                 icon="check"
                 label="Conversions"
                 description="3 Dec 2022"
                 number="21,982"
             />
             <Stat
+                style={{ maxWidth: 150 }}
                 label="Churned"
                 labelTool={
                     <IconLib

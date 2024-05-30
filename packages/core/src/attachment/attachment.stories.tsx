@@ -19,6 +19,7 @@ export const Usage = () => {
         <Attachment
             as="a"
             width="100%"
+            style={{ maxWidth: 400 }}
             heroPoster="/photos/10.jpg"
             mime="image/png"
             filesize={24325}
@@ -47,7 +48,8 @@ export const Usage = () => {
 export const HeroPosterOverlay = () => {
     return (
         <Attachment
-        width="100%"
+            width="100%"
+            style={{ maxWidth: 400 }}
             heroPoster="/photos/04.jpg"
             heroPosterContent={
                 <View
@@ -90,6 +92,7 @@ export const States = () => (
     <View
         column
         gap={10}
+        style={{ maxWidth: 400 }}
         width="100%">
         <Attachment
             width="100%"

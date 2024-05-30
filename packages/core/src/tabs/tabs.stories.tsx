@@ -326,8 +326,8 @@ export const OnCard = () => {
     return (
         <Card
             height={500}
-            width={600}
-            style={{ overflow: 'hidden' }}>
+            width="100%"
+            style={{ maxWidth: 600, overflow: 'hidden' }}>
             <Tabs
                 layout="bottom"
                 animated

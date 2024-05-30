@@ -29,7 +29,7 @@ export const Usage = () => {
     return (
         <Virtual
             bgToken="surface-strong"
-            width={500}
+            width="100%"
             watch={[]}
             numItems={items.length}
             itemHeight={40}
@@ -117,7 +117,7 @@ export const AutoFetchOnBoundary = () => {
             numItems={items.length}
             itemHeight={40}
             maxHeight={400}
-            width={500}
+            width="100%"
             render={({ index, style }) => {
                 const item = items[index]
 

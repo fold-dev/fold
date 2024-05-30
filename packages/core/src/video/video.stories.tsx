@@ -19,7 +19,8 @@ export const Default = () => (
         loader
         muted
         controls
-        width={500}
+        width="100%"
+        style={{ maxWidth: 500 }}
         height={250}
         poster="/video.jpg"
         srcs={[
@@ -38,7 +39,8 @@ export const FailedToLoadVideo = () => (
         loader
         muted
         controls
-        width={500}
+        width="100%"
+        style={{ maxWidth: 500 }}
         height={250}
         errorContent={<Text color="white">We could not locate the video!</Text>}
         poster=""

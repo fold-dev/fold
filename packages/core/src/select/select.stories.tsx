@@ -682,7 +682,7 @@ export const Tag = () => {
             tagInput
             noListFocus
             as="default"
-            width={500}
+            width="100%"
             placeholder="Select a label"
             disabled={false}
             readOnly={false}

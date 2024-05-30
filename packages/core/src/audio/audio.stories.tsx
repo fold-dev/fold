@@ -17,6 +17,7 @@ export const docs = {
 export const Usage = () => {
     return (
         <Audio
+            style={{ maxWidth: 400 }}
             width="100%"
             loader
             muted
@@ -39,6 +40,7 @@ export const Usage = () => {
 export const Waveform = () => {
     return (
         <Card
+            style={{ maxWidth: 400 }}
             width="100%"
             p={20}
             column>
@@ -62,6 +64,7 @@ export const Waveform = () => {
 export const Flatten = () => {
     return (
         <Card
+            style={{ maxWidth: 400 }}
             width="100%"
             p={20}
             column>
@@ -86,6 +89,7 @@ export const Flatten = () => {
 export const CustomPinHeight = () => {
     return (
         <Card
+            style={{ maxWidth: 400 }}
             width="100%"
             p={20}
             column>
