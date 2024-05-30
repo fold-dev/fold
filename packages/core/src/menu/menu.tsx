@@ -221,7 +221,11 @@ export const Menu = (props: MenuProps) => {
     }, [])
 
     useEffect(() => {
-        if (!disableAutoFocus) setFocusToFirstMenuitem()
+        if (disableAutoFocus) {
+            menuItemRefs.current.forEach((item, index) => index == 0 ? item.tabIndex = 0 : null)
+        } else {
+            setFocusToFirstMenuitem()
+        }
     }, [disableAutoFocus])
 
     return (
