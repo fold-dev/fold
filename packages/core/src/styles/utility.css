@@ -95,6 +95,16 @@
     background: var(--f-scrollbar-background);
 }
 
+.f-scrollbar::-webkit-scrollbar-corner {
+    background: var(--f-scrollbar-background);
+    width: 0;
+    height: 0;
+    border-left: 16px solid var(--f-scrollbar-background);
+    border-top: 16px solid var(--f-scrollbar-background);
+    border-bottom: 16px solid var(--f-scrollbar-background);
+    border-right: 16px solid var(--f-scrollbar-background);
+}
+
 /* overflow */
 
 .f-overflow-y-auto {
