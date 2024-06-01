@@ -166,6 +166,7 @@ export const AlwaysOpen = () => {
 
     return (
         <Select
+            noListFocus
             prefix={<IconLib icon="time" />}
             suffix={<IconLib icon="chevron-down" />}
             width={350}
