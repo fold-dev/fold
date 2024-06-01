@@ -233,6 +233,8 @@ useWindowResize
     })
 }
 
+console.log('Make sure Core is build first (npm run build:prod)')
+
 generateMdx(process.argv[2].split('=')[1])
 
 const navigationFile = prettier.format(`export const navigation = ${JSON.stringify(navigation)}`, {
