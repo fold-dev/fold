@@ -55,16 +55,16 @@
                 "on-color": { "value": "{color.black}" }
             },
             "surface": {
-                " ": { "value": "{color.base.800}" },
-                "strong": { "value": "{color.base.700}" },
-                "stronger": { "value": "{color.base.600}" },
-                "strongest": { "value": "{color.base.400}" },
-                "highlight": { "value": "{color.accent.700}" },
-                "inverse": { "value": "{color.base.300}" }
+                " ": { "value": "{color.base.900}" },
+                "strong": { "value": "{color.base.800}" },
+                "stronger": { "value": "{color.base.700}" },
+                "strongest": { "value": "{color.base.500}" },
+                "highlight": { "value": "{color.accent.800}" },
+                "inverse": { "value": "{color.base.400}" }
             },
             "border": {
-                " ": { "value": "{color.base.600}" },
-                "strong": { "value": "{color.base.500}" }
+                " ": { "value": "{color.base.700}" },
+                "strong": { "value": "{color.base.600}" }
             }
         }
     }
