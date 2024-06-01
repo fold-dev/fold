@@ -27,28 +27,11 @@ export const docs = {
         'Menu components are a very common feature of almost any user interface. They are useful when screen real estate is limited or when there is a need to provide additional functionality to the relevant menu target.',
 }
 
-export const Usage = () => (
-    <Menu>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem>Copy</MenuItem>
-        <MenuItem>Cut</MenuItem>
-        <MenuItem>Paste</MenuItem>
-        <MenuItem>Select</MenuItem>
-        <MenuDivider />
-        <MenuHeading>Rotation</MenuHeading>
-        <MenuItem>Rotate Left</MenuItem>
-        <MenuItem>Rotate Right</MenuItem>
-        <MenuItem>Flip Horizontal</MenuItem>
-        <MenuItem>Flip Vertical</MenuItem>
-    </Menu>
-)
-
-// --
-
 /**
- * Whilst not recommended, the automatic focus on the first item can be disabled
+ * Whilst not recommended, the automatic focus on the first item can be disabled. It's disabled here so the page doesn't jump down (to focus on the first item).
  */
-export const DisableAutoFocus = () => (
+
+export const Usage = () => (
     <Menu disableAutoFocus>
         <MenuItem>Edit</MenuItem>
         <MenuItem>Copy</MenuItem>
