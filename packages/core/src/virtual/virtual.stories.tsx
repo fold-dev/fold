@@ -43,7 +43,7 @@ export const Usage = () => {
                         className="f-row"
                         style={{
                             ...style,
-                            borderTop: '2px solid white',
+                            borderTop: '2px solid var(--f-color-border)',
                             width: '100%',
                         }}>
                         <label>{item.name}</label>
@@ -129,7 +129,7 @@ export const AutoFetchOnBoundary = () => {
                             ...style,
                             padding: 5,
                             background: 'var(--f-color-surface-strong)',
-                            borderTop: '2px solid white',
+                            borderTop: '2px solid var(--f-color-border)',
                             height: 40,
                             width: '100%',
                         }}>

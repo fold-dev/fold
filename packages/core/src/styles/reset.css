@@ -37,3 +37,11 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+[data-theme='light'] {
+    color-scheme: light;
+}
+
+[data-theme='dark'] {
+    color-scheme: dark;
+}
