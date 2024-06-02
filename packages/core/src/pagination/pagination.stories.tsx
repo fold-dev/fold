@@ -21,13 +21,11 @@ export const Usage = () => {
         <View 
             p="1rem 0" 
             width="100%" 
-            className="f-overflow-x-auto" 
-            row
-            justifyContent="flex-start">
+            style={{ maxWidth: 600, overflow: 'scroll' }}>
             <Pagination
-                width={500}
+                width="100%"
                 pageSize={5}
-                totalCount={1023}
+                totalCount={100}
                 currentPage={page}
                 siblingCount={4}
                 separator="..."
