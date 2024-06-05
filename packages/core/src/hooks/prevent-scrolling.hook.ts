@@ -18,6 +18,8 @@ const scrollKeys: Set<String> = new Set([
 // https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily/11371279#11371279
 export const usePreventScrolling = (shouldPreventScrolling) => {
     useEffect(() => {
+        if (!shouldPreventScrolling) return
+        
         const preventDefault = (e: Event) => e.preventDefault()
         const preventDefaultOnScrollKeys = (e: KeyboardEvent) => {
             if (scrollKeys.has(e.key)) e.preventDefault()
