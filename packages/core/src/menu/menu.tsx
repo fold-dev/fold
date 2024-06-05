@@ -8,7 +8,7 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { Button, ButtonProps, Heading, HeadingProps, Popover, PopoverProps, Text, useVisibility, View } from '../'
+import { Button, ButtonProps, Heading, HeadingProps, Popover, PopoverProps, Text, usePreventScrolling, useVisibility, View } from '../'
 import { classNames, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
@@ -515,6 +515,8 @@ export const MenuProvider = (props: MenuProviderProps) => {
         setPosition({ x: 0, y: 0 })
         setData({})
     }
+
+    usePreventScrolling(!!position.x || !!position.y)
 
     return (
         <Popover

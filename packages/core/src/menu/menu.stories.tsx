@@ -30,7 +30,6 @@ export const docs = {
 /**
  * Whilst not recommended, the automatic focus on the first item can be disabled. It's disabled here so the page doesn't jump down (to focus on the first item).
  */
-
 export const Usage = () => (
     <Menu disableAutoFocus>
         <MenuItem>Edit</MenuItem>

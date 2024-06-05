@@ -1,8 +1,7 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
-import { Button, Icon, useFocus, ButtonProps, View, IconButton, Portal } from '../'
+import { ButtonProps, IconButton, View, useFocus, usePreventScrolling } from '../'
+import { classNames, getActionClass, getKey } from '../helpers'
 import { CoreViewProps } from '../types'
-import { classNames, documentObject, getActionClass, getKey } from '../helpers'
-import { FICircle, FIX } from '../icon'
 
 export type ModalCloseProps = ButtonProps
 
@@ -83,14 +82,13 @@ export const Modal = (props: ModalProps) => {
         }
     }
 
+    usePreventScrolling(isVisible && noDocumentScrolling)
+
     useEffect(() => {
-        if (focusTrap && isVisible && contentRef.current) trapFocus(contentRef.current)
-        if (isVisible && noDocumentScrolling) {
-            documentObject.documentElement.style.overflow = 'hidden'
-        } else {
-            documentObject.documentElement.style.removeProperty('overflow')
+        if (focusTrap && isVisible && contentRef.current) {
+            trapFocus(contentRef.current)
         }
-    }, [isVisible, noDocumentScrolling])
+    }, [isVisible])
 
     const renderModal = () => {
         const classNameOverlay = 'f-modal f-row' + (noOverlay ? ' no-overlay' : '')
