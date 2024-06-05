@@ -19,6 +19,42 @@ export const Usage = () => {
     const { visible, show, hide } = useVisibility(false)
 
     return (
+        <View>
+            <Button onClick={show}>Show Modal</Button>
+
+            <Modal
+                portal={Portal}
+                width="80%"
+                style={{ maxWidth: 500 }}
+                height="fit-content"
+                anchor="middle-center"
+                onDismiss={hide}
+                isVisible={visible}>
+                <ModalClose onClick={hide} />
+                <View
+                    p={30}
+                    column
+                    gap={10}
+                    width="100%"
+                    alignItems="flex-start">
+                    <Heading>Not this again...</Heading>
+                    <Text>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </Text>
+                </View>
+            </Modal>
+        </View>
+    )
+}
+
+// --
+
+export const PreventDocumentScroll = () => {
+    const { visible, show, hide } = useVisibility(false)
+
+    return (
         <View m="0 0 2000px 0">
             <Button onClick={show}>Show Modal</Button>
 

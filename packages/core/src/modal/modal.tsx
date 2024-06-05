@@ -1,8 +1,7 @@
 import React, { ReactElement, useEffect, useRef } from 'react'
-import { Button, Icon, useFocus, ButtonProps, View, IconButton, Portal, usePreventScrolling } from '../'
+import { ButtonProps, IconButton, View, useFocus, usePreventScrolling } from '../'
+import { classNames, getActionClass, getKey } from '../helpers'
 import { CoreViewProps } from '../types'
-import { classNames, documentObject, getActionClass, getKey, windowObject } from '../helpers'
-import { FICircle, FIX } from '../icon'
 
 export type ModalCloseProps = ButtonProps
 
