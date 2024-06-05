@@ -19,10 +19,11 @@ export const Usage = () => {
     const { visible, show, hide } = useVisibility(false)
 
     return (
-        <View>
+        <View m="0 0 2000px 0">
             <Button onClick={show}>Show Modal</Button>
 
             <Modal
+                noDocumentScrolling
                 portal={Portal}
                 width="80%"
                 style={{ maxWidth: 500 }}
