@@ -55,7 +55,7 @@ export const PreventDocumentScroll = () => {
     const { visible, show, hide } = useVisibility(false)
 
     return (
-        <View m="0 0 2000px 0">
+        <View>
             <Button onClick={show}>Show Modal</Button>
 
             <Modal
