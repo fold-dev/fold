@@ -11,7 +11,7 @@ export default {
 export const docs = {
     title: 'Grid',
     subtitle:
-        'The Grid component wraps `display: grid`, arranging child elements within a grid structure comprised of rows and columns.',
+        'The Grid component wraps "display: grid", arranging child elements within a grid structure comprised of rows and columns.',
     description:
         'The Grid component provides a grid-centric layout system that simplifies website & app design by incorporating rows and columns, eliminating the need for floats and positioning.',
 }
