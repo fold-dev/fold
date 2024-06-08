@@ -84,10 +84,18 @@ export const Label = forwardRef((props: LabelProps, ref) => (
 export type LimitedTextProps = {
     limit?: number
     html: string
+    showLess?: string
+    showMore?: string
 } & TextProps
 
 export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
-    const { limit = 200, html, ...rest } = props
+    const { 
+        limit = 200, 
+        html, 
+        showLess = '... show less',
+        showMore = '... show more',
+        ...rest
+    } = props
     const { visible, show, hide } = useVisibility(false)
     const { text, showButton } = useMemo(() => {
         const el = documentObject.createElement('span')
@@ -116,7 +124,7 @@ export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
                 <span
                     className="f-buttonize"
                     onClick={handleToggle}>
-                    {visible ? '... show less' : '... show more'}
+                    {visible ? showLess : showMore}
                 </span>
             )}
         </Text>
