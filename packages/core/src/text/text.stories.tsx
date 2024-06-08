@@ -1,4 +1,4 @@
-import { IconLib, Label, Link, Stack, Text } from '@fold-dev/core'
+import { HighlightText, IconLib, Label, LimitedText, Link, Stack, Text } from '@fold-dev/core'
 import React from 'react'
 
 export default {
@@ -73,4 +73,20 @@ export const Variants = () => (
             Link & icon
         </Link>
     </Stack>
+)
+
+// --
+
+export const ShowLessOrMore = () => (
+    <LimitedText 
+        html="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." 
+    />
+)
+
+// --
+
+export const Highlight = () => (
+    <HighlightText highlight="perspiciatis">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    </HighlightText>
 )
