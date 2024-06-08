@@ -231,3 +231,33 @@ export const Thumbnail = () => (
         />
     </View>
 )
+
+// --
+
+/**
+ * The `tools` prop is useful for creating various user interaction patterns. Here is a typical red X delete button.
+ */
+export const ThumbnailRedX = () => (
+    <AttachmentThumb
+        poster="/photos/01.jpg"
+        mime="image/png"
+        label="filename.png"
+        href="https://fold.dev"
+        style={{ '--f-attachment-thumb-overlay': 'transparent' }}
+        tools={
+            <View
+                row
+                width={20}
+                height={20}
+                bgToken="danger"
+                colorToken="white"
+                zIndex={10}
+                position="absolute"
+                radius="var(--f-radius-3xl)"
+                className="f-buttonize-outline"
+                style={{ top: -5, right: -5, outlineColor: 'var(--f-color-danger-weak)' }}>
+                <IconLib icon="x" />
+            </View>
+        }
+    />
+)
