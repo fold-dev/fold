@@ -49,8 +49,6 @@ export const HighlightText = forwardRef((props: { highlight?: string } & TextPro
         [props.className, size]
     )
 
-    console.log(text)
-
     return (
         <View
             {...rest}
@@ -122,8 +120,8 @@ export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
     const { 
         limit = 200, 
         html, 
-        showLess = '... show less',
-        showMore = '... show more',
+        showLess = 'show less',
+        showMore = 'show more',
         ...rest
     } = props
     const { visible, show, hide } = useVisibility(false)
@@ -153,11 +151,12 @@ export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
                 dangerouslySetInnerHTML={{ __html: text }} 
             />
             {showButton && (
-                <span
-                    className="f-buttonize"
-                    onClick={handleToggle}>
-                    {visible ? showLess : showMore}
-                </span>
+                <> ... <span
+                        className="f-limited-text"
+                        onClick={handleToggle}>
+                        {visible ? showLess : showMore}
+                    </span>
+                </>
             )}
         </Text>
     )
