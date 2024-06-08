@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 export const highlightText = (text: string, query: string) => {
     var reg = new RegExp(query, 'gi')
     return text.replace(reg, (str) => {
-        return `<mark>${str}<mark>`
+        return `<mark>${str}</mark>`
     })
 }
 
