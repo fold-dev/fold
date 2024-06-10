@@ -73,7 +73,6 @@
 }
 
 .f-options__selected {
-    margin-top: calc(var(--f-options-border-width) * -1); /* take into account the border */
     background-color: var(--f-options-active-background-color);
     border-radius: var(--f-options-border-radius);
     position: absolute;
