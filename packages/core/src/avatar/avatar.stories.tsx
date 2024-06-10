@@ -177,7 +177,7 @@ export const GroupInverted = () => {
             <Avatar
                 color={Token.ColorCyan500}
                 style={style}>
-                <Text size="xs">+33</Text>
+                <Text size="sm">+33</Text>
             </Avatar>
         </AvatarGroup>
     )
