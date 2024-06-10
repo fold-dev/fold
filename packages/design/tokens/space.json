@@ -1,5 +1,5 @@
 {
-    "space": {
+    "space-px": {
         "0": { "value": "1px" },
         "1": { "value": "3px" },
         "2": { "value": "7px" },
@@ -52,7 +52,7 @@
             }
         }
     },    
-    "space-rem": {
+    "space": {
         "0": { "value": "0.125rem" },
         "1": { "value": "0.25rem" },
         "2": { "value": "0.5rem" },
