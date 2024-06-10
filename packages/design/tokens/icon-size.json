@@ -1,11 +1,4 @@
 {
-    "icon-size-px": {
-        "xs": { "value": "12px" },
-        "sm": { "value": "15px" },
-        "md": { "value": "21px" },
-        "lg": { "value": "25px" },
-        "xl": { "value": "32px" }
-    },    
     "icon-size": {
         "xs": { "value": "0.8rem" },
         "sm": { "value": "1rem" },

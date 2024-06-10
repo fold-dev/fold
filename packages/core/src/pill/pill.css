@@ -1,5 +1,5 @@
 :root {
-    --f-pill-spacing: 0px;
+    --f-pill-spacing: 0rem;
     --f-pill-label-padding: 0 var(--f-space-2);
     --f-pill-buffer-icon: var(--f-space-1);
     --f-pill-border-width: 1px;
@@ -81,7 +81,7 @@
 /* size */
 
 .f-pill.xs {
-    padding: 0 2px;
+    padding: 0 0.1rem;
     font-weight: var(--f-font-weight-semibold);
     height: var(--f-size-5);
 }

@@ -2,10 +2,10 @@
     --f-avatar-border-radius: var(--f-radius-round);
     --f-avatar-color: var(--f-color-accent);
     --f-avatar-background-color: var(--f-color-surface-strong);
-    --f-avatar-group-overlap: -14px;
-    --f-avatar-group-overlap-small: -10px;
+    --f-avatar-group-overlap: -1rem;
+    --f-avatar-group-overlap-small: -0.66rem;
     --f-avatar-group-spacing: 1px;
-    --f-avatar-badge-outline: 2px solid var(--f-color-surface);
+    --f-avatar-badge-outline: 0.2rem solid var(--f-color-surface);
 }
 
 .f-avatar {
