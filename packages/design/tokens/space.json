@@ -1,5 +1,58 @@
 {
     "space": {
+        "0": { "value": "1px" },
+        "1": { "value": "3px" },
+        "2": { "value": "7px" },
+        "3": { "value": "11px" },
+        "4": { "value": "15px" },
+        "5": { "value": "19px" },
+        "6": { "value": "23px" },
+        "7": { "value": "27px" },
+        "8": { "value": "31px" },
+        "9": { "value": "35px" },
+        "10": { "value": "39px" },
+        "11": { "value": "43px" },
+        "12": { "value": "47px" },
+        "13": { "value": "51px" },
+        "14": { "value": "55px" },
+        "16": { "value": "63px" },
+        "20": { "value": "79px" },
+        "24": { "value": "95px" },
+        "28": { "value": "111px" },
+        "32": { "value": "127px" },
+        "36": { "value": "143px" },
+        "40": { "value": "159px" },
+        "44": { "value": "175px" },
+        "48": { "value": "191px" },
+        "52": { "value": "207px" },
+        "56": { "value": "223px" },
+        "60": { "value": "239px" },
+        "64": { "value": "255px" },
+        "72": { "value": "287px" },
+        "80": { "value": "319px" },
+        "96": { "value": "383px" },
+        "inset": {
+            "x": {
+                "1": { "value": "2.2px 7px" },
+                "2": { "value": "7px 13.4px" },
+                "3": { "value": "8.6px 18.2px" },
+                "4": { "value": "11.8px 24.6px" },
+                "5": { "value": "18.2px 37.4px" },
+                "6": { "value": "24.6px 50.2px" },
+                "7": { "value": "37.4px 75.8px" }
+            },
+            "y": {
+                "1": { "value": "7px 2.2px" },
+                "2": { "value": "10.2px 7px" },
+                "3": { "value": "18.2px 11.8px" },
+                "4": { "value": "27.8px 18.2px" },
+                "5": { "value": "37.4px 24.6px" },
+                "6": { "value": "56.6px 37.4px" },
+                "7": { "value": "75.8px 50.2px" }
+            }
+        }
+    },    
+    "space-rem": {
         "0": { "value": "0.125rem" },
         "1": { "value": "0.25rem" },
         "2": { "value": "0.5rem" },
