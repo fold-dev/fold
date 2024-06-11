@@ -1,7 +1,7 @@
 {
     "name": "fold-dev",
     "title": "Fold",
-    "version": "0.11.7",
+    "version": "0.11.8",
     "description": "The UI component library for product teams.",
     "workspaces": {
         "packages": [
