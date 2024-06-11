@@ -2,6 +2,8 @@
     --f-drag-speed: 0s;
     --f-drag-transition: cubic-bezier(.17,.67,.54,1.06);
     --f-drag-indent: 0px;
+    --f-drag-is-dragged-opacity: 1;
+    --f-drag-is-dragged-pointer-events: none;
 }
 
 /* area */
@@ -76,8 +78,12 @@
 
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
-    opacity: 1;
-    pointer-events: none;
+    pointer-events: var(--f-drag-is-dragged-pointer-events);
+}
+
+.f-drag-element.is-dragged > *,
+.f-drag-area__element.is-dragged > * {
+    opacity: var(--f-drag-is-dragged-opacity);
 }
 
 .f-drag-area.is-animated .f-drag-element.is-dragged,
