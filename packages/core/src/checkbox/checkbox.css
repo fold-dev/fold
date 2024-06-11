@@ -177,15 +177,6 @@
     flex-shrink: 0;
 }
 
-.f-checkbox-alt > * {
-    animation: f-checkbox-alt-in var(--f-transition-duration-fast);
-}
-
-@keyframes f-checkbox-alt-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .f-checkbox-alt:focus {
     outline: var(--f-focus);
     outline-offset: 1px;

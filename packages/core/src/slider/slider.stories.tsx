@@ -57,7 +57,7 @@ export const Markers = () => {
 
     return (
         <Slider
-            markers={20}
+            markers={21}
             onChange={setValue}
             values={value}
             min={0}
@@ -75,7 +75,7 @@ export const DoubleHandles = () => {
 
     return (
         <Slider
-            markers={20}
+            markers={21}
             onChange={setValue}
             values={value}
             min={0}
@@ -94,7 +94,7 @@ export const Tooltips = () => {
     return (
         <Slider
             showTooltip
-            markers={10}
+            markers={21}
             onChange={setValue}
             values={value}
             min={0.5}
@@ -113,7 +113,7 @@ export const TooltipsAlwaysOn = () => {
 
     return (
         <Slider
-            markers={10}
+            markers={21}
             showTooltipAlways
             onChange={setValue}
             values={value}
@@ -134,7 +134,7 @@ export const WithIcon = () => {
     return (
         <Slider
             thumbIcons={['sun', 'moon']}
-            markers={20}
+            markers={21}
             onChange={setValue}
             values={value}
             min={0.5}

@@ -64,7 +64,7 @@ export const Waveform = () => {
 export const Flatten = () => {
     return (
         <Card
-            style={{ maxWidth: 400 }}
+            style={{ maxWidth: 500 }}
             width="100%"
             p={20}
             column>
@@ -74,7 +74,7 @@ export const Flatten = () => {
                 width="100%"
                 height={30}
                 samples={100}
-                strokeWidth={3}
+                strokeWidth={2}
                 src={{
                     src: '/song.ogg',
                     type: 'audio/ogg',
@@ -89,7 +89,7 @@ export const Flatten = () => {
 export const CustomPinHeight = () => {
     return (
         <Card
-            style={{ maxWidth: 400 }}
+            style={{ maxWidth: 500 }}
             width="100%"
             p={20}
             column>
@@ -98,7 +98,7 @@ export const CustomPinHeight = () => {
                 width="100%"
                 height={70}
                 samples={100}
-                strokeWidth={3}
+                strokeWidth={2}
                 src={{
                     src: '/song.ogg',
                     type: 'audio/ogg',

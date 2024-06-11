@@ -46,7 +46,7 @@ export type DragManagerProps = {
 }
 
 export const DragManager = (props: DragManagerProps) => {
-    const { animation = 200, moveThreshold = 0, indentThreshold = 10, linedRegionThreshold = 3 } = props
+    const { animation = 200, moveThreshold = 0, indentThreshold = 5, linedRegionThreshold = 3 } = props
     const ghostRef = useRef<any>(null)
     const { origin } = getDragState('origin')
     const { target } = getDragState('target')
@@ -134,8 +134,8 @@ export const DragManager = (props: DragManagerProps) => {
                             elementParentDirection == 'vertical'
                                 ? moveDirection == 'down' || moveDirection == 'up'
                                 : elementParentDirection == 'horizontal'
-                                ? moveDirection == 'left' || moveDirection == 'right'
-                                : false
+                                    ? moveDirection == 'left' || moveDirection == 'right'
+                                    : false
 
                         // see above
                         if (shouldActivate) {
@@ -156,8 +156,7 @@ export const DragManager = (props: DragManagerProps) => {
                             // TODO: extend to accommodate vertical directions
                             if ((elementParentVariant == 'lined-focus' || elementParentVariant == 'focus') && isFocus) {
                                 const box = element.getBoundingClientRect()
-                                const regionSize =
-                                    elementParentVariant == 'focus' ? 0 : Math.round(box.height / linedRegionThreshold)
+                                const regionSize = elementParentVariant == 'focus' ? 0 : Math.round(box.height / linedRegionThreshold)
 
                                 focus = mouseY >= box.top + regionSize && mouseY <= box.bottom - regionSize
                             }
@@ -167,12 +166,12 @@ export const DragManager = (props: DragManagerProps) => {
                             let targetIndex = focus
                                 ? elementIndex
                                 : elementParentDirection == 'vertical'
-                                ? moveDirection == 'down'
-                                    ? elementIndex + 1
-                                    : elementIndex
-                                : moveDirection == 'right'
-                                ? elementIndex + 1
-                                : elementIndex
+                                    ? moveDirection == 'down'
+                                        ? elementIndex + 1
+                                        : elementIndex 
+                                    : moveDirection == 'right'
+                                        ? elementIndex + 1
+                                        : elementIndex
 
                             // if its the 1st element & from coming in outside the area
                             // cache now() + animation time - 10ms minimum (buffer)
@@ -184,7 +183,7 @@ export const DragManager = (props: DragManagerProps) => {
                             if (isFirstElement && now < cache.time) {
                                 targetIndex = elementIndex
                                 moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
-                            }
+                            } 
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
@@ -195,8 +194,7 @@ export const DragManager = (props: DragManagerProps) => {
 
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
-                            const indentIsCached =
-                                cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
+                            const indentIsCached = cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
 
                             // if it's cached then update the target with the cached level
                             if (indentIsCached) {
@@ -204,29 +202,33 @@ export const DragManager = (props: DragManagerProps) => {
                             } else {
                                 // otherwise calculate the correct indent level based on the siblings
                                 const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
-                                const previousIndent = previous ? +previous.dataset.indent : 0
-                                const nextIndent = next ? +next.dataset.indent : 0
 
-                                // if the target index is part of a nested region
-                                // then always take the bottom indent level - this is to keep the indent
-                                // from breaking the hierarchy by auto-assuming the parent indent position
-                                if (nextIndent > previousIndent) targetIndent = nextIndent
+                                // check these exist first
+                                if (previous && next) {
+                                    const previousIndent = previous ? +previous.dataset.indent : 0
+                                    const nextIndent = next ? +next.dataset.indent : 0
 
-                                // cache the newly calculated indent level
-                                cache.indent = {
-                                    index: targetIndex,
-                                    indent: targetIndent,
-                                    areaId: elementAreaId,
-                                    previous,
-                                    previousIndent,
-                                    next,
-                                    nextIndent,
+                                    // if the target index is part of a nested region
+                                    // then always take the bottom indent level - this is to keep the indent
+                                    // from breaking the hierarchy by auto-assuming the parent indent position
+                                    if (nextIndent > previousIndent) targetIndent = nextIndent
+
+                                    // cache the newly calculated indent level
+                                    cache.indent = {
+                                        index: targetIndex,
+                                        indent: targetIndent,
+                                        areaId: elementAreaId,
+                                        previous,
+                                        previousIndent,
+                                        next,
+                                        nextIndent,
+                                    }
+
+                                    // outline the previous & next elements
+                                    // for (let target of element.parentNode.children) target.style.border = 'none'
+                                    // if (previous) previous.style.border = '0.2rem solid crimson'
+                                    // if (next) next.style.border = '0.2rem solid darkcyan'
                                 }
-
-                                // outline the previous & next elements
-                                // for (let target of element.parentNode.children) target.style.border = 'none'
-                                // if (previous) previous.style.border = '0.2rem solid crimson'
-                                // if (next) next.style.border = '0.2rem solid darkcyan'
                             }
 
                             // ------------------------------------------------------------
