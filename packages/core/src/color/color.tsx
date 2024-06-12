@@ -25,11 +25,12 @@ export const Palette = (props: PaletteProps) => {
             {...rest}
             className={className}>
             {colors.map((c: string, index: number) => (
-                <span
+                <button
                     key={index}
                     style={{
                         backgroundColor: c,
                         borderColor: c,
+                        outlineColor: c,
                     }}
                     onClick={() => onChange(c)}
                     className={classNames({
