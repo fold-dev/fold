@@ -28,6 +28,9 @@ export type ModalAnchor =
     | 'bottom-right'
 
 export type ModalProps = {
+    headerProps?: any
+    footerProps?: any
+    bodyProps?: any
     dismissOnEscape?: boolean
     focusTrap?: boolean
     anchor?: ModalAnchor
@@ -45,6 +48,9 @@ export type ModalProps = {
 
 export const Modal = (props: ModalProps) => {
     const {
+        headerProps = {},
+        footerProps = {},
+        bodyProps = {},
         dismissOnEscape,
         focusTrap = false,
         anchor = 'middle-center',
@@ -113,9 +119,9 @@ export const Modal = (props: ModalProps) => {
                     tabIndex={0}
                     onKeyDown={handleKeyDown}
                     ref={contentRef}>
-                    {header && <div className="f-modal__header f-row">{header}</div>}
-                    {props.children && <div className="f-modal__body">{props.children}</div>}
-                    {footer && <div className="f-modal__footer f-row">{footer}</div>}
+                    {header && <div className="f-modal__header f-row" {...headerProps}>{header}</div>}
+                    {props.children && <div className="f-modal__body" {...bodyProps}>{props.children}</div>}
+                    {footer && <div className="f-modal__footer f-row" {...footerProps}>{footer}</div>}
                 </View>
             </div>
         )
