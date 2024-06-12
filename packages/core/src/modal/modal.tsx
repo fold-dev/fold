@@ -64,13 +64,12 @@ export const Modal = (props: ModalProps) => {
     const { trapFocus } = useFocus()
 
     const handleKeyDown = (e) => {
-        console.log('modal')
         const { isEscape } = getKey(e)
         if (isEscape && dismissOnEscape) onDismiss(e)
     }
 
     const handleBackgroundClick = (e: any) => {
-        // seems necessary when nesting modals/dialogs/alerts
+        // necessary when nesting modals/dialogs/alerts
         if (disableBackgroundEventPropagation) {
             e.preventDefault()
             e.stopPropagation()

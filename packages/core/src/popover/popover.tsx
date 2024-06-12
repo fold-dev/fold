@@ -40,7 +40,7 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
-        __autoFocusTimeoutDelay = 200,
+        __autoFocusTimeoutDelay = 0,
         autoFocus = true,
         targetId,
         fixPosition,
@@ -96,7 +96,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         if (autoFocus && showPopover) {
             setTimeout(() => {
                 containerRef.current?.focus()
-
             }, __autoFocusTimeoutDelay)
         }
     }, [

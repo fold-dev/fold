@@ -20,7 +20,7 @@
 }
 
 .f-popover:focus {
-    outline: none
+    outline: none;
 }
 
 .f-popover:not(.is-ready) {

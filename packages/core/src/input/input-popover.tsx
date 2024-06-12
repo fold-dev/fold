@@ -2,15 +2,25 @@ import React, { ReactNode, cloneElement, useRef } from 'react'
 import { Popover, PopoverProps, getKey, renderChildren, useId, useVisibility } from '../'
 
 export type InputPopoverProps = {
+    __openDelay?: number
     id?: string
+    firstTimeFocusOpen?: boolean
     defaultVisibility?: boolean
     popoverProps?: PopoverProps
-    children: ReactNode
+    children: ReactNode 
     content: ReactNode
 }
 
 export const InputPopover = (props: InputPopoverProps) => {
-    const { id, defaultVisibility = false, popoverProps = {}, children, content } = props
+    const { 
+        __openDelay = 100,
+        id, 
+        firstTimeFocusOpen = true,
+        defaultVisibility = false, 
+        popoverProps = {}, 
+        children, 
+        content 
+    } = props
     const childRef = useRef(null)
     const firstTimeFocus = useRef(false)
     const isOpen = useRef(false)
@@ -18,20 +28,20 @@ export const InputPopover = (props: InputPopoverProps) => {
     const internalId = useId(id)
 
     const handleFocus = (e) => {
-        if (!firstTimeFocus.current) {
+        if (!firstTimeFocus.current && firstTimeFocusOpen) {
             e.stopPropagation()
             e.preventDefault()
-            if (!isOpen.current) delayedShow(100)
+            if (!isOpen.current) delayedShow(__openDelay)
         }
     }
 
     const handleClick = (e) => {
-        if (!isOpen.current) delayedShow(100)
+        if (!isOpen.current) delayedShow(__openDelay)
     }
 
     const handleKeyDown = (e) => {
         const { isEnter } = getKey(e)
-        if (isEnter && !isOpen.current) delayedShow(100)
+        if (isEnter && !isOpen.current) delayedShow(__openDelay)
     }
 
     const handleDismiss = (e) => {
@@ -43,6 +53,7 @@ export const InputPopover = (props: InputPopoverProps) => {
 
     return (
         <Popover
+            autoFocus   
             targetId={internalId}
             isVisible={visible}
             content={content}
