@@ -303,19 +303,11 @@ export const TagInput = forwardRef((props: TagInputProps, ref) => {
         [props.className, size]
     )
 
-    const handleFocus = (e) => {
-        const el = e.currentTarget.querySelector(':scope > input')
-        el?.focus()
-        if (props.onFocus) props.onFocus(e)
-    }
-
     return (
         <View
             {...rest}
             ref={ref}
-            className={className}
-            tabIndex={disabled ? -1 : 0}
-            onFocus={handleFocus}>
+            className={className}>
             {render()}
             {renderWithProps(props.children, {
                 disabled,
