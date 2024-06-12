@@ -147,6 +147,7 @@ export const Select = (props: SelectProps) => {
 
     const handleChange = (e) => {
         setText(e.target.value)
+        if (!visible) show()
     }
 
     const handleFocus = (e) => {
@@ -167,11 +168,6 @@ export const Select = (props: SelectProps) => {
         onSelect(option, dismiss, clear)
     }
 
-    const handleHideDropdown = (e) => {
-        const { isEscape } = getKey(e)
-        if (isEscape) dismiss()
-    }
-
     const handleClickOutside = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
@@ -181,7 +177,13 @@ export const Select = (props: SelectProps) => {
     }
 
     const handleKeyDown = (e) => {
-        const { isUp, isDown, isEnter } = getKey(e)
+        const { isUp, isDown, isEnter, isEscape } = getKey(e)
+
+        if (isEscape && visible) {
+            e.preventDefault()
+            e.stopPropagation()
+            hide()
+        }
 
         if (isUp || isDown || isEnter) {
             e.preventDefault()
@@ -245,7 +247,6 @@ export const Select = (props: SelectProps) => {
         }
     }
 
-    useEvent('keydown', handleHideDropdown, true)
     useEvent('click', handleClickOutside, true)
 
     useEffect(() => {
