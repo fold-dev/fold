@@ -9,6 +9,7 @@ export type DialogOptions = {
     footer?: any
     header?: any
     closeButton?: boolean
+    onDismiss?: (e) => void
     portal?: any
 }
 
@@ -25,7 +26,7 @@ export type DialogProps = {
     header?: any
     closeButton?: boolean
     portal?: any
-    onDismiss?: any
+    onDismiss?: (e) => void
 } & CommonProps
 
 export const Dialog = (props: DialogProps) => {
@@ -43,6 +44,7 @@ export const Dialog = (props: DialogProps) => {
     return (
         <Modal
             focusTrap
+            dismissOnEscape
             role="dialog"
             borderless
             width={400}

@@ -1,6 +1,6 @@
-import React, { ReactElement, useEffect, useRef } from 'react'
+import React, { ReactElement, forwardRef, useEffect, useRef } from 'react'
 import { ButtonProps, IconButton, View, useFocus, usePreventScrolling } from '../'
-import { classNames, getActionClass, getKey } from '../helpers'
+import { classNames, getActionClass, getKey, mergeRefs } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export type ModalCloseProps = ButtonProps
@@ -46,7 +46,7 @@ export type ModalProps = {
     onDismiss?: any
 } & CoreViewProps
 
-export const Modal = (props: ModalProps) => {
+export const Modal = forwardRef((props: ModalProps, ref) => {
     const {
         headerProps = {},
         footerProps = {},
@@ -118,7 +118,7 @@ export const Modal = (props: ModalProps) => {
                     aria-modal={true}
                     tabIndex={0}
                     onKeyDown={handleKeyDown}
-                    ref={contentRef}>
+                    ref={mergeRefs([contentRef, ref])}>
                     {header && <div className="f-modal__header f-row" {...headerProps}>{header}</div>}
                     {props.children && <div className="f-modal__body" {...bodyProps}>{props.children}</div>}
                     {footer && <div className="f-modal__footer f-row" {...footerProps}>{footer}</div>}
@@ -136,4 +136,4 @@ export const Modal = (props: ModalProps) => {
     } else {
         return null
     }
-}
+})
