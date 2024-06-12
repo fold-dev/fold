@@ -21,7 +21,6 @@ export const InputPopover = (props: InputPopoverProps) => {
         children, 
         content 
     } = props
-    const childRef = useRef(null)
     const firstTimeFocus = useRef(false)
     const isOpen = useRef(false)
     const { show, hide, visible, delayedShow } = useVisibility(defaultVisibility)
@@ -48,7 +47,6 @@ export const InputPopover = (props: InputPopoverProps) => {
         hide()
         isOpen.current = false
         firstTimeFocus.current = true
-        childRef.current?.focus()
     }
 
     return (
@@ -65,7 +63,6 @@ export const InputPopover = (props: InputPopoverProps) => {
                     onFocus: handleFocus,
                     onClick: handleClick,
                     onKeyDown: handleKeyDown,
-                    ref: childRef,
                     id: internalId,
                 })
             })}

@@ -75,6 +75,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
         setReady(false)
+        childRef.current?.focus()
     }
 
     const handleKeyDown = (e) => {

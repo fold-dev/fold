@@ -19,6 +19,7 @@ import {
 } from '../'
 import {
     classNames,
+    documentObject,
     executeLast,
     getBoundingClientRect,
     getKey,
@@ -215,6 +216,7 @@ export const Select = (props: SelectProps) => {
                     {...tagInputProps}>
                     <TagInputField
                         value={text}
+                        onBlur={hide}
                         onChange={handleChange}
                         placeholder={placeholder}
                         {...tagInputFieldProps}
@@ -236,6 +238,7 @@ export const Select = (props: SelectProps) => {
                         placeholder={finalPlaceholder}
                         onFocus={handleFocus}
                         onChange={handleChange}
+                        onBlur={hide}
                         className={className}
                         disabled={disabled}
                         readOnly={readOnly}
