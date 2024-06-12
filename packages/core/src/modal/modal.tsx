@@ -65,7 +65,7 @@ export const Modal = (props: ModalProps) => {
 
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
-        if (isEscape && dismissOnEscape) onDismiss()
+        if (isEscape && dismissOnEscape) onDismiss(e)
     }
 
     const handleBackgroundClick = (e: any) => {
@@ -77,7 +77,7 @@ export const Modal = (props: ModalProps) => {
 
         if (!disableBackgroundDismiss) {
             if (!contentRef.current.contains(e?.target)) {
-                onDismiss()
+                onDismiss(e)
             }
         }
     }
