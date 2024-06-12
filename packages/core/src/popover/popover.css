@@ -19,6 +19,10 @@
     pointer-events: all;
 }
 
+.f-popover:focus {
+    outline: none
+}
+
 .f-popover:not(.is-ready) {
     visibility: hidden;
 }

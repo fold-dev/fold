@@ -26,6 +26,8 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
+    __autoFocusTimeoutDelay?: number
+    autoFocus?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
     arrow?: boolean
@@ -38,6 +40,8 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
+        __autoFocusTimeoutDelay = 200,
+        autoFocus = true,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -54,7 +58,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     const [ready, setReady] = useState(false)
     const [finalAnchor, setFinalAnchor] = useState('')
     const id = useId(targetId)
-    const showPopover = isVisible && id && finalAnchor
+    const showPopover = isVisible && id && !!finalAnchor
     const isFixed = !!fixPosition
     const className = classNames(
         {
@@ -66,6 +70,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     )
 
     const dismissPopover = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
         dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
         setReady(false)
@@ -84,8 +90,20 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         }
     }
 
-    useEvent('keydown', handleKeyDown, true)
     useEvent('click', handleClick, true)
+
+    useEffect(() => {
+        if (autoFocus && showPopover) {
+            setTimeout(() => {
+                containerRef.current?.focus()
+
+            }, __autoFocusTimeoutDelay)
+        }
+    }, [
+        __autoFocusTimeoutDelay,    
+        autoFocus, 
+        showPopover,
+    ])
 
     useLayoutEffect(() => {
         if (!id) return
@@ -137,7 +155,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                 return cloneElement(child, {
                     ...child.props,
                     ref: mergeRefs([child.ref, childRef]),
-                    id,
+                    id: child.props.id || id,
                 })
             })}
 
@@ -153,6 +171,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                     {...anchorProps}>
                     <View
                         {...rest}
+                        tabIndex={0}
+                        onKeyDown={handleKeyDown}
                         aria-describedby={id}
                         className={className}
                         ref={mergeRefs([ref, containerRef])}>

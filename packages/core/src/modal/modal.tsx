@@ -64,6 +64,7 @@ export const Modal = (props: ModalProps) => {
     const { trapFocus } = useFocus()
 
     const handleKeyDown = (e) => {
+        console.log('modal')
         const { isEscape } = getKey(e)
         if (isEscape && dismissOnEscape) onDismiss(e)
     }
@@ -104,14 +105,14 @@ export const Modal = (props: ModalProps) => {
 
         return (
             <div
-                tabIndex={0}
                 className={classNameOverlay}
-                onKeyUp={handleKeyDown}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}
                     className={className}
                     aria-modal={true}
+                    tabIndex={0}
+                    onKeyDown={handleKeyDown}
                     ref={contentRef}>
                     {header && <div className="f-modal__header f-row">{header}</div>}
                     {props.children && <div className="f-modal__body">{props.children}</div>}
