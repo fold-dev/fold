@@ -25,18 +25,20 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
 
     const handleKeyDown = (e) => {
         let flag = false
-        const { isUp, isDown, isTabNormal, isTabReverse, isTab } = getKey(e)
+        const { isUp, isDown, isTabNormal, isTabReverse, isTab, isShift } = getKey(e)
         const elements: any[] = Array.from(focusableEls.current)
 
         if (isTab) {
-            if (e.shiftKey && documentObject.activeElement === firstFocusableEl.current) {
+            if (isShift && documentObject.activeElement === firstFocusableEl.current) {
                 e.preventDefault()
                 lastFocusableEl.current?.focus()
-            } else if (!e.shiftKey && documentObject.activeElement === lastFocusableEl.current) {
+            } 
+            
+            if (!isShift && documentObject.activeElement === lastFocusableEl.current) {
                 e.preventDefault()
                 firstFocusableEl.current?.focus()
             }
-        }
+        } 
     }
 
     const trapFocus = (el) => {
