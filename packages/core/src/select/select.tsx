@@ -21,6 +21,7 @@ import {
     classNames,
     documentObject,
     executeLast,
+    focusElementById,
     getBoundingClientRect,
     getKey,
     isBoxOffScreen,
@@ -98,6 +99,7 @@ export const Select = (props: SelectProps) => {
     } = props
     const selectedAmount = selected.length
     const isStatic = variant == 'static'
+    const isFilterable = !!onFilter
     const { show, hide, visible } = useVisibility(isStatic)
     const { setTimer, clearTimer } = useTimer()
     const popupId = useId()
@@ -160,11 +162,15 @@ export const Select = (props: SelectProps) => {
     }
 
     const dismiss = () => {
-        if (!isStatic) hide()
+        if (!isStatic) {
+            hide()
+            focusElementById(popupId)
+        }
         clear()
     }
 
     const handleOptionClick = (option: SelectOption) => {
+        if (!option) return
         if (option.disabled) return
         onSelect(option, dismiss, clear)
     }
@@ -177,13 +183,23 @@ export const Select = (props: SelectProps) => {
         }
     }
 
+    const handleKeyDownInput = (e) => {
+        const { isEnter } = getKey(e)
+
+        if (isEnter && !visible) {
+            e.preventDefault()
+            e.stopPropagation()
+            show()
+        }
+    }
+
     const handleKeyDown = (e) => {
         const { isUp, isDown, isEnter, isEscape } = getKey(e)
 
         if (isEscape && visible) {
             e.preventDefault()
             e.stopPropagation()
-            hide()
+            dismiss()
         }
 
         if (isUp || isDown || isEnter) {
@@ -199,7 +215,7 @@ export const Select = (props: SelectProps) => {
 
     const scrollCursorIntoView = () => {
         executeLast(() => {
-            scrollToCenter(listRef.current.querySelector(`.is-focused`))
+            scrollToCenter(listRef.current?.querySelector(`.is-focused`))
         })
     }
 
@@ -210,13 +226,15 @@ export const Select = (props: SelectProps) => {
                     size={size}
                     id={popupId}
                     disabled={disabled}
-                    onFocus={handleFocus}
+                    onKeyDown={handleKeyDownInput}
                     className="f-select"
-                    render={render}
+                    render={render}                    
                     {...tagInputProps}>
                     <TagInputField
                         value={text}
-                        onBlur={hide}
+                        readOnly={readOnly || !visible}
+                        onBlur={dismiss}
+                        onFocus={handleFocus}
                         onChange={handleChange}
                         placeholder={placeholder}
                         {...tagInputFieldProps}
@@ -227,6 +245,7 @@ export const Select = (props: SelectProps) => {
             return (
                 <InputControl
                     onClick={handleFocus}
+                    onKeyDown={handleKeyDownInput}
                     disabled={disabled}>
                     {prefix && <InputPrefix>{prefix}</InputPrefix>}
                     <Input
@@ -238,10 +257,10 @@ export const Select = (props: SelectProps) => {
                         placeholder={finalPlaceholder}
                         onFocus={handleFocus}
                         onChange={handleChange}
-                        onBlur={hide}
+                        onKeyDown={handleKeyDownInput}
                         className={className}
                         disabled={disabled}
-                        readOnly={readOnly}
+                        readOnly={readOnly || !visible}
                         {...inputProps}
                     />
                     {suffix && <InputSuffix>{suffix}</InputSuffix>}
@@ -296,7 +315,7 @@ export const Select = (props: SelectProps) => {
                     ref={popoverRef}
                     className={popoverClassName}>
                     <SelectList
-                        noFocus={noListFocus}
+                        noFocus={noListFocus || isFilterable}
                         as={as}
                         ref={listRef}
                         cursor={cursor}

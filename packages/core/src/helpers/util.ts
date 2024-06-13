@@ -293,6 +293,11 @@ export const classNames = (object: any, classes: string[] = []): string => {
     return !!allClasses ? allClasses : null
 }
 
+export const focusElementById = (id: string) => {
+    const el: HTMLElement = documentObject.getElementById(id)
+    el?.focus()
+}
+
 export const focusElement = (el: HTMLElement) => el?.focus()
 
 export const blurElement = (el: HTMLElement) => el?.blur()

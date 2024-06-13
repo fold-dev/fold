@@ -65,9 +65,9 @@ export const InputControl = forwardRef((props: InputControlProps, ref) => {
     return (
         <View
             {...props}
-            className={className}
             ref={ref}
-            tabIndex={0}
+            className={className}
+            //tabIndex={0}
         />
     )
 })

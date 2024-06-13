@@ -6,6 +6,7 @@ export type InputPopoverProps = {
     id?: string
     firstTimeFocusOpen?: boolean
     defaultVisibility?: boolean
+    addTabIndexToChild?: boolean
     popoverProps?: PopoverProps
     children: ReactNode 
     content: ReactNode
@@ -15,6 +16,7 @@ export const InputPopover = (props: InputPopoverProps) => {
     const { 
         __openDelay = 100,
         id, 
+        addTabIndexToChild = true,
         firstTimeFocusOpen = true,
         defaultVisibility = false, 
         popoverProps = {}, 
@@ -63,6 +65,7 @@ export const InputPopover = (props: InputPopoverProps) => {
                     onFocus: handleFocus,
                     onClick: handleClick,
                     onKeyDown: handleKeyDown,
+                    tabIndex: addTabIndexToChild ? 0 : null,
                     id: internalId,
                 })
             })}
