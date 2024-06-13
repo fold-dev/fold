@@ -116,6 +116,7 @@ export const Select = (props: SelectProps) => {
     const listRef = useRef(null)
     const popupContentId = useId()
     const containerRef = useRef(null)
+    const mountedRef = useRef(false)
     const [offscreen, setOffscreen] = useState(false)
     const [cursor, setCursor] = useState(-1)
     const [text, setText] = useState('')
@@ -307,12 +308,14 @@ export const Select = (props: SelectProps) => {
         }, filterDelay)
     }, [text])
 
-    // callbacks for onOpen & onClose
+    // callbacks for onOpen & onClose (after mount)
     useEffect(() => {
-        if (visible) {
-            if (onOpen) onOpen()
-        } else {
-            if (onClose) onClose()
+        if (mountedRef.current) {
+            if (visible) {
+                if (onOpen) onOpen()
+            } else {
+                if (onClose) onClose()
+            }
         }
     }, [visible])
 
@@ -342,6 +345,11 @@ export const Select = (props: SelectProps) => {
     useEffect(() => {
         if (!visible && openOnMount) show()
     }, [openOnMount])
+
+    // set the mounted flag
+    useEffect(() => {
+        mountedRef.current = true
+    }, [])
 
     return (
         <View
