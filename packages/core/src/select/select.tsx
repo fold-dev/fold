@@ -210,7 +210,17 @@ export const Select = (props: SelectProps) => {
         onSelect(option, dismiss, clear)
         // refocus the elment because the forced scrolling (useEffect)
         // causes the element to lose focus
-        focusElementById(popupContentId)
+        if (as == 'virtual') {
+            if (isFilterable) {
+                if (tagInput) {
+                    focusElement(tagInputFieldRef.current)
+                } else {
+                    focusElementById(popupId)
+                }
+            } else {
+                focusElementById(popupContentId)
+            }
+        }
     }
 
     const handleClickOutside = (e) => {
