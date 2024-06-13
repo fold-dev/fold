@@ -22,10 +22,11 @@ export const moveElementInArray = (array, origin, target) => {
     return [...arrayMove(array, origin.index, targetIndex)]
 }
 
-export const arrayMove = (array, from, to) =>
-    from < to
+export const arrayMove = (array, from, to) => {
+    return from < to
         ? [...array.slice(0, from), ...array.slice(from + 1, to + 1), array[from], ...array.slice(to + 1)]
         : [...array.slice(0, to), array[from], ...array.slice(to, from), ...array.slice(from + 1)]
+}
 
 export const getNumberArray = (amount: number): number[] => {
     return new Array(amount).fill(null).map((_, i) => i)
