@@ -28,7 +28,12 @@
     z-index: 1;
 }
 
-.f-select-container .f-input-control {
+.f-select-container .f-input,
+.f-select-container .f-input-control,
+.f-select-container .f-input-common,
+.f-select-container .f-input:read-only,
+.f-select-container .f-input-control:read-only,
+.f-select-container .f-input-common:read-only {
     cursor: pointer;
 }
 
