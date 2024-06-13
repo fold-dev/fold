@@ -178,18 +178,20 @@ export const Select = (props: SelectProps) => {
         setText('')
     }
 
-    const dismiss = () => {
+    const dismiss = (refocus = true) => {
         if (!isStatic) {
             hide()
             // we simply want to focus the element again
             // and not show the list
-            dontShowListPopup.current = true
-            if (tagInput) {
-                focusElement(tagInputFieldRef.current)
-            } else {
-                focusElementById(popupId)
+            if (refocus) {
+                dontShowListPopup.current = true
+                if (tagInput) {
+                    focusElement(tagInputFieldRef.current)
+                } else {
+                    focusElementById(popupId)
+                }
+                dontShowListPopup.current = false
             }
-            dontShowListPopup.current = false
         }
         clear()
     }
@@ -203,7 +205,7 @@ export const Select = (props: SelectProps) => {
     const handleClickOutside = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                if (visible) dismiss()
+                if (visible) dismiss(false)
             }
         }
     }
