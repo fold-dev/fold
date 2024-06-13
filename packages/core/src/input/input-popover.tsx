@@ -3,6 +3,7 @@ import { Popover, PopoverProps, getKey, renderChildren, useId, useVisibility } f
 
 export type InputPopoverProps = {
     __openDelay?: number
+    openOnFocus?: boolean
     id?: string
     firstTimeFocusOpen?: boolean
     defaultVisibility?: boolean
@@ -15,6 +16,7 @@ export type InputPopoverProps = {
 export const InputPopover = (props: InputPopoverProps) => {
     const { 
         __openDelay = 100,
+        openOnFocus,
         id, 
         addTabIndexToChild = true,
         firstTimeFocusOpen = true,
@@ -32,7 +34,7 @@ export const InputPopover = (props: InputPopoverProps) => {
         if (!firstTimeFocus.current && firstTimeFocusOpen) {
             e.stopPropagation()
             e.preventDefault()
-            if (!isOpen.current) delayedShow(__openDelay)
+            if (!isOpen.current && openOnFocus) delayedShow(__openDelay)
         }
     }
 

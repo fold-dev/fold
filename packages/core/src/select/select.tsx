@@ -160,6 +160,10 @@ export const Select = (props: SelectProps) => {
         if (!visible) show()
     }
 
+    const handleClick = (e) => {
+        if (!visible) show()
+    }
+
     const handleFocus = (e) => {
         if (dontShowListPopup.current) return
         if (!visible && openOnFocus) show()
@@ -243,7 +247,7 @@ export const Select = (props: SelectProps) => {
                     id={popupId}
                     disabled={disabled}
                     onKeyDown={handleKeyDownInput}
-                    onClick={handleFocus}
+                    onClick={handleClick}
                     className="f-select"
                     render={render}                    
                     {...tagInputProps}>
@@ -263,7 +267,7 @@ export const Select = (props: SelectProps) => {
         } else {
             return (
                 <InputControl
-                    onClick={handleFocus}
+                    onClick={handleClick}
                     onKeyDown={handleKeyDownInput}
                     disabled={disabled}>
                     {prefix && <InputPrefix>{prefix}</InputPrefix>}
