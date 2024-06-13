@@ -35,6 +35,7 @@ import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
+    openOnFocus?: boolean
     noListFocus?: boolean
     hideSelected?: boolean
     as?: 'default' | 'virtual'
@@ -69,6 +70,7 @@ export type SelectProps = {
 
 export const Select = (props: SelectProps) => {
     const {
+        openOnFocus,
         noListFocus,
         hideSelected = false,
         as = 'default',
@@ -160,7 +162,7 @@ export const Select = (props: SelectProps) => {
 
     const handleFocus = (e) => {
         if (dontShowListPopup.current) return
-        if (!visible) show()
+        if (!visible && openOnFocus) show()
     }
 
     const clear = () => {
