@@ -340,7 +340,7 @@ export const Select = (props: SelectProps) => {
 
     // opens the list when mounted
     useEffect(() => {
-        if (!visible) show()
+        if (!visible && openOnMount) show()
     }, [openOnMount])
 
     return (
