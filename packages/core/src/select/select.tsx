@@ -36,6 +36,7 @@ import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
     openOnFocus?: boolean
+    openOnMount?: boolean
     noListFocus?: boolean
     hideSelected?: boolean
     as?: 'default' | 'virtual'
@@ -72,6 +73,7 @@ export type SelectProps = {
 export const Select = (props: SelectProps) => {
     const {
         openOnFocus,
+        openOnMount,
         noListFocus,
         hideSelected = false,
         as = 'default',
@@ -257,7 +259,7 @@ export const Select = (props: SelectProps) => {
                         value={text}
                         ref={tagInputFieldRef}
                         readOnly={readOnly || !visible}
-                        // Edge case: losing focus will happen when clicking on buttons
+                        // Edge case: losing focus will happen when clicking on list buttons
                         // onBlur={dismiss}
                         onFocus={handleFocus}
                         onChange={handleChange}
@@ -281,7 +283,7 @@ export const Select = (props: SelectProps) => {
                         value={text}
                         placeholder={finalPlaceholder}
                         onFocus={handleFocus}
-                        // Edge case: losing focus will happen when clicking on buttons
+                        // Edge case: losing focus will happen when clicking on list buttons
                         // onBlur={(e) => isFilterable ? hide() : null}
                         onChange={handleChange}
                         onKeyDown={handleKeyDownInput}
@@ -298,12 +300,14 @@ export const Select = (props: SelectProps) => {
 
     useEvent('click', handleClickOutside, true)
 
+    // manages the onFilter
     useEffect(() => {
         setTimer(() => {
             if (onFilter && !!text) onFilter(text)
         }, filterDelay)
     }, [text])
 
+    // callbacks for onOpen & onClose
     useEffect(() => {
         if (visible) {
             if (onOpen) onOpen()
@@ -312,16 +316,20 @@ export const Select = (props: SelectProps) => {
         }
     }, [visible])
 
+    // resets the cursor
     useEffect(() => {
         setCursor(0)
     }, [text, visible])
 
+    // manages the scroll for the virutal list
+    // similar to scrollCursorIntoView()
     useEffect(() => {
         if (as != 'virtual') return
         const virtual = listRef.current?.querySelector(`.f-virtual`)
         virtual?.scrollTo(0, virtualProps.itemHeight * cursor)
     }, [cursor])
 
+    // static (always open)
     useLayoutEffect(() => {
         if (!visible) return
         if (variant == 'static') return
@@ -329,6 +337,11 @@ export const Select = (props: SelectProps) => {
         const { width, height } = getBoundingClientRect(popoverRef.current)
         setOffscreen(isBoxOffScreen({ top: bottom, left, width, height }).y)
     }, [visible, variant])
+
+    // opens the list when mounted
+    useEffect(() => {
+        if (!visible) show()
+    }, [openOnMount])
 
     return (
         <View
