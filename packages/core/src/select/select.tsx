@@ -208,6 +208,7 @@ export const Select = (props: SelectProps) => {
         if (!option) return
         if (option.disabled) return
         onSelect(option, dismiss, clear)
+        // TODO: find out why this happens (maybe related to virtualization)
         // refocus the elment because the forced scrolling (useEffect)
         // causes the element to lose focus
         if (as == 'virtual') {
