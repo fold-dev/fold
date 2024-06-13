@@ -11,6 +11,7 @@ import {
     TagInputProps,
     Text,
     useEvent,
+    useFocus,
     useId,
     useTimer,
     useVisibility,
@@ -21,12 +22,14 @@ import {
     classNames,
     documentObject,
     executeLast,
+    focusElement,
     focusElementById,
     getBoundingClientRect,
     getKey,
     isBoxOffScreen,
     mergeRefs,
     scrollToCenter,
+    waitForRender,
 } from '../helpers'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
@@ -121,6 +124,8 @@ export const Select = (props: SelectProps) => {
             }
         })
     }, [options, selected, text])
+    const tagInputFieldRef = useRef(null)
+    const dontShowListPopup = useRef(false)
     const finalPlaceholder = useMemo(() => {
         if (customPlaceholder) return customPlaceholder
         if (selectedAmount == 0) return placeholder
@@ -154,6 +159,7 @@ export const Select = (props: SelectProps) => {
     }
 
     const handleFocus = (e) => {
+        if (dontShowListPopup.current) return
         if (!visible) show()
     }
 
@@ -164,7 +170,15 @@ export const Select = (props: SelectProps) => {
     const dismiss = () => {
         if (!isStatic) {
             hide()
-            focusElementById(popupId)
+            // we simply want to focus the element again
+            // and not show the list
+            dontShowListPopup.current = true
+            if (tagInput) {
+                focusElement(tagInputFieldRef.current)
+            } else {
+                focusElementById(popupId)
+            }
+            dontShowListPopup.current = false
         }
         clear()
     }
@@ -178,7 +192,7 @@ export const Select = (props: SelectProps) => {
     const handleClickOutside = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                dismiss()
+                if (visible) dismiss()
             }
         }
     }
@@ -200,6 +214,7 @@ export const Select = (props: SelectProps) => {
             e.preventDefault()
             e.stopPropagation()
             dismiss()
+            console.log('here')
         }
 
         if (isUp || isDown || isEnter) {
@@ -227,13 +242,16 @@ export const Select = (props: SelectProps) => {
                     id={popupId}
                     disabled={disabled}
                     onKeyDown={handleKeyDownInput}
+                    onClick={handleFocus}
                     className="f-select"
                     render={render}                    
                     {...tagInputProps}>
                     <TagInputField
                         value={text}
+                        ref={tagInputFieldRef}
                         readOnly={readOnly || !visible}
-                        onBlur={dismiss}
+                        // Edge case: losing focus will happen when clicking on buttons
+                        // onBlur={dismiss}
                         onFocus={handleFocus}
                         onChange={handleChange}
                         placeholder={placeholder}
@@ -256,6 +274,8 @@ export const Select = (props: SelectProps) => {
                         value={text}
                         placeholder={finalPlaceholder}
                         onFocus={handleFocus}
+                        // Edge case: losing focus will happen when clicking on buttons
+                        // onBlur={(e) => isFilterable ? hide() : null}
                         onChange={handleChange}
                         onKeyDown={handleKeyDownInput}
                         className={className}
@@ -375,13 +395,17 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     const isVirtual = as == 'virtual'
     const isDefault = as == 'default'
     const noOptions = options.length == 0
+    const { trapFocus } = useFocus()
     const className = classNames({
         'f-select-list': true,
         'is-virtual': isVirtual,
     })
 
     useEffect(() => {
-        if (!noFocus) containerRef.current?.focus()
+        if (!noFocus) {
+            containerRef.current?.focus()
+            waitForRender(() => trapFocus(containerRef.current), 10)
+        }
     }, [noFocus])
 
     return (

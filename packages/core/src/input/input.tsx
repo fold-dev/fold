@@ -274,16 +274,17 @@ export const PinInput = (props: PinInputProps) => {
 
 export type TagInputFieldProps = CoreViewProps & CoreInputProps
 
-export const TagInputField = (props: TagInputFieldProps) => {
+export const TagInputField = forwardRef((props: TagInputFieldProps, ref) => {
     return (
         <View
             {...props}
+            ref={ref}
             as="input"
             role="textbox"
             type="search"
         />
     )
-}
+})
 
 export type TagInputProps = {
     render: any
