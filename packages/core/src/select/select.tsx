@@ -216,7 +216,7 @@ export const Select = (props: SelectProps) => {
     }
 
     const handleKeyDown = (e) => {
-        const { isUp, isDown, isEnter, isEscape } = getKey(e)
+        const { isUp, isDown, isEnter, isEscape, isTabNormal, isTabReverse } = getKey(e)
 
         if (isEscape && visible) {
             e.preventDefault()
@@ -224,14 +224,14 @@ export const Select = (props: SelectProps) => {
             dismiss()
         }
 
-        if (isUp || isDown || isEnter) {
+        if (isUp || isDown || isEnter || isTabNormal || isTabReverse) {
             e.preventDefault()
             e.stopPropagation()
 
-            if (isUp) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
-            if (isDown) setCursor(cursor == filteredOptions.length - 1 ? 0 : cursor + 1)
+            if (isUp || isTabReverse) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
+            if (isDown || isTabNormal) setCursor(cursor == filteredOptions.length - 1 ? 0 : cursor + 1)
             if (isEnter) handleOptionClick(filteredOptions[cursor])
-            if ((isUp || isDown) && as == 'default') scrollCursorIntoView()
+            if ((isUp || isDown || isTabReverse || isTabNormal) && as == 'default') scrollCursorIntoView()
         }
     }
 
@@ -412,7 +412,9 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     useEffect(() => {
         if (!noFocus) {
             containerRef.current?.focus()
-            waitForRender(() => trapFocus(containerRef.current), 10)
+            // not technically necessary because we're managing tabs manually
+            // TODO: as == 'virtual' causes unexpected behaviour
+            if (as == 'default') waitForRender(() => trapFocus(containerRef.current), 10)
         }
     }, [noFocus])
 
