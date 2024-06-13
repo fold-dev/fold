@@ -214,7 +214,6 @@ export const Select = (props: SelectProps) => {
             e.preventDefault()
             e.stopPropagation()
             dismiss()
-            console.log('here')
         }
 
         if (isUp || isDown || isEnter) {
