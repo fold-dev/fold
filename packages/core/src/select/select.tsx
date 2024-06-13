@@ -166,7 +166,15 @@ export const Select = (props: SelectProps) => {
     }
 
     const handleClick = (e) => {
-        if (!visible) show()
+        if (!visible) {
+            show()
+            // make sure to focus the right element
+            if (tagInput) {
+                focusElement(tagInputFieldRef.current)
+            } else {
+                focusElementById(popupId)
+            }
+        }
     }
 
     const handleFocus = (e) => {
@@ -200,6 +208,9 @@ export const Select = (props: SelectProps) => {
         if (!option) return
         if (option.disabled) return
         onSelect(option, dismiss, clear)
+        // refocus the elment because the forced scrolling (useEffect)
+        // causes the element to lose focus
+        focusElementById(popupContentId)
     }
 
     const handleClickOutside = (e) => {
@@ -229,85 +240,44 @@ export const Select = (props: SelectProps) => {
             dismiss()
         }
 
-        if (isUp || isDown || isEnter || isTabNormal || isTabReverse) {
+        if (isUp || isDown || isEnter) {
             e.preventDefault()
             e.stopPropagation()
-
-            if (isUp || isTabReverse) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
-            if (isDown || isTabNormal) setCursor(cursor == filteredOptions.length - 1 ? 0 : cursor + 1)
+            if (isUp) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
+            if (isDown) setCursor(cursor == filteredOptions.length - 1 ? 0 : cursor + 1)
             if (isEnter) handleOptionClick(filteredOptions[cursor])
-            if ((isUp || isDown || isTabReverse || isTabNormal) && as == 'default') scrollCursorIntoView()
+            if (as == 'default') scrollIntoView()
+        }
+
+        // this makes the trapFocus usage almost redundant
+        // TODO: find a more graceful way to trap focus with overriding events
+        // 1) filterable selects need focus on the input element (not just option)
+        //    downside is that reverse-tabbing tabs to the previous element
+        // 2) virtual elements behave similarly
+        if ((isTabNormal || isTabReverse) && visible) {
+            e.preventDefault()
+            e.stopPropagation()
+            if (isTabReverse) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
+            if (isTabNormal) setCursor(cursor == filteredOptions.length - 1 ? 0 : cursor + 1)
+            if (as == 'default') scrollIntoView()
         }
     }
 
-    const scrollCursorIntoView = () => {
+    const scrollIntoView = () => {
         executeLast(() => {
             scrollToCenter(listRef.current?.querySelector(`.is-focused`))
         })
-    }
-
-    const renderInput = () => {
-        if (tagInput) {
-            return (
-                <TagInput
-                    size={size}
-                    id={popupId}
-                    disabled={disabled}
-                    onKeyDown={handleKeyDownInput}
-                    onClick={handleClick}
-                    className="f-select"
-                    render={render}                    
-                    {...tagInputProps}>
-                    <TagInputField
-                        value={text}
-                        ref={tagInputFieldRef}
-                        readOnly={readOnly || !visible}
-                        // Edge case: losing focus will happen when clicking on list buttons
-                        // onBlur={dismiss}
-                        onFocus={handleFocus}
-                        onChange={handleChange}
-                        placeholder={placeholder}
-                        {...tagInputFieldProps}
-                    />
-                </TagInput>
-            )
-        } else {
-            return (
-                <InputControl
-                    onClick={handleClick}
-                    onKeyDown={handleKeyDownInput}
-                    disabled={disabled}>
-                    {prefix && <InputPrefix>{prefix}</InputPrefix>}
-                    <Input
-                        size={size}
-                        id={popupId}
-                        type="search"
-                        autoComplete="off"
-                        value={text}
-                        placeholder={finalPlaceholder}
-                        onFocus={handleFocus}
-                        // Edge case: losing focus will happen when clicking on list buttons
-                        // onBlur={(e) => isFilterable ? hide() : null}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDownInput}
-                        className={className}
-                        disabled={disabled}
-                        readOnly={readOnly || !visible}
-                        {...inputProps}
-                    />
-                    {suffix && <InputSuffix>{suffix}</InputSuffix>}
-                </InputControl>
-            )
-        }
     }
 
     useEvent('click', handleClickOutside, true)
 
     // manages the onFilter
     useEffect(() => {
-        setTimer(() => {
-            if (onFilter && !!text) onFilter(text)
-        }, filterDelay)
+        if (mountedRef.current) {
+            setTimer(() => {
+                if (onFilter && !!text) onFilter(text)
+            }, filterDelay)
+        }
     }, [text])
 
     // callbacks for onOpen & onClose (after mount)
@@ -328,10 +298,12 @@ export const Select = (props: SelectProps) => {
 
     // manages the scroll for the virutal list
     // similar to scrollCursorIntoView()
+    // we do it here because we need the correct cursor (after it updates)
     useEffect(() => {
-        if (as != 'virtual') return
-        const virtual = listRef.current?.querySelector(`.f-virtual`)
-        virtual?.scrollTo(0, virtualProps.itemHeight * cursor)
+        if (as == 'virtual') {
+            const virtual = listRef.current?.querySelector(`.f-virtual`)
+            virtual?.scrollTo(0, virtualProps.itemHeight * cursor)
+        }
     }, [cursor])
 
     // static (always open)
@@ -359,7 +331,58 @@ export const Select = (props: SelectProps) => {
             ref={containerRef}
             className={containerClassName}
             onKeyDown={handleKeyDown}>
-            {renderInput()}
+            {tagInput && (
+                <TagInput
+                    size={size}
+                    id={popupId}
+                    disabled={disabled}
+                    onKeyDown={handleKeyDownInput}
+                    onClick={handleClick}
+                    className="f-select"
+                    render={render}                    
+                    {...tagInputProps}>
+                    <TagInputField
+                        value={text}
+                        ref={tagInputFieldRef}
+                        readOnly={readOnly || !visible}
+                        // Edge case: losing focus will happen when clicking on list buttons
+                        // onBlur={dismiss}
+                        onFocus={handleFocus}
+                        onChange={handleChange}
+                        placeholder={placeholder}
+                        {...tagInputFieldProps}
+                    />
+                </TagInput>
+            )}
+
+            {!tagInput && (
+                <InputControl
+                    onClick={handleClick}
+                    onKeyDown={handleKeyDownInput}
+                    disabled={disabled}>
+                    {prefix && <InputPrefix>{prefix}</InputPrefix>}
+                    <Input
+                        size={size}
+                        id={popupId}
+                        type="search"
+                        autoComplete="off"
+                        value={text}
+                        placeholder={finalPlaceholder}
+                        onFocus={handleFocus}
+                        // Edge case: losing focus will happen when clicking on list buttons
+                        // onBlur={(e) => isFilterable ? hide() : null}
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDownInput}
+                        className={className}
+                        disabled={disabled}
+                        readOnly={readOnly || !visible}
+                        {...inputProps}
+                    />
+                    {suffix && <InputSuffix>{suffix}</InputSuffix>}
+                </InputControl>
+                
+            )}
+
             {visible && (
                 <div
                     ref={popoverRef}
@@ -379,7 +402,7 @@ export const Select = (props: SelectProps) => {
                         noOptionsComponent={noOptionsComponent}
                         virtualProps={virtualProps}
                         onOptionClick={handleOptionClick}
-                        onCursorUpdate={(index) => setCursor(index)}
+                        onCursorUpdate={setCursor}
                         {...selectListProps}
                     />
                 </div>
@@ -435,8 +458,7 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
     useEffect(() => {
         if (!noFocus) {
             containerRef.current?.focus()
-            // not technically necessary because we're managing tabs manually
-            // TODO: as == 'virtual' causes unexpected behaviour
+            // we manually manage the tabbing for virtual list
             if (as == 'default') waitForRender(() => trapFocus(containerRef.current), 10)
         }
     }, [noFocus])
@@ -559,10 +581,14 @@ export const SelectListOption = (props: SelectOptionProps) => {
 
     if (customContent) return customContent
 
+    const handleClick = (e) => {
+        if (!disabled) onOptionClick()
+    }
+
     return (
         <p
             className={className}
-            onClick={!disabled ? onOptionClick : null}>
+            onClick={handleClick}>
             {selected && <span className="f-select-list-option__active" />}
             <span className="f-select-list-option__prefix f-row">
                 <IconLib
