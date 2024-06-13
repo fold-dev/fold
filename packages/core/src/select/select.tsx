@@ -116,7 +116,6 @@ export const Select = (props: SelectProps) => {
     const listRef = useRef(null)
     const popupContentId = useId()
     const containerRef = useRef(null)
-    const mountedRef = useRef(false)
     const [offscreen, setOffscreen] = useState(false)
     const [cursor, setCursor] = useState(-1)
     const [text, setText] = useState('')
@@ -160,14 +159,26 @@ export const Select = (props: SelectProps) => {
         'is-offscreen': offscreen,
     })
 
+    const openCallback = () => {
+        if (onOpen) onOpen()
+    }
+
+    const closeCallback = () => {
+        if (onClose) onClose()
+    }
+
     const handleChange = (e) => {
         setText(e.target.value)
-        if (!visible) show()
+        if (!visible) {
+            show()
+            openCallback()
+        }
     }
 
     const handleClick = (e) => {
         if (!visible) {
             show()
+            openCallback()
             // make sure to focus the right element
             if (tagInput) {
                 focusElement(tagInputFieldRef.current)
@@ -179,7 +190,10 @@ export const Select = (props: SelectProps) => {
 
     const handleFocus = (e) => {
         if (dontShowListPopup.current) return
-        if (!visible && openOnFocus) show()
+        if (!visible && openOnFocus) {
+            show()
+            openCallback()
+        }
     }
 
     const clear = () => {
@@ -189,6 +203,7 @@ export const Select = (props: SelectProps) => {
     const dismiss = (refocus = true) => {
         if (!isStatic) {
             hide()
+            closeCallback()
             // we simply want to focus the element again
             // and not show the list
             if (refocus) {
@@ -239,6 +254,7 @@ export const Select = (props: SelectProps) => {
             e.preventDefault()
             e.stopPropagation()
             show()
+            openCallback()
         }
     }
 
@@ -284,23 +300,10 @@ export const Select = (props: SelectProps) => {
 
     // manages the onFilter
     useEffect(() => {
-        if (mountedRef.current) {
-            setTimer(() => {
-                if (onFilter && !!text) onFilter(text)
-            }, filterDelay)
-        }
-    }, [text])
-
-    // callbacks for onOpen & onClose (after mount)
-    useEffect(() => {
-        if (mountedRef.current) {
-            if (visible) {
-                if (onOpen) onOpen()
-            } else {
-                if (onClose) onClose()
-            }
-        }
-    }, [visible])
+        setTimer(() => {
+            if (onFilter && !!text) onFilter(text)
+        }, filterDelay)
+    }, [text, onFilter, filterDelay])
 
     // resets the cursor
     useEffect(() => {
@@ -328,13 +331,11 @@ export const Select = (props: SelectProps) => {
 
     // opens the list when mounted
     useEffect(() => {
-        if (!visible && openOnMount) show()
-    }, [openOnMount])
-
-    // set the mounted flag
-    useEffect(() => {
-        mountedRef.current = true
-    }, [])
+        if (!visible && openOnMount) {
+            show()
+            openCallback()
+        }
+    }, [openOnMount, visible])
 
     return (
         <View
