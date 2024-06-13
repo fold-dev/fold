@@ -61,6 +61,7 @@ export type SelectProps = {
     tagInputProps?: TagInputProps
     tagInputFieldProps?: TagInputFieldProps
     selectListProps?: SelectListProps
+    selectPopoverProps?: any
     virtualProps?: SelectListVirtual
     optionComponent?: any
     noOptionsComponent?: any
@@ -95,6 +96,7 @@ export const Select = (props: SelectProps) => {
         tagInputProps = {},
         tagInputFieldProps = {},
         selectListProps = {},
+        selectPopoverProps = {},
         virtualProps = { maxHeight: 300, itemHeight: 35 },
         optionComponent,
         noOptionsComponent,
@@ -338,7 +340,8 @@ export const Select = (props: SelectProps) => {
             {visible && (
                 <div
                     ref={popoverRef}
-                    className={popoverClassName}>
+                    className={popoverClassName}
+                    {...selectPopoverProps}>
                     <SelectList
                         noFocus={noListFocus || isFilterable}
                         as={as}
