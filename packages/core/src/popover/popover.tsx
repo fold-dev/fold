@@ -26,8 +26,6 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
-    __autoFocusTimeoutDelay?: number
-    autoFocus?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
     arrow?: boolean
@@ -40,8 +38,6 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
-        __autoFocusTimeoutDelay = 0,
-        autoFocus = true,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -80,7 +76,16 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
-        if (isEscape && onDismiss) dismissPopover(e)
+
+        // if the escape event is inside the popup
+        // or is from the popup itself, then close
+        if (isEscape) {
+            if (containerRef.current) {
+                if (containerRef.current?.contains(e.target) || containerRef.current == e.target) {
+                    if (onDismiss) dismissPopover(e)
+                }
+            }
+        }
     }
 
     const handleClick = (e) => {
@@ -92,21 +97,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     useEvent('click', handleClick, true)
-    //useEvent('keydown', handleKeyDown, true)
-
-    useEffect(() => {
-        if (autoFocus && showPopover) {
-            setTimeout(() => {
-                containerRef.current?.focus()
-            }, __autoFocusTimeoutDelay)
-        }
-    }, [
-        __autoFocusTimeoutDelay,    
-        autoFocus, 
-        showPopover,
-    ])
-
-
+    useEvent('keydown', handleKeyDown, true)
 
     useLayoutEffect(() => {
         if (!id) return
@@ -164,8 +155,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
             {showPopover && (
                 <div
-                tabIndex={0}
-                onKeyDown={handleKeyDown}
+                    onKeyDown={handleKeyDown}
                     className="f-popover__anchor"
                     style={{
                         transform: `translate(${box.left}px, ${box.top}px)`,
@@ -176,6 +166,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                     {...anchorProps}>
                     <View
                         {...rest}
+                        tabIndex={0}
                         aria-describedby={id}
                         className={className}
                         ref={mergeRefs([ref, containerRef])}>

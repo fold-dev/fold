@@ -31,7 +31,7 @@ export const docs = {
  * Whilst not recommended, the automatic focus on the first item can be disabled. It's disabled here so the page doesn't jump down (to focus on the first item).
  */
 export const Usage = () => (
-    <Menu disableAutoFocus>
+    <Menu>
         <MenuItem>Edit</MenuItem>
         <MenuItem>Copy</MenuItem>
         <MenuItem>Cut</MenuItem>
@@ -49,7 +49,7 @@ export const Usage = () => (
 // --
 
 export const PrefixAndSuffix = () => (
-    <Menu disableAutoFocus>
+    <Menu>
         <MenuHeading
             prefix={<IconLib icon="circle" />}
             suffix={<IconLib icon="circle" />}>
@@ -72,7 +72,7 @@ export const PrefixAndSuffix = () => (
 // --
 
 export const States = () => (
-    <Menu disableAutoFocus>
+    <Menu>
         <MenuItem>Normal</MenuItem>
         <MenuItem active>Active</MenuItem>
         <MenuItem disabled>Disabled</MenuItem>
@@ -82,7 +82,7 @@ export const States = () => (
 // --
 
 export const OptionGroup = () => (
-    <Menu disableAutoFocus>
+    <Menu>
         <MenuOptionGroup
             title="Favourite State Manager"
             defaultValue="Context"
@@ -99,7 +99,7 @@ export const OptionGroup = () => (
 // --
 
 export const Submenu = () => (
-    <Menu disableAutoFocus>
+    <Menu>
         <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
         <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
         <MenuItem prefix={<IconLib icon="bin" />}>Cut</MenuItem>
@@ -138,7 +138,7 @@ export const Submenu = () => (
 export const Context = () => (
     <MenuProvider
         menu={({ data, dismiss }) => (
-            <Menu disableAutoFocus>
+            <Menu>
                 <MenuHeading>{data.heading ?? 'Context Menu'}</MenuHeading>
                 <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
                 <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
@@ -185,7 +185,7 @@ export const DropdownMenuButton = () => (
 // --
 
 export const MenuBar = () => (
-    <Menu variant="menubar" disableAutoFocus>
+    <Menu variant="menubar">
         <MenuItem prefix={<IconLib icon="pen" />}>Edit</MenuItem>
         <MenuItem prefix={<IconLib icon="copy" />}>Copy</MenuItem>
         <MenuItem prefix={<IconLib icon="bin" />}>Cut</MenuItem>

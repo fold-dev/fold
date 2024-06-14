@@ -9,7 +9,7 @@ import React, {
     useState,
 } from 'react'
 import { Button, ButtonProps, Heading, HeadingProps, Popover, PopoverProps, Text, usePreventScrolling, useVisibility, View } from '../'
-import { classNames, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
+import { classNames, documentObject, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
@@ -147,34 +147,23 @@ export const Menu = (props: MenuProps) => {
         [props.className]
     )
 
-    const closeFromMenu = () => {
-        if (closeFromParenMenuItem) closeFromParenMenuItem()
-    }
+    const closeFromMenu = () => closeFromParenMenuItem ? closeFromParenMenuItem() : null
 
     const firstMenuItem = () => menuItemRefs.current[0]
 
     const lastMenuItem = () => menuItemRefs.current[menuItemRefs.current.length - 1]
 
-    const setFocusToCache = () => {
-        focusRef.current?.focus()
-    }
+    const setFocusToCache = () => focusRef.current?.focus()
 
-    const setFocusToFirstMenuitem = () => {
-        setFocusToMenuitem(firstMenuItem())
-    }
+    const setFocusToFirstMenuitem = () => setFocusToMenuitem(firstMenuItem())
 
-    const setFocusToLastMenuitem = () => {
-        setFocusToMenuitem(lastMenuItem())
-    }
+    const setFocusToLastMenuitem = () => setFocusToMenuitem(lastMenuItem())
 
     const setFocusToMenuitem = (newMenuitem) => {
         menuItemRefs.current.forEach((item) => {
             if (item === newMenuitem) {
-                item.tabIndex = 0
-                newMenuitem.focus()
+                setTimeout(() => newMenuitem.focus(), 0)
                 focusRef.current = newMenuitem
-            } else {
-                item.tabIndex = -1
             }
         })
     }
@@ -221,11 +210,7 @@ export const Menu = (props: MenuProps) => {
     }, [])
 
     useEffect(() => {
-        if (disableAutoFocus) {
-            menuItemRefs.current.forEach((item, index) => index == 0 ? item.tabIndex = 0 : null)
-        } else {
-            setFocusToFirstMenuitem()
-        }
+        if (!disableAutoFocus) setFocusToFirstMenuitem()
     }, [disableAutoFocus])
 
     return (
@@ -295,7 +280,7 @@ export const MenuItem = (props: MenuItemProps) => {
         disabled,
         active,
         onClick,
-        tabIndex,
+        tabIndex = 0,
         setFocusToPreviousMenuitem,
         setFocusToNextMenuitem,
         setFocusToFirstMenuitem,

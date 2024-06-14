@@ -110,9 +110,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
 
         return (
             <div
-                //tabIndex={0}
                 className={classNameOverlay}
-                //onKeyDown={handleKeyDown}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}
