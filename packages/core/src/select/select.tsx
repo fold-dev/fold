@@ -242,7 +242,7 @@ export const Select = (props: SelectProps) => {
     const handleClickOutside = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                if (visible) dismiss(false)
+                if (visible) dismiss()
             }
         }
     }
