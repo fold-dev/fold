@@ -22,6 +22,7 @@ import {
     Textarea,
     useVisibility,
     View,
+    InputPopover,
 } from '@fold-dev/core'
 import React, { useRef, useState } from 'react'
 
@@ -469,14 +470,9 @@ export const Pin = () => (
 
 export const WithPopover = () => {
     const [text, setText] = useState<any>('')
-    const { show, delayedShow, hide, visible } = useVisibility(false)
 
     return (
-        <Popover
-            arrow
-            isVisible={visible}
-            onDismiss={hide}
-            anchor="bottom-center"
+        <InputPopover
             content={
                 <View
                     p={20}
@@ -497,9 +493,8 @@ export const WithPopover = () => {
                 value={text}
                 type="password"
                 onChange={(e) => setText(e.target.value)}
-                onFocus={(e) => delayedShow()}
             />
-        </Popover>
+        </InputPopover>
     )
 }
 

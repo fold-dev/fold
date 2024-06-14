@@ -11,6 +11,7 @@ export type InputPopoverProps = {
     popoverProps?: PopoverProps
     children: ReactNode 
     content: ReactNode
+    focusTrap?: boolean
 }
 
 export const InputPopover = (props: InputPopoverProps) => {
@@ -23,7 +24,8 @@ export const InputPopover = (props: InputPopoverProps) => {
         defaultVisibility = false, 
         popoverProps = {}, 
         children, 
-        content 
+        content,
+        focusTrap = true,
     } = props
     const firstTimeFocus = useRef(false)
     const isOpen = useRef(false)
@@ -43,8 +45,9 @@ export const InputPopover = (props: InputPopoverProps) => {
     }
 
     const handleKeyDown = (e) => {
-        const { isEnter } = getKey(e)
+        const { isEnter, isEscape } = getKey(e)
         if (isEnter && !isOpen.current) delayedShow(__openDelay)
+        if (isEscape) hide()
     }
 
     const handleDismiss = (e) => {
@@ -55,7 +58,7 @@ export const InputPopover = (props: InputPopoverProps) => {
 
     return (
         <Popover
-            autoFocus   
+            focusTrap={focusTrap}
             targetId={internalId}
             isVisible={visible}
             content={content}
