@@ -310,6 +310,7 @@ export const Control = () => {
             <InputControl>
                 <InputPrefix>
                     <Popover
+                        focusTrap
                         zIndex={100}
                         width={250}
                         anchor="bottom-left"
@@ -328,6 +329,7 @@ export const Control = () => {
                             width={15}
                             height={15}
                             bg={color}
+                            tabIndex={0}
                             className="f-buttonize"
                             onClick={show}
                         />

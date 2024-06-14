@@ -32,6 +32,7 @@ export type ModalProps = {
     footerProps?: any
     bodyProps?: any
     dismissOnEscape?: boolean
+    __focusTrapTimeoutDelay?: number
     focusTrap?: boolean
     anchor?: ModalAnchor
     isVisible: boolean
@@ -52,6 +53,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
         footerProps = {},
         bodyProps = {},
         dismissOnEscape = true,
+        __focusTrapTimeoutDelay = 100,
         focusTrap = false,
         anchor = 'middle-center',
         isVisible = false,
@@ -92,7 +94,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
 
     useEffect(() => {
         if (focusTrap && isVisible && contentRef.current) {
-            trapFocus(contentRef.current)
+            setTimeout(() => trapFocus(contentRef.current), __focusTrapTimeoutDelay)
         }
     }, [isVisible])
 

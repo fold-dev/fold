@@ -1,5 +1,5 @@
 import React, { cloneElement, forwardRef, ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { useId, View } from '..'
+import { useFocus, useId, View } from '..'
 import {
     classNames,
     documentObject,
@@ -26,6 +26,8 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
+    __focusTrapTimeoutDelay?: number
+    focusTrap?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
     arrow?: boolean
@@ -38,6 +40,8 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
+        __focusTrapTimeoutDelay = 100,
+        focusTrap,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -56,6 +60,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     const id = useId(targetId)
     const showPopover = isVisible && id && !!finalAnchor
     const isFixed = !!fixPosition
+    const { trapFocus } = useFocus()
     const className = classNames(
         {
             'f-popover': true,
@@ -142,6 +147,13 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
         return () => containerRef.current?.style.removeProperty('top')
     }, [showPopover, content, fixPosition, props.children, ready])
+
+    useEffect(() => {
+        if (focusTrap && showPopover && containerRef.current) {
+            // give react & the browser some time to mount
+            setTimeout(() => trapFocus(containerRef.current), __focusTrapTimeoutDelay)
+        }
+    }, [showPopover])
 
     return (
         <>
