@@ -26,6 +26,7 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
+    __globalEscape?: boolean
     __focusTrapTimeoutDelay?: number
     focusTrap?: boolean
     targetId?: string
@@ -40,6 +41,7 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
+        __globalEscape,
         __focusTrapTimeoutDelay = 100,
         focusTrap,
         targetId,
@@ -85,9 +87,13 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         // if the escape event is inside the popup
         // or is from the popup itself, then close
         if (isEscape) {
-            if (containerRef.current) {
-                if (containerRef.current?.contains(e.target) || containerRef.current == e.target) {
-                    if (onDismiss) dismissPopover(e)
+            if (__globalEscape) {
+                if (onDismiss) dismissPopover(e)
+            } else {
+                if (containerRef.current) {
+                    if (containerRef.current?.contains(e.target) || containerRef.current == e.target) {
+                        if (onDismiss) dismissPopover(e)
+                    }
                 }
             }
         }

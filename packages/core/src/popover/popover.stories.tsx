@@ -5,6 +5,9 @@ import {
     Flexer,
     Heading,
     Input,
+    InputPopover,
+    Li,
+    List,
     Menu,
     MenuButton,
     MenuItem,
@@ -13,7 +16,7 @@ import {
     useVisibility,
     View,
 } from '@fold-dev/core'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 export default {
     title: 'Components/Popover',
@@ -34,6 +37,7 @@ export const Usage = () => {
     return (
         <Popover
             arrow
+            focusTrap
             width={300}
             anchor="middle-right"
             content={
@@ -303,32 +307,32 @@ export const PositionsWithArrows = () => {
 // --
 
 export const FocusTrapWithChildWidth = () => {
-    const { visible, show, hide } = useVisibility(true)
-    const ref1 = useRef(null)
-    const ref2 = useRef(null)
+    const [text, setText] = useState<any>('')
 
     return (
-        <Popover
-            anchor="bottom-right"
-            content={<Text p={20}>Fixed to the width of the container & only blurring will dismiss this.</Text>}
-            isVisible={visible}
-            onDismiss={(e) => {
-                switch (e.target) {
-                    case ref1.current:
-                        return console.log('main input')
-                    case ref2.current:
-                        return console.log('popup content input')
-                    default:
-                        hide()
-                }
-            }}>
+        <InputPopover
+            content={
+                <View
+                    p={20}
+                    column
+                    alignItems="flex-start"
+                    gap={10}>
+                    <Heading as="h4">Plese make sure your password:</Heading>
+                    <List as="ul">
+                        <Li>Is more than 8 characters long</Li>
+                        <Li>Does not container easily identifiable words</Li>
+                        <Li>Contains alpha-numeric characters</Li>
+                        <Li>Contains special characters</Li>
+                    </List>
+                </View>
+            }>
             <Input
-                onFocus={show}
-                value={visible ? 'Popover is visible' : 'Popover is not visible'}
-                ref={ref1}
-                onChange={(e) => null}
+                placeholder="Enter your password"
+                value={text}
+                type="password"
+                onChange={(e) => setText(e.target.value)}
             />
-        </Popover>
+        </InputPopover>
     )
 }
 
@@ -365,6 +369,7 @@ export const OffscreenDetection = () => {
         <View>
             <View row>
                 <Popover
+                    __globalEscape
                     arrow
                     width="fit-content"
                     isVisible={visible}
@@ -380,6 +385,7 @@ export const OffscreenDetection = () => {
                 </Popover>
                 <Flexer />
                 <Popover
+                    __globalEscape
                     arrow
                     width="fit-content"
                     isVisible={visible}
