@@ -92,6 +92,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     useEvent('click', handleClick, true)
+    //useEvent('keydown', handleKeyDown, true)
 
     useEffect(() => {
         if (autoFocus && showPopover) {
@@ -104,6 +105,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         autoFocus, 
         showPopover,
     ])
+
+
 
     useLayoutEffect(() => {
         if (!id) return
@@ -161,6 +164,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
             {showPopover && (
                 <div
+                tabIndex={0}
+                onKeyDown={handleKeyDown}
                     className="f-popover__anchor"
                     style={{
                         transform: `translate(${box.left}px, ${box.top}px)`,
@@ -171,8 +176,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                     {...anchorProps}>
                     <View
                         {...rest}
-                        tabIndex={0}
-                        onKeyDown={handleKeyDown}
                         aria-describedby={id}
                         className={className}
                         ref={mergeRefs([ref, containerRef])}>

@@ -51,7 +51,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
         headerProps = {},
         footerProps = {},
         bodyProps = {},
-        dismissOnEscape,
+        dismissOnEscape = true,
         focusTrap = false,
         anchor = 'middle-center',
         isVisible = false,
@@ -110,7 +110,9 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
 
         return (
             <div
+                //tabIndex={0}
                 className={classNameOverlay}
+                //onKeyDown={handleKeyDown}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}

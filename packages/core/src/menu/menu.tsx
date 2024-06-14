@@ -238,18 +238,22 @@ export const Menu = (props: MenuProps) => {
             style={styles}
             onKeyDown={handleKeyDown}>
             {renderChildren(props.children, (child: ReactElement, index) => {
-                if (child.type == MenuItem) {
-                    return cloneElement(child, {
-                        ...child.props,
-                        setFocusToPreviousMenuitem,
-                        setFocusToNextMenuitem,
-                        setFocusToFirstMenuitem,
-                        setFocusToLastMenuitem,
-                        setFocusToCache,
-                        closeFromMenu,
-                    })
+                if (child) {
+                    if (child.type == MenuItem) {
+                        return cloneElement(child, {
+                            ...child.props,
+                            setFocusToPreviousMenuitem,
+                            setFocusToNextMenuitem,
+                            setFocusToFirstMenuitem,
+                            setFocusToLastMenuitem,
+                            setFocusToCache,
+                            closeFromMenu,
+                        })
+                    } else {
+                        return child
+                    }
                 } else {
-                    return child
+                    return null
                 }
             })}
         </View>
