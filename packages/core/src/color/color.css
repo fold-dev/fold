@@ -2,7 +2,7 @@
     --f-color-palette-size: 20px;
     --f-color-palette-radius: var(--f-radius);
     --f-color-palette-spacing: var(--f-size-2);
-    --f-color-palette-border-size: 0.3rem;
+    --f-color-palette-border-size: 4px;
     --f-color-palette-selected: 2px solid var(--f-color-surface);
     --f-color-picker-width: 250px;
     --f-color-picker-height: 150px;
@@ -17,13 +17,13 @@
 }
 
 .f-color-palette__color {
+    padding: 0;
     border-radius: var(--f-color-palette-radius);
     display: block !important;
     flex-grow: 0;
     flex-shrink: 0;
-    width: var(--f-color-palette-size) !important;
-    height: var(--f-color-palette-size) !important;
-    font-size: 0px;
+    width: var(--f-color-palette-size);
+    height: var(--f-color-palette-size);
     border-width: var(--f-color-palette-border-size);
     border-style: solid;
     position: relative;
