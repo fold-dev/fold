@@ -1,5 +1,9 @@
 import React, { ReactElement } from 'react'
 
+export const isRightMouseButton = (e) => {
+    return e.which === 3 || e.button === 2
+}
+
 export const highlightText = (text: string, query: string) => {
     var reg = new RegExp(query, 'gi')
     return text.replace(reg, (str) => {
