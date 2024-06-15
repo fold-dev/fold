@@ -83,7 +83,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         onDismiss(e)
         setReady(false)
         if (refocus) childRef.current?.focus()
-            console.log(childRef.current)
     }
 
     const handleKeyDownDocument = (e) => {
