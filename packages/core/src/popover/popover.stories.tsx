@@ -369,7 +369,6 @@ export const OffscreenDetection = () => {
         <View>
             <View row>
                 <Popover
-                    __globalEscape
                     arrow
                     width="fit-content"
                     isVisible={visible}
@@ -385,7 +384,6 @@ export const OffscreenDetection = () => {
                 </Popover>
                 <Flexer />
                 <Popover
-                    __globalEscape
                     arrow
                     width="fit-content"
                     isVisible={visible}

@@ -1,3 +1,4 @@
+
 import React, { cloneElement, forwardRef, ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useFocus, useId, View } from '..'
 import {
@@ -26,7 +27,7 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
-    __globalEscape?: boolean
+    hardEscape?: boolean
     __focusTrapTimeoutDelay?: number
     focusTrap?: boolean
     targetId?: string
@@ -41,7 +42,7 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
-        __globalEscape,
+        hardEscape = true,
         __focusTrapTimeoutDelay = 100,
         focusTrap,
         targetId,
@@ -81,8 +82,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         childRef.current?.focus()
     }
 
-    const handleKeyDownGlobal = (e) => {
-        if (__globalEscape) {
+    const handleKeyDownDocument = (e) => {
+        if (hardEscape) {
             const { isEscape } = getKey(e)
             if (isEscape && onDismiss) dismissPopover(e)
         }
@@ -94,6 +95,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         if (isEscape && onDismiss) dismissPopover(e)
     }
 
+
     const handleClick = (e) => {
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
@@ -103,7 +105,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     useEvent('click', handleClick, true)
-    useEvent('keydown', handleKeyDownGlobal, true)
+    useEvent('keydown', handleKeyDownDocument, true)
 
     useLayoutEffect(() => {
         if (!id) return
@@ -191,3 +193,5 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         </>
     )
 })
+
+
