@@ -54,7 +54,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
         bodyProps = {},
         dismissOnEscape = true,
         __focusTrapTimeoutDelay = 0,
-        focusTrap = false,
+        focusTrap = true,
         anchor = 'middle-center',
         isVisible = false,
         footer,
