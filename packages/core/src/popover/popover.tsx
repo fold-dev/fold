@@ -81,22 +81,17 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         childRef.current?.focus()
     }
 
+    const handleKeyDownGlobal = (e) => {
+        if (__globalEscape) {
+            const { isEscape } = getKey(e)
+            if (isEscape && onDismiss) dismissPopover(e)
+        }
+
+    }
+
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
-
-        // if the escape event is inside the popup
-        // or is from the popup itself, then close
-        if (isEscape) {
-            if (__globalEscape) {
-                if (onDismiss) dismissPopover(e)
-            } else {
-                if (containerRef.current) {
-                    if (containerRef.current?.contains(e.target) || containerRef.current == e.target) {
-                        if (onDismiss) dismissPopover(e)
-                    }
-                }
-            }
-        }
+        if (isEscape && onDismiss) dismissPopover(e)
     }
 
     const handleClick = (e) => {
@@ -108,7 +103,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     useEvent('click', handleClick, true)
-    //useEvent('keydown', handleKeyDown, true)
+    useEvent('keydown', handleKeyDownGlobal, true)
 
     useLayoutEffect(() => {
         if (!id) return
