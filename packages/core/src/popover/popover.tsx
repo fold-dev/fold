@@ -108,7 +108,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     useEvent('click', handleClick, true)
-    useEvent('keydown', handleKeyDown, true)
+    //useEvent('keydown', handleKeyDown, true)
 
     useLayoutEffect(() => {
         if (!id) return
@@ -185,6 +185,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                     <View
                         {...rest}
                         tabIndex={0}
+                        onKeyDown={handleKeyDown}
                         aria-describedby={id}
                         className={className}
                         ref={mergeRefs([ref, containerRef])}>

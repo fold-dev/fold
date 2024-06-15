@@ -117,12 +117,12 @@ export type MenuProps = {
     disableAutoFocus?: boolean
     variant?: 'menu' | 'menubar'
     width?: number | string
-    closeFromParenMenuItem?: any
+    closeFromParentMenuItem?: any
     isSubmenu?: boolean
 } & CoreViewProps
 
 export const Menu = (props: MenuProps) => {
-    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParenMenuItem, style = {}, ...rest } = props
+    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParentMenuItem, style = {}, ...rest } = props
     const isMenubar = variant == 'menubar'
     const role = isMenubar ? 'menubar' : 'menu'
     const menuRef = useRef(null)
@@ -147,7 +147,7 @@ export const Menu = (props: MenuProps) => {
         [props.className]
     )
 
-    const closeFromMenu = () => closeFromParenMenuItem ? closeFromParenMenuItem() : null
+    const closeFromMenu = () => closeFromParentMenuItem ? closeFromParentMenuItem() : null
 
     const firstMenuItem = () => menuItemRefs.current[0]
 
@@ -194,7 +194,7 @@ export const Menu = (props: MenuProps) => {
     const handleKeyDown = (e) => {
         e.stopPropagation()
         const { isEscape } = getKey(e)
-        if (isEscape && closeFromParenMenuItem) closeFromParenMenuItem()
+        if (isEscape && closeFromParentMenuItem) closeFromParentMenuItem()
     }
 
     useLayoutEffect(() => {
@@ -383,7 +383,7 @@ export const MenuItem = (props: MenuItemProps) => {
         }
     }
 
-    const closeFromParenMenuItem = () => {
+    const closeFromParentMenuItem = () => {
         setOpen(false)
         setFocusToCache()
     }
@@ -423,7 +423,7 @@ export const MenuItem = (props: MenuItemProps) => {
             {open &&
                 renderWithProps(menu, {
                     isSubmenu: true,
-                    closeFromParenMenuItem,
+                    closeFromParentMenuItem,
                 })}
         </View>
     )
