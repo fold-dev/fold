@@ -35,6 +35,9 @@ import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
+    /**
+     * @description traps the focus within the options list
+     */
     trapFocus?: boolean
     openOnFocus?: boolean
     openOnMount?: boolean
