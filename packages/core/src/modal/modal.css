@@ -108,12 +108,16 @@
     padding: var(--f-modal-padding);
     justify-content: flex-start;
     border-top: 1px solid var(--f-modal-border-color);
+    border-bottom-left-radius: var(--f-modal-border-radius);
+    border-bottom-right-radius: var(--f-modal-border-radius);
 }
 
 .f-modal__header {
     padding: var(--f-modal-padding);
     justify-content: flex-start;   
     border-bottom: 1px solid var(--f-modal-border-color); 
+    border-top-left-radius: var(--f-modal-border-radius);
+    border-top-right-radius: var(--f-modal-border-radius);
 }
 
 /* close button */
