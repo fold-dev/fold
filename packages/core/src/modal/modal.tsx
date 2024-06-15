@@ -74,7 +74,6 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
         if (isEscape && dismissOnEscape) onDismiss(e)
-            console.log('here')
     }
 
     const handleBackgroundClick = (e: any) => {

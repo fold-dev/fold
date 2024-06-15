@@ -27,6 +27,9 @@ export const PopoverContent = forwardRef((props: CoreViewProps, ref) => (
 export type PopoverAnchor = PopoutPosition
 
 export type PopoverProps = {
+    /**
+     * @description Be careful as this can have unintended consequences with other elements
+     */
     hardEscape?: boolean
     __focusTrapTimeoutDelay?: number
     focusTrap?: boolean
@@ -42,9 +45,9 @@ export type PopoverProps = {
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
-        hardEscape = true,
+        hardEscape,
         __focusTrapTimeoutDelay = 100,
-        focusTrap,
+        focusTrap = true,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -73,19 +76,19 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         [props.className, getPopoutClass(finalAnchor)]
     )
 
-    const dismissPopover = (e) => {
+    const dismissPopover = (e, refocus = true) => {
         e.preventDefault()
         e.stopPropagation()
         dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
         setReady(false)
-        childRef.current?.focus()
+        if (refocus) childRef.current?.focus()
     }
 
     const handleKeyDownDocument = (e) => {
         if (hardEscape) {
             const { isEscape } = getKey(e)
-            if (isEscape && onDismiss) dismissPopover(e)
+            if (isEscape && onDismiss) dismissPopover(e, false)
         }
 
     }

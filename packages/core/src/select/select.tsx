@@ -35,6 +35,7 @@ import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
 export type SelectProps = {
+    trapFocus?: boolean
     openOnFocus?: boolean
     openOnMount?: boolean
     noListFocus?: boolean
@@ -72,6 +73,7 @@ export type SelectProps = {
 
 export const Select = (props: SelectProps) => {
     const {
+        trapFocus = true,
         openOnFocus,
         openOnMount,
         noListFocus,
@@ -262,8 +264,10 @@ export const Select = (props: SelectProps) => {
         const { isUp, isDown, isEnter, isEscape, isTabNormal, isTabReverse } = getKey(e)
 
         if (isEscape && visible) {
-            e.preventDefault()
-            e.stopPropagation()
+            if (trapFocus) {
+                e.preventDefault()
+                e.stopPropagation()
+            }
             dismiss()
         }
 
@@ -281,7 +285,7 @@ export const Select = (props: SelectProps) => {
         // 1) filterable selects need focus on the input element (not just option)
         //    downside is that reverse-tabbing tabs to the previous element
         // 2) virtual elements behave similarly
-        if ((isTabNormal || isTabReverse) && visible) {
+        if ((isTabNormal || isTabReverse) && visible && trapFocus) {
             e.preventDefault()
             e.stopPropagation()
             if (isTabReverse) setCursor(cursor == 0 ? filteredOptions.length - 1 : cursor - 1)
