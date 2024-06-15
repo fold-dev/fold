@@ -192,9 +192,12 @@ export const Menu = (props: MenuProps) => {
     }
 
     const handleKeyDown = (e) => {
-        e.stopPropagation()
         const { isEscape } = getKey(e)
-        if (isEscape && closeFromParentMenuItem) closeFromParentMenuItem()
+        if (isEscape && closeFromParentMenuItem) {
+            e.stopPropagation()
+            e.preventDefault()
+            closeFromParentMenuItem()
+        }
     }
 
     useLayoutEffect(() => {
