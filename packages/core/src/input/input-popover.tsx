@@ -51,6 +51,8 @@ export const InputPopover = (props: InputPopoverProps) => {
     }
 
     const handleDismiss = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
         hide()
         isOpen.current = false
         firstTimeFocus.current = true

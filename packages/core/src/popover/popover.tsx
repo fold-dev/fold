@@ -32,6 +32,7 @@ export type PopoverProps = {
      */
     hardEscape?: boolean
     __focusTrapTimeoutDelay?: number
+    __blockDismissEvent?: boolean
     focusTrap?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
@@ -47,6 +48,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
         hardEscape,
         __focusTrapTimeoutDelay = 100,
+        __blockDismissEvent = false,
         focusTrap = true,
         targetId,
         fixPosition,
@@ -77,6 +79,10 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     )
 
     const dismissPopover = (e, refocus = true) => {
+        if (__blockDismissEvent) {
+            e.preventDefault()
+            e.stopPropagation()
+        }
         dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
         setReady(false)
