@@ -204,7 +204,7 @@ export const DragManager = (props: DragManagerProps) => {
                                 const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
 
                                 // check these exist first
-                                if (previous && next) {
+                                if (previous || next) {
                                     const previousIndent = previous ? +previous.dataset.indent : 0
                                     const nextIndent = next ? +next.dataset.indent : 0
 
@@ -226,8 +226,8 @@ export const DragManager = (props: DragManagerProps) => {
 
                                     // outline the previous & next elements
                                     // for (let target of element.parentNode.children) target.style.border = 'none'
-                                    // if (previous) previous.style.border = '0.2rem solid crimson'
-                                    // if (next) next.style.border = '0.2rem solid darkcyan'
+                                    // if (previous) previous.style.outline = '1px solid green'
+                                    // if (next) next.style.outline = '1px solid red'
                                 }
                             }
 
