@@ -508,7 +508,7 @@ export const MenuProvider = (props: MenuProviderProps) => {
         setData({})
     }
 
-    usePreventScrolling(!!position.x || !!position.y)
+    //usePreventScrolling(!!position.x || !!position.y)
 
     return (
         <Popover
@@ -519,7 +519,9 @@ export const MenuProvider = (props: MenuProviderProps) => {
             fixPosition={{ left: position.x, top: position.y }}
             content={menu({ data, dismiss })}
             onDismiss={() => setPosition({ x: 0, y: 0 })}>
-            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>{children}</ContextMenuContext.Provider>
+            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>
+                {children}
+            </ContextMenuContext.Provider>
         </Popover>
     )
 }

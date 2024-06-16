@@ -94,8 +94,10 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     const handleKeyDown = (e) => {
-        const { isEscape } = getKey(e)
-        if (isEscape && onDismiss) dismissPopover(e)
+        if (!hardEscape) {
+            const { isEscape } = getKey(e)
+            if (isEscape && onDismiss) dismissPopover(e)
+        }
     }
 
 
