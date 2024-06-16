@@ -77,12 +77,12 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     )
 
     const dismissPopover = (e, refocus = true) => {
-        e.preventDefault()
-        e.stopPropagation()
-        dispatchPopoverEvent('ondismiss', e)
+        // e.preventDefault()
+        // e.stopPropagation()
+        // dispatchPopoverEvent('ondismiss', e)
         onDismiss(e)
-        setReady(false)
-        if (refocus) childRef.current?.focus()
+        // setReady(false)
+        // if (refocus) childRef.current?.focus()
     }
 
     const handleKeyDownDocument = (e) => {
@@ -102,9 +102,11 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
 
 
     const handleClick = (e) => {
+        console.log(e.target)
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                if (onDismiss) dismissPopover(e)
+                //if (onDismiss) dismissPopover(e)
+                onDismiss(e)
             }
         }
     }
