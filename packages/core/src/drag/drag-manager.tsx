@@ -115,8 +115,6 @@ export const DragManager = (props: DragManagerProps) => {
                 if (!!moveDirection && !shouldIndent && !shouldOutdent) {
                     const element = documentObject.elementFromPoint(mouseX, mouseY)
 
-                    console.log(element)
-
                     // only process valid elements (non-offscreen)
                     if (!element) return
                     if (!element.dataset) return
