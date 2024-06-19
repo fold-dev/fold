@@ -6,13 +6,23 @@ import { CoreViewProps, Size } from '../types'
 
 export const useCopy = () => {
     const copyToClipboard = (value: any) => {
-        const tempInput: any = documentObject.createElement('textarea')
-        tempInput.style = 'position: absolute; left: -1000px; top: -1000px;'
-        tempInput.value = value
-        documentObject.body.appendChild(tempInput)
-        tempInput.select()
-        documentObject.execCommand('copy')
-        documentObject.body.removeChild(tempInput)
+        try {
+            navigator
+                .clipboard
+                .writeText(value)
+                .catch(err => {
+                    throw new Error(err)
+                })
+        } catch (err) {
+            const tempInput: any = documentObject.createElement('textarea')
+            tempInput.style = 'position: absolute; left: -1000px; top: -1000px;'
+            tempInput.value = value
+            documentObject.body.appendChild(tempInput)
+            tempInput.select()
+            documentObject.execCommand('copy')
+            documentObject.body.removeChild(tempInput)
+            console.warn('Copy fallback method used.', err)
+        }
     }
 
     return {
@@ -67,6 +77,7 @@ export const Copy = (props: CopyProps) => {
             <span className="f-copy__suffix f-row">
                 {suffix}
                 <button
+                    type="button"
                     className="f-buttonize f-copy__button"
                     onClick={handleCopyClick}>
                     <IconLib
