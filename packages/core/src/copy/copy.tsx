@@ -66,12 +66,14 @@ export const Copy = (props: CopyProps) => {
             </span>
             <span className="f-copy__suffix f-row">
                 {suffix}
-                <IconLib
-                    size={size}
-                    icon={copied ? 'check' : 'clipboard'}
-                    className="f-buttonize"
-                    onClick={handleCopyClick}
-                />
+                <button
+                    className="f-buttonize f-copy__button"
+                    onClick={handleCopyClick}>
+                    <IconLib
+                        size={size}
+                        icon={copied ? 'check' : 'clipboard'}
+                    />
+                </button>
             </span>
         </View>
     )

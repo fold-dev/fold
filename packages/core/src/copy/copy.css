@@ -29,6 +29,19 @@
     color: inherit;
 }
 
+.f-copy__button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none; 
+    color: inherit;
+}
+
+.f-copy__button:focus {
+    outline: var(--f-focus);
+    border-radius: var(--f-copy-border-radius);
+}
+
 .f-copy code {
     flex: 1;
     color: var(--f-copy-color);
