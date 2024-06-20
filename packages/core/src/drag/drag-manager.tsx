@@ -129,6 +129,12 @@ export const DragManager = (props: DragManagerProps) => {
                         const elementParentDirection = element.parentNode.dataset.direction
                         const elementParentGroup = element.parentNode.dataset.group
 
+                        // TODO: find a good way to do this (code below produces glitchiness)
+                        // if the move direction doesn't correlate with the layout
+                        // then force the moveDirection in an appropriate direction
+                        // if (elementParentDirection == 'vertical' && (moveDirection == 'left' || moveDirection == 'right')) moveDirection = 'down'
+                        // if (elementParentDirection == 'horizontal' && (moveDirection == 'up' || moveDirection == 'down')) moveDirection = 'left'
+
                         // only activate if there is a mouse direction & parent element direction
                         const shouldActivate =
                             elementParentDirection == 'vertical'
@@ -145,6 +151,7 @@ export const DragManager = (props: DragManagerProps) => {
                             const elementIndex = +element.dataset.index
                             const elementIndent = element.dataset.indent ? +element.dataset.indent : 0
                             const elementAreaId = element.parentNode.dataset.areaid // element.dataset.areaid 🔴
+                            const elementNotFromTop = element.parentNode.dataset.notfromtop
                             const elementParentVariant: DragVariant = origin.targetVariant[elementParentGroup]
 
                             // TODO: find a non-hacky way to do this
@@ -177,13 +184,16 @@ export const DragManager = (props: DragManagerProps) => {
                             // cache now() + animation time - 10ms minimum (buffer)
                             if (isFirstElement && isDifferentArea) cache.time = now + animation + 10
 
+                            // if it's got the dataset.fromtop
                             // if it's the first element, then always make sure to handle
                             // indexes normally only after the animation has timed out
                             // manually set mouse direction & target index
-                            if (isFirstElement && now < cache.time) {
-                                targetIndex = elementIndex
-                                moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
-                            } 
+                            if (!elementNotFromTop) {
+                                if (isFirstElement && now < cache.time) {
+                                    targetIndex = elementIndex
+                                    moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
+                                } 
+                            }
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
