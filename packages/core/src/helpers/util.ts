@@ -52,6 +52,17 @@ export const addDocumentClass = (className: string) => documentObject.body.class
 
 export const removeDocumentClass = (className: string) => documentObject.body.classList.remove(className)
 
+export const scrollToTop = (target: HTMLElement) => {
+    const container = target?.parentElement
+    if (container) {
+        console.log(target.offsetTop)
+        container.scrollTo({
+            behavior: 'smooth',
+            top: target.offsetTop,
+        })
+    }
+}
+
 export const scrollToCenter = (target: HTMLElement) => {
     const container = target?.parentElement
     if (container) {
