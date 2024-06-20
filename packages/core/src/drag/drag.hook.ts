@@ -116,7 +116,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         const areaId = parent.getAttribute('id')
         const group = parent.dataset.group
         const direction = parent.dataset.direction
-        const finalTargetVariant = JSON.parse(parent.dataset.targetvariant)
+        const finalTargetVariant = parent.dataset.targetvariant ? JSON.parse(parent.dataset.targetvariant) : {}
         const isHorizontal = direction == 'horizontal'
         const isVertical = direction == 'vertical'
         const moveDirection = isVertical ? 'up' : 'left'
