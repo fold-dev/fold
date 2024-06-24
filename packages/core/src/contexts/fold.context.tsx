@@ -200,7 +200,10 @@ export const FoldProvider = (props: any) => {
                     closeButton={dialog.closeButton}
                     title={dialog.title}
                     description={dialog.description}
-                    onDismiss={() => setDialog({})}
+                    onDismiss={(e) => {
+                        if (dialog.onDismiss) dialog.onDismiss(e)
+                        setDialog({})
+                    }}
                     footer={dialog.footer}
                     header={dialog.header}
                 />

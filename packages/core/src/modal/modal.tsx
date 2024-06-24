@@ -1,6 +1,6 @@
-import React, { ReactElement, useEffect, useRef } from 'react'
+import React, { ReactElement, forwardRef, useEffect, useRef } from 'react'
 import { ButtonProps, IconButton, View, useFocus, usePreventScrolling } from '../'
-import { classNames, getActionClass, getKey } from '../helpers'
+import { classNames, getActionClass, getKey, mergeRefs } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export type ModalCloseProps = ButtonProps
@@ -28,7 +28,11 @@ export type ModalAnchor =
     | 'bottom-right'
 
 export type ModalProps = {
+    headerProps?: any
+    footerProps?: any
+    bodyProps?: any
     dismissOnEscape?: boolean
+    __focusTrapTimeoutDelay?: number
     focusTrap?: boolean
     anchor?: ModalAnchor
     isVisible: boolean
@@ -43,10 +47,14 @@ export type ModalProps = {
     onDismiss?: any
 } & CoreViewProps
 
-export const Modal = (props: ModalProps) => {
+export const Modal = forwardRef((props: ModalProps, ref) => {
     const {
-        dismissOnEscape,
-        focusTrap = false,
+        headerProps = {},
+        footerProps = {},
+        bodyProps = {},
+        dismissOnEscape = true,
+        __focusTrapTimeoutDelay = 0,
+        focusTrap = true,
         anchor = 'middle-center',
         isVisible = false,
         footer,
@@ -65,11 +73,11 @@ export const Modal = (props: ModalProps) => {
 
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
-        if (isEscape && dismissOnEscape) onDismiss()
+        if (isEscape && dismissOnEscape) onDismiss(e)
     }
 
     const handleBackgroundClick = (e: any) => {
-        // seems necessary when nesting modals/dialogs/alerts
+        // necessary when nesting modals/dialogs/alerts
         if (disableBackgroundEventPropagation) {
             e.preventDefault()
             e.stopPropagation()
@@ -77,7 +85,7 @@ export const Modal = (props: ModalProps) => {
 
         if (!disableBackgroundDismiss) {
             if (!contentRef.current.contains(e?.target)) {
-                onDismiss()
+                onDismiss(e)
             }
         }
     }
@@ -86,7 +94,7 @@ export const Modal = (props: ModalProps) => {
 
     useEffect(() => {
         if (focusTrap && isVisible && contentRef.current) {
-            trapFocus(contentRef.current)
+            setTimeout(() => trapFocus(contentRef.current), __focusTrapTimeoutDelay)
         }
     }, [isVisible])
 
@@ -104,18 +112,18 @@ export const Modal = (props: ModalProps) => {
 
         return (
             <div
-                tabIndex={0}
                 className={classNameOverlay}
-                onKeyUp={handleKeyDown}
                 onClick={handleBackgroundClick}>
                 <View
                     {...rest}
                     className={className}
                     aria-modal={true}
-                    ref={contentRef}>
-                    {header && <div className="f-modal__header f-row">{header}</div>}
-                    {props.children && <div className="f-modal__body">{props.children}</div>}
-                    {footer && <div className="f-modal__footer f-row">{footer}</div>}
+                    tabIndex={0}
+                    onKeyDown={handleKeyDown}
+                    ref={mergeRefs([contentRef, ref])}>
+                    {header && <div className="f-modal__header f-row" {...headerProps}>{header}</div>}
+                    {props.children && <div className="f-modal__body" {...bodyProps}>{props.children}</div>}
+                    {footer && <div className="f-modal__footer f-row" {...footerProps}>{footer}</div>}
                 </View>
             </div>
         )
@@ -130,4 +138,4 @@ export const Modal = (props: ModalProps) => {
     } else {
         return null
     }
-}
+})

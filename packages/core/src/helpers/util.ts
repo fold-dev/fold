@@ -1,5 +1,9 @@
 import React, { ReactElement } from 'react'
 
+export const isRightMouseButton = (e) => {
+    return e.which === 3 || e.button === 2
+}
+
 export const highlightText = (text: string, query: string) => {
     var reg = new RegExp(query, 'gi')
     return text.replace(reg, (str) => {
@@ -47,6 +51,16 @@ export const globalCursor = {
 export const addDocumentClass = (className: string) => documentObject.body.classList.add(className)
 
 export const removeDocumentClass = (className: string) => documentObject.body.classList.remove(className)
+
+export const scrollToTop = (target: HTMLElement) => {
+    const container = target?.parentElement
+    if (container) {
+        container.scrollTo({
+            behavior: 'smooth',
+            top: target.offsetTop,
+        })
+    }
+}
 
 export const scrollToCenter = (target: HTMLElement) => {
     const container = target?.parentElement
@@ -291,6 +305,11 @@ export const classNames = (object: any, classes: string[] = []): string => {
     }
     const allClasses = [...classList, ...classArray].join(' ')
     return !!allClasses ? allClasses : null
+}
+
+export const focusElementById = (id: string) => {
+    const el: HTMLElement = documentObject.getElementById(id)
+    el?.focus()
 }
 
 export const focusElement = (el: HTMLElement) => el?.focus()

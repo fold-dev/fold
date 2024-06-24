@@ -265,3 +265,8 @@
     opacity: var(--f-drag-ghost-opacity);
     /* transition: transform 1s linear;  */
 }
+
+.f-drag-ghost * {
+    user-select: none !important;
+    pointer-events: none !important;
+}

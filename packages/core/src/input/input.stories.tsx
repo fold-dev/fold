@@ -22,6 +22,7 @@ import {
     Textarea,
     useVisibility,
     View,
+    InputPopover,
 } from '@fold-dev/core'
 import React, { useRef, useState } from 'react'
 
@@ -310,6 +311,7 @@ export const Control = () => {
             <InputControl>
                 <InputPrefix>
                     <Popover
+                        focusTrap
                         zIndex={100}
                         width={250}
                         anchor="bottom-left"
@@ -328,6 +330,7 @@ export const Control = () => {
                             width={15}
                             height={15}
                             bg={color}
+                            tabIndex={0}
                             className="f-buttonize"
                             onClick={show}
                         />
@@ -467,21 +470,17 @@ export const Pin = () => (
 
 export const WithPopover = () => {
     const [text, setText] = useState<any>('')
-    const { show, delayedShow, hide, visible } = useVisibility(false)
 
     return (
-        <Popover
-            arrow
-            isVisible={visible}
-            onDismiss={hide}
-            anchor="bottom-center"
+        <InputPopover
+            id=""
             content={
                 <View
                     p={20}
                     column
                     alignItems="flex-start"
                     gap={10}>
-                    <Heading as="h4">Plese make sure your password:</Heading>
+                    <Heading as="h4">Please make sure your password:</Heading>
                     <List as="ul">
                         <Li>Is more than 8 characters long</Li>
                         <Li>Does not container easily identifiable words</Li>
@@ -491,13 +490,14 @@ export const WithPopover = () => {
                 </View>
             }>
             <Input
+                autoComplete="off"
                 placeholder="Enter your password"
                 value={text}
-                type="password"
+                type="text"
+                style={{ '-webkit-text-security': 'disc' }}
                 onChange={(e) => setText(e.target.value)}
-                onFocus={(e) => delayedShow()}
             />
-        </Popover>
+        </InputPopover>
     )
 }
 

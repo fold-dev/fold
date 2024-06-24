@@ -12,7 +12,7 @@
         "overlay": { "value": 1300 },
         "menu": { "value": 1400 },
         "modal": { "value": 1400 },
-        "popover": { "value": 1500 },
+        "popover": { "value": 1400 },
         "toast": { "value": 1700 },
         "tooltip": { "value": 1800 },
         "affix": { "value": 2000 },

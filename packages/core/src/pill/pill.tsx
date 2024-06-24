@@ -6,11 +6,9 @@ import { CoreViewProps, Size } from '../types'
 export type PillProps = {
     as?: 'button' | 'span'
     size?: Size
-
     outline?: boolean
     subtle?: boolean
     solid?: boolean
-
     color?: string
     prefix?: ReactElement
     suffix?: ReactElement

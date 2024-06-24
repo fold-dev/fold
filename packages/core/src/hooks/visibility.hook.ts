@@ -10,26 +10,8 @@ export const useVisibility = (isVisible: boolean = false) => {
     return {
         visible,
         delayedShow,
-        show: (e?) => {
-            if (e) {
-                e.preventDefault()
-                e.stopPropagation()
-            }
-            setVisible(true)
-        },
-        hide: (e?) => {
-            if (e) {
-                e.preventDefault()
-                e.stopPropagation()
-            }
-            setVisible(false)
-        },
-        toggle: (e?) => {
-            if (e) {
-                e.preventDefault()
-                e.stopPropagation()
-            }
-            setVisible(!visible)
-        },
+        show: (e?) => setVisible(true),
+        hide: (e?) => setVisible(false),
+        toggle: (e?) => setVisible(!visible),
     }
 }

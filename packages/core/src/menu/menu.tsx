@@ -9,7 +9,7 @@ import React, {
     useState,
 } from 'react'
 import { Button, ButtonProps, Heading, HeadingProps, Popover, PopoverProps, Text, usePreventScrolling, useVisibility, View } from '../'
-import { classNames, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
+import { classNames, documentObject, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
@@ -117,12 +117,12 @@ export type MenuProps = {
     disableAutoFocus?: boolean
     variant?: 'menu' | 'menubar'
     width?: number | string
-    closeFromParenMenuItem?: any
+    closeFromParentMenuItem?: any
     isSubmenu?: boolean
 } & CoreViewProps
 
 export const Menu = (props: MenuProps) => {
-    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParenMenuItem, style = {}, ...rest } = props
+    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParentMenuItem, style = {}, ...rest } = props
     const isMenubar = variant == 'menubar'
     const role = isMenubar ? 'menubar' : 'menu'
     const menuRef = useRef(null)
@@ -147,34 +147,23 @@ export const Menu = (props: MenuProps) => {
         [props.className]
     )
 
-    const closeFromMenu = () => {
-        if (closeFromParenMenuItem) closeFromParenMenuItem()
-    }
+    const closeFromMenu = () => closeFromParentMenuItem ? closeFromParentMenuItem() : null
 
     const firstMenuItem = () => menuItemRefs.current[0]
 
     const lastMenuItem = () => menuItemRefs.current[menuItemRefs.current.length - 1]
 
-    const setFocusToCache = () => {
-        focusRef.current?.focus()
-    }
+    const setFocusToCache = () => focusRef.current?.focus()
 
-    const setFocusToFirstMenuitem = () => {
-        setFocusToMenuitem(firstMenuItem())
-    }
+    const setFocusToFirstMenuitem = () => setFocusToMenuitem(firstMenuItem())
 
-    const setFocusToLastMenuitem = () => {
-        setFocusToMenuitem(lastMenuItem())
-    }
+    const setFocusToLastMenuitem = () => setFocusToMenuitem(lastMenuItem())
 
     const setFocusToMenuitem = (newMenuitem) => {
         menuItemRefs.current.forEach((item) => {
             if (item === newMenuitem) {
-                item.tabIndex = 0
-                newMenuitem.focus()
+                setTimeout(() => newMenuitem.focus(), 0)
                 focusRef.current = newMenuitem
-            } else {
-                item.tabIndex = -1
             }
         })
     }
@@ -203,9 +192,12 @@ export const Menu = (props: MenuProps) => {
     }
 
     const handleKeyDown = (e) => {
-        e.stopPropagation()
         const { isEscape } = getKey(e)
-        if (isEscape && closeFromParenMenuItem) closeFromParenMenuItem()
+        if (isEscape && closeFromParentMenuItem) {
+            e.stopPropagation()
+            e.preventDefault()
+            closeFromParentMenuItem()
+        }
     }
 
     useLayoutEffect(() => {
@@ -221,11 +213,7 @@ export const Menu = (props: MenuProps) => {
     }, [])
 
     useEffect(() => {
-        if (disableAutoFocus) {
-            menuItemRefs.current.forEach((item, index) => index == 0 ? item.tabIndex = 0 : null)
-        } else {
-            setFocusToFirstMenuitem()
-        }
+        if (!disableAutoFocus) setFocusToFirstMenuitem()
     }, [disableAutoFocus])
 
     return (
@@ -238,18 +226,22 @@ export const Menu = (props: MenuProps) => {
             style={styles}
             onKeyDown={handleKeyDown}>
             {renderChildren(props.children, (child: ReactElement, index) => {
-                if (child.type == MenuItem) {
-                    return cloneElement(child, {
-                        ...child.props,
-                        setFocusToPreviousMenuitem,
-                        setFocusToNextMenuitem,
-                        setFocusToFirstMenuitem,
-                        setFocusToLastMenuitem,
-                        setFocusToCache,
-                        closeFromMenu,
-                    })
+                if (child) {
+                    if (child.type == MenuItem) {
+                        return cloneElement(child, {
+                            ...child.props,
+                            setFocusToPreviousMenuitem,
+                            setFocusToNextMenuitem,
+                            setFocusToFirstMenuitem,
+                            setFocusToLastMenuitem,
+                            setFocusToCache,
+                            closeFromMenu,
+                        })
+                    } else {
+                        return child
+                    }
                 } else {
-                    return child
+                    return null
                 }
             })}
         </View>
@@ -291,7 +283,7 @@ export const MenuItem = (props: MenuItemProps) => {
         disabled,
         active,
         onClick,
-        tabIndex,
+        tabIndex = 0,
         setFocusToPreviousMenuitem,
         setFocusToNextMenuitem,
         setFocusToFirstMenuitem,
@@ -394,7 +386,7 @@ export const MenuItem = (props: MenuItemProps) => {
         }
     }
 
-    const closeFromParenMenuItem = () => {
+    const closeFromParentMenuItem = () => {
         setOpen(false)
         setFocusToCache()
     }
@@ -434,7 +426,7 @@ export const MenuItem = (props: MenuItemProps) => {
             {open &&
                 renderWithProps(menu, {
                     isSubmenu: true,
-                    closeFromParenMenuItem,
+                    closeFromParentMenuItem,
                 })}
         </View>
     )
@@ -516,7 +508,7 @@ export const MenuProvider = (props: MenuProviderProps) => {
         setData({})
     }
 
-    usePreventScrolling(!!position.x || !!position.y)
+    //usePreventScrolling(!!position.x || !!position.y)
 
     return (
         <Popover
@@ -527,7 +519,9 @@ export const MenuProvider = (props: MenuProviderProps) => {
             fixPosition={{ left: position.x, top: position.y }}
             content={menu({ data, dismiss })}
             onDismiss={() => setPosition({ x: 0, y: 0 })}>
-            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>{children}</ContextMenuContext.Provider>
+            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>
+                {children}
+            </ContextMenuContext.Provider>
         </Popover>
     )
 }

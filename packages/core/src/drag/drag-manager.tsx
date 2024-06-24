@@ -128,6 +128,17 @@ export const DragManager = (props: DragManagerProps) => {
                     if (isDragElement && isDroppable) {
                         const elementParentDirection = element.parentNode.dataset.direction
                         const elementParentGroup = element.parentNode.dataset.group
+                        const elementAreaId = element.parentNode.dataset.areaid // also element.dataset.areaid
+                        const isDifferentArea = cache.targetAreaId != elementAreaId
+
+                        // TODO: add support for horizontal layouts
+                        // this is mainly for dragging kanban-like layout
+                        // if the move direction doesn't correlate with the layout
+                        // then force the moveDirection in an appropriate direction
+                        // if (elementParentDirection == 'horizontal' && (moveDirection == 'up' || moveDirection == 'down')) moveDirection = 'left'
+                        if (elementParentDirection == 'vertical' && (moveDirection == 'left' || moveDirection == 'right') && isDifferentArea) {
+                            moveDirection = 'up'
+                        }
 
                         // only activate if there is a mouse direction & parent element direction
                         const shouldActivate =
@@ -144,12 +155,11 @@ export const DragManager = (props: DragManagerProps) => {
                             const elementId = element.dataset.id
                             const elementIndex = +element.dataset.index
                             const elementIndent = element.dataset.indent ? +element.dataset.indent : 0
-                            const elementAreaId = element.parentNode.dataset.areaid // element.dataset.areaid 🔴
+                            const elementNotFromTop = element.parentNode.dataset.notfromtop
                             const elementParentVariant: DragVariant = origin.targetVariant[elementParentGroup]
 
                             // TODO: find a non-hacky way to do this
                             const isFirstElement = element.offsetTop == 0
-                            const isDifferentArea = cache.targetAreaId != elementAreaId
 
                             // this calculates where the cursor falls on the target element
                             // if it's just focus - then there is no regionSize because we want all of the area
@@ -177,13 +187,16 @@ export const DragManager = (props: DragManagerProps) => {
                             // cache now() + animation time - 10ms minimum (buffer)
                             if (isFirstElement && isDifferentArea) cache.time = now + animation + 10
 
+                            // if it's got the dataset.fromtop
                             // if it's the first element, then always make sure to handle
                             // indexes normally only after the animation has timed out
                             // manually set mouse direction & target index
-                            if (isFirstElement && now < cache.time) {
-                                targetIndex = elementIndex
-                                moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
-                            } 
+                            if (!elementNotFromTop) {
+                                if (isFirstElement && now < cache.time) {
+                                    targetIndex = elementIndex
+                                    moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
+                                } 
+                            }
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
@@ -204,7 +217,7 @@ export const DragManager = (props: DragManagerProps) => {
                                 const { previous, next } = getPreviousNextElements(targetIndex, element, moveDirection)
 
                                 // check these exist first
-                                if (previous && next) {
+                                if (previous || next) {
                                     const previousIndent = previous ? +previous.dataset.indent : 0
                                     const nextIndent = next ? +next.dataset.indent : 0
 
@@ -226,8 +239,8 @@ export const DragManager = (props: DragManagerProps) => {
 
                                     // outline the previous & next elements
                                     // for (let target of element.parentNode.children) target.style.border = 'none'
-                                    // if (previous) previous.style.border = '0.2rem solid crimson'
-                                    // if (next) next.style.border = '0.2rem solid darkcyan'
+                                    // if (previous) previous.style.outline = '1px solid green'
+                                    // if (next) next.style.outline = '1px solid red'
                                 }
                             }
 

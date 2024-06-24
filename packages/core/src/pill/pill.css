@@ -54,6 +54,7 @@
     white-space: nowrap;
     color: currentColor;
     padding: var(--f-pill-label-padding);
+    user-select: none;
 }
 
 .f-pill__suffix {

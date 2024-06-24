@@ -18,12 +18,16 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
         if (next.dataset.placeholder) {
             next = undefined
         }
+    } else {
+        next = undefined
     }
 
     if (!!previous) {
         if (moveDirection == 'up' && originIndex == +previous.dataset.index) {
             previous = parent.children[targetIndex - 2]
         }
+    } else {
+        previous = undefined
     }
 
     return { previous, next }

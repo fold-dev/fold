@@ -2,11 +2,18 @@ import { useEffect, useRef } from 'react'
 import { documentObject, getKey } from '../helpers'
 import { CoreViewProps } from '../types'
 
-export const FOCUSABLE =
-    'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
+export const FOCUSABLE = [
+    'a[href]:not([disabled])',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
+    '[contenteditable]'
+]
 
 export type FocusTrapProps = {
-    focusable?: string
+    focusable?: string[]
     onEscape?: any
 } & CoreViewProps
 
@@ -18,52 +25,25 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
 
     const handleKeyDown = (e) => {
         let flag = false
-        const { isUp, isDown, isTabNormal, isTabReverse, isTab } = getKey(e)
+        const { isUp, isDown, isTabNormal, isTabReverse, isTab, isShift } = getKey(e)
         const elements: any[] = Array.from(focusableEls.current)
 
         if (isTab) {
-            if (e.shiftKey && documentObject.activeElement === firstFocusableEl.current) {
+            if (isShift && documentObject.activeElement === firstFocusableEl.current) {
                 e.preventDefault()
                 lastFocusableEl.current?.focus()
-            } else if (!e.shiftKey && documentObject.activeElement === lastFocusableEl.current) {
+            } 
+            
+            if (!isShift && documentObject.activeElement === lastFocusableEl.current) {
                 e.preventDefault()
                 firstFocusableEl.current?.focus()
             }
-        }
-
-        /*         
-        Needs refactoring after the <Select/> keyboard navigation is done
-        
-        if (isTabNormal) {
-            if (documentObject.activeElement === lastFocusableEl.current) firstFocusableEl.current?.focus()
-        }
-
-        if (isTabReverse) {
-            if (documentObject.activeElement === firstFocusableEl.current) lastFocusableEl.current?.focus()
-        }
-
-        if (arrowNavigation) {
-            if (isUp) {
-                flag = true
-                elements[previousIndex].focus()
-            }
-
-            if (isDown) {
-                flag = true
-                elements[nextIndex].focus()
-            }
-        }
-
-        if (flag) {
-            e.stopPropagation()
-            e.preventDefault()
-        }    
-        */
+        } 
     }
 
     const trapFocus = (el) => {
         containerRef.current = el
-        focusableEls.current = containerRef.current.querySelectorAll(focusable)
+        focusableEls.current = containerRef.current.querySelectorAll(focusable.join(','))
         lastFocusableEl.current = focusableEls.current[focusableEls.current.length - 1]
         firstFocusableEl.current = focusableEls.current[0]
         firstFocusableEl.current?.focus()

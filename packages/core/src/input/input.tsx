@@ -65,9 +65,9 @@ export const InputControl = forwardRef((props: InputControlProps, ref) => {
     return (
         <View
             {...props}
-            className={className}
             ref={ref}
-            tabIndex={0}
+            className={className}
+            //tabIndex={0}
         />
     )
 })
@@ -274,16 +274,17 @@ export const PinInput = (props: PinInputProps) => {
 
 export type TagInputFieldProps = CoreViewProps & CoreInputProps
 
-export const TagInputField = (props: TagInputFieldProps) => {
+export const TagInputField = forwardRef((props: TagInputFieldProps, ref) => {
     return (
         <View
             {...props}
+            ref={ref}
             as="input"
             role="textbox"
             type="search"
         />
     )
-}
+})
 
 export type TagInputProps = {
     render: any
@@ -303,19 +304,11 @@ export const TagInput = forwardRef((props: TagInputProps, ref) => {
         [props.className, size]
     )
 
-    const handleFocus = (e) => {
-        const el = e.currentTarget.querySelector(':scope > input')
-        el?.focus()
-        if (props.onFocus) props.onFocus(e)
-    }
-
     return (
         <View
             {...rest}
             ref={ref}
-            className={className}
-            tabIndex={disabled ? -1 : 0}
-            onFocus={handleFocus}>
+            className={className}>
             {render()}
             {renderWithProps(props.children, {
                 disabled,
