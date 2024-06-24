@@ -131,7 +131,8 @@ export const DragManager = (props: DragManagerProps) => {
                         const elementAreaId = element.parentNode.dataset.areaid // also element.dataset.areaid
                         const isDifferentArea = cache.targetAreaId != elementAreaId
 
-                        // TODO: find a good way to do this (code below produces glitchiness)
+                        // TODO: add support for horizontal layouts
+                        // this is mainly for dragging kanban-like layout
                         // if the move direction doesn't correlate with the layout
                         // then force the moveDirection in an appropriate direction
                         // if (elementParentDirection == 'horizontal' && (moveDirection == 'up' || moveDirection == 'down')) moveDirection = 'left'
