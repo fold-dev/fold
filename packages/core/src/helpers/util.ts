@@ -55,7 +55,6 @@ export const removeDocumentClass = (className: string) => documentObject.body.cl
 export const scrollToTop = (target: HTMLElement) => {
     const container = target?.parentElement
     if (container) {
-        console.log(target.offsetTop)
         container.scrollTo({
             behavior: 'smooth',
             top: target.offsetTop,
