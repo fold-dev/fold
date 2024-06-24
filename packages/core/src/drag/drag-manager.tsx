@@ -128,12 +128,16 @@ export const DragManager = (props: DragManagerProps) => {
                     if (isDragElement && isDroppable) {
                         const elementParentDirection = element.parentNode.dataset.direction
                         const elementParentGroup = element.parentNode.dataset.group
+                        const elementAreaId = element.parentNode.dataset.areaid // also element.dataset.areaid
+                        const isDifferentArea = cache.targetAreaId != elementAreaId
 
                         // TODO: find a good way to do this (code below produces glitchiness)
                         // if the move direction doesn't correlate with the layout
                         // then force the moveDirection in an appropriate direction
-                        // if (elementParentDirection == 'vertical' && (moveDirection == 'left' || moveDirection == 'right')) moveDirection = 'down'
                         // if (elementParentDirection == 'horizontal' && (moveDirection == 'up' || moveDirection == 'down')) moveDirection = 'left'
+                        if (elementParentDirection == 'vertical' && (moveDirection == 'left' || moveDirection == 'right') && isDifferentArea) {
+                            moveDirection = 'up'
+                        }
 
                         // only activate if there is a mouse direction & parent element direction
                         const shouldActivate =
@@ -150,13 +154,11 @@ export const DragManager = (props: DragManagerProps) => {
                             const elementId = element.dataset.id
                             const elementIndex = +element.dataset.index
                             const elementIndent = element.dataset.indent ? +element.dataset.indent : 0
-                            const elementAreaId = element.parentNode.dataset.areaid // element.dataset.areaid 🔴
                             const elementNotFromTop = element.parentNode.dataset.notfromtop
                             const elementParentVariant: DragVariant = origin.targetVariant[elementParentGroup]
 
                             // TODO: find a non-hacky way to do this
                             const isFirstElement = element.offsetTop == 0
-                            const isDifferentArea = cache.targetAreaId != elementAreaId
 
                             // this calculates where the cursor falls on the target element
                             // if it's just focus - then there is no regionSize because we want all of the area
