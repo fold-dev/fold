@@ -10,7 +10,6 @@ import {
     getActionClass,
     getBoundingClientRect,
     globalCursor,
-    windowObject,
 } from '../helpers'
 
 export type ResizableRailProps = {
