@@ -2,7 +2,7 @@ import { useDragging } from '../hooks/dragging.hook'
 import { useEvent } from '../hooks/event.hook'
 import { CoreViewProps } from '../types'
 import React, { ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { View, useResize, useWindowResize } from '..'
+import { View, useWindowResize } from '..'
 import {
     classNames,
     documentObject,
