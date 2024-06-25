@@ -2,7 +2,7 @@ import { useDragging } from '../hooks/dragging.hook'
 import { useEvent } from '../hooks/event.hook'
 import { CoreViewProps } from '../types'
 import React, { ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { View } from '..'
+import { View, useWindowResize } from '..'
 import {
     classNames,
     documentObject,
@@ -41,7 +41,7 @@ export const ResizableRail = (props: ResizableRailProps) => {
     })
 
     const handleMouseMove = (e) => {
-        if (dragging) onChange({ x: e.pageX, y: e.pageY })
+        if (dragging) onChange({ x: e.clientX, y: e.clientY })
     }
 
     const handleMouseDown = (e) => {
@@ -117,6 +117,7 @@ export const Resizable = (props: ResizableProps) => {
     const [box, setBox] = useState<any>({})
     const [height, setHeight] = useState(props.height)
     const [width, setWidth] = useState(props.width)
+    const dimensions = useWindowResize()
     const className = classNames(
         {
             'f-resizable': true,
@@ -165,7 +166,7 @@ export const Resizable = (props: ResizableProps) => {
 
     useEffect(() => {
         setBox(getBoundingClientRect(elementRef.current))
-    }, [width, height])
+    }, [width, height, dimensions])
 
     useLayoutEffect(() => {
         if (!value) return
