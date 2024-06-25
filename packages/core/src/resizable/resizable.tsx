@@ -10,6 +10,7 @@ import {
     getActionClass,
     getBoundingClientRect,
     globalCursor,
+    windowObject,
 } from '../helpers'
 
 export type ResizableRailProps = {
@@ -41,7 +42,7 @@ export const ResizableRail = (props: ResizableRailProps) => {
     })
 
     const handleMouseMove = (e) => {
-        if (dragging) onChange({ x: e.pageX, y: e.pageY })
+        if (dragging) onChange({ x: e.clientX, y: e.clientY })
     }
 
     const handleMouseDown = (e) => {
