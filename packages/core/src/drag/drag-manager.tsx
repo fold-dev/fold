@@ -67,6 +67,12 @@ export const DragManager = (props: DragManagerProps) => {
             cache.mouseDown = false
         } else {
             endDrag()
+            // TODO: check if this is necessary
+            // or glitches the endDrag process
+            // not sure why this wasn't here already 
+            setTarget({})
+            setOrigin({ targetVariant: {} })
+            cache.mouseDown = false
         }
     }
 
