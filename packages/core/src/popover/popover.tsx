@@ -34,6 +34,7 @@ export type PopoverProps = {
     __focusTrapTimeoutDelay?: number
     __blockDismissEvent?: boolean
     focusTrap?: boolean
+    preventFocusScroll?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
     arrow?: boolean
@@ -50,6 +51,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         __focusTrapTimeoutDelay = 100,
         __blockDismissEvent = false,
         focusTrap = true,
+        preventFocusScroll,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -163,9 +165,9 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     useEffect(() => {
         if (focusTrap && showPopover && containerRef.current) {
             // give react & the browser some time to mount
-            setTimeout(() => trapFocus(containerRef.current), __focusTrapTimeoutDelay)
+            setTimeout(() => trapFocus(containerRef.current, preventFocusScroll), __focusTrapTimeoutDelay)
         }
-    }, [showPopover])
+    }, [showPopover, preventFocusScroll])
 
     return (
         <>

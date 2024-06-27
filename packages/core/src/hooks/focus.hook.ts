@@ -44,6 +44,7 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
     }
 
     const trapFocus = (el, preventScroll = false) => {
+        shouldPreventScroll.current = preventScroll
         containerRef.current = el
         focusableEls.current = containerRef.current.querySelectorAll(focusable.join(','))
         lastFocusableEl.current = focusableEls.current[focusableEls.current.length - 1]
