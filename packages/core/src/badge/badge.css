@@ -3,7 +3,7 @@
     --f-badge-background-color: var(--f-color-surface-stronger);
     --f-badge-color: var(--f-color-text-weaker);
     --f-badge-dot-size: var(--f-size-3);
-    --f-badge-border-color: var(--f-color-border);
+    --f-badge-border-color: var(--f-color-border-strong);
     --f-badge-border-size: 1px;
     --f-badge-dot-distance: 0.3rem;
 }
