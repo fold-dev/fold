@@ -162,10 +162,7 @@ export const DragManager = (props: DragManagerProps) => {
                             const elementIndent = element.dataset.indent ? +element.dataset.indent : 0
                             const elementNotFromTop = element.parentNode.dataset.notfromtop
                             const elementParentVariant: DragVariant = origin.targetVariant[elementParentGroup]
-
-                            // TODO: find a non-hacky way to do this
-                            const isFirstElement = element.offsetTop == 0
-
+                                        
                             // this calculates where the cursor falls on the target element
                             // if it's just focus - then there is no regionSize because we want all of the area
                             // TODO: extend to accommodate vertical directions
@@ -188,6 +185,15 @@ export const DragManager = (props: DragManagerProps) => {
                                         ? elementIndex + 1
                                         : elementIndex
 
+                            // TODO: find a non-hacky way to do this
+                            // we don't bother for horizontal element because the affect is less pronounced
+                            const isFirstElement = 
+                                elementParentDirection == 'vertical'
+                                    ? element.offsetTop == 0
+                                    : elementParentDirection == 'horizontal'
+                                        ? false
+                                        : false
+
                             // if its the 1st element & from coming in outside the area
                             // cache now() + animation time - 10ms minimum (buffer)
                             if (isFirstElement && isDifferentArea) cache.time = now + animation + 10
@@ -196,12 +202,10 @@ export const DragManager = (props: DragManagerProps) => {
                             // if it's the first element, then always make sure to handle
                             // indexes normally only after the animation has timed out
                             // manually set mouse direction & target index
-                            if (!elementNotFromTop) {
-                                if (isFirstElement && now < cache.time) {
-                                    targetIndex = elementIndex
-                                    moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
-                                } 
-                            }
+                            if (!elementNotFromTop && isFirstElement && (now < cache.time)) {
+                                targetIndex = elementIndex
+                                moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
+                            } 
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
