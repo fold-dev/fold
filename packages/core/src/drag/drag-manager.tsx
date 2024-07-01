@@ -117,7 +117,8 @@ export const DragManager = (props: DragManagerProps) => {
 
                 // stop if there is no direction at all
                 // and if there is no indentation movements
-                if (!!moveDirection && !shouldIndent && !shouldOutdent) {
+                // && !shouldIndent && !shouldOutdent
+                if (!!moveDirection) { 
                     const element = documentObject.elementFromPoint(mouseX, mouseY)
 
                     // only process valid elements (non-offscreen)
