@@ -187,7 +187,7 @@
         },
 
         "orange": {
-            "50": { "value": "#FFFAF0" },
+            "50": { "value": "#fff8f0" },
             "100": { "value": "#FEEBC8" },
             "200": { "value": "#FBD38D" },
             "300": { "value": "#F6AD55" },

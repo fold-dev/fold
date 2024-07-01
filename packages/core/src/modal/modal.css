@@ -5,8 +5,6 @@
     --f-modal-border-color: var(--f-color-border);
     --f-modal-border-width: 1px;
     --f-modal-border-radius: var(--f-radius);
-    --f-modal-padding: var(--f-space-4);
-    --f-modal-body-padding: var(--f-space-4);
 }
 
 .f-modal {
@@ -97,6 +95,13 @@
 
 /* inner */
 
+:root {
+    --f-modal-padding: var(--f-space-3);
+    --f-modal-body-padding: var(--f-space-3);
+    --f-modal-header-padding: var(--f-space-3);
+    --f-modal-footer-padding: var(--f-space-3);
+}
+
 .f-modal__body {
     flex: 1;
     width: 100%;
@@ -105,7 +110,7 @@
 }
 
 .f-modal__footer {
-    padding: var(--f-modal-padding);
+    padding: var(--f-modal-footer-padding);
     justify-content: flex-start;
     border-top: 1px solid var(--f-modal-border-color);
     border-bottom-left-radius: var(--f-modal-border-radius);
@@ -113,7 +118,7 @@
 }
 
 .f-modal__header {
-    padding: var(--f-modal-padding);
+    padding: var(--f-modal-header-padding);
     justify-content: flex-start;   
     border-bottom: 1px solid var(--f-modal-border-color); 
     border-top-left-radius: var(--f-modal-border-radius);
