@@ -5,8 +5,8 @@
     --f-pill-border-width: 1px;
     --f-pill-border-radius: var(--f-radius-full);
     --f-pill-border-color: var(--f-color-border);
-    --f-pill-color: var(--f-color-text-weaker);
-    --f-pill-color-subtle: var(--f-color-text-weaker);
+    --f-pill-color: var(--f-color-text);
+    --f-pill-color-subtle: var(--f-color-text-weak);
     --f-pill-color-color: var(--f-color-text-on-color);
     --f-pill-background-color: var(--f-color-surface-strong);
     --f-pill-background-color-subtle: var(--f-color-surface-strong);

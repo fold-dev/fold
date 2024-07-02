@@ -5,8 +5,8 @@
     --f-navigation-heading-color: var(--f-color-accent);
     --f-navigation-item-background-color-hover: var(--f-color-surface-strong);
     --f-navigation-item-background-color-active: var(--f-color-surface-strong);
-    --f-navigation-item-color: var(--f-color-text-weaker);
-    --f-navigation-item-color-hover: var(--f-color-text-weak);
+    --f-navigation-item-color: var(--f-color-text-weak);
+    --f-navigation-item-color-hover: var(--f-color-text);
     --f-navigation-item-color-active: var(--f-color-accent);
     --f-navigation-item-color-system-active: var(--f-color-surface-stronger);
     --f-navigation-item-color-disabled: var(--f-color-text-weakest);
