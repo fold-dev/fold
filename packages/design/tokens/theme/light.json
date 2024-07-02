@@ -47,9 +47,9 @@
                 "weak": { "value": "{color.purple.50}" }
             },
             "text": {
-                " ": { "value": "{color.base.700}" },
+                " ": { "value": "{color.base.800}" },
                 "weak": { "value": "{color.base.600}" },
-                "weaker": { "value": "{color.base.500}" },
+                "weaker": { "value": "{color.base.400}" },
                 "weakest": { "value": "{color.base.300}" },
                 "link": { "value": "{color.accent.500}" },
                 "on-color": { "value": "{color.white}" }
@@ -57,7 +57,7 @@
             "surface": {
                 " ": { "value": "{color.white}" },
                 "strong": { "value": "{color.base.50}" },
-                "stronger": { "value": "{color.base.50}" },
+                "stronger": { "value": "{color.base.100}" },
                 "strongest": { "value": "{color.base.200}" },
                 "highlight": { "value": "{color.accent.50}" },
                 "inverse": { "value": "{color.base.700}" }
