@@ -1,6 +1,6 @@
 :root {
-    --f-user-list-color-heading: var(--f-color-text-weak);
-    --f-user-list-color-text: var(--f-color-text-weaker);
+    --f-user-list-color-heading: var(--f-color-text);
+    --f-user-list-color-text: var(--f-color-text-weak);
 }
 
 .f-user-list .f-avatar {
