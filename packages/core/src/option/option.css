@@ -4,7 +4,7 @@
     --f-options-border-radius: var(--f-radius);
     --f-options-background-color: var(--f-color-surface);
     --f-options-active-background-color: var(--f-color-surface-stronger);
-    --f-option-color: var(--f-color-text-weaker);
+    --f-option-color: var(--f-color-text-weak);
     --f-option-disabled-color: var(--f-color-text-weakest);
     --f-option-selected-color: var(--f-color-text);
     --f-option-hover-color: var(--f-color-text);
