@@ -82,7 +82,7 @@
     margin: 0;
     width: 100%; 
     height: fit-content;
-    display: inline-block;
+    display: block;
     position: relative;
     flex-shrink: 0;
     color: var(--f-menu-item-color);
@@ -108,6 +108,7 @@
     gap: var(--f-menu-item-ix-spacing);
     text-decoration: none;
     user-select: none;
+    flex-grow: 1;
 }
 
 .f-menu-item__label {
