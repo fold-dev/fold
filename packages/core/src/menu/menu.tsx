@@ -40,12 +40,13 @@ export const MenuButton = (props: MenuButtonProps) => {
 }
 
 export type MenuItemOptionProps = {
+    icon?: string
     value?: string | number
     type?: 'radio' | 'checkbox'
 } & MenuItemProps
 
 export const MenuItemOption = (props: MenuItemOptionProps) => {
-    const { type = 'checkbox', value, ...rest } = props
+    const { icon = 'check', type = 'checkbox', value, ...rest } = props
     const role = 'menuitem' + type
 
     return (
@@ -54,7 +55,7 @@ export const MenuItemOption = (props: MenuItemOptionProps) => {
             role={role}
             prefix={
                 <IconLib
-                    icon="check"
+                    icon={icon}
                     style={{ visibility: props.active ? 'visible' : 'hidden' }}
                 />
             }
