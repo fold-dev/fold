@@ -1,13 +1,14 @@
 :root {
+    --f-modal-background: var(--f-color-surface);
     --f-modal-overlay: var(--f-color-overlay);
     --f-modal-box-shadow: var(--f-shadow-lg);
-    --f-modal-background: var(--f-color-surface);
     --f-modal-border-color: var(--f-color-border);
     --f-modal-border-width: 1px;
     --f-modal-border-radius: var(--f-radius);
 }
 
 .f-modal {
+    
     background: var(--f-modal-overlay);
     position: fixed;
     width: 100%;
@@ -26,8 +27,7 @@
     background: var(--f-modal-background);
     border-radius: var(--f-modal-border-radius);
     box-shadow: var(--f-modal-box-shadow);
-    border: var(--f-modal-border-width) solid; 
-    border-color: var(--f-modal-border-color);
+    border: var(--f-modal-border-width) solid var(--f-modal-border-color);
     justify-content: stretch;
     align-items: stretch;
     align-content: stretch;
@@ -99,7 +99,9 @@
     --f-modal-padding: var(--f-space-3);
     --f-modal-body-padding: var(--f-space-3);
     --f-modal-header-padding: var(--f-space-3);
+    --f-modal-header-background: var(--f-color-surface);
     --f-modal-footer-padding: var(--f-space-3);
+    --f-modal-footer-background: var(--f-color-surface);
 }
 
 .f-modal__body {
@@ -112,15 +114,17 @@
 .f-modal__footer {
     padding: var(--f-modal-footer-padding);
     justify-content: flex-start;
-    border-top: 1px solid var(--f-modal-border-color);
+    border-top: var(--f-modal-border-width) solid var(--f-modal-border-color);
     border-bottom-left-radius: var(--f-modal-border-radius);
     border-bottom-right-radius: var(--f-modal-border-radius);
+    background: var(--f-modal-footer-background);
 }
 
 .f-modal__header {
+    background: var(--f-modal-header-background);
     padding: var(--f-modal-header-padding);
     justify-content: flex-start;   
-    border-bottom: 1px solid var(--f-modal-border-color); 
+    border-bottom: var(--f-modal-border-width)solid var(--f-modal-border-color); 
     border-top-left-radius: var(--f-modal-border-radius);
     border-top-right-radius: var(--f-modal-border-radius);
 }
