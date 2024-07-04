@@ -57,7 +57,7 @@
             "surface": {
                 " ": { "value": "{color.white}" },
                 "strong": { "value": "{color.base.50}" },
-                "stronger": { "value": "{color.base.50}" },
+                "stronger": { "value": "{color.base.100}" },
                 "strongest": { "value": "{color.base.200}" },
                 "highlight": { "value": "{color.accent.50}" },
                 "inverse": { "value": "{color.base.700}" }
