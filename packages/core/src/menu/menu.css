@@ -108,6 +108,7 @@
     list-style-type: none;
     gap: var(--f-menu-item-ix-spacing);
     text-decoration: none;
+    user-select: none;
 }
 
 .f-menu-item__label {
