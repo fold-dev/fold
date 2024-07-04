@@ -413,7 +413,6 @@ export const MenuItem = (props: MenuItemProps) => {
                 onKeyDown={handleKeyDown}
                 onClick={handleClick}
                 {...anchorProps}>
-                {active && <span className="f-menu-item__active" />}
                 {prefix && <span className="f-menu-item__prefix f-row">{prefix}</span>}
                 <Text
                     as="span"
