@@ -238,6 +238,16 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         }
     }
 
+    const lockDrag = () => {
+        const cache = getCache()
+        cache.locked = true
+    }
+
+    const unlockDrag = () => {
+        const cache = getCache()
+        cache.locked = false
+    }
+
     useEffect(() => {
         ghostRef.current = documentObject.getElementById('f-drag-ghost')
     }, [])
@@ -259,5 +269,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         indent,
         onMouseDown,
         onMouseUp,
+        lockDrag,
+        unlockDrag,
     }
 }
