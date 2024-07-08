@@ -57,10 +57,14 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     const endDrag = () => {
+        const cache = getCache()
         delete documentObject.body.dataset.dragging
         clearGhostElement()
         globalCursor.remove('grabbing')
         dispatchDragEvent('onend', null)
+        setTarget({})
+        setOrigin({ targetVariant: {} })
+        cache.mouseDown = false
     }
 
     const updateTargetIndent = (indentLevel) => {
