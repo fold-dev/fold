@@ -6,7 +6,7 @@
     --f-form-control-spacing: var(--f-space-2);
     --f-form-fieldset-border-radius: var(--f-radius);
     --f-form-fieldset-legend-margin: var(--f-space-5);
-    --f-form-fieldset-legend-color: var(--f-color-text-weak);
+    --f-form-fieldset-legend-color: var(--f-color-text);
     --f-form-label-required-color: var(--f-color-danger);
     --f-form-description-color: var(--f-color-text-weaker);
 }
