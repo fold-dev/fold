@@ -1,6 +1,6 @@
 :root {
     --f-text-color: var(--f-color-text);
-    --f-label-color: var(--f-color-text-weak);
+    --f-label-color: var(--f-color-text);
     --f-blockquote-color: var(--f-color-text-weak);
     --f-link-color: var(--f-color-text-link);
     --f-text-decoration-size: default;
