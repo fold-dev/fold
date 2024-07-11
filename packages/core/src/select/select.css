@@ -15,6 +15,7 @@
     --f-select-popover-border-radius: var(--f-radius);
     --f-select-popover-background: var(--f-color-surface);
     --f-select-popover-box-shadow: var(--f-shadow-lg);
+    --f-select-index: 1;
 }
 
 .f-select-container {
@@ -25,7 +26,7 @@
 }
 
 .f-select {
-    z-index: 1;
+    z-index: var(--f-select-index);
 }
 
 .f-select-container .f-input,
@@ -215,7 +216,7 @@ li.f-select-list-option-container {
 /* static */
 
 .f-select-container.is-static {
-    z-index: 1;
+    z-index: var(--f-select-index);
 }
 
 .f-select-container.is-static .f-input-control,
