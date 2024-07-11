@@ -214,6 +214,10 @@ li.f-select-list-option-container {
 
 /* static */
 
+.f-select-container.is-static {
+    z-index: 1;
+}
+
 .f-select-container.is-static .f-input-control,
 .f-select-container.is-static input {
     border-bottom-left-radius: 0;
