@@ -238,14 +238,9 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         }
     }
 
-    const lockDrag = () => {
+    const lockDrag = (locked: boolean) => {
         const cache = getCache()
-        cache.locked = true
-    }
-
-    const unlockDrag = () => {
-        const cache = getCache()
-        cache.locked = false
+        cache.locked = locked
     }
 
     useEffect(() => {
@@ -270,6 +265,5 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         onMouseDown,
         onMouseUp,
         lockDrag,
-        unlockDrag,
     }
 }
