@@ -46,6 +46,7 @@ import {
     FIPen,
     FIPlay,
     FIPlus,
+    FIRepeat,
     FIRotateLeft,
     FIRotateRight,
     FISearch,
@@ -63,6 +64,7 @@ import {
 import { ToastContainer } from '../toast/toast'
 
 export const defaultIcons = {
+    'repeat': FIRepeat,
     'lock-closed': FILockClosed,
     'lock-open': FILockOpen,
     'cog': FICog,

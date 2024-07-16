@@ -21,6 +21,7 @@ export const FOLD_DRAG_CACHE = 'FOLD_DRAG_CACHE'
 export const FOLD_DRAG_STATE = 'FOLD_DRAG_STATE'
 
 windowObject[FOLD_DRAG_CACHE] = {
+    locked: false,
     mouseDown: false,
     init: {},
     originMouse: {},
@@ -61,18 +62,9 @@ export const DragManager = (props: DragManagerProps) => {
             } else {
                 dispatchDragEvent('ondrop', { origin, target })
             }
-            endDrag()
-            setTarget({})
-            setOrigin({ targetVariant: {} })
-            cache.mouseDown = false
-        } else {
-            endDrag()
-            // TODO: keep an eye on this, if it causes glitches the endDrag process
-            // not too sure why this wasn't here already (if it was for a reason)
-            setTarget({})
-            setOrigin({ targetVariant: {} })
-            cache.mouseDown = false
         }
+
+        endDrag()
     }
 
     const handleMouseUp = (e) => {
@@ -85,7 +77,7 @@ export const DragManager = (props: DragManagerProps) => {
     }
 
     const handleMouseMove = (e) => {
-        if (isDragging) {
+        if (isDragging && !cache.locked) {
             const mouseY = e.clientY
             const mouseX = e.clientX
             const { offsetLeft, offsetTop } = cache.originMouse

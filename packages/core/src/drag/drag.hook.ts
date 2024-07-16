@@ -57,10 +57,14 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     const endDrag = () => {
+        const cache = getCache()
         delete documentObject.body.dataset.dragging
         clearGhostElement()
         globalCursor.remove('grabbing')
         dispatchDragEvent('onend', null)
+        setTarget({})
+        setOrigin({ targetVariant: {} })
+        cache.mouseDown = false
     }
 
     const updateTargetIndent = (indentLevel) => {
@@ -124,7 +128,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         const noDrag = !!el.dataset.nodrag
         const noDrop = !!el.dataset.nodrop
 
-        if (!noDrag && isLeftButton) {
+        if (!noDrag && isLeftButton && !cache.locked) {
             e.stopPropagation()
 
             cache.mouseDown = true
@@ -234,6 +238,11 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         }
     }
 
+    const lockDrag = (locked: boolean) => {
+        const cache = getCache()
+        cache.locked = locked
+    }
+
     useEffect(() => {
         ghostRef.current = documentObject.getElementById('f-drag-ghost')
     }, [])
@@ -255,5 +264,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         indent,
         onMouseDown,
         onMouseUp,
+        lockDrag,
     }
 }

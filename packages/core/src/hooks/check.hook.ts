@@ -5,6 +5,7 @@ export const useCheck = (isChecked: boolean = false) => {
 
     return {
         checked,
+        setChecked,
         check: () => {
             setChecked(!checked)
         },
