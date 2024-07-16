@@ -128,7 +128,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         const noDrag = !!el.dataset.nodrag
         const noDrop = !!el.dataset.nodrop
 
-        if (!noDrag && isLeftButton) {
+        if (!noDrag && isLeftButton && !cache.locked) {
             e.stopPropagation()
 
             cache.mouseDown = true
