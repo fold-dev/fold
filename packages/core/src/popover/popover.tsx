@@ -1,5 +1,5 @@
 
-import React, { cloneElement, forwardRef, ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { cloneElement, forwardRef, ReactElement, ReactPortal, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useFocus, useId, View } from '..'
 import {
     classNames,
@@ -43,6 +43,7 @@ export type PopoverProps = {
     content?: ReactElement | any
     isVisible?: boolean
     onDismiss?: any
+    portal?: ReactPortal
 } & CoreViewProps
 
 export const Popover = forwardRef((props: PopoverProps, ref) => {
@@ -60,6 +61,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         content,
         isVisible,
         onDismiss,
+        portal,
         ...rest
     } = props
     const containerRef = useRef(null)
