@@ -117,6 +117,31 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         }
     }
 
+    const renderPopover = () => {
+        return (
+            <div
+                onKeyDown={handleKeyDown}
+                className="f-popover__anchor"
+                style={{
+                    transform: `translate(${box.left}px, ${box.top}px)`,
+                    width: box.width,
+                    height: box.height,
+                    position: isFixed  || !!portal ? 'fixed' : 'absolute',
+                }}
+                {...anchorProps}>
+                <View
+                    {...rest}
+                    tabIndex={0}
+                    onKeyDown={handleKeyDown}
+                    aria-describedby={id}
+                    className={className}
+                    ref={mergeRefs([ref, containerRef])}>
+                    {content}
+                </View>
+            </div>
+        )
+    }
+
     useEvent('click', handleClick, true)
     useEvent('keydown', handleKeyDownDocument, true)
 
@@ -129,8 +154,8 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         const childRect = getBoundingClientRect(childEl)
         const popoverRect = getBoundingClientRect(popoverEl)
         const box = {
-            top: fixPosition ? fixPosition.top : childEl.offsetTop,
-            left: fixPosition ? fixPosition.left : childEl.offsetLeft,
+            top: fixPosition ? fixPosition.top : portal ? childRect.top : childEl.offsetTop,
+            left: fixPosition ? fixPosition.left : portal ? childRect.left : childEl.offsetLeft,
             width: fixPosition ? 1 : childEl.offsetWidth,
             height: fixPosition ? 1 : childEl.offsetHeight,
         }
@@ -162,7 +187,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         }
 
         return () => containerRef.current?.style.removeProperty('top')
-    }, [showPopover, content, fixPosition, props.children, ready])
+    }, [showPopover, content, fixPosition, props.children, ready, portal])
 
     useEffect(() => {
         if (focusTrap && showPopover && containerRef.current) {
@@ -181,28 +206,13 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                 })
             })}
 
-            {showPopover && (
-                <div
-                    onKeyDown={handleKeyDown}
-                    className="f-popover__anchor"
-                    style={{
-                        transform: `translate(${box.left}px, ${box.top}px)`,
-                        width: box.width,
-                        height: box.height,
-                        position: isFixed ? 'fixed' : 'absolute',
-                    }}
-                    {...anchorProps}>
-                    <View
-                        {...rest}
-                        tabIndex={0}
-                        onKeyDown={handleKeyDown}
-                        aria-describedby={id}
-                        className={className}
-                        ref={mergeRefs([ref, containerRef])}>
-                        {content}
-                    </View>
-                </div>
-            )}
+            {(showPopover && !portal) && renderPopover()}
+
+            {(showPopover && !!portal) && (
+                <props.portal>
+                    {renderPopover()}
+                </props.portal>
+            )}            
         </>
     )
 })
