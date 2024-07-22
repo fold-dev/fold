@@ -18,7 +18,10 @@ export const Usage = () => {
     const [option, setOption] = useState(1)
 
     return (
-        <View p="1rem 0" width="100%" className="f-overflow-x-auto">
+        <View
+            p="1rem 0"
+            width="100%"
+            className="f-overflow-x-auto">
             <Options
                 selected={option}
                 onOptionChange={setOption}>
@@ -38,7 +41,10 @@ export const States = () => {
     const [option, setOption] = useState(1)
 
     return (
-        <View p="1rem 0" width="100%" className="f-overflow-x-auto">
+        <View
+            p="1rem 0"
+            width="100%"
+            className="f-overflow-x-auto">
             <Options
                 animated
                 selected={option}
@@ -59,7 +65,10 @@ export const Sizes = () => {
     const [option, setOption] = useState(1)
 
     return (
-        <View p="1rem 0" width="100%" className="f-overflow-x-auto">
+        <View
+            p="1rem 0"
+            width="100%"
+            className="f-overflow-x-auto">
             <Stack
                 direction="vertical"
                 spacing={10}>
@@ -124,7 +133,10 @@ export const WithPrefixAndSuffix = () => {
     const [option, setOption] = useState(1)
 
     return (
-        <View p="1rem 0" width="100%" className="f-overflow-x-auto">
+        <View
+            p="1rem 0"
+            width="100%"
+            className="f-overflow-x-auto">
             <Options
                 animated
                 selected={option}

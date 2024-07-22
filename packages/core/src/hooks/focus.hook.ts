@@ -9,7 +9,7 @@ export const FOCUSABLE = [
     'select:not([disabled])',
     'textarea:not([disabled])',
     '[tabindex]:not([tabindex="-1"])',
-    '[contenteditable]'
+    '[contenteditable]',
 ]
 
 export type FocusTrapProps = {
@@ -34,13 +34,13 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
             if (isShift && documentObject.activeElement === firstFocusableEl.current) {
                 e.preventDefault()
                 lastFocusableEl.current?.focus({ preventScroll })
-            } 
-            
+            }
+
             if (!isShift && documentObject.activeElement === lastFocusableEl.current) {
                 e.preventDefault()
                 firstFocusableEl.current?.focus({ preventScroll })
             }
-        } 
+        }
     }
 
     const trapFocus = (el, preventScroll = false) => {

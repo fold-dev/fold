@@ -18,9 +18,9 @@ export const Usage = () => {
     const [page, setPage] = useState(1)
 
     return (
-        <View 
-            p="1rem 0" 
-            width="100%" 
+        <View
+            p="1rem 0"
+            width="100%"
             style={{ maxWidth: 600, overflow: 'scroll' }}>
             <Pagination
                 width="100%"

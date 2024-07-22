@@ -358,7 +358,7 @@ export const Select = (props: SelectProps) => {
                     onKeyDown={handleKeyDownInput}
                     onClick={handleClick}
                     className="f-select"
-                    render={render}                    
+                    render={render}
                     {...tagInputProps}>
                     <TagInputField
                         value={text}
@@ -399,7 +399,6 @@ export const Select = (props: SelectProps) => {
                     />
                     {suffix && <InputSuffix>{suffix}</InputSuffix>}
                 </InputControl>
-                
             )}
 
             {visible && (

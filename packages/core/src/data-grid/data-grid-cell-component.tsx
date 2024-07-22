@@ -1,13 +1,4 @@
-import {
-    IconLib,
-    Text,
-    addAlpha,
-    classNames,
-    cleanObject,
-    getForegroundColor,
-    getKey,
-    shadeColor,
-} from '../'
+import { IconLib, Text, addAlpha, classNames, cleanObject, getForegroundColor, getKey, shadeColor } from '../'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 export type DataGridCellComponentProps = {

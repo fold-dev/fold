@@ -341,7 +341,8 @@ export const DragArea = forwardRef((props: DragAreaProps, ref) => {
                 const isDragged = origin.index == index && origin.areaId == id
                 const showFocused = target.focus && isTargetArea && index == target.index
                 const showFirstPlaceholder = (isLinedFocus || isLined) && isTargetArea && index == target.index
-                const showLastPlaceholder = (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
+                const showLastPlaceholder =
+                    (isLinedFocus || isLined) && isTargetArea && index + 1 == target.index && isLast
                 const noDrag = !!child.props['data-nodrag']
 
                 return (

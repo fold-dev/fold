@@ -8,8 +8,27 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { Button, ButtonProps, Heading, HeadingProps, Popover, PopoverProps, Text, usePreventScrolling, useVisibility, View } from '../'
-import { classNames, documentObject, getBoundingClientRect, getKey, isOffScreen, renderChildren, renderWithProps } from '../helpers'
+import {
+    Button,
+    ButtonProps,
+    Heading,
+    HeadingProps,
+    Popover,
+    PopoverProps,
+    Text,
+    usePreventScrolling,
+    useVisibility,
+    View,
+} from '../'
+import {
+    classNames,
+    documentObject,
+    getBoundingClientRect,
+    getKey,
+    isOffScreen,
+    renderChildren,
+    renderWithProps,
+} from '../helpers'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
@@ -148,7 +167,7 @@ export const Menu = (props: MenuProps) => {
         [props.className]
     )
 
-    const closeFromMenu = () => closeFromParentMenuItem ? closeFromParentMenuItem() : null
+    const closeFromMenu = () => (closeFromParentMenuItem ? closeFromParentMenuItem() : null)
 
     const firstMenuItem = () => menuItemRefs.current[0]
 
@@ -519,9 +538,7 @@ export const MenuProvider = (props: MenuProviderProps) => {
             fixPosition={{ left: position.x, top: position.y }}
             content={menu({ data, dismiss })}
             onDismiss={() => setPosition({ x: 0, y: 0 })}>
-            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>
-                {children}
-            </ContextMenuContext.Provider>
+            <ContextMenuContext.Provider value={{ setMenu, data, dismiss }}>{children}</ContextMenuContext.Provider>
         </Popover>
     )
 }

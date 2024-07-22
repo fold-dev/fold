@@ -111,10 +111,10 @@ export const Focus = () => {
     const { trapFocus } = useFocus()
 
     return (
-        <Stack direction="vertical" spacing={5}>  
-            <Button onClick={() => trapFocus(ref.current)}>
-                Trap Focus
-            </Button>
+        <Stack
+            direction="vertical"
+            spacing={5}>
+            <Button onClick={() => trapFocus(ref.current)}>Trap Focus</Button>
             <View
                 ref={ref}
                 column

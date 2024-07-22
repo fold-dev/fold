@@ -16,8 +16,8 @@ export const docs = {
 
 export const Usage = () => (
     <View
-    width="100%"
-    style={{ maxWidth: 500 }}
+        width="100%"
+        style={{ maxWidth: 500 }}
         height={400}>
         <Cropper
             src="/photos/01.jpg"

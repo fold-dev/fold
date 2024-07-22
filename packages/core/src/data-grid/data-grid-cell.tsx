@@ -1,5 +1,15 @@
 import React, { FunctionComponent, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { CommonProps, ContextMenuContext, DataGridCellComponent, DataGridContext, classNames, dispatchDataGridEvent, getKey, stopEvent, waitForRender } from '../'
+import {
+    CommonProps,
+    ContextMenuContext,
+    DataGridCellComponent,
+    DataGridContext,
+    classNames,
+    dispatchDataGridEvent,
+    getKey,
+    stopEvent,
+    waitForRender,
+} from '../'
 
 export type DataGridCellProps = {
     value?: string | number
