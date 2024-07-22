@@ -1,5 +1,5 @@
 import React, { ReactElement, forwardRef, useEffect, useRef } from 'react'
-import { ButtonProps, IconButton, View, useFocus, usePreventScrolling } from '../'
+import { ButtonProps, IconButton, PortalProps, View, useFocus, usePreventScrolling } from '../'
 import { classNames, getActionClass, getKey, mergeRefs } from '../helpers'
 import { CoreViewProps } from '../types'
 
@@ -43,7 +43,7 @@ export type ModalProps = {
     disableBackgroundEventPropagation?: boolean
     noOverlay?: boolean
     noDocumentScrolling?: boolean
-    portal?: any
+    portal?: (props: PortalProps) => React.ReactPortal
     onDismiss?: any
 } & CoreViewProps
 
