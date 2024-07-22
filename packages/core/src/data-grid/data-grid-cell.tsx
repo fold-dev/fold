@@ -1,6 +1,5 @@
-import { CommonProps, ContextMenuContext, classNames, getKey, waitForRender } from '@fold-dev/core'
 import React, { FunctionComponent, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { DataGridCellComponent, DataGridContext, dispatchDataGridEvent, stopEvent } from '../'
+import { CommonProps, ContextMenuContext, DataGridCellComponent, DataGridContext, classNames, dispatchDataGridEvent, getKey, stopEvent, waitForRender } from '../'
 
 export type DataGridCellProps = {
     value?: string | number

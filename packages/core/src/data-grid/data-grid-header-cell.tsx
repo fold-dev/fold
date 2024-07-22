@@ -1,3 +1,4 @@
+import React, { FunctionComponent, ReactNode, useContext, useLayoutEffect, useRef } from 'react'
 import {
     CommonProps,
     ContextMenuContext,
@@ -6,11 +7,10 @@ import {
     getBoundingClientRect,
     useDrag,
     windowObject,
-} from '@fold-dev/core'
-import React, { FunctionComponent, ReactElement, ReactNode, useContext, useLayoutEffect, useRef } from 'react'
-import { DataGridContext } from './data-grid.provider'
+} from '../'
+import { FOLD_DATA_GRID_DRAG } from './data-grid'
 import { DataGridHeaderCellComponent } from './data-grid-header-cell-component'
-import { FOLD_DATA_GRID_DRAG, FOLD_DATA_GRID_GHOST } from './data-grid'
+import { DataGridContext } from './data-grid.provider'
 
 export type DataGridHeaderCellProps = {
     index?: number

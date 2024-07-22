@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, View, classNames } from '@fold-dev/core'
+import { CoreViewProps, Size, View, classNames } from '../'
 import React, { useContext, useMemo } from 'react'
 import { isYearInsideRange } from '../helpers'
 import { DateCell, DateCellProps } from './date-cell'
@@ -90,7 +90,6 @@ export const YearPicker = (props: YearPickerProps) => {
             {years.map((year, index) => {
                 return (
                     <DateCell
-                        size={size}
                         key={index}
                         disabled={year.disabled}
                         selected={year.selected}

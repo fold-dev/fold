@@ -1,5 +1,5 @@
-import { CoreViewProps, Size, View, classNames } from '@fold-dev/core'
 import React, { useContext, useMemo } from 'react'
+import { CoreViewProps, Size, View, classNames } from '../'
 import { FDate, getStartAndEndOfWeek, isDayInsideRange } from '../helpers'
 import { DateCell, DateCellProps } from './date-cell'
 import { DateSelection } from './date-picker'
@@ -121,7 +121,6 @@ export const DatePickerMonth = (props: DatePickerMonthProps) => {
             {days.map((day, index) => {
                 return (
                     <DateCell
-                        size={size}
                         key={index}
                         disabled={day.disabled}
                         selected={day.selected}

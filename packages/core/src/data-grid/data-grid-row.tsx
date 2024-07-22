@@ -1,4 +1,4 @@
-import { Checkbox, CommonProps, classNames, useDrag, windowObject } from '@fold-dev/core'
+import { Checkbox, CommonProps, classNames, useDrag, windowObject } from '../'
 import React, { useContext, useMemo, useRef } from 'react'
 import { DataGridContext } from './data-grid.provider'
 import { dispatchDataGridEvent } from './data-grid.util'

@@ -8,7 +8,7 @@ import {
     getNumberArray,
     useFocus,
     waitForRender,
-} from '@fold-dev/core'
+} from '../'
 import React, { useEffect, useMemo, useRef } from 'react'
 import { TimePickerColumn } from './time-picker-column'
 

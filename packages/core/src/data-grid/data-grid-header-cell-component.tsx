@@ -1,4 +1,4 @@
-import { CommonProps, ContextMenuContext, IconLib, Text } from '@fold-dev/core'
+import { CommonProps, ContextMenuContext, IconLib, Text } from '../'
 import React, { ReactNode, useContext } from 'react'
 
 export type DataGridHeaderCellComponentProps = {

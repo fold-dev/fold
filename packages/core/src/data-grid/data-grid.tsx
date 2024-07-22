@@ -7,7 +7,7 @@ import {
     useDrag,
     useEvent,
     windowObject,
-} from '@fold-dev/core'
+} from '../'
 import React, { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { DataGridRow } from './data-grid-row'
 import { DataGridContext } from './data-grid.provider'

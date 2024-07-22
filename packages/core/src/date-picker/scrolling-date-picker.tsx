@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, View, classNames, mergeRefs, useFocus, waitForRender } from '@fold-dev/core'
+import { CoreViewProps, Size, View, classNames, mergeRefs, useFocus, waitForRender } from '../'
 import React, { ReactElement, forwardRef, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { FDate } from '../helpers'
 import { DateCellProps } from './date-cell'

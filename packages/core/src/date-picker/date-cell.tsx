@@ -1,5 +1,5 @@
-import { CommonProps, Text, TextProps, classNames } from '@fold-dev/core'
 import React from 'react'
+import { CommonProps, classNames } from '../'
 
 export type DateCellProps = {
     disabled?: boolean
@@ -12,6 +12,8 @@ export type DateCellProps = {
     weekend?: boolean
     start?: boolean
     end?: boolean
+    onClick?: (e) => void
+    onMouseOver?: (e) => void
 } & CommonProps
 
 export const DateCell = (props: DateCellProps) => {

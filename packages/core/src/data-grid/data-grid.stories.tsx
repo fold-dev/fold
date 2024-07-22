@@ -14,14 +14,21 @@ import {
 } from '@fold-dev/core'
 import React, { useLayoutEffect, useState } from 'react'
 import { DataGrid, DataGridHeader, DataGridProvider, DataGridTypes, dataGridState, dispatchDataGridEvent } from '../'
-import * as data from '../../dummy-data'
-import '../common/common.css'
+import * as data from '../../../../dummy-data'
 import './data-grid.css'
 
 export default {
-    title: 'Pro/DataGrid',
+    title: 'Components/DataGrid',
     component: <></>,
     excludeStories: 'docs',
+}
+
+export const docs = {
+    title: 'Data Grid',
+    subtitle: 'A robust & flexible Data Grid component engineered to handle diverse datasets with ease.',
+    description:
+        'The Data Grid component enables you to customize & extend virtually every part of it, enabling you accommodate a wide variety of data types.',
+    experimental: true,
 }
 
 export const Usage = () => {

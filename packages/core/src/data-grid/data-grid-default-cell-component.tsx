@@ -1,4 +1,4 @@
-import { CommonProps, View } from '@fold-dev/core'
+import { CommonProps, View } from '../'
 import React from 'react'
 
 export type DataGridDefaultCellComponentProps = {} & CommonProps

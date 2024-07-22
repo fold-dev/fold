@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, Text, View, classNames } from '@fold-dev/core'
+import { CoreViewProps, Size, Text, View, classNames } from '../'
 import React from 'react'
 
 export type DatePickerWeekdaysProps = {

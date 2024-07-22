@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, View, classNames, getKey, scrollToCenter, scrollToTop, useResize } from '@fold-dev/core'
+import { CoreViewProps, Size, View, classNames, getKey, scrollToCenter, scrollToTop, useResize } from '../'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { TimePickerTime } from './time-picker-time'
 

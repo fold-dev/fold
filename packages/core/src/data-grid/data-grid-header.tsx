@@ -1,4 +1,4 @@
-import { Checkbox, CoreViewProps, View, classNames } from '@fold-dev/core'
+import { Checkbox, CoreViewProps, View, classNames } from '../'
 import React, { FunctionComponent, ReactNode, useContext, useEffect, useMemo, useState } from 'react'
 import { DataGridContext } from './data-grid.provider'
 import { DataGridHeaderCell } from './data-grid-header-cell'

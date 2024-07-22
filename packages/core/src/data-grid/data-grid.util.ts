@@ -1,5 +1,5 @@
-import { arrayMove, documentObject, windowObject } from '@fold-dev/core'
-import { FunctionComponent, useEffect } from 'react'
+import { useEffect } from 'react'
+import { arrayMove, documentObject } from '../'
 import { DataGridTypes } from './data-grid.types'
 
 export type DataGridEventName =

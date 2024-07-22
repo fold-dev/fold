@@ -1,4 +1,4 @@
-import { Button, CoreViewProps, IconLib, Size, View, classNames, useFocus, waitForRender } from '@fold-dev/core'
+import { Button, CoreViewProps, IconLib, Size, View, classNames, useFocus, waitForRender } from '../'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { FDate } from '../helpers'
 import { DateCellProps } from './date-cell'

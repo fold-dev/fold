@@ -7,7 +7,7 @@ import {
     getForegroundColor,
     getKey,
     shadeColor,
-} from '@fold-dev/core'
+} from '../'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 export type DataGridCellComponentProps = {

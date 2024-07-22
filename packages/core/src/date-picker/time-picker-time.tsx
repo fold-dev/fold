@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, Text, classNames } from '@fold-dev/core'
+import { CoreViewProps, Size, Text, classNames } from '../'
 import React from 'react'
 
 export type TimePickerTimeProps = {

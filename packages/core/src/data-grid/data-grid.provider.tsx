@@ -1,4 +1,4 @@
-import { documentObject, getKey, useEvent, useId, windowObject } from '@fold-dev/core'
+import { documentObject, getKey, useEvent, useId, windowObject } from '../'
 import React, {
     FunctionComponent,
     ReactElement,

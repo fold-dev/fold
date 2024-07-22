@@ -1,4 +1,4 @@
-import { CoreViewProps, Size, View, classNames, getKey } from '@fold-dev/core'
+import { CoreViewProps, Size, View, classNames, getKey } from '../'
 import React, { useContext, useMemo } from 'react'
 import { isMonthInsideRange } from '../helpers'
 import { DateCell, DateCellProps } from './date-cell'
@@ -103,7 +103,6 @@ export const MonthPicker = (props: MonthPickerProps) => {
             {months.map((month, index) => {
                 return (
                     <DateCell
-                        size={size}
                         key={index}
                         disabled={month.disabled}
                         selected={month.selected}
