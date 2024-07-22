@@ -1,5 +1,12 @@
 import React, { ReactElement } from 'react'
 
+export const plural = (number, str) => (number == 1 ? str : str + 's')
+
+export const stopEvent = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+}
+
 export const isRightMouseButton = (e) => {
     return e.which === 3 || e.button === 2
 }

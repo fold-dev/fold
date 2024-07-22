@@ -110,7 +110,7 @@ export const DragManager = (props: DragManagerProps) => {
                 // stop if there is no direction at all
                 // and if there is no indentation movements
                 // && !shouldIndent && !shouldOutdent
-                if (!!moveDirection) { 
+                if (!!moveDirection) {
                     const element = documentObject.elementFromPoint(mouseX, mouseY)
 
                     // only process valid elements (non-offscreen)
@@ -134,7 +134,11 @@ export const DragManager = (props: DragManagerProps) => {
                         // if the move direction doesn't correlate with the layout
                         // then force the moveDirection in an appropriate direction
                         // if (elementParentDirection == 'horizontal' && (moveDirection == 'up' || moveDirection == 'down')) moveDirection = 'left'
-                        if (elementParentDirection == 'vertical' && (moveDirection == 'left' || moveDirection == 'right') && isDifferentArea) {
+                        if (
+                            elementParentDirection == 'vertical' &&
+                            (moveDirection == 'left' || moveDirection == 'right') &&
+                            isDifferentArea
+                        ) {
                             moveDirection = 'up'
                         }
 
@@ -143,8 +147,8 @@ export const DragManager = (props: DragManagerProps) => {
                             elementParentDirection == 'vertical'
                                 ? moveDirection == 'down' || moveDirection == 'up'
                                 : elementParentDirection == 'horizontal'
-                                    ? moveDirection == 'left' || moveDirection == 'right'
-                                    : false
+                                ? moveDirection == 'left' || moveDirection == 'right'
+                                : false
 
                         // see above
                         if (shouldActivate) {
@@ -155,13 +159,14 @@ export const DragManager = (props: DragManagerProps) => {
                             const elementIndent = element.dataset.indent ? +element.dataset.indent : 0
                             const elementNotFromTop = element.parentNode.dataset.notfromtop
                             const elementParentVariant: DragVariant = origin.targetVariant[elementParentGroup]
-                                        
+
                             // this calculates where the cursor falls on the target element
                             // if it's just focus - then there is no regionSize because we want all of the area
                             // TODO: extend to accommodate vertical directions
                             if ((elementParentVariant == 'lined-focus' || elementParentVariant == 'focus') && isFocus) {
                                 const box = element.getBoundingClientRect()
-                                const regionSize = elementParentVariant == 'focus' ? 0 : Math.round(box.height / linedRegionThreshold)
+                                const regionSize =
+                                    elementParentVariant == 'focus' ? 0 : Math.round(box.height / linedRegionThreshold)
 
                                 focus = mouseY >= box.top + regionSize && mouseY <= box.bottom - regionSize
                             }
@@ -171,21 +176,21 @@ export const DragManager = (props: DragManagerProps) => {
                             let targetIndex = focus
                                 ? elementIndex
                                 : elementParentDirection == 'vertical'
-                                    ? moveDirection == 'down'
-                                        ? elementIndex + 1
-                                        : elementIndex 
-                                    : moveDirection == 'right'
-                                        ? elementIndex + 1
-                                        : elementIndex
+                                ? moveDirection == 'down'
+                                    ? elementIndex + 1
+                                    : elementIndex
+                                : moveDirection == 'right'
+                                ? elementIndex + 1
+                                : elementIndex
 
                             // TODO: find a non-hacky way to do this
                             // we don't bother for horizontal element because the affect is less pronounced
-                            const isFirstElement = 
+                            const isFirstElement =
                                 elementParentDirection == 'vertical'
                                     ? element.offsetTop == 0
                                     : elementParentDirection == 'horizontal'
-                                        ? false
-                                        : false
+                                    ? false
+                                    : false
 
                             // if its the 1st element & from coming in outside the area
                             // cache now() + animation time - 10ms minimum (buffer)
@@ -195,10 +200,10 @@ export const DragManager = (props: DragManagerProps) => {
                             // if it's the first element, then always make sure to handle
                             // indexes normally only after the animation has timed out
                             // manually set mouse direction & target index
-                            if (!elementNotFromTop && isFirstElement && (now < cache.time)) {
+                            if (!elementNotFromTop && isFirstElement && now < cache.time) {
                                 targetIndex = elementIndex
                                 moveDirection = elementParentDirection == 'vertical' ? 'up' : 'left'
-                            } 
+                            }
 
                             // default indent is one from the target index/element
                             let targetIndent = elementIndent
@@ -209,7 +214,8 @@ export const DragManager = (props: DragManagerProps) => {
 
                             // get this from the cache and use it if there is one
                             // this will get set in updateTargetIndent() above
-                            const indentIsCached = cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
+                            const indentIsCached =
+                                cache.indent.index == targetIndex && cache.indent.areaId == elementAreaId
 
                             // if it's cached then update the target with the cached level
                             if (indentIsCached) {

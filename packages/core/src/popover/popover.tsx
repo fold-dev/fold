@@ -1,5 +1,13 @@
-
-import React, { cloneElement, forwardRef, ReactElement, ReactPortal, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, {
+    cloneElement,
+    forwardRef,
+    ReactElement,
+    ReactPortal,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+} from 'react'
 import { PortalProps, useFocus, useId, View } from '..'
 import {
     classNames,
@@ -98,7 +106,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             const { isEscape } = getKey(e)
             if (isEscape && onDismiss) dismissPopover(e, false)
         }
-
     }
 
     const handleKeyDown = (e) => {
@@ -107,7 +114,6 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             if (isEscape && onDismiss) dismissPopover(e)
         }
     }
-
 
     const handleClick = (e) => {
         if (containerRef.current) {
@@ -126,7 +132,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                     transform: `translate(${box.left}px, ${box.top}px)`,
                     width: box.width,
                     height: box.height,
-                    position: isFixed  || !!portal ? 'fixed' : 'absolute',
+                    position: isFixed || !!portal ? 'fixed' : 'absolute',
                 }}
                 {...anchorProps}>
                 <View
@@ -206,15 +212,9 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
                 })
             })}
 
-            {(showPopover && !portal) && renderPopover()}
+            {showPopover && !portal && renderPopover()}
 
-            {(showPopover && !!portal) && (
-                <props.portal>
-                    {renderPopover()}
-                </props.portal>
-            )}            
+            {showPopover && !!portal && <props.portal>{renderPopover()}</props.portal>}
         </>
     )
 })
-
-

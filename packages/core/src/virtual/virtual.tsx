@@ -11,15 +11,7 @@ export type VirtualProps = {
 } & CoreViewProps
 
 export const Virtual = (props: any) => {
-    const { 
-        numItems, 
-        watch, 
-        itemHeight = 35, 
-        maxHeight = 300, 
-        render, 
-        className = '', 
-        ...rest 
-    } = props
+    const { numItems, watch, itemHeight = 35, maxHeight = 300, render, className = '', ...rest } = props
     const scrollRef = useRef(null)
     const [scrollTop, setScrollTop] = useState(0)
     const innerHeight = numItems * itemHeight
@@ -61,16 +53,7 @@ export const Virtual = (props: any) => {
 }
 
 export const VirtualExperimental = (props: any) => {
-    const { 
-        numItems, 
-        watch, 
-        itemHeight, 
-        render, 
-        maxHeight = 400, 
-        width = '100%', 
-        loadPrevious, 
-        loadNext 
-    } = props
+    const { numItems, watch, itemHeight, render, maxHeight = 400, width = '100%', loadPrevious, loadNext } = props
     const changeRef = useRef(null)
     const scrollRef = useRef(null)
     const [scrollTop, setScrollTop] = useState(0)

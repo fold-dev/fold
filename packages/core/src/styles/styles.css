@@ -44,7 +44,6 @@ we don't want to use !important
 @import '../cropper/cropper.css';
 @import '../dialog/dialog.css';
 @import '../divider/divider.css';
-@import '../drag/drag.css';
 @import '../drawer/drawer.css';
 @import '../editable/editable.css';
 @import '../form/form.css';
@@ -89,5 +88,11 @@ we don't want to use !important
 @import '../video/video.css';
 @import '../view/view.css';
 @import '../virtual/virtual.css';
+
+/* more complex components load last */
+
+@import '../drag/drag.css';
+@import '../data-grid/data-grid.css';
+@import '../date-picker/date-picker.css';
 
 

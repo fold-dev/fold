@@ -19,7 +19,7 @@ const scrollKeys: Set<String> = new Set([
 export const usePreventScrolling = (shouldPreventScrolling) => {
     useEffect(() => {
         if (!shouldPreventScrolling) return
-        
+
         const preventDefault = (e: Event) => e.preventDefault()
         const preventDefaultOnScrollKeys = (e: KeyboardEvent) => {
             if (scrollKeys.has(e.key)) e.preventDefault()
@@ -45,7 +45,7 @@ export const usePreventScrolling = (shouldPreventScrolling) => {
         function preventScroll() {
             windowObject.addEventListener('DOMMouseScroll', preventDefault, false)
             windowObject.addEventListener(wheelEvent, preventDefault, wheelOpt)
-            windowObject.addEventListener('touchmove', preventDefault, wheelOpt) 
+            windowObject.addEventListener('touchmove', preventDefault, wheelOpt)
             windowObject.addEventListener('keydown', preventDefaultOnScrollKeys, false)
         }
 

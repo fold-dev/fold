@@ -7,12 +7,9 @@ import { CoreViewProps, Size } from '../types'
 export const useCopy = () => {
     const copyToClipboard = (value: any) => {
         try {
-            navigator
-                .clipboard
-                .writeText(value)
-                .catch(err => {
-                    throw new Error(err)
-                })
+            navigator.clipboard.writeText(value).catch((err) => {
+                throw new Error(err)
+            })
         } catch (err) {
             const tempInput: any = documentObject.createElement('textarea')
             tempInput.style = 'position: absolute; left: -1000px; top: -1000px;'

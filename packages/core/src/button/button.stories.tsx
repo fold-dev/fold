@@ -33,7 +33,9 @@ export const Usage = () => <Button>Okay</Button>
 // --
 
 export const Sizes = () => (
-    <Stack spacing={5} wrap="wrap">
+    <Stack
+        spacing={5}
+        wrap="wrap">
         <Button size="xs">Xsmall</Button>
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
@@ -51,7 +53,9 @@ export const NormalVariants = () => (
         gap="1rem"
         alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button>Default</Button>
             <Button variant="accent">Accent</Button>
             <Button variant="success">Success</Button>
@@ -62,7 +66,9 @@ export const NormalVariants = () => (
             <Button variant="highlight">Highlight</Button>
         </Stack>
         <Heading as="h5">Disabled</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button disabled>Default</Button>
             <Button
                 disabled
@@ -101,7 +107,9 @@ export const NormalVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button loading>Default</Button>
             <Button
                 loading
@@ -140,7 +148,9 @@ export const NormalVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button active>Default</Button>
             <Button
                 active
@@ -189,7 +199,9 @@ export const SubtleVariants = () => (
         gap="1rem"
         alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button subtle>Default</Button>
             <Button
                 subtle
@@ -228,7 +240,9 @@ export const SubtleVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Disabled</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 subtle
                 disabled>
@@ -278,7 +292,9 @@ export const SubtleVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 subtle
                 loading>
@@ -328,7 +344,9 @@ export const SubtleVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 subtle
                 active>
@@ -388,7 +406,9 @@ export const OutlineVariants = () => (
         gap="1rem"
         alignItems="flex-start">
         <Heading as="h5">Normal</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button outline>Default</Button>
             <Button
                 outline
@@ -427,7 +447,9 @@ export const OutlineVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Disabled</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 outline
                 disabled>
@@ -477,7 +499,9 @@ export const OutlineVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Loading</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 outline
                 loading>
@@ -527,7 +551,9 @@ export const OutlineVariants = () => (
             </Button>
         </Stack>
         <Heading as="h5">Active</Heading>
-        <Stack spacing={5} wrap="wrap">
+        <Stack
+            spacing={5}
+            wrap="wrap">
             <Button
                 outline
                 active>
@@ -582,7 +608,9 @@ export const OutlineVariants = () => (
 // --
 
 export const WithPrefixAndSuffix = () => (
-    <Stack spacing={5} wrap="wrap">
+    <Stack
+        spacing={5}
+        wrap="wrap">
         <Button
             as="a"
             href="https://google.com"
@@ -623,7 +651,9 @@ export const EllipsisMode = () => (
 // --
 
 export const AsLink = () => (
-    <Stack spacing={5} wrap="wrap">
+    <Stack
+        spacing={5}
+        wrap="wrap">
         <Button
             as="a"
             href="https://google.com"
@@ -701,7 +731,9 @@ export const AsLink = () => (
 // --
 
 export const WithIcon = () => (
-    <Stack spacing={5} wrap="wrap">
+    <Stack
+        spacing={5}
+        wrap="wrap">
         <IconButton
             icon="bin"
             size="xs"

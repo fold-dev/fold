@@ -59,7 +59,7 @@ export const HighlightText = forwardRef((props: { highlight?: string } & TextPro
             title={title}
             target={target}
             ref={ref}
-            dangerouslySetInnerHTML={{ __html: text }} 
+            dangerouslySetInnerHTML={{ __html: text }}
         />
     )
 })
@@ -84,7 +84,7 @@ export const Text = forwardRef((props: TextProps, ref) => {
             href={href}
             title={title}
             target={target}
-            ref={ref} 
+            ref={ref}
         />
     )
 })
@@ -117,13 +117,7 @@ export type LimitedTextProps = {
 } & TextProps
 
 export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
-    const { 
-        limit = 200, 
-        html, 
-        showLess = 'show less',
-        showMore = 'show more',
-        ...rest
-    } = props
+    const { limit = 200, html, showLess = 'show less', showMore = 'show more', ...rest } = props
     const { visible, show, hide } = useVisibility(false)
     const { text, showButton } = useMemo(() => {
         const el = documentObject.createElement('span')
@@ -147,11 +141,12 @@ export const LimitedText = forwardRef((props: LimitedTextProps, ref) => {
             {...rest}
             as="p"
             ref={ref}>
-            <span 
-                dangerouslySetInnerHTML={{ __html: text }} 
-            />
+            <span dangerouslySetInnerHTML={{ __html: text }} />
             {showButton && (
-                <> ... <span
+                <>
+                    {' '}
+                    ...{' '}
+                    <span
                         className="f-limited-text"
                         onClick={handleToggle}>
                         {visible ? showLess : showMore}

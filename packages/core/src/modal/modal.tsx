@@ -121,9 +121,27 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
                     tabIndex={0}
                     onKeyDown={handleKeyDown}
                     ref={mergeRefs([contentRef, ref])}>
-                    {header && <div className="f-modal__header f-row" {...headerProps}>{header}</div>}
-                    {props.children && <div className="f-modal__body" {...bodyProps}>{props.children}</div>}
-                    {footer && <div className="f-modal__footer f-row" {...footerProps}>{footer}</div>}
+                    {header && (
+                        <div
+                            className="f-modal__header f-row"
+                            {...headerProps}>
+                            {header}
+                        </div>
+                    )}
+                    {props.children && (
+                        <div
+                            className="f-modal__body"
+                            {...bodyProps}>
+                            {props.children}
+                        </div>
+                    )}
+                    {footer && (
+                        <div
+                            className="f-modal__footer f-row"
+                            {...footerProps}>
+                            {footer}
+                        </div>
+                    )}
                 </View>
             </div>
         )

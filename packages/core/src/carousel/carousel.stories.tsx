@@ -19,7 +19,9 @@ export const Usage = () => {
     const { current, setCurrent } = useCarousel(0)
 
     return (
-        <View width="100%" style={{ maxWidth: 500 }}>
+        <View
+            width="100%"
+            style={{ maxWidth: 500 }}>
             <Carousel
                 width="100%"
                 height={400}
@@ -178,7 +180,9 @@ export const ImageGallery = () => {
     const { current, setCurrent } = useCarousel(0)
 
     return (
-        <View width="100%" style={{ maxWidth: 500 }}>
+        <View
+            width="100%"
+            style={{ maxWidth: 500 }}>
             <Carousel
                 width="100%"
                 height={400}
