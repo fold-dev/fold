@@ -108,7 +108,7 @@
 
 .f-date-cell.is-selected.is-start,
 .f-date-cell.is-selected.is-end {
-    color: var(--f-date-cell-edge-selected);
+    color: var(--f-date-cell-edge-selected) !important;
 }
 
 .f-date-cell.is-selected::before {

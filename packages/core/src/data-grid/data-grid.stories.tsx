@@ -1,7 +1,7 @@
 import {
     Button,
+    DataGrid, DataGridHeader, DataGridProvider, DataGridTypes,
     FIBin,
-    FIX,
     Icon,
     Menu,
     MenuProvider,
@@ -9,13 +9,11 @@ import {
     Portal,
     Text,
     View,
-    arrayMove,
-    useDialog,
+    dataGridState, dispatchDataGridEvent,
+    useDialog
 } from '@fold-dev/core'
-import React, { useLayoutEffect, useState } from 'react'
-import { DataGrid, DataGridHeader, DataGridProvider, DataGridTypes, dataGridState, dispatchDataGridEvent } from '../'
+import React, { useState } from 'react'
 import * as data from '../../../../dummy-data'
-import './data-grid.css'
 
 export default {
     title: 'Components/DataGrid',

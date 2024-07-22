@@ -6,8 +6,8 @@ import {
     positionDOMElement,
     useDrag,
     useEvent,
-    windowObject,
 } from '../'
+import { globalCursor, windowObject } from '../helpers'
 import React, { ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { DataGridRow } from './data-grid-row'
 import { DataGridContext } from './data-grid.provider'
