@@ -1,0 +1,347 @@
+:root {
+    --f-data-grid-gutter-width: 100px;
+}
+
+:root {
+    --f-data-grid-selected-width: 0.2rem;
+    --f-data-grid-border: none;
+    --f-data-grid-background: var(--f-color-surface);
+    --f-data-grid-columns: var(--f-data-grid-gutter-width) 300px 200px 200px 200px 200px 200px 200px 150px 150px 150px 150px 150px;
+    --f-data-grid-cell-height: 40px;
+    --f-data-grid-border-bottom: 1px solid var(--f-color-surface-stronger);
+    --f-data-grid-border-right: 1px solid var(--f-color-surface-stronger);
+    --f-data-grid-background-selected: var(--f-color-surface-stronger);
+    --f-data-grid-background-hover: var(--f-color-surface-strong);
+    --f-data-grid-background-header: var(--f-color-surface-strong);
+    --f-data-grid-background-header-hover: var(--f-color-surface-stronger);
+}
+
+.f-data-grid-container {
+    width: 100%;
+    position: relative;
+}
+
+.f-data-grid {
+    width: 100%;
+    background: var(--f-data-grid-background);
+    position: relative;
+    border: var(--f-data-grid-border);
+    padding: 0px;
+}
+
+.f-data-grid.is-default {
+    overflow: auto;
+}
+
+.f-data-grid__list {
+    padding-right: 0px;
+    position: relative;
+    overflow: auto;
+    scroll-behavior: smooth !important;
+}
+
+.f-data-grid__scroll-spacer {
+    position: relative;
+    width: fit-content;
+    min-width: 100%;
+}
+
+/* row */
+/* ----------------------------------------------- */
+
+:root {
+    --f-data-grid-row-padding-left: 1rem;
+    --f-data-grid-row-padding-right: 5rem;
+}
+
+.f-data-grid-row {
+    display: grid;
+    padding-left: var(--f-data-grid-row-padding-left);
+    padding-right: var(--f-data-grid-row-padding-right);
+    grid-template-columns: var(--f-data-grid-columns);
+    transition: grid-template-columns 0.1s ease-out;
+    border-bottom: var(--f-data-grid-border-bottom);
+    min-width: 100%;
+    width: fit-content;
+    height: var(--f-data-grid-cell-height);
+    position: relative;
+}
+
+.f-data-grid-row.is-draggable {
+    cursor: grab;
+}
+
+.f-data-grid-row:last-child {
+    border-bottom: none;
+}
+
+.f-data-grid-row:focus-within {
+    outline: none;
+}
+
+.f-data-grid-row.is-selected,
+.f-data-grid-row.is-selected > .f-data-grid-cell {
+    background: var(--f-data-grid-background-selected);
+}
+
+.f-data-grid:not(.is-dragging) .f-data-grid-row:hover {
+    background: var(--f-data-grid-background-hover);
+}
+
+.f-data-grid:not(.is-dragging) .f-data-grid-row:hover .f-data-grid-cell,
+.f-data-grid:not(.is-dragging) .f-data-grid-row:hover .f-data-grid-cell.is-selected {
+    background: var(--f-data-grid-background-hover);
+}
+
+.f-data-grid-row.is-header,
+.f-data-grid-row.is-header:hover {
+    background: var(--f-data-grid-background-header) !important;
+    z-index: 20;
+    position: sticky;
+    top: 0px;
+}
+
+/* cell */
+/* ----------------------------------------------- */
+
+.f-data-grid-cell {
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    border-right: var(--f-data-grid-border-right);   
+}
+
+.f-data-grid-row .f-data-grid-header-cell:last-child,
+.f-data-grid-row .f-data-grid-cell:last-child {
+    border-right: none;
+}
+
+.f-data-grid-cell:focus-within {
+    outline: none;
+}
+
+/* states */
+/* ----------------------------------------------- */
+
+.f-data-grid-cell.is-disabled {
+    cursor: not-allowed;
+}
+
+.f-data-grid-cell.is-disabled > * {
+    opacity: 0.5;
+}
+
+.f-data-grid-cell.is-selected::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    border: var(--f-data-grid-selected-width) solid var(--f-color-accent);
+}
+
+/* pin first */
+/* ----------------------------------------------- */
+
+.f-data-grid.pin-first .f-data-grid-row .f-data-grid-cell:nth-child(2) {
+    position: sticky !important;
+    left: 0;
+    background: var(--f-data-grid-background);
+    z-index: 10;
+}
+
+.f-data-grid.pin-first .f-data-grid-row .f-data-grid-cell.is-selected:nth-child(2)  {
+    z-index: 11;
+}
+
+.f-data-grid.pin-first .f-data-grid-row .f-data-grid-header-cell:nth-child(2) {
+    position: sticky !important;
+    left: 0;
+    background: var(--f-data-grid-background-header);
+    z-index: 2;
+}
+
+.f-data-grid.pin-first .f-data-grid-row.is-selected .f-data-grid-cell:nth-child(2) {
+    background: var(--f-data-grid-background-selected);
+}
+
+.f-data-grid.pin-first:not(.is-dragging) .f-data-grid-row:hover .f-data-grid-cell:nth-child(2) {
+    background: var(--f-data-grid-background-hover);
+}
+
+/* pin last */
+/* ----------------------------------------------- */
+
+.f-data-grid.pin-last .f-data-grid-row .f-data-grid-header-cell:nth-last-child(1),
+.f-data-grid.pin-last .f-data-grid-row .f-data-grid-cell:nth-last-child(1) {
+    position: sticky;
+    right: 0px;
+    background: var(--f-data-grid-background);
+    z-index: 10;
+    border-left: var(--f-data-grid-border-right);  
+    margin-left: -1px;
+}
+
+.f-data-grid.pin-last .f-data-grid-row .f-data-grid-cell.is-selected:nth-last-child(1) {
+    z-index: 11;
+}
+
+.f-data-grid.pin-last .f-data-grid-row .f-data-grid-header-cell:nth-last-child(1) {
+    background: var(--f-data-grid-background-header);
+}
+
+.f-data-grid.pin-last .f-data-grid-row.is-selected .f-data-grid-cell:nth-last-child(1) {
+    background: var(--f-data-grid-background-selected);
+}
+
+.f-data-grid.pin-last:not(.is-dragging) .f-data-grid-row:hover .f-data-grid-cell:nth-last-child(1) {
+    background: var(--f-data-grid-background-hover);
+}
+
+/* gutter */
+
+:root {
+    --f-data-grid-gutter-number-display: block;
+    --f-data-grid-gutter-number-left: 0px;
+    --f-data-grid-gutter-number-size: var(--f-font-size-md);
+}
+
+.f-data-grid-row__gutter-number {
+    display: var(--f-data-grid-gutter-number-display);
+    position: absolute;
+    left: var(--f-data-grid-gutter-number-left);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+    font-size: var(--f-data-grid-gutter-number-size);
+    color: var(--f-color-text-weakest);
+}
+
+.f-data-grid-row > .f-data-grid-cell:first-child {
+    pointer-events: none;
+    user-select: none;
+}
+
+.f-data-grid-row > .f-data-grid-cell:first-child .f-checkbox {
+    pointer-events: all;
+}
+
+/* header cell */
+/* ----------------------------------------------- */
+
+.f-data-grid-header-cell { 
+    position: relative;
+    user-select: none;
+    border-right: var(--f-data-grid-border-right);  
+    background: var(--f-data-grid-background-header);
+}
+
+/* default header cell */
+/* ----------------------------------------------- */
+
+.f-data-grid-header-cell-component {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    justify-content: flex-start;
+    padding: 0 var(--f-space-3);
+    gap: var(--f-space-2);
+}
+
+.f-data-grid-header-cell-component:hover {
+    background: var(--f-data-grid-background-header-hover);
+}
+
+.f-data-grid-header-cell-component .f-icon {
+    color: var(--f-color-text-weak);
+}
+
+.f-data-grid-header-cell-component .f-data-grid-header-cell-component__sort-icon {
+    stroke-width: 3px;
+    color: var(--f-color-text-weak);
+}
+
+.f-data-grid-header-cell-component__text {
+    flex: 1;
+    justify-content: flex-start;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* default text cell */
+/* ----------------------------------------------- */
+
+.f-data-grid-cell-component {
+    position: absolute;
+    inset: 0;
+    justify-content: flex-start;
+    padding: 0 var(--f-space-3);
+    background: transparent;
+    overflow: hidden;
+}
+
+.f-data-grid-cell-component.is-edit input {
+    padding: 0 var(--f-space-3);
+    border: 0;
+    position: absolute;
+    background: transparent;
+    inset: 0;
+    font-family: var(--f-font-body);
+    color: var(--f-color-text);
+    outline: none;
+}
+
+.f-data-grid-cell-component.is-edit {
+}
+
+/* colors */
+
+.f-data-grid-cell-component.is-color,
+.f-data-grid-cell-component.is-color.is-edit > *,
+.f-data-grid-cell-component.is-color > * {
+    color: inherit;
+}
+
+/* dragging */
+/* ----------------------------------------------- */
+
+.f-data-grid.is-dragging .f-data-grid-cell > *,
+.f-data-grid.is-dragging .f-data-grid-header-cell > * {
+    pointer-events: none;
+}
+
+.f-data-grid.is-dragging,
+.f-data-grid.is-dragging * {
+    cursor: grabbing !important;
+}
+
+.f-data-grid-row .f-data-grid-cell.is-col-dragged::before,
+.f-data-grid-row .f-data-grid-header-cell.is-col-dragged::before {
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    background: var(--f-color-accent);
+    z-index: 1000;
+    top: 0px;
+    height: calc(100% + 1px);
+    right: -1px;
+    width: 0.2rem;
+}
+
+.f-data-grid-row.is-row-dragged::before {
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    background: var(--f-color-accent);
+    z-index: 1000;
+    top: -1px;
+    height: 0.2rem;
+    right: 0px;
+    width: 100%;
+}
