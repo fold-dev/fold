@@ -216,17 +216,19 @@ export const CustomWeekend = () => {
     const disabled = new Date(year, month, 13)
 
     return (
-        <View width={300}>
-            <DatePickerWeekdays width="100%" />
-            <DatePickerMonth
-                width="100%"
-                height={275}
-                date={date}
-                selection={[[start, end]]}
-                disabled={[[disabled]]}
-                weekendDays={[0, 5]}
-            />
-        </View>
+        <DatePickerProvider>
+            <View width={300}>
+                <DatePickerWeekdays width="100%" />
+                <DatePickerMonth
+                    width="100%"
+                    height={275}
+                    date={date}
+                    selection={[[start, end]]}
+                    disabled={[[disabled]]}
+                    weekendDays={[0, 5]}
+                />
+            </View>
+        </DatePickerProvider>
     )
 }
 
@@ -242,13 +244,15 @@ export const MonthsDisplay = () => {
     const disabled = new Date(year, month + 7, 14)
 
     return (
-        <MonthPicker
-            width={300}
-            height={220}
-            date={date}
-            selection={[[selectedStart, selectedEnd]]}
-            disabled={[[disabled]]}
-        />
+        <DatePickerProvider>
+            <MonthPicker
+                width={300}
+                height={220}
+                date={date}
+                selection={[[selectedStart, selectedEnd]]}
+                disabled={[[disabled]]}
+            />
+        </DatePickerProvider>
     )
 }
 
@@ -264,13 +268,15 @@ export const YearsDisplay = () => {
     const disabled = new Date(year + 4, month, 14)
 
     return (
-        <YearPicker
-            width={300}
-            height={220}
-            date={date}
-            selection={[[selectedStart, selectedEnd]]}
-            disabled={[[disabled]]}
-        />
+        <DatePickerProvider>
+            <YearPicker
+                width={300}
+                height={220}
+                date={date}
+                selection={[[selectedStart, selectedEnd]]}
+                disabled={[[disabled]]}
+            />
+        </DatePickerProvider>
     )
 }
 
