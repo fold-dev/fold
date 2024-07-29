@@ -1,0 +1,30 @@
+:root {
+    --f-csv-importer-padding: 1rem;
+    --f-csv-importer-gap: 1.5rem;
+}
+
+.f-csv-importer {
+    padding: var(--f-csv-importer-padding);
+    gap: var(--f-csv-importer-gap);
+    width: 100%;
+    position: relative;
+
+    --f-data-grid-row-padding-left: 2rem;
+    --f-data-grid-row-padding-right: 2px;
+}
+
+.f-csv-importer-validation {
+    position: fixed;
+    z-index: 10000;
+    height: fit-content;
+    width: fit-content;
+    background: var(--f-color-surface);
+    align-items: flex-start;
+    padding: var(--f-space-4);
+    border: 1px solid var(--f-color-border);
+    border-radius: var(--f-radius);
+    border-top-left-radius: 0;
+    box-shadow: var(--f-shadow-card);
+    gap: 0.5rem;
+    min-width: 250px;
+}
