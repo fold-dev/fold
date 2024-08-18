@@ -10,16 +10,18 @@ export const removeElementFromArray = (array, index) => {
     return arr
 }
 
-export const moveElementInArray = (array, origin, target) => {
-    const targetIndex =
-        target.moveDirection == 'up'
-            ? target.index > origin.index
-                ? target.index - 1
-                : target.index
-            : target.index > origin.index
+export const getTargetIndex = (origin, target) => {
+    return target.moveDirection == 'up'
+        ? target.index > origin.index
             ? target.index - 1
             : target.index
-    return [...arrayMove(array, origin.index, targetIndex)]
+        : target.index > origin.index
+        ? target.index - 1
+        : target.index
+}
+
+export const moveElementInArray = (array, origin, target) => {
+    return [...arrayMove(array, origin.index, getTargetIndex(origin, target))]
 }
 
 export const arrayMove = (array, from, to) => {
