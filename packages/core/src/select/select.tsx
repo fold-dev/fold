@@ -124,6 +124,7 @@ export const Select = (props: SelectProps) => {
     const [offscreen, setOffscreen] = useState(false)
     const [cursor, setCursor] = useState(-1)
     const [text, setText] = useState('')
+    const filterTimeout = useRef(null)
     const filteredOptions = useMemo(() => {
         return options.filter((option: SelectOption) => {
             if (option.sticky) {
@@ -307,10 +308,11 @@ export const Select = (props: SelectProps) => {
 
     // manages the onFilter
     useEffect(() => {
-        setTimer(() => {
-            if (onFilter && !!text) onFilter(text)
+        clearTimeout(filterTimeout.current)
+        filterTimeout.current = setTimeout(() => {
+            if (onFilter) onFilter(text)
         }, filterDelay)
-    }, [text, onFilter, filterDelay])
+    }, [text, filterDelay])
 
     // resets the cursor
     useEffect(() => {
