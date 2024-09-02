@@ -8,7 +8,7 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { useTheme } from '..'
+import { useTheme, useWindowEvent } from '..'
 import { classNames, cleanObject, getAlignClass, getOffset, mergeRefs } from '../helpers'
 import { CommonProps, CoreViewProps, ShorthandProps } from '../types'
 
@@ -22,47 +22,46 @@ export type ScrollViewProps = {
 export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     const { stickToTop, stickToBottom, onScrollToBottom, onScrollToTop, style = {}, ...rest } = props
     const scrollRef = useRef(null)
-    const [manually, setManually] = useState(false)
     let marginTop = 0
+    const userIsScrolling = useRef(null)
 
     const scrollToTop = () => {
-        // If the user is scrolling
-        if (manually) return
-
-        // If there is no scroll ref
+        if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
-        // Move it right up
         scrollRef.current.scrollTop = 0
     }
 
     const scrollToBottom = () => {
-        // If the user is scrolling
-        if (manually) return
-
-        // If there is no scroll ref
+        if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
-        // Move it right down
         scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
 
     const handleScrollEvent = (e: any) => {
-        const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop
+        const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - 1
         const isBottom = scrollRef.current.offsetHeight >= offsetHeight
         const isTop = scrollRef.current.scrollTop == 0
 
-        // If the user scrolls to the bottom or top
         if (isBottom && onScrollToBottom) onScrollToBottom()
         if (isTop && onScrollToTop) onScrollToTop()
-
-        // If it's the bottom/top & it's sticky then set this
-        if (isBottom && stickToBottom) setManually(false)
-        if (isTop && stickToTop) setManually(false)
-
-        // Otherwise let the user scroll
-        if (!isBottom && !isTop) setManually(true)
     }
+    const handleWheelEvent = (e) => {
+        const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - 1
+        const isBottom = scrollRef.current.offsetHeight >= offsetHeight
+        const isTop = scrollRef.current.scrollTop == 0
+
+        if (isTop && stickToTop) {
+            userIsScrolling.current = false
+        } else if (isBottom && stickToBottom) {
+            userIsScrolling.current = false
+        } else {
+            userIsScrolling.current = true
+        }
+    }
+
+    useWindowEvent('wheel', handleWheelEvent)
 
     useEffect(() => {
         if (stickToBottom) scrollToBottom()
@@ -83,7 +82,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
                 const scrollHeightOfContent = lastChild.offsetTop + height
                 const { scrollHeight } = scrollRef.current
 
-                if (!manually && stickToBottom && scrollHeightOfContent < scrollHeight) {
+                if (!userIsScrolling.current && stickToBottom && scrollHeightOfContent < scrollHeight) {
                     marginTop = scrollHeight - scrollHeightOfContent
                 }
             }

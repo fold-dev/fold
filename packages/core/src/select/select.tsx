@@ -310,7 +310,7 @@ export const Select = (props: SelectProps) => {
     useEffect(() => {
         clearTimeout(filterTimeout.current)
         filterTimeout.current = setTimeout(() => {
-            if (onFilter) onFilter(text)
+            if (onFilter && visible) onFilter(text)
         }, filterDelay)
     }, [text, filterDelay])
 
