@@ -8,11 +8,12 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { useTheme, useWindowEvent } from '..'
+import { useEvent, useTheme, useWindowEvent } from '..'
 import { classNames, cleanObject, getAlignClass, getOffset, mergeRefs } from '../helpers'
 import { CommonProps, CoreViewProps, ShorthandProps } from '../types'
 
 export type ScrollViewProps = {
+    smooth?: boolean
     stickToTop?: boolean
     stickToBottom?: boolean
     onScrollToBottom?: any
@@ -20,23 +21,31 @@ export type ScrollViewProps = {
 } & CoreViewProps
 
 export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
-    const { stickToTop, stickToBottom, onScrollToBottom, onScrollToTop, style = {}, ...rest } = props
+    const { smooth = true, stickToTop, stickToBottom, onScrollToBottom, onScrollToTop, style = {}, ...rest } = props
     const scrollRef = useRef(null)
-    let marginTop = 0
     const userIsScrolling = useRef(null)
+    const spacerRef = useRef(null)
 
     const scrollToTop = () => {
         if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
-        scrollRef.current.scrollTop = 0
+        if (smooth) {
+            scrollRef.current.scrollTop = 0
+        } else {
+            scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+        }
     }
 
     const scrollToBottom = () => {
         if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+        if (smooth) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+        } else {
+            scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })    
+        }
     }
 
     const handleScrollEvent = (e: any) => {
@@ -64,6 +73,15 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     useWindowEvent('wheel', handleWheelEvent)
 
     useEffect(() => {
+        let interval = setInterval(() => {
+            if (stickToBottom) scrollToBottom()
+            if (stickToTop) scrollToTop()
+        }, 1000)
+
+        return () => clearInterval(interval)
+    })
+
+    useEffect(() => {
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
     }, [props.children])
@@ -72,22 +90,6 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
     }, [])
-
-    useLayoutEffect(() => {
-        if (scrollRef.current) {
-            const { lastChild } = scrollRef.current
-
-            if (lastChild) {
-                const { height } = lastChild.getBoundingClientRect()
-                const scrollHeightOfContent = lastChild.offsetTop + height
-                const { scrollHeight } = scrollRef.current
-
-                if (!userIsScrolling.current && stickToBottom && scrollHeightOfContent < scrollHeight) {
-                    marginTop = scrollHeight - scrollHeightOfContent
-                }
-            }
-        }
-    })
 
     return (
         <View
@@ -113,8 +115,8 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
                     top: 0,
                     left: 0,
                     overflow: 'scroll',
-                    marginTop,
                 }}>
+                <div ref={spacerRef} />
                 {props.children}
             </div>
         </View>
