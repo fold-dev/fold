@@ -13,6 +13,7 @@ import {
 } from '../'
 
 export type DragElementAreaProps = {
+    disabled?: boolean
     indent?: boolean
     areaId?: string
     group?: string
@@ -25,6 +26,7 @@ export type DragElementAreaProps = {
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
     const {
+        disabled,
         indent,
         areaId,
         group = 'default',
@@ -110,7 +112,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             isFocus,
             isAnimated,
         }
-    }, [id, origin, target, direction, targetVariant, variant])
+    }, [id, origin, target, direction, targetVariant, variant, disabled])
     const className = classNames(
         {
             'f-drag-area': true,
@@ -145,6 +147,8 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     // --------------------------------------------------------------------------
 
     useLayoutEffect(() => {
+        if (disabled) return
+
         // always set this to off when the component mounts
         // or if children change
         bufferRef.current.style.display = 'none'
@@ -211,7 +215,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 node.dataset.areaid = id
             }
         })
-    }, [props.children, id, origin, target])
+    }, [props.children, id, origin, target, disabled])
 
     /* 
 
@@ -252,7 +256,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             data-targetvariant={finalTargetVariant}>
             {props.children}
 
-            {placeholder.visible && (
+            {(!disabled && placeholder.visible) && (
                 <div
                     className={placeholder.className}
                     data-placeholder={true}
@@ -266,11 +270,13 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 />
             )}
 
-            <div
-                ref={bufferRef}
-                data-buffer={true}
-                className="f-drag-area__buffer"
-            />
+            {!disabled && (
+                <div
+                    ref={bufferRef}
+                    data-buffer={true}
+                    className="f-drag-area__buffer"
+                />
+            )}
 
             {footer}
         </View>
