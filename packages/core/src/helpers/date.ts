@@ -1,6 +1,13 @@
 import { plural } from './util'
 
 export const FDate = (date: Date) => {
+
+    const toISOWithTimezone = () => {
+        const offset = date.getTimezoneOffset()
+        const adjustedDate = new Date(date.getTime() - (offset * 60000))
+        return adjustedDate.toISOString()
+    }
+
     const isBefore = (beforeDate: Date) => {
         return beforeDate > date
     }
@@ -192,6 +199,7 @@ export const FDate = (date: Date) => {
     }
 
     return {
+        toISOWithTimezone,
         isBefore,
         isAfter,
         isSame,
