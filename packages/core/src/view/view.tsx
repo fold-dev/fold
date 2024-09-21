@@ -105,6 +105,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
                 height: '100%',
             }}>
             <div
+                className="f-scrollbar"
                 ref={mergeRefs([ref, scrollRef])}
                 onScroll={handleScrollEvent}
                 style={{
@@ -114,7 +115,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
                     height: '100%',
                     top: 0,
                     left: 0,
-                    overflow: 'scroll',
+                    overflow: 'auto',
                 }}>
                 <div ref={spacerRef} />
                 {props.children}

@@ -1,5 +1,5 @@
-import React, { useMemo, useRef } from 'react'
-import { classNames, CoreViewProps, useDrag, View } from '../'
+import React, { forwardRef, useMemo, useRef } from 'react'
+import { classNames, CoreViewProps, mergeRefs, useDrag, View } from '../'
 
 export type DragElementProps = {
     id?: string
@@ -10,7 +10,7 @@ export type DragElementProps = {
     noIndent?: boolean
 } & Omit<CoreViewProps, 'indent'>
 
-export const DragElement = (props: DragElementProps) => {
+export const DragElement = forwardRef((props: DragElementProps, ref) => {
     const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp } = useDrag()
@@ -54,9 +54,9 @@ export const DragElement = (props: DragElementProps) => {
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             style={styles}
-            ref={elementRef}
+            ref={mergeRefs([ref, elementRef])}
             className={className}>
             {props.children}
         </View>
     )
-}
+})
