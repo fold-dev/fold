@@ -86,6 +86,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             'f-popover': true,
             'has-arrow': arrow,
             'is-ready': ready,
+            'is-fixed': isFixed,
         },
         [props.className, getPopoutClass(finalAnchor)]
     )

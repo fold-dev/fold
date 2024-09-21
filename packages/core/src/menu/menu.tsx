@@ -15,6 +15,7 @@ import {
     HeadingProps,
     Popover,
     PopoverProps,
+    Portal,
     Text,
     usePreventScrolling,
     useVisibility,
@@ -533,6 +534,7 @@ export const MenuProvider = (props: MenuProviderProps) => {
         <Popover
             {...popoverProps}
             border="none"
+            portal={Portal}
             width="fit-content"
             isVisible={isVisible}
             fixPosition={{ left: position.x, top: position.y }}

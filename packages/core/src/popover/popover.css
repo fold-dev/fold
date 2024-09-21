@@ -27,6 +27,10 @@
     visibility: hidden;
 }
 
+.f-popover.is-fixed {
+    position: fixed;
+}
+
 @keyframes f-popover-fadein {
     from { opacity: 0; }
     to { opacity: 1; }
