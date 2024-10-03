@@ -13,18 +13,20 @@ import {
 } from '../'
 
 export type DragElementAreaProps = {
+    disabled?: boolean
     indent?: boolean
     areaId?: string
     group?: string
     variant?: DragVariant
     targetVariant?: any
-    direction?: 'vertical'
+    direction?: 'vertical' | 'horizontal'
     startDelay?: number
     footer?: any
 } & CoreViewProps
 
 export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => {
     const {
+        disabled,
         indent,
         areaId,
         group = 'default',
@@ -73,29 +75,37 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: indent ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) : 0,
-            width: target.indent ? `calc(100% - var(--f-drag-indent) * ${target.indent})` : '100%',
-            // this needs to be considered at some point:
-            // width: isVertical ? target.width || origin.width : origin.width,
+            marginLeft: isVertical  
+                ? indent 
+                    ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) 
+                    : 0
+                : 0,
+            width: isVertical 
+                ? target.indent 
+                    ? `calc(100% - var(--f-drag-indent) * ${target.indent})` 
+                    : '100%'
+                : (isLined || isLinedFocus ? '5px !important' : (target.width || origin.width)),
+            height: isVertical 
+                ? (isLined || isLinedFocus ? undefined : origin.height) 
+                : '100%',
             position: noChildren ? 'relative' : 'absolute',
-            height: isVertical ? (isLined || isLinedFocus ? undefined : origin.height) : target.height || origin.height,
             transform: noChildren
                 ? null
                 : isVertical
-                ? `translateY(${
-                      target.moveDirection == 'down'
-                          ? target.top + target.height
-                          : target.moveDirection == 'up'
-                          ? target.top
-                          : 0
-                  }px)`
-                : `translateX(${
-                      target.moveDirection == 'right'
-                          ? target.left + target.width
-                          : target.moveDirection == 'left'
-                          ? target.left
-                          : 0
-                  }px)`,
+                    ? `translateY(${
+                        target.moveDirection == 'down'
+                            ? target.top + target.height
+                            : target.moveDirection == 'up'
+                                ? target.top
+                                : 0
+                    }px)`
+                    : `translateX(${
+                        target.moveDirection == 'right'
+                            ? target.left + target.width
+                                : target.moveDirection == 'left'
+                                ? target.left
+                                    : 0
+                    }px)`,
         }
 
         return {
@@ -110,7 +120,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             isFocus,
             isAnimated,
         }
-    }, [id, origin, target, direction, targetVariant, variant])
+    }, [id, origin, target, direction, targetVariant, variant, disabled])
     const className = classNames(
         {
             'f-drag-area': true,
@@ -145,6 +155,8 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
     // --------------------------------------------------------------------------
 
     useLayoutEffect(() => {
+        if (disabled) return
+
         // always set this to off when the component mounts
         // or if children change
         bufferRef.current.style.display = 'none'
@@ -211,7 +223,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 node.dataset.areaid = id
             }
         })
-    }, [props.children, id, origin, target])
+    }, [props.children, id, origin, target, disabled])
 
     /* 
 
@@ -252,7 +264,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             data-targetvariant={finalTargetVariant}>
             {props.children}
 
-            {placeholder.visible && (
+            {(!disabled && placeholder.visible) && (
                 <div
                     className={placeholder.className}
                     data-placeholder={true}
@@ -266,11 +278,13 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 />
             )}
 
-            <div
-                ref={bufferRef}
-                data-buffer={true}
-                className="f-drag-area__buffer"
-            />
+            {!disabled && (
+                <div
+                    ref={bufferRef}
+                    data-buffer={true}
+                    className="f-drag-area__buffer"
+                />
+            )}
 
             {footer}
         </View>
