@@ -19,7 +19,7 @@ export type DragElementAreaProps = {
     group?: string
     variant?: DragVariant
     targetVariant?: any
-    direction?: 'vertical'
+    direction?: 'vertical' | 'horizontal'
     startDelay?: number
     footer?: any
 } & CoreViewProps
@@ -75,29 +75,37 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: indent ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) : 0,
-            width: target.indent ? `calc(100% - var(--f-drag-indent) * ${target.indent})` : '100%',
-            // this needs to be considered at some point:
-            // width: isVertical ? target.width || origin.width : origin.width,
+            marginLeft: isVertical  
+                ? indent 
+                    ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) 
+                    : 0
+                : 0,
+            width: isVertical 
+                ? target.indent 
+                    ? `calc(100% - var(--f-drag-indent) * ${target.indent})` 
+                    : '100%'
+                : (isLined || isLinedFocus ? '5px !important' : (target.width || origin.width)),
+            height: isVertical 
+                ? (isLined || isLinedFocus ? undefined : origin.height) 
+                : '100%',
             position: noChildren ? 'relative' : 'absolute',
-            height: isVertical ? (isLined || isLinedFocus ? undefined : origin.height) : target.height || origin.height,
             transform: noChildren
                 ? null
                 : isVertical
-                ? `translateY(${
-                      target.moveDirection == 'down'
-                          ? target.top + target.height
-                          : target.moveDirection == 'up'
-                          ? target.top
-                          : 0
-                  }px)`
-                : `translateX(${
-                      target.moveDirection == 'right'
-                          ? target.left + target.width
-                          : target.moveDirection == 'left'
-                          ? target.left
-                          : 0
-                  }px)`,
+                    ? `translateY(${
+                        target.moveDirection == 'down'
+                            ? target.top + target.height
+                            : target.moveDirection == 'up'
+                                ? target.top
+                                : 0
+                    }px)`
+                    : `translateX(${
+                        target.moveDirection == 'right'
+                            ? target.left + target.width
+                                : target.moveDirection == 'left'
+                                ? target.left
+                                    : 0
+                    }px)`,
         }
 
         return {
