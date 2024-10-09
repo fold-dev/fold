@@ -254,7 +254,7 @@ export const Attachment = (props: AttachmentProps) => {
                                 size={size}
                                 color="currentColor"
                                 className="f-attachment__text-label">
-                                <span className="f-ellipsis">
+                                <span>
                                     {label}
                                 </span>
                             </Text>
