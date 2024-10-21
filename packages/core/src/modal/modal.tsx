@@ -70,6 +70,15 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
     } = props
     const contentRef: any = useRef()
     const { trapFocus } = useFocus()
+    const className = classNames(
+        {
+            'f-modal__inner': true,
+            'f-col': true,
+            'is-borderless': borderless,
+            'no-overlay': noOverlay,
+        },
+        [props.className, getActionClass(anchor)]
+    )
 
     const handleKeyDown = (e) => {
         const { isEscape } = getKey(e)
@@ -100,15 +109,6 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
 
     const renderModal = () => {
         const classNameOverlay = 'f-modal f-row' + (noOverlay ? ' no-overlay' : '')
-        const className = classNames(
-            {
-                'f-modal__inner': true,
-                'f-col': true,
-                'is-borderless': borderless,
-                'no-overlay': noOverlay,
-            },
-            [props.className, getActionClass(anchor)]
-        )
 
         return (
             <div
