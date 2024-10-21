@@ -314,7 +314,7 @@ export const classNamesOld = (object: any, classes: string[] = []): string => {
     return !!allClasses ? allClasses : null
 }
 
-export const classNames = (object: any, classes: string[] = []): string | null => {
+export const classNames = (object: any, classes: string[] = []): string => {
     return useMemo(() => {
         const classList = classes.filter((c) => !!c)
         const classArray: string[] = []
