@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useMemo } from 'react'
 
 export const plural = (number, str) => (number == 1 ? str : str + 's')
 
@@ -304,7 +304,7 @@ export const renderWithProps = (children: any, props: any) => {
     })
 }
 
-export const classNames = (object: any, classes: string[] = []): string => {
+export const classNamesOld = (object: any, classes: string[] = []): string => {
     const classList = classes.filter((c) => !!c)
     const classArray = []
     for (const property in object) {
@@ -312,6 +312,20 @@ export const classNames = (object: any, classes: string[] = []): string => {
     }
     const allClasses = [...classList, ...classArray].join(' ')
     return !!allClasses ? allClasses : null
+}
+
+export const classNames = (object: any, classes: string[] = []): string | null => {
+    return useMemo(() => {
+        const classList = classes.filter((c) => !!c)
+        const classArray: string[] = []
+
+        for (const property in object) {
+            if (object[property]) classArray.push(property)
+        }
+
+        const allClasses = [...classList, ...classArray].join(' ')
+        return allClasses || ''
+    }, [object, classes])
 }
 
 export const focusElementById = (id: string) => {
