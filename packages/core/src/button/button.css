@@ -484,7 +484,7 @@
 }
 
 .f-button.md { 
-    height: var(--f-size-11); 
+    height: var(--f-size-10); 
     padding: 0 var(--f-space-3);
 }
 
