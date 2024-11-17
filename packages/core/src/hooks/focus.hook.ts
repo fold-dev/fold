@@ -46,11 +46,13 @@ export const useFocus = (focusable = FOCUSABLE, arrowNavigation = false) => {
     const trapFocus = (el, preventScroll = false) => {
         shouldPreventScroll.current = preventScroll
         containerRef.current = el
-        focusableEls.current = containerRef.current.querySelectorAll(focusable.join(','))
-        lastFocusableEl.current = focusableEls.current[focusableEls.current.length - 1]
-        firstFocusableEl.current = focusableEls.current[0]
-        firstFocusableEl.current?.focus({ preventScroll })
-        containerRef.current.addEventListener('keydown', handleKeyDown)
+        focusableEls.current = containerRef.current?.querySelectorAll(focusable.join(','))
+        if (focusableEls.current) {
+            lastFocusableEl.current = focusableEls.current[focusableEls.current.length - 1]
+            firstFocusableEl.current = focusableEls.current[0]
+            firstFocusableEl.current?.focus({ preventScroll })
+            containerRef.current.addEventListener('keydown', handleKeyDown)
+        }
     }
 
     useEffect(() => {
