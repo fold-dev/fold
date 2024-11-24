@@ -50,10 +50,10 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         return !!windowObject[FOLD_CUSTOM_GHOST_ELEMENT]
     }
 
-    const startDrag = () => {
+    const startDrag = (data = null) => {
         documentObject.body.dataset.dragging = 'yes'
         globalCursor.add('grabbing')
-        dispatchDragEvent('onstart', null)
+        dispatchDragEvent('onstart', data)
     }
 
     const endDrag = () => {
@@ -207,7 +207,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             group,
                         }
 
-                        setOrigin({
+                        const origin = {
                             targetVariant: finalTargetVariant,
                             elementId,
                             width,
@@ -215,9 +215,9 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             areaId,
                             index,
                             group,
-                        })
+                        }
 
-                        setTarget({
+                        const target: any = {
                             focus: false,
                             moveDirection,
                             index,
@@ -229,9 +229,11 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                             areaId,
                             elementId,
                             group,
-                        })
+                        }
 
-                        startDrag()
+                        setOrigin(origin)
+                        setTarget(target)
+                        startDrag({ origin, target })
                     })
                 }
             }, 150)
