@@ -171,7 +171,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                         // cache the indentation parameters
                         let targetIndent = indent
                         const previous = el.previousSibling
-                        const next = el.nextSibling
+                        const next = el.nextSibling?.dataset.buffer ? null : el.nextSibling
                         const previousIndent = previous ? +previous.dataset.indent : 0
                         const nextIndent = next ? +next.dataset.indent : 0
 
