@@ -7,12 +7,13 @@ export type EditableProps = {
     selectOnFocus?: boolean
     cursorEnd?: boolean
     disabled?: boolean
+    useDoubleClick?: boolean
     onChange?: any
     onCancel?: any
 } & CoreViewProps
 
 export const Editable = forwardRef((props: EditableProps, ref) => {
-    const { onChange, onCancel, disabled, selectOnFocus, cursorEnd, ...rest } = props
+    const { onChange, onCancel, disabled, selectOnFocus, cursorEnd, useDoubleClick, ...rest } = props
     const elementRef = useRef(null)
     const childRef = useRef(null)
     const cache = useRef('')
@@ -103,7 +104,7 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
             el.focus()
             if (cursorEnd) setCaretToTheEnd(el)
             if (selectOnFocus) selectElementContents(el)
-        }, 150)
+        })
     }
 
     useLayoutEffect(() => {
@@ -114,7 +115,8 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         <View
             {...rest}
             className={className}
-            onClick={handleClick}
+            onClick={useDoubleClick ? undefined : handleClick}
+            onDoubleClick={useDoubleClick ? handleClick : undefined}
             ref={mergeRefs([elementRef, ref])}>
             {props.children}
         </View>
