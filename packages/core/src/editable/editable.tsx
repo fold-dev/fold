@@ -1,6 +1,6 @@
 import React, { forwardRef, useLayoutEffect, useRef } from 'react'
 import { View } from '..'
-import { classNames, getKey, mergeRefs, selectElementContents, setCaretToTheEnd } from '../helpers'
+import { classNames, getKey, mergeRefs, selectElementContents, setCaretToTheEnd, stopEvent } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export type EditableProps = {
@@ -28,11 +28,16 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         if (onChange) onChange(value)
     }
 
+    // disable drag
+    // TODO: find a better way to handle this
+    const noEvent = (e) => e.stopPropagation()
+
     const deFocus = (target: HTMLElement, type: 'escape' | 'enter' | 'focusout') => {
         target.contentEditable = 'false'
         target.removeAttribute('tabindex')
         target.removeEventListener('keydown', handleKeyDown)
         target.removeEventListener('focusout', handleFocusOut)
+        target.removeEventListener('mousedown', noEvent)
         target.blur()
         keypressCache.current = false
         switch (type) {
@@ -92,6 +97,7 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         el.spellcheck = false
         el.addEventListener('keydown', handleKeyDown)
         el.addEventListener('focusout', handleFocusOut)
+        el.addEventListener('mousedown', noEvent)
         cache.current = el.textContent
         setTimeout(() => {
             el.focus()
