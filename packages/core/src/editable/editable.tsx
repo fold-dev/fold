@@ -39,9 +39,9 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
             case 'escape':
                 return onCancel ? onCancel(cache.current) : null
             case 'enter':
-                return handleChange(target.innerHTML)
+                return handleChange(target.textContent)
             case 'focusout':
-                return handleChange(target.innerHTML)
+                return handleChange(target.textContent)
         }
     }
 
@@ -92,7 +92,7 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         el.spellcheck = false
         el.addEventListener('keydown', handleKeyDown)
         el.addEventListener('focusout', handleFocusOut)
-        cache.current = el.innerHTML
+        cache.current = el.textContent
         setTimeout(() => {
             el.focus()
             if (cursorEnd) setCaretToTheEnd(el)
