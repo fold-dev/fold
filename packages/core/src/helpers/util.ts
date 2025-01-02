@@ -941,11 +941,13 @@ export const setCaretToTheEnd = (element) => {
     const [childNode] = element.childNodes
     const range = documentObject.createRange()
     const selection = windowObject.getSelection()
-    range.setStart(childNode, position)
-    range.setEnd(childNode, position)
-    range.collapse(true)
-    selection.removeAllRanges()
-    selection.addRange(range)
+    if (!!range && !!selection) {
+        range.setStart(childNode, position)
+        range.setEnd(childNode, position)
+        range.collapse(true)
+        selection.removeAllRanges()
+        selection.addRange(range)
+    }
 }
 
 export const selectElementContents = (el) => {
