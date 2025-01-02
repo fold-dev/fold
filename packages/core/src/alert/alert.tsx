@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { ReactPortal, useContext } from 'react'
 import { Button, Heading, IconLib, Modal, ModalClose, Text, useId } from '../'
 import { FoldContext } from '../contexts'
 
 export type AlertOptions = {
     icon?: string
+    portal?: any
     color?: string
     title?: string
     description?: string
@@ -26,11 +27,12 @@ export const Alert = (props: AlertProps) => {
     const { onDismiss, alert } = props
     const titleId = useId()
     const descriptionId = useId()
-    const { icon, color, title, description, button = 'Okay', closeButton } = alert
+    const { portal, icon, color, title, description, button = 'Okay', closeButton } = alert
 
     return (
         <Modal
             borderless
+            portal={portal}
             width={400}
             height="fit-content"
             role="alertdialog"

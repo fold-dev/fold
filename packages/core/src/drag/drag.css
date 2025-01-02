@@ -29,6 +29,12 @@
     user-select: all !important; 
 }
 
+.f-drag-area.is-dragging .f-drag-element > *.drag-pe-all,
+.f-drag-area.is-dragging .f-drag-area__element > *.drag-pe-all {
+    pointer-events: all !important; 
+    user-select: all !important; 
+}
+
 /* target groups */
 
 .f-drag-area.is-dragging.no-origin-variant .f-drag-area.is-dragging:not(.no-origin-variant) {

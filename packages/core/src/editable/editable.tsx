@@ -1,18 +1,19 @@
 import React, { forwardRef, useLayoutEffect, useRef } from 'react'
 import { View } from '..'
-import { classNames, getKey, mergeRefs, selectElementContents, setCaretToTheEnd } from '../helpers'
+import { classNames, getKey, mergeRefs, selectElementContents, setCaretToTheEnd, stopEvent } from '../helpers'
 import { CoreViewProps } from '../types'
 
 export type EditableProps = {
     selectOnFocus?: boolean
     cursorEnd?: boolean
     disabled?: boolean
+    useDoubleClick?: boolean
     onChange?: any
     onCancel?: any
 } & CoreViewProps
 
 export const Editable = forwardRef((props: EditableProps, ref) => {
-    const { onChange, onCancel, disabled, selectOnFocus, cursorEnd, ...rest } = props
+    const { onChange, onCancel, disabled, selectOnFocus, cursorEnd, useDoubleClick, ...rest } = props
     const elementRef = useRef(null)
     const childRef = useRef(null)
     const cache = useRef('')
@@ -28,20 +29,25 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         if (onChange) onChange(value)
     }
 
+    // disable drag
+    // TODO: find a better way to handle this
+    const noEvent = (e) => e.stopPropagation()
+
     const deFocus = (target: HTMLElement, type: 'escape' | 'enter' | 'focusout') => {
         target.contentEditable = 'false'
         target.removeAttribute('tabindex')
         target.removeEventListener('keydown', handleKeyDown)
         target.removeEventListener('focusout', handleFocusOut)
+        target.removeEventListener('mousedown', noEvent)
         target.blur()
         keypressCache.current = false
         switch (type) {
             case 'escape':
                 return onCancel ? onCancel(cache.current) : null
             case 'enter':
-                return handleChange(target.innerHTML)
+                return handleChange(target.textContent)
             case 'focusout':
-                return handleChange(target.innerHTML)
+                return handleChange(target.textContent)
         }
     }
 
@@ -92,12 +98,13 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         el.spellcheck = false
         el.addEventListener('keydown', handleKeyDown)
         el.addEventListener('focusout', handleFocusOut)
-        cache.current = el.innerHTML
+        el.addEventListener('mousedown', noEvent)
+        cache.current = el.textContent
         setTimeout(() => {
             el.focus()
             if (cursorEnd) setCaretToTheEnd(el)
             if (selectOnFocus) selectElementContents(el)
-        }, 150)
+        })
     }
 
     useLayoutEffect(() => {
@@ -108,7 +115,8 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         <View
             {...rest}
             className={className}
-            onClick={handleClick}
+            onClick={useDoubleClick ? undefined : handleClick}
+            onDoubleClick={useDoubleClick ? handleClick : undefined}
             ref={mergeRefs([elementRef, ref])}>
             {props.children}
         </View>

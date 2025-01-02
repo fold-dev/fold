@@ -254,14 +254,18 @@ export const Attachment = (props: AttachmentProps) => {
                                 size={size}
                                 color="currentColor"
                                 className="f-attachment__text-label">
-                                {label}
+                                <span>
+                                    {label}
+                                </span>
                             </Text>
                             {mime && (
                                 <Text
                                     size="sm"
                                     as="span"
                                     className="f-attachment__text-meta">
-                                    {MIME.DESCRIPTION[mime]}
+                                    <span>
+                                        {MIME.DESCRIPTION[mime]}
+                                    </span>
                                 </Text>
                             )}
                             {filesize && (

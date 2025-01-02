@@ -146,7 +146,7 @@ input.f-input:not([type="color"]).sm {
 
 input.f-input:not([type="color"]).md {
     font-size: var(--f-font-size-md);
-    height: var(--f-size-11); 
+    height: var(--f-size-10); 
 }
 
 input.f-input:not([type="color"]).lg {
@@ -171,7 +171,7 @@ input.f-input:not([type="color"]).xl {
 }
 
 .f-input-control input.f-input:not([type="color"]).md {
-    height: calc(var(--f-size-11) - var(--f-input-border-width));
+    height: calc(var(--f-size-10) - var(--f-input-border-width));
 }
 
 .f-input-control input.f-input:not([type="color"]).lg {
@@ -366,7 +366,7 @@ input.f-input[type=color].xl {
 
 .f-tag-input.md {
     font-size: var(--f-font-size-md);
-    min-height: var(--f-size-11); 
+    min-height: var(--f-size-10); 
 }
 
 .f-tag-input.lg {
@@ -408,7 +408,7 @@ input.f-input[type=color].xl {
 }
 
 .f-input-number-control.md {
-    height: var(--f-size-11);
+    height: var(--f-size-10);
 }
 
 .f-input-number-control.lg {

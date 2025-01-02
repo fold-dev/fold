@@ -20,6 +20,7 @@ import {
 } from '../'
 import {
     classNames,
+    classNamesOld,
     documentObject,
     executeLast,
     focusElement,
@@ -506,7 +507,7 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
                 {isDefault && (
                     <>
                         {options.map((option: SelectOption, index: number) => {
-                            const className = classNames({
+                            const className = classNamesOld({
                                 'f-select-list-option-container': true,
                                 'is-focused': cursor == index,
                             })
@@ -539,7 +540,7 @@ export const SelectList = forwardRef((props: SelectListProps, ref) => {
                         numItems={options.length}
                         render={({ index, style }) => {
                             const option: SelectOption = options[index]
-                            const className = classNames({
+                            const className = classNamesOld({
                                 'f-select-list-option-container': true,
                                 'is-focused': cursor == index,
                             })

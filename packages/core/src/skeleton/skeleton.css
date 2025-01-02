@@ -21,6 +21,10 @@
     border-radius: var(--f-skeleton-border-radius);
 }
 
+.f-skeleton .f-avatar img { 
+    display: none;
+}
+
 .f-skeleton-circle { border-radius: 50%; }
 
 @keyframes f-skeleton-color {

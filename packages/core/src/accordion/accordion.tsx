@@ -61,9 +61,9 @@ export const AccordionItem = (props: AccordionItemProps) => {
     const id = useId()
     const [innerOpen, setInnerOpen] = useState(collapsed)
     const isOpen = uncontrolled ? uncontrolled && innerOpen : open
-    const { heading, panel } = useMemo(() => {
-        return React.Children.toArray(props.children).reduce((acc: any, val: ReactElement) => {
-            switch (val.type) {
+    const { heading, panel } = useMemo<any>(() => {
+        return React.Children.toArray(props.children).reduce((acc, val) => {
+            switch ((val as any).type) {
                 case AccordionHeading:
                     return { ...acc, heading: val }
                 case AccordionPanel:
