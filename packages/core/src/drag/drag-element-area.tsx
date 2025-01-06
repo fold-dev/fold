@@ -102,9 +102,9 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                     : `translateX(${
                         target.moveDirection == 'right'
                             ? target.left + target.width
-                                : target.moveDirection == 'left'
+                            : target.moveDirection == 'left'
                                 ? target.left
-                                    : 0
+                                : 0
                     }px)`,
         }
 

@@ -80,7 +80,8 @@
 }
 
 /* is dragged */
-/* NOTE: this only works for dragarea (not dragelementarea) */
+/* this only works for dragarea (not dragelementarea) */
+/* even though it says f-drag-element */
 
 .f-drag-element.is-dragged,
 .f-drag-area__element.is-dragged {
