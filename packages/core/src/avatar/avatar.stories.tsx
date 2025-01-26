@@ -87,7 +87,7 @@ export const Color = () => (
         width="fit-content">
         <Avatar
             name="Craig Pather"
-            color={Token.ColorElectric500}
+            color={Token.ColorBlue500}
         />
         <Avatar
             name="Charlene Singh"
@@ -96,11 +96,11 @@ export const Color = () => (
         />
         <Avatar
             name="Patrick Anthony"
-            color={Token.ColorNeonpink500}
+            color={Token.ColorPink500}
         />
         <Avatar
             name="Etienne Dreyer"
-            color={Token.ColorNeonpink500}
+            color={Token.ColorPink500}
             subtle
         />
     </View>

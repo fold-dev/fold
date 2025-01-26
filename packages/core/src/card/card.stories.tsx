@@ -62,7 +62,7 @@ export const Usage = () => (
                     gap={5}
                     justifyContent="flex-start">
                     <Pill
-                        color={Token.ColorElectric400}
+                        color={Token.ColorBlue400}
                         subtle
                         size="sm">
                         co-working

@@ -116,7 +116,7 @@ export const Alternative = () => {
             <CheckboxAlt
                 onChange={check}
                 checked={checked}
-                color={Token.ColorElectric500}
+                color={Token.ColorBlue500}
             />
             <CheckboxAlt
                 onChange={check}

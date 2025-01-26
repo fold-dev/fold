@@ -45,7 +45,7 @@ export const Picker = () => {
  * The Color Palette component displays a list of predefined values the user can choose from.
  */
 export const ColorPalette = () => {
-    const [color, setColor] = useState(Token.ColorNeonpink400)
+    const [color, setColor] = useState(Token.ColorPink400)
 
     return (
         <Palette
@@ -53,7 +53,7 @@ export const ColorPalette = () => {
             color={color}
             colors={[
                 Token.ColorPink400,
-                Token.ColorNeonpink400,
+                Token.ColorPink400,
                 Token.ColorRed400,
                 Token.ColorOrange400,
                 Token.ColorYellow400,
@@ -62,7 +62,7 @@ export const ColorPalette = () => {
                 Token.ColorTeal400,
                 Token.ColorCyan400,
                 Token.ColorBlue400,
-                Token.ColorElectric400,
+                Token.ColorBlue400,
                 Token.ColorViolet400,
                 Token.ColorPurple400,
                 Token.ColorGray400,
