@@ -58,7 +58,7 @@ export const ColorPalette = () => {
                 Token.ColorOrange400,
                 Token.ColorYellow400,
                 Token.ColorGreen400,
-                Token.ColorSeagreen500,
+                Token.ColorTeal500,
                 Token.ColorTeal400,
                 Token.ColorCyan400,
                 Token.ColorBlue400,
@@ -66,7 +66,7 @@ export const ColorPalette = () => {
                 Token.ColorViolet400,
                 Token.ColorPurple400,
                 Token.ColorGray400,
-                Token.ColorBeige400,
+                Token.ColorStone400,
             ]}
             onChange={setColor}
         />
