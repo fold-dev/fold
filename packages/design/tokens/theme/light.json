@@ -26,7 +26,7 @@
                 " ": { "value": "{color.yellow.400}" },
                 "subtle": { "value": "{color.yellow.300}", "subtle": true },
                 "strong": { "value": "{color.yellow.600}" },
-                "weak": { "value": "{color.dark-yellow.50}" }
+                "weak": { "value": "{color.yellow.50}" }
             },
             "warning": {
                 " ": { "value": "{color.orange.400}" },

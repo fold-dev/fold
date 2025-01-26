@@ -161,7 +161,7 @@ module.exports = {
             ],
         },
         css: {
-            transforms: [`attribute/cti`, `name/cti/kebab`, `colorTransform`, `color/css`],
+            transforms: [`attribute/cti`, `name/cti/kebab`], //, `colorTransform`, `color/css`
             transformGroup: 'css',
             buildPath: '',
             prefix: 'f-',
