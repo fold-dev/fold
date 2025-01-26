@@ -165,6 +165,7 @@ module.exports = {
     format,
     platforms: {
         js: {
+            transforms: [`attribute/cti`, `name/cti/pascal`, `colorTransform`],
             transformGroup: 'js',
             buildPath: '',
             files: [
