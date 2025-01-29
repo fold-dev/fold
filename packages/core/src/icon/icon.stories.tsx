@@ -38,7 +38,7 @@ export const Sizes = () => {
             <Icon
                 size="md"
                 icon={FICircle}
-                color={Token.ColorElectric400}
+                color={Token.ColorBlue400}
             />
             <Icon
                 size="lg"

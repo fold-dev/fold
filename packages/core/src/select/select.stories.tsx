@@ -372,7 +372,7 @@ export const CustomRendering = () => {
                             <Pill
                                 key={i}
                                 outline
-                                color={Token.ColorElectric300}
+                                color={Token.ColorBlue300}
                                 suffix={
                                     <Icon
                                         icon="x"
@@ -596,7 +596,7 @@ export const Tag = () => {
                                     strokeWidth={2}
                                 />
                             }
-                            color={Token.ColorElectric300}
+                            color={Token.ColorBlue300}
                             size="xs">
                             New
                         </Pill>
@@ -646,7 +646,7 @@ export const Tag = () => {
                             <Pill
                                 key={i}
                                 outline
-                                color={Token.ColorElectric300}
+                                color={Token.ColorBlue300}
                                 size="sm"
                                 suffix={
                                     <IconLib

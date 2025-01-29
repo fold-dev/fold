@@ -126,7 +126,7 @@ export const TimePicker = (props: TimePickerProps) => {
                     size={size}
                     items={hours}
                     selected={get12HoursSelected()}
-                    onSelect={(value) => handleTimeChange('hour', twelveHours && pm ? value + 12 : value)}
+                    onSelect={(value) => handleTimeChange('hour', twelveHours && pm ? Number(value) + 12 : value)}
                 />
             )}
 

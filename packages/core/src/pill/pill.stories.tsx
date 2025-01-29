@@ -124,7 +124,7 @@ export const Color = () => (
     <Stack
         spacing={5}
         wrap="wrap">
-        <Pill color={Token.ColorElectric200}>React</Pill>
+        <Pill color={Token.ColorBlue200}>React</Pill>
         <Pill
             outline
             color={Token.ColorTeal500}>
@@ -137,7 +137,7 @@ export const Color = () => (
         </Pill>
         <Pill
             solid
-            color={Token.ColorNeonpink500}>
+            color={Token.ColorPink500}>
             VueJS
         </Pill>
     </Stack>

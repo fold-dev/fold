@@ -118,6 +118,24 @@ const format = {
     }),
 }
 
+const oklchToHex = (oklchStr) => {
+    try {
+      const match = oklchStr.match(/oklch\(([^)]+)\)/)
+
+      if (!match) {
+        throw new Error("Invalid OKLCH format")
+      }
+  
+      const [l, c, h] = match[1].split(/\s+/).map(Number)
+      const hex = chroma.oklch(l, c, h).hex()
+
+      return hex
+    } catch (error) {
+      console.error("Error converting OKLCH string to HEX:", error);
+      return null
+    }
+  }
+
 const files = fs
     .readdirSync(dir)
     .filter((fn) => fn.endsWith(extension))
@@ -137,8 +155,8 @@ module.exports = {
         'colorTransform': {
             type: `value`,
             transitive: true,
-            matcher: (token) => token.subtle,
-            transformer: (token) => chroma(token.value).alpha(0.5).hex(),
+            matcher: (token) => token.attributes.category == 'color',
+            transformer: (token) => token.value.includes('oklch') ? oklchToHex(token.value) : chroma(token.value).hex(),
         },
         'color/css': Object.assign({}, StyleDictionary.transform[`color/css`], {
             transitive: true,
@@ -147,6 +165,7 @@ module.exports = {
     format,
     platforms: {
         js: {
+            transforms: [`attribute/cti`, `name/cti/pascal`, `colorTransform`],
             transformGroup: 'js',
             buildPath: '',
             files: [
