@@ -170,21 +170,41 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
                         // cache the indentation parameters
                         let targetIndent = indent
-                        const previous = el.previousSibling
-                        const next = el.nextSibling?.dataset.buffer ? null : el.nextSibling
+
+                        // old code:
+                        // const previous = el.previousSibling
+                        // const next = el.nextSibling?.dataset.buffer ? null : el.nextSibling
+                        // const previousIndent = previous ? +previous.dataset.indent : 0
+                        // const nextIndent = next ? +next.dataset.indent : 0
+
+                        const { previous, next } = getPreviousNextElements(index, el, 'down')
                         const previousIndent = previous ? +previous.dataset.indent : 0
                         const nextIndent = next ? +next.dataset.indent : 0
 
-                        if (nextIndent > previousIndent) targetIndent = nextIndent
+                        // old code:
+                        // if (nextIndent > previousIndent) targetIndent = nextIndent
 
-                        cache.indent = {
-                            index,
-                            indent: targetIndent,
-                            areaId,
-                            previous,
-                            previousIndent,
-                            next,
-                            nextIndent,
+                        if (targetIndent > 0) {
+                            cache.indent = {
+                                index,
+                                indent: targetIndent - 1,
+                                areaId,
+                                previous,
+                                previousIndent,
+                                next: undefined,
+                                nextIndent: 0,
+                            }
+                        } else {
+                            // old code:
+                            cache.indent = {
+                                index,
+                                indent: targetIndent,
+                                areaId,
+                                previous,
+                                previousIndent,
+                                next,
+                                nextIndent,
+                            }
                         }
 
                         // outline the previous & next elements
