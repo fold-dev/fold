@@ -4,6 +4,7 @@ import { classNames } from '../helpers'
 import { CoreViewProps, Size } from '../types'
 
 export type UserListUser = {
+    id?: string | number
     image: string
     name: string
     description?: string
@@ -31,7 +32,7 @@ export const UserList = (props: UserListProps) => {
             width={width}
             className={className}>
             {users.map((user: UserListUser, index: number) => (
-                <Fragment key={index}>
+                <Fragment key={user.id ?? index}>
                     {index != 0 && <Divider />}
                     <View
                         row
