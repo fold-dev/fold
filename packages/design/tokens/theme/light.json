@@ -11,40 +11,40 @@
                 "weak": { "value": "{color.accent.50}" }
             },
             "success": {
-                " ": { "value": "{color.teal.400}" },
-                "subtle": { "value": "{color.teal.300}", "subtle": true },
-                "strong": { "value": "{color.teal.600}" },
-                "weak": { "value": "{color.teal.50}" }
+                " ": { "value": "{color.teal.500}" },
+                "subtle": { "value": "{color.teal.400}", "subtle": true },
+                "strong": { "value": "{color.teal.700}" },
+                "weak": { "value": "{color.teal.100}" }
             },
             "neutral": {
-                " ": { "value": "{color.gray.400}" },
-                "subtle": { "value": "{color.gray.300}", "subtle": true },
-                "strong": { "value": "{color.gray.600}" },
-                "weak": { "value": "{color.gray.50}" }
+                " ": { "value": "{color.gray.500}" },
+                "subtle": { "value": "{color.gray.400}", "subtle": true },
+                "strong": { "value": "{color.gray.700}" },
+                "weak": { "value": "{color.gray.100}" }
             },
             "caution": {
-                " ": { "value": "{color.yellow.400}" },
-                "subtle": { "value": "{color.yellow.300}", "subtle": true },
-                "strong": { "value": "{color.yellow.600}" },
-                "weak": { "value": "{color.yellow.50}" }
+                " ": { "value": "{color.yellow.500}" },
+                "subtle": { "value": "{color.yellow.400}", "subtle": true },
+                "strong": { "value": "{color.yellow.700}" },
+                "weak": { "value": "{color.yellow.100}" }
             },
             "warning": {
-                " ": { "value": "{color.orange.400}" },
-                "subtle": { "value": "{color.orange.300}", "subtle": true },
-                "strong": { "value": "{color.orange.600}" },
-                "weak": { "value": "{color.orange.50}" }
+                " ": { "value": "{color.orange.500}" },
+                "subtle": { "value": "{color.orange.400}", "subtle": true },
+                "strong": { "value": "{color.orange.700}" },
+                "weak": { "value": "{color.orange.100}" }
             },
             "danger": {
-                " ": { "value": "{color.red.400}" },
-                "subtle": { "value": "{color.red.300}", "subtle": true },
-                "strong": { "value": "{color.red.600}" },
-                "weak": { "value": "{color.red.50}" }
+                " ": { "value": "{color.red.500}" },
+                "subtle": { "value": "{color.red.400}", "subtle": true },
+                "strong": { "value": "{color.red.700}" },
+                "weak": { "value": "{color.red.100}" }
             },
             "highlight": {
-                " ": { "value": "{color.purple.400}" },
-                "subtle": { "value": "{color.purple.200}", "subtle": true },
-                "strong": { "value": "{color.purple.600}" },
-                "weak": { "value": "{color.purple.50}" }
+                " ": { "value": "{color.purple.500}" },
+                "subtle": { "value": "{color.purple.400}", "subtle": true },
+                "strong": { "value": "{color.purple.700}" },
+                "weak": { "value": "{color.purple.100}" }
             },
             "text": {
                 " ": { "value": "{color.base.700}" },
@@ -55,12 +55,12 @@
                 "on-color": { "value": "{color.white}" }
             },
             "surface": {
-                " ": { "value": "{color.white}" },
-                "strong": { "value": "{color.base.50}" },
-                "stronger": { "value": "{color.base.100}" },
-                "strongest": { "value": "{color.base.200}" },
+                " ": { "value": "{color.accent.50}" },
+                "strong": { "value": "{color.accent.100}" },
+                "stronger": { "value": "{color.accent.200}" },
+                "strongest": { "value": "{color.accent.300}" },
                 "highlight": { "value": "{color.accent.50}" },
-                "inverse": { "value": "{color.base.700}" }
+                "inverse": { "value": "{color.accent.800}" }
             },
             "border": {
                 " ": { "value": "{color.base.200}" },
