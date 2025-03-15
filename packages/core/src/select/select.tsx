@@ -176,14 +176,14 @@ export const Select = (props: SelectProps) => {
 
     const handleChange = (e) => {
         setText(e.target.value)
-        if (!visible) {
+        if (!visible && !disabled) {
             show()
             openCallback()
         }
     }
 
     const handleClick = (e) => {
-        if (!visible) {
+        if (!visible && !disabled) {
             show()
             openCallback()
             // make sure to focus the right element
@@ -197,7 +197,7 @@ export const Select = (props: SelectProps) => {
 
     const handleFocus = (e) => {
         if (dontShowListPopup.current) return
-        if (!visible && openOnFocus) {
+        if (!visible && openOnFocus && !disabled) {
             show()
             openCallback()
         }
@@ -257,7 +257,7 @@ export const Select = (props: SelectProps) => {
     const handleKeyDownInput = (e) => {
         const { isEnter } = getKey(e)
 
-        if (isEnter && !visible) {
+        if (isEnter && !visible && !disabled) {
             e.preventDefault()
             e.stopPropagation()
             show()
@@ -341,11 +341,11 @@ export const Select = (props: SelectProps) => {
 
     // opens the list when mounted
     useEffect(() => {
-        if (!visible && openOnMount) {
+        if (!visible && openOnMount && !disabled) {
             show()
             openCallback()
         }
-    }, [openOnMount, visible])
+    }, [openOnMount, visible, disabled])
 
     return (
         <View

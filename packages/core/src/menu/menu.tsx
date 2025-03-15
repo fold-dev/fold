@@ -340,11 +340,13 @@ export const MenuItem = (props: MenuItemProps) => {
     }
 
     const handleMouseLeave = (e) => {
+        if (disabled) return
         menuItemRef.current?.blur()
         closeMenu()
     }
 
     const handleMouseEnter = (e) => {
+        if (disabled) return
         menuItemRef.current?.focus()
         openMenu()
     }
@@ -392,12 +394,12 @@ export const MenuItem = (props: MenuItemProps) => {
         }
 
         if (isRight || (hasSubmenu && isEnter)) {
-            openMenu()
+            if (!disabled) openMenu()
             flag = true
         }
 
         if (!hasSubmenu && isEnter) {
-            if (onClick) onClick(e)
+            if (onClick && !disabled) onClick(e)
             flag = true
         }
 

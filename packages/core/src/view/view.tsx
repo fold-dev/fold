@@ -13,6 +13,7 @@ import { classNames, cleanObject, getAlignClass, getOffset, mergeRefs } from '..
 import { CommonProps, CoreViewProps, ShorthandProps } from '../types'
 
 export type ScrollViewProps = {
+    freeze?: boolean
     smooth?: boolean
     stickToTop?: boolean
     stickToBottom?: boolean
@@ -21,12 +22,22 @@ export type ScrollViewProps = {
 } & CoreViewProps
 
 export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
-    const { smooth = true, stickToTop, stickToBottom, onScrollToBottom, onScrollToTop, style = {}, ...rest } = props
+    const { 
+        freeze = false,
+        smooth = true, 
+        stickToTop, 
+        stickToBottom, 
+        onScrollToBottom, 
+        onScrollToTop, 
+        style = {}, 
+        ...rest 
+    } = props
     const scrollRef = useRef(null)
     const userIsScrolling = useRef(null)
     const spacerRef = useRef(null)
 
     const scrollToTop = () => {
+        if (freeze) return
         if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
@@ -38,6 +49,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     }
 
     const scrollToBottom = () => {
+        if (freeze) return
         if (userIsScrolling.current) return 
         if (!scrollRef.current) return
 
@@ -49,6 +61,8 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     }
 
     const handleScrollEvent = (e: any) => {
+        if (freeze) return
+
         const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - 1
         const isBottom = scrollRef.current.offsetHeight >= offsetHeight
         const isTop = scrollRef.current.scrollTop == 0
@@ -56,7 +70,10 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         if (isBottom && onScrollToBottom) onScrollToBottom()
         if (isTop && onScrollToTop) onScrollToTop()
     }
+
     const handleWheelEvent = (e) => {
+        if (freeze) return
+        
         const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - 1
         const isBottom = scrollRef.current.offsetHeight >= offsetHeight
         const isTop = scrollRef.current.scrollTop == 0
@@ -84,12 +101,12 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     useEffect(() => {
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
-    }, [props.children])
+    }, [props.children, stickToBottom, stickToTop])
 
     useEffect(() => {
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
-    }, [])
+    }, [stickToBottom, stickToTop])
 
     return (
         <View
