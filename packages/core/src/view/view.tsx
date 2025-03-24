@@ -93,7 +93,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         let interval = setInterval(() => {
             if (stickToBottom) scrollToBottom()
             if (stickToTop) scrollToTop()
-        }, 1000)
+        }, 500)
 
         return () => clearInterval(interval)
     })
