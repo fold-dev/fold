@@ -35,6 +35,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     const scrollRef = useRef(null)
     const userIsScrolling = useRef(null)
     const spacerRef = useRef(null)
+    const observerRef = useRef(null)
 
     const scrollToTop = () => {
         if (freeze) return
@@ -99,8 +100,15 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     })
 
     useEffect(() => {
-        if (stickToBottom) scrollToBottom()
-        if (stickToTop) scrollToTop()
+        if (scrollRef.current) {
+            observerRef.current = new ResizeObserver(() => {
+                if (stickToBottom) scrollToBottom()
+                if (stickToTop) scrollToTop()
+            })
+            observerRef.current.observe(scrollRef.current)
+        }
+
+        return () => observerRef.current?.disconnect()
     }, [props.children, stickToBottom, stickToTop])
 
     useEffect(() => {
