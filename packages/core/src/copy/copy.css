@@ -59,6 +59,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 0px;
 }
 
 .f-copy__value.is-scrolling {

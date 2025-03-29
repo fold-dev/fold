@@ -32,6 +32,7 @@
     position: relative;
     color: var(--f-tabs-color-icon);
     background: var(--f-tabs-tab-list-background);
+    flex-shrink: 0;
 }
 
 .f-tab-list * {
