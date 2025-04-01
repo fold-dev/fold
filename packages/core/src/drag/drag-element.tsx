@@ -8,10 +8,11 @@ export type DragElementProps = {
     noDrag?: boolean
     noFocus?: boolean
     noIndent?: boolean
+    startDelay?: number
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = forwardRef((props: DragElementProps, ref) => {
-    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, ...rest } = props
+    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, startDelay, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp } = useDrag()
     const elementRef = useRef(null)
@@ -37,7 +38,7 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
 
     const handleMouseDown = (e) => {
         if (props.onMouseDown) props.onMouseDown(e)
-        onMouseDown(e)
+        onMouseDown(e, startDelay)
     }
 
     return (

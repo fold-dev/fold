@@ -110,7 +110,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         cache.mouseDown = false
     }
 
-    const onMouseDown = (e: any) => {
+    const onMouseDown = (e: any, startDelay = 150) => {
         const cache = getCache()
         const { isLeftButton } = getButton(e)
         const mouseLeft = e.clientX
@@ -253,7 +253,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                         startDrag({ origin, target })
                     })
                 }
-            }, 150)
+            }, startDelay)
         }
     }
 
