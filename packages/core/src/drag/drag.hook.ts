@@ -110,6 +110,155 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         cache.mouseDown = false
     }
 
+     // @experimental
+
+    const onMouseDownExplicit = ({ 
+        isLeftButton, 
+        clientX,
+        clientY,
+        currentTarget,
+    }) => {
+        const cache = getCache()
+        const mouseLeft = clientX
+        const mouseTop = clientY
+        const el = currentTarget
+        const parent = el.parentElement
+        const areaId = parent.getAttribute('id')
+        const group = parent.dataset.group
+        const direction = parent.dataset.direction
+        const finalTargetVariant = parent.dataset.targetvariant ? JSON.parse(parent.dataset.targetvariant) : {}
+        const isHorizontal = direction == 'horizontal'
+        const isVertical = direction == 'vertical'
+        const moveDirection = isVertical ? 'up' : 'left'
+        const index = +el.dataset.index
+        const noDrag = !!el.dataset.nodrag
+        const noDrop = !!el.dataset.nodrop
+
+        if (!noDrag && isLeftButton && !cache.locked) {
+            cache.mouseDown = true
+
+            if (cache.mouseDown) {
+                const customGhost = hasCustomGhostElement()
+                const { width, height, left, top } = getBoundingClientRect(el)
+                const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                const mouseOffsetTop = customGhost ? 0 : mouseTop - top
+                const x = mouseLeft - mouseOffsetLeft
+                const y = mouseTop - mouseOffsetTop
+                const newNode = el.cloneNode(true)
+                const indent = el.dataset.indent ? +el.dataset.indent : 0
+                const elementId = el.dataset.id
+                const ghost = getGhostElement()
+
+                // set the contents
+                if (!customGhost) setGhostElement(newNode.outerHTML)
+
+                // make sure the new node + ghost element are the same size
+                resizeDOMElement(width, height, newNode)
+                resizeDOMElement(width, height, ghost)
+
+                // for indentation (and other margine)
+                if (!customGhost) ghost.firstChild.style.margin = '0px'
+
+                // set the intial ghost position (based on the current x/y)
+                // again - synced for performance in the UI
+                positionDOMElement(x, y, ghost, () => {
+                    cache.targetElement = el
+                    cache.mouse = { x: mouseLeft, y: mouseTop }
+                    cache.originMouse = {
+                        left: mouseLeft,
+                        top: mouseTop,
+                        offsetLeft: mouseOffsetLeft,
+                        offsetTop: mouseOffsetTop,
+                    }
+
+                    // cache the indentation parameters
+                    let targetIndent = indent
+                    const previous = el.previousSibling
+                    const next = el.nextSibling?.dataset.buffer ? null : el.nextSibling
+                    const previousIndent = previous ? +previous.dataset.indent : 0
+                    const nextIndent = next ? +next.dataset.indent : 0
+
+                    if (nextIndent > previousIndent) {
+                        cache.indent = {
+                            index,
+                            indent: targetIndent,
+                            areaId,
+                            previous,
+                            previousIndent,
+                            next,
+                            nextIndent,
+                        }
+                    } else {
+                        if (targetIndent > 0) {
+                            cache.indent = {
+                                index,
+                                indent: targetIndent,
+                                areaId,
+                                previous,
+                                previousIndent,
+                                next: undefined,
+                                nextIndent: 0,
+                            }
+                        } else {
+                            cache.indent = {
+                                index,
+                                indent: targetIndent,
+                                areaId,
+                                previous,
+                                previousIndent,
+                                next,
+                                nextIndent,
+                            }
+                        } 
+                    }
+
+                    // save the cache for the reset
+                    cache.targetCache = {
+                        focus: false,
+                        moveDirection,
+                        index,
+                        indent,
+                        left: el.offsetLeft,
+                        top: el.offsetTop,
+                        height,
+                        width,
+                        areaId,
+                        elementId,
+                        group,
+                    }
+
+                    const origin = {
+                        targetVariant: finalTargetVariant,
+                        elementId,
+                        width,
+                        height,
+                        areaId,
+                        index,
+                        group,
+                    }
+
+                    const target: any = {
+                        focus: false,
+                        moveDirection,
+                        index,
+                        indent,
+                        left: el.offsetLeft,
+                        top: el.offsetTop,
+                        height,
+                        width,
+                        areaId,
+                        elementId,
+                        group,
+                    }
+
+                    setOrigin(origin)
+                    setTarget(target)
+                    startDrag({ origin, target })
+                })
+            }
+        }
+    }
+
     const onMouseDown = (e: any, startDelay = 150) => {
         const cache = getCache()
         const { isLeftButton } = getButton(e)
@@ -282,6 +431,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         getNextIndent,
         indent,
         onMouseDown,
+        onMouseDownExplicit,
         onMouseUp,
         lockDrag,
     }

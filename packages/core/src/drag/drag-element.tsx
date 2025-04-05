@@ -31,6 +31,56 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
         [props.className]
     )
 
+    /* 
+
+    const isDragging = useRef(false)
+    const startPos = useRef({ x: 0, y: 0 })
+    const dragThreshold = 5
+
+    const handleMouseDown = (e) => {
+        isDragging.current = false
+        startPos.current = { x: e.clientX, y: e.clientY }
+
+        const { isLeftButton } = getButton(e)
+        const { clientX, clientY, currentTarget } = e
+
+        if (!noDrag && isLeftButton && !cache.locked) {
+            e.stopPropagation()
+        }
+  
+        const handleMouseMove = (moveEvent: MouseEvent) => {
+            const dx = moveEvent.clientX - startPos.current.x
+            const dy = moveEvent.clientY - startPos.current.y
+
+            if (Math.abs(dx) > dragThreshold || Math.abs(dy) > dragThreshold) {
+                if (!isDragging.current) {
+                    if (props.onMouseDown) props.onMouseDown(e)
+                    onMouseDownExplicit({        
+                        isLeftButton, 
+                        clientX,
+                        clientY,
+                        currentTarget
+                    })
+                    isDragging.current = true
+                }
+            }
+        }
+    
+        const handleMouseUp = (upEvent) => {
+            document.removeEventListener('mousemove', handleMouseMove)
+            document.removeEventListener('mouseup', handleMouseUp)
+
+            if (!isDragging.current){
+                if (props.onClick) props.onClick(upEvent)
+            } 
+        }
+    
+        document.addEventListener('mousemove', handleMouseMove)
+        document.addEventListener('mouseup', handleMouseUp)
+    } 
+
+    */
+
     const handleMouseUp = (e) => {
         if (props.onMouseUp) props.onMouseUp(e)
         onMouseUp(e)
