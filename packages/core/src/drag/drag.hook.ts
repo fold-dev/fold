@@ -110,8 +110,10 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         cache.mouseDown = false
     }
 
-     // @experimental
-
+    // this is the new experimental drag start behaviour
+    // it's only used by DragElement where we pass values in explicitly 
+    // instead of using the event
+    // TODO: maybe name it differently
     const onMouseDownExplicit = ({ 
         isLeftButton, 
         clientX,
