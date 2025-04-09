@@ -74,8 +74,8 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
             document.removeEventListener('mousemove', handleMouseMove)
             document.removeEventListener('mouseup', handleMouseUp)
 
-            if (!isDragging.current) {
-                if (props.onClick) props.onClick(upEvent)
+            if (!isDragging.current && props.onClick && isLeftButton) {
+                props.onClick(upEvent)
             }
         }
 
