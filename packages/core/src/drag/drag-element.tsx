@@ -8,11 +8,11 @@ export type DragElementProps = {
     noDrag?: boolean
     noFocus?: boolean
     noIndent?: boolean
-    startDelay?: number
+    dragThreshold?: number
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = forwardRef((props: DragElementProps, ref) => {
-    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, startDelay, ...rest } = props
+    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, dragThreshold = 3, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp, onMouseDownExplicit, getCache } = useDrag()
     const elementRef = useRef(null)
@@ -36,7 +36,6 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
     // if it moves out of range, we assume it's a drag-start
     const isDragging = useRef(false)
     const startPos = useRef({ x: 0, y: 0 })
-    const dragThreshold = 5
 
     const handleMouseDown = (e) => {
         isDragging.current = false
