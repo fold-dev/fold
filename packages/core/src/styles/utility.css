@@ -86,9 +86,13 @@
 .f-scrollbar {
     --f-scrollbar-size: 0.3rem;
     --f-scrollbar-foreground: var(--f-color-surface-stronger);
-    --f-scrollbar-background: var(--f-color-surface-strong);
+    --f-scrollbar-background: transparent;
+
+    scrollbar-width: thin; 
+    scrollbar-color: var(--f-scrollbar-foreground) var(--f-scrollbar-background);
 }
 
+/* 
 .f-scrollbar::-webkit-scrollbar {
     width: var(--f-scrollbar-size);
     height: var(--f-scrollbar-size);
@@ -110,7 +114,7 @@
     border-top: 16px solid var(--f-scrollbar-background);
     border-bottom: 16px solid var(--f-scrollbar-background);
     border-right: 16px solid var(--f-scrollbar-background);
-}
+} */
 
 /* overflow */
 

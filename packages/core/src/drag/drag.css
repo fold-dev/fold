@@ -226,7 +226,7 @@
     z-index: 10000;
     background: var(--f-color-accent);
     animation: f-drag-fadein var(--f-transition-duration-fast);
-    transition: transform 0.6s cubic-bezier(0, 0.55, 0.45, 1);
+    transition: transform 0.1s cubic-bezier(0, 0.55, 0.45, 1);
 }
 
 :root {
