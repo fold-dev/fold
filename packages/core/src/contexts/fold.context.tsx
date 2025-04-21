@@ -23,6 +23,7 @@ import {
     FICopy,
     FIDate,
     FIDateDots,
+    FIDescription,
     FIEye,
     FIEyeDropper,
     FIEyeLine,
@@ -64,6 +65,7 @@ import {
 import { ToastContainer } from '../toast/toast'
 
 export const defaultIcons = {
+    'description': FIDescription,
     'repeat': FIRepeat,
     'lock-closed': FILockClosed,
     'lock-open': FILockOpen,

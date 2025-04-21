@@ -8,7 +8,7 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { useEvent, useTheme, useWindowEvent } from '..'
+import { useCustomEvent, useEvent, useTheme, useWindowEvent } from '..'
 import { classNames, cleanObject, getAlignClass, getOffset, mergeRefs } from '../helpers'
 import { CommonProps, CoreViewProps, ShorthandProps } from '../types'
 
@@ -19,6 +19,7 @@ export type ScrollViewProps = {
     stickToBottom?: boolean
     onScrollToBottom?: any
     onScrollToTop?: any
+    instanceId?: string
 } & CoreViewProps
 
 export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
@@ -30,11 +31,13 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         onScrollToBottom, 
         onScrollToTop, 
         style = {}, 
+        instanceId,
         ...rest 
     } = props
     const scrollRef = useRef(null)
     const userIsScrolling = useRef(null)
     const spacerRef = useRef(null)
+    const observerRef = useRef(null)
 
     const scrollToTop = () => {
         if (freeze) return
@@ -87,20 +90,36 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         }
     }
 
+    const handleCustomEvent = ({ detail }) => {
+        if (detail.instanceId == instanceId) {
+            userIsScrolling.current = false
+            scrollToBottom()
+        }
+    }
+
     useWindowEvent('wheel', handleWheelEvent)
+
+    useCustomEvent('scrollview:scroll-down', handleCustomEvent)
 
     useEffect(() => {
         let interval = setInterval(() => {
             if (stickToBottom) scrollToBottom()
             if (stickToTop) scrollToTop()
-        }, 1000)
+        }, 500)
 
         return () => clearInterval(interval)
     })
 
     useEffect(() => {
-        if (stickToBottom) scrollToBottom()
-        if (stickToTop) scrollToTop()
+        if (scrollRef.current) {
+            observerRef.current = new ResizeObserver(() => {
+                if (stickToBottom) scrollToBottom()
+                if (stickToTop) scrollToTop()
+            })
+            observerRef.current.observe(scrollRef.current)
+        }
+
+        return () => observerRef.current?.disconnect()
     }, [props.children, stickToBottom, stickToTop])
 
     useEffect(() => {

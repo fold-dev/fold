@@ -212,7 +212,7 @@
     outline: 2px solid var(--f-color-accent);
     outline-offset: -2px;
     border-radius: var(--f-radius);
-    animation: f-drag-focus 0.5s; 
+    animation: f-drag-focus 1s ease-out; 
 }
 
 /* buffer, ghost & placeholder */

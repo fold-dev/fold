@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo, useRef } from 'react'
-import { classNames, CoreViewProps, mergeRefs, useDrag, View } from '../'
+import { classNames, CoreViewProps, getButton, mergeRefs, useDrag, View } from '../'
 
 export type DragElementProps = {
     id?: string
@@ -8,12 +8,13 @@ export type DragElementProps = {
     noDrag?: boolean
     noFocus?: boolean
     noIndent?: boolean
+    dragThreshold?: number
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = forwardRef((props: DragElementProps, ref) => {
-    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, ...rest } = props
+    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, dragThreshold = 3, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
-    const { onMouseDown, onMouseUp } = useDrag()
+    const { onMouseDown, onMouseUp, onMouseDownExplicit, getCache } = useDrag()
     const elementRef = useRef(null)
     const styles = useMemo(
         () => ({
@@ -30,14 +31,66 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
         [props.className]
     )
 
+    // this is the start of the new drag start logic
+    // it calculates the area of movement before registering the click
+    // if it moves out of range, we assume it's a drag-start
+    const isDragging = useRef(false)
+    const startPos = useRef({ x: 0, y: 0 })
+
+    const handleMouseDown = (e) => {
+        isDragging.current = false
+        startPos.current = { x: e.clientX, y: e.clientY }
+        const cache = getCache()
+
+        const { isLeftButton } = getButton(e)
+        const { clientX, clientY, currentTarget } = e
+
+        if (!noDrag && isLeftButton && !cache.locked) {
+            e.stopPropagation()
+        }
+
+        const handleMouseMove = (moveEvent: MouseEvent) => {
+            const dx = moveEvent.clientX - startPos.current.x
+            const dy = moveEvent.clientY - startPos.current.y
+
+            if (Math.abs(dx) > dragThreshold || Math.abs(dy) > dragThreshold) {
+                if (!isDragging.current) {
+                    if (props.onMouseDown) props.onMouseDown(e)
+
+                    onMouseDownExplicit({
+                        isLeftButton,
+                        clientX,
+                        clientY,
+                        currentTarget,
+                    })
+                    
+                    isDragging.current = true
+                }
+            }
+        }
+
+        const handleMouseUp = (upEvent) => {
+            document.removeEventListener('mousemove', handleMouseMove)
+            document.removeEventListener('mouseup', handleMouseUp)
+
+            if (!isDragging.current && props.onClick && isLeftButton) {
+                props.onClick(upEvent)
+            }
+        }
+
+        document.addEventListener('mousemove', handleMouseMove)
+        document.addEventListener('mouseup', handleMouseUp)
+    }
+
+    // previous code, kept as backup
+    // const handleMouseDown = (e) => {
+    //     if (props.onMouseDown) props.onMouseDown(e)
+    //     onMouseDown(e, startDelay)
+    // }
+
     const handleMouseUp = (e) => {
         if (props.onMouseUp) props.onMouseUp(e)
         onMouseUp(e)
-    }
-
-    const handleMouseDown = (e) => {
-        if (props.onMouseDown) props.onMouseDown(e)
-        onMouseDown(e)
     }
 
     return (

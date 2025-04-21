@@ -557,10 +557,10 @@ export const cache = {
 
 export const bytesToSize = (bytes: number): string => {
     if (bytes == null) return null
-    const sizes = ['bytes', 'kb', 'mb', 'gb', 'tb']
+    const sizes = [' bytes', 'kb', 'mb', 'gb', 'tb']
     if (bytes == 0) return '0 Byte'
     const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)) + '', 10)
-    return Math.round(bytes / Math.pow(1024, i)) + ' ' + sizes[i]
+    return Math.round(bytes / Math.pow(1024, i)) + sizes[i]
 }
 
 export const urlParser = (url: string): string[] => {

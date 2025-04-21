@@ -175,7 +175,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
                 // elementShouldFocus
                 // if the target has focus (isFocus/isLinedFocus)
                 // then highlight the DOM element by adding a data attr
-                if (target.focus && isTargetArea && index == target.index) {
+                if (target.focus && isTargetArea && index == target.index && !node.dataset.noFocus) {
                     node.dataset.focus = 'yes'
                 } else {
                     delete node.dataset.focus

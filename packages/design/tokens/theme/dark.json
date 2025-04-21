@@ -41,10 +41,10 @@
                 "weak": { "value": "{color.red.900}" }
             },
             "highlight": {
-                " ": { "value": "{color.purple.400}" },
-                "subtle": { "value": "{color.purple.600}", "subtle": true },
-                "strong": { "value": "{color.purple.300}" },
-                "weak": { "value": "{color.purple.900}" }
+                " ": { "value": "{color.indigo.400}" },
+                "subtle": { "value": "{color.indigo.600}", "subtle": true },
+                "strong": { "value": "{color.indigo.300}" },
+                "weak": { "value": "{color.indigo.900}" }
             },
             "text": {
                 " ": { "value": "{color.base.100}" },
