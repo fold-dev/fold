@@ -26,7 +26,7 @@ import { DateSelect } from './date-select'
 import '../common/common.css'
 
 export default {
-    title: 'Components/Common',
+    title: 'Pro/Common',
     component: <></>,
     excludeStories: 'docs',
 }

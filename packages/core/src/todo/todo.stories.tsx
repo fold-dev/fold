@@ -20,7 +20,7 @@ import '../common/common.css'
 import './todo.css'
 
 export default {
-    title: 'Components/Todo',
+    title: 'Pro/Todo',
     component: <></>,
     excludeStories: 'docs',
 }

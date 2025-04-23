@@ -16,7 +16,7 @@ import React, { useState } from 'react'
 import * as data from '../../../../dummy-data'
 
 export default {
-    title: 'Components/DataGrid',
+    title: 'Pro/DataGrid',
     component: <></>,
     excludeStories: 'docs',
 }

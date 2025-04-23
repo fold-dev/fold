@@ -24,7 +24,7 @@ import '../common/common.css'
 import './kanban.css'
 
 export default {
-    title: 'Components/Kanban',
+    title: 'Pro/Kanban',
     component: <></>,
     excludeStories: 'docs',
 }

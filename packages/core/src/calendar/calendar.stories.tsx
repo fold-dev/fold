@@ -34,7 +34,7 @@ import '../common/common.css'
 import './calendar.css'
 
 export default {
-    title: 'Components/Calendar',
+    title: 'Pro/Calendar',
     component: <></>,
     excludeStories: 'docs',
 }
