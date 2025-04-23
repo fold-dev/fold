@@ -20,7 +20,7 @@ import {
     focusInputAtEnd,
     useCheck,
 } from '../'
-import { CalendarTypes } from 'calendar'
+import { CalendarTypes } from '../calendar'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { addNumberSuffix, getMediumDateFormat } from '../helpers'
 

@@ -17,7 +17,7 @@ import {
     useCheck,
     useVisibility
 } from '../'
-import { CalendarTypes } from 'calendar'
+import { CalendarTypes } from '../calendar'
 import React, { useMemo, useRef, useState } from 'react'
 import { getDateSelectTimeFormat, getRepeatFrequencyText } from '../helpers'
 import { Repeat, defaultWeekdays } from './repeat'
