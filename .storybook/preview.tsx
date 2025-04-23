@@ -1,6 +1,6 @@
 import React from 'react';
 import { Preview } from '@storybook/react';
-import { FoldProvider, DarkModeToggle, Icon } from '../packages/core'
+import { FoldProvider, DarkModeToggle, Icon } from '../packages/core/src'
 import '../packages/core/dist/styles.css'
 
 export const decorators = [

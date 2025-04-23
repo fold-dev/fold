@@ -4,7 +4,7 @@ import { CsvImporter } from '../'
 import './csv-importer.css'
 
 export default {
-    title: 'Components/CsvImporter',
+    title: 'Pro/CsvImporter',
     component: CsvImporter,
     excludeStories: 'docs',
 }
