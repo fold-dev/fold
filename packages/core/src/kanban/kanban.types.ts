@@ -1,4 +1,4 @@
-import { CalendarTypes } from 'calendar'
+import { CalendarTypes } from '../calendar'
 import { LabelSelectLabel, Priority, Repeat, UserSelectUser } from '../common'
 import { BadgesAltBadge } from '../common'
 import { ReactElement } from 'react'
