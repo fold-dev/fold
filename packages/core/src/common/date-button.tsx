@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { getShortDateFormat } from '../helpers'
 import { DateSelect } from './date-select'
 import { ToolbarButton } from './toolbar-button'
-import { CalendarTypes } from 'calendar'
+import { CalendarTypes } from '../calendar'
 
 export const useDateButton = (dates: { start: Date; end: Date }, complete) => {
     const { dateLabel, dateColor } = useMemo(() => {
