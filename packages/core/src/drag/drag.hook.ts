@@ -3,6 +3,7 @@ import {
     dispatchDragEvent,
     documentObject,
     FOLD_DRAG_CACHE,
+    FOLD_DRAG_LOCK,
     FOLD_DRAG_STATE,
     getBoundingClientRect,
     getPreviousNextElements,
@@ -120,6 +121,8 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         clientY,
         currentTarget,
     }) => {
+        if (window[FOLD_DRAG_LOCK]) return
+
         const cache = getCache()
         const mouseLeft = clientX
         const mouseTop = clientY
@@ -262,6 +265,8 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     const onMouseDown = (e: any, startDelay = 150) => {
+        if (window[FOLD_DRAG_LOCK]) return
+        
         const cache = getCache()
         const { isLeftButton } = getButton(e)
         const mouseLeft = e.clientX
