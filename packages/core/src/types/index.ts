@@ -217,7 +217,7 @@ export type ShorthandProps = {
     /**
      * CSS flex-direction
      */
-    flexDirection?: 'row ' | 'row-reverse' | 'column' | 'column-reverse'
+    flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse'
     /**
      * CSS flex-grow
      */
