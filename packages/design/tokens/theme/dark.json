@@ -5,7 +5,7 @@
         "color": {
             "background": { "value": "{color.base.800}" },
             "accent": {
-                " ": { "value": "{color.accent.400}" },
+                " ": { "value": "{color.accent.500}" },
                 "subtle": { "value": "{color.accent.600}", "subtle": true },
                 "strong": { "value": "{color.accent.300}" },
                 "weak": { "value": "{color.accent.900}" }
