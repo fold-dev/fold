@@ -111,6 +111,25 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     })
 
     useEffect(() => {
+        const el = scrollRef.current
+        if (!el) return
+
+        const observer = new MutationObserver(() => {
+            el.scrollTop = el.scrollHeight
+        })
+
+        observer.observe(el, {
+            childList: true,
+            subtree: true,
+        })
+
+        if (stickToBottom) scrollToBottom()
+        if (stickToTop) scrollToTop()
+
+        return () => observer.disconnect()
+    }, [props.children, stickToBottom, stickToTop])
+
+    useEffect(() => {
         if (scrollRef.current) {
             observerRef.current = new ResizeObserver(() => {
                 if (stickToBottom) scrollToBottom()
@@ -123,9 +142,10 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     }, [props.children, stickToBottom, stickToTop])
 
     useEffect(() => {
+        
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
-    }, [stickToBottom, stickToTop])
+    }, [stickToBottom, stickToTop, props.children])
 
     return (
         <View
