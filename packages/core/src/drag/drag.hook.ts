@@ -86,7 +86,6 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     const getNextOutdent = ({ indent, previous, previousIndent, next, nextIndent }) => {
         if (nextIndent - previousIndent >= 2) return indent
         if (nextIndent == previousIndent == indent) return indent
-        console.log(nextIndent, previousIndent, indent)
         const maximumOutdent = next ? nextIndent : 0
         const targetOutdent = indent > maximumOutdent ? indent - 1 : maximumOutdent
         return targetOutdent
