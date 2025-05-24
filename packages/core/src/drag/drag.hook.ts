@@ -37,7 +37,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         setGhostElement(html)
     }
 
-    const setCustomGhostElementRotation = (rotation: string = '2deg') => {
+    const setCustomGhostElementRotation = (rotation: string = '0deg') => {
         windowObject[FOLD_GHOST_ELEMENT_ROTATION] = rotation
     }
 
@@ -149,8 +149,16 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
             if (cache.mouseDown) {
                 const customGhost = hasCustomGhostElement()
                 const { width, height, left, top } = getBoundingClientRect(el)
-                const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                let mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
                 const mouseOffsetTop = customGhost ? 0 : mouseTop - top
+
+                // adjustment for if the element has margin/differing width to the parent
+                if (parent) {
+                    const parentWidth = getBoundingClientRect(parent).width ?? 0
+                    const parentWidthOffset = parentWidth - width
+                    if (!!parentWidthOffset && !customGhost) mouseOffsetLeft -= parentWidthOffset
+                }
+                
                 const x = mouseLeft - mouseOffsetLeft
                 const y = mouseTop - mouseOffsetTop
                 const newNode = el.cloneNode(true)

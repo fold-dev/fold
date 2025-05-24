@@ -36,7 +36,7 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
 }
 
 export const positionDOMElement = (x, y, el, callback) => {
-    const rotation = windowObject[FOLD_GHOST_ELEMENT_ROTATION] || '2deg'
+    const rotation = windowObject[FOLD_GHOST_ELEMENT_ROTATION] || '0deg'
     el.style.transform = `translate(${x}px, ${y}px) rotate(${rotation})`
     callback()
 }
