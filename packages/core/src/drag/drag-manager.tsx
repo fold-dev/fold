@@ -19,6 +19,7 @@ import { globalCursor, windowObject } from '../helpers'
 
 export const FOLD_DRAG_CACHE = 'FOLD_DRAG_CACHE'
 export const FOLD_DRAG_STATE = 'FOLD_DRAG_STATE'
+export const FOLD_DRAG_LOCK = 'FOLD_DRAG_LOCK'
 
 windowObject[FOLD_DRAG_CACHE] = {
     locked: false,
@@ -77,7 +78,7 @@ export const DragManager = (props: DragManagerProps) => {
     }
 
     const handleMouseMove = (e) => {
-        if (isDragging && !cache.locked) {
+        if (!window[FOLD_DRAG_LOCK] && isDragging && !cache.locked) {
             const mouseY = e.clientY
             const mouseX = e.clientX
             const { offsetLeft, offsetTop } = cache.originMouse
