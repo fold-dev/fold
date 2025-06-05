@@ -3,6 +3,7 @@ import {
     dispatchDragEvent,
     documentObject,
     FOLD_DRAG_CACHE,
+    FOLD_DRAG_LOCK,
     FOLD_DRAG_STATE,
     getBoundingClientRect,
     getPreviousNextElements,
@@ -36,7 +37,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         setGhostElement(html)
     }
 
-    const setCustomGhostElementRotation = (rotation: string = '2deg') => {
+    const setCustomGhostElementRotation = (rotation: string = '0deg') => {
         windowObject[FOLD_GHOST_ELEMENT_ROTATION] = rotation
     }
 
@@ -84,6 +85,10 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
     const getNextOutdent = ({ indent, previous, previousIndent, next, nextIndent }) => {
         if (nextIndent - previousIndent >= 2) return indent
+        // this needs to be here for now
+        if (nextIndent === previousIndent === indent) return indent
+        // this is the correction
+        if (nextIndent === previousIndent && previousIndent === indent) return indent
         const maximumOutdent = next ? nextIndent : 0
         const targetOutdent = indent > maximumOutdent ? indent - 1 : maximumOutdent
         return targetOutdent
@@ -120,6 +125,8 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
         clientY,
         currentTarget,
     }) => {
+        if (window[FOLD_DRAG_LOCK]) return
+
         const cache = getCache()
         const mouseLeft = clientX
         const mouseTop = clientY
@@ -142,8 +149,16 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
             if (cache.mouseDown) {
                 const customGhost = hasCustomGhostElement()
                 const { width, height, left, top } = getBoundingClientRect(el)
-                const mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
+                let mouseOffsetLeft = customGhost ? 0 : mouseLeft - left
                 const mouseOffsetTop = customGhost ? 0 : mouseTop - top
+
+                // adjustment for if the element has margin/differing width to the parent
+                if (parent) {
+                    const parentWidth = getBoundingClientRect(parent).width ?? 0
+                    const parentWidthOffset = parentWidth - width
+                    if (!!parentWidthOffset && !customGhost) mouseOffsetLeft -= parentWidthOffset
+                }
+                
                 const x = mouseLeft - mouseOffsetLeft
                 const y = mouseTop - mouseOffsetTop
                 const newNode = el.cloneNode(true)
@@ -178,40 +193,29 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                     const previous = el.previousSibling
                     const next = el.nextSibling?.dataset.buffer ? null : el.nextSibling
                     const previousIndent = previous ? +previous.dataset.indent : 0
-                    const nextIndent = next ? +next.dataset.indent : 0
+                    let nextIndent = next ? +next.dataset.indent || 0 : 0
 
-                    if (nextIndent > previousIndent) {
-                        cache.indent = {
-                            index,
-                            indent: targetIndent,
-                            areaId,
-                            previous,
-                            previousIndent,
-                            next,
-                            nextIndent,
+                    // account for children 
+                    if ((nextIndent > indent) && next) {
+                        let node = next
+                        while (node) {
+                            const nodeIndent = parseInt(node.dataset.indent, 10)
+                            if (nodeIndent <= indent) {
+                                nextIndent = nodeIndent
+                                break
+                            }
+                            node = node.nextElementSibling
                         }
-                    } else {
-                        if (targetIndent > 0) {
-                            cache.indent = {
-                                index,
-                                indent: targetIndent,
-                                areaId,
-                                previous,
-                                previousIndent,
-                                next: undefined,
-                                nextIndent: 0,
-                            }
-                        } else {
-                            cache.indent = {
-                                index,
-                                indent: targetIndent,
-                                areaId,
-                                previous,
-                                previousIndent,
-                                next,
-                                nextIndent,
-                            }
-                        } 
+                    }
+
+                    cache.indent = {
+                        index,
+                        indent: targetIndent,
+                        areaId,
+                        previous,
+                        previousIndent,
+                        next,
+                        nextIndent,
                     }
 
                     // save the cache for the reset
@@ -262,6 +266,8 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     const onMouseDown = (e: any, startDelay = 150) => {
+        if (window[FOLD_DRAG_LOCK]) return
+        
         const cache = getCache()
         const { isLeftButton } = getButton(e)
         const mouseLeft = e.clientX

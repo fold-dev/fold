@@ -1,7 +1,7 @@
 {
     "light": {
         "radius": { "value": "{radius.default}" },
-        "focus": { "value": "3px solid {color.accent.200}" },
+        "focus": { "value": "3px solid {color.base.100}" },
         "color": {
             "background": { "value": "{color.base.50}" },
             "accent": {
@@ -63,8 +63,8 @@
                 "inverse": { "value": "{color.base.700}" }
             },
             "border": {
-                " ": { "value": "{color.base.100}" },
-                "strong": { "value": "{color.base.200}" }
+                " ": { "value": "{color.base.200}" },
+                "strong": { "value": "{color.base.300}" }
             }
         }
     }
