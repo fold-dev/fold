@@ -163,6 +163,16 @@ export const Resizable = (props: ResizableProps) => {
         if (isVertical) calculateVerticalMovement({ x, y })
         if (isHorizontal) calculateHorizontalMovement({ x, y })
     }
+    
+    useEffect(() => {
+        const observer = new ResizeObserver(() => {
+            setBox(getBoundingClientRect(elementRef.current))
+        })
+
+        observer.observe(elementRef.current)
+
+        return () => observer.disconnect()
+    }, [props.children, width, height])
 
     useEffect(() => {
         setBox(getBoundingClientRect(elementRef.current))

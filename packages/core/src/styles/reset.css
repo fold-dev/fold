@@ -30,7 +30,7 @@ p,
 figure {
     margin: 0px;
     padding: 0px;
-    font-weight: normal;
+    font-weight: var(--f-font-weight-normal);
 }
 
 img {
