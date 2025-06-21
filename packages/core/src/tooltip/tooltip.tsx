@@ -91,7 +91,7 @@ export const Tooltip = (props: TooltipProps) => {
         }, delay)
     }
 
-    const handleMouseLeave = (e) => {
+    const handleMouseDismiss = (e) => {
         blurElement(childRef.current)
         clearInterval(timeoutRef.current)
         dismissTooltip()
@@ -116,14 +116,18 @@ export const Tooltip = (props: TooltipProps) => {
 
         childRef.current?.addEventListener('focus', handleMouseEnter)
         childRef.current?.addEventListener('mouseenter', handleMouseEnter)
-        childRef.current?.addEventListener('mouseleave', handleMouseLeave)
-        childRef.current?.addEventListener('blur', handleMouseLeave)
+        childRef.current?.addEventListener('mouseleave', handleMouseDismiss)
+        childRef.current?.addEventListener('mouseout', handleMouseDismiss)
+        childRef.current?.addEventListener('mousedown', handleMouseDismiss)
+        childRef.current?.addEventListener('blur', handleMouseDismiss)
 
         return () => {
             childRef.current?.removeEventListener('focus', handleMouseEnter)
             childRef.current?.removeEventListener('mouseenter', handleMouseEnter)
-            childRef.current?.removeEventListener('mouseleave', handleMouseLeave)
-            childRef.current?.removeEventListener('blur', handleMouseLeave)
+            childRef.current?.removeEventListener('mouseleave', handleMouseDismiss)
+            childRef.current?.removeEventListener('mouseout', handleMouseDismiss)
+            childRef.current?.removeEventListener('mousedown', handleMouseDismiss)
+            childRef.current?.removeEventListener('blur', handleMouseDismiss)
         }
     }, [props.children])
 
