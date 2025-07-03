@@ -9,6 +9,7 @@
 
 .f-user-list .f-user-list-name {
     color: var(--f-user-list-color-heading);
+    font-weight: var(--f-font-weight-normal);
     margin-bottom: var(--f-space-1);
 }
 
