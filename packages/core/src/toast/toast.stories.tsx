@@ -131,7 +131,9 @@ export const CustomComponent = () => {
                 <Text
                     p={10}
                     onClick={onDismiss}
-                    colorToken="text-on-color">
+                    radius="var(--f-radius)"
+                    colorToken="text-on-color"
+                    bgToken="surface-inverse">
                     Converting your document to PDF format.
                 </Text>
             ),
