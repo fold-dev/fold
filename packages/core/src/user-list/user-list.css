@@ -3,13 +3,17 @@
     --f-user-list-color-text: var(--f-color-text-weak);
 }
 
+.f-user-list {
+    gap: var(--f-space-1);
+}
+
 .f-user-list .f-avatar {
     margin-right: var(--f-space-3);
 }
 
 .f-user-list .f-user-list-name {
     color: var(--f-user-list-color-heading);
-    margin-bottom: var(--f-space-1);
+    font-weight: var(--f-font-weight-normal);
 }
 
 .f-user-list .f-user-list-description {

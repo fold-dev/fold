@@ -203,6 +203,7 @@
     gap: var(--f-tab-ix-spacing);
     min-height: var(--f-tabs-tab-height);
     transition: background-color 0.2s;
+    font-weight: var(--f-font-weight-normal);
 }
 
 .f-tab:focus,

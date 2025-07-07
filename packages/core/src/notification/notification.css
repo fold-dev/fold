@@ -44,6 +44,7 @@
     color: currentColor;
     padding: 0;
     flex: 1;
+    font-family: var(--f-font-body);
 }
 
 .f-notification__content a,
