@@ -46,7 +46,7 @@ export const Sparkline = (props: SparklineProps) => {
                 d={`M${data
                     .map((d, i) => {
                         const x = (box.width / (data.length - 1)) * i
-                        const y = Math.floor(d * box.height)
+                        const y = Math.floor((1 - d) * box.height)
 
                         return `${x} ${y}`
                     })
@@ -112,6 +112,7 @@ export const Sparkline = (props: SparklineProps) => {
             height={height}
             className={className}
             strokeWidth={strokeWidth}
+            overflow="visible"
             viewBox={`0 0 ${box.width} ${box.height}`}>
             {renderLine()}
             {renderBar()}
