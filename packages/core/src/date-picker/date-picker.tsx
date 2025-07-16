@@ -146,7 +146,7 @@ export const DatePicker = (props: DatePickerProps) => {
                     subtle
                     onClick={handleTitleClick}
                     flex={1}
-                    fontWeight={600}
+                    fontWeight="var(--f-font-weight-semibold)"
                     colorToken="text"
                     className="f-date-picker__title">
                     {level != 'days' ? <span className="f-flexer">{getTitleText(date)}</span> : null}

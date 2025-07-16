@@ -15,14 +15,14 @@ h1, h2, h3, h4, h5, h6, .f-heading {
     font-size: var(--f-font-size-jumbo);
     line-height: 95%;
     letter-spacing: -0.25rem;
-    font-weight: 500;
+    font-weight: var(--f-font-weight-medium);
 }
 
 .f-heading.is-huge {
     font-size: var(--f-font-size-huge);
     line-height: 100%;
     letter-spacing: -0.15rem;
-    font-weight: 500;
+    font-weight: var(--f-font-weight-medium);
 }
 
 h1, 

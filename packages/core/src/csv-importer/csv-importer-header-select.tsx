@@ -83,7 +83,7 @@ export const CsvImporterHeaderSelect = (props: CsvImporterHeaderSelectProps) => 
                 width="100%">
                 <Text
                     size="sm"
-                    fontWeight="bold"
+                    fontWeight="var(--f-font-weight-bold)"
                     colorToken="text-weaker">
                     {rows.length} {rows.length == 1 ? header.row : header.rows}
                 </Text>

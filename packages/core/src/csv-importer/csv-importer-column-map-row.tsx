@@ -42,7 +42,7 @@ export const CsvImporterColumnMapRow = (props) => {
                 <View
                     flex={1}
                     p="0 0 0 1rem">
-                    <Text fontWeight="bold">{column.value}</Text>
+                    <Text fontWeight="var(--f-font-weight-bold)">{column.value}</Text>
                 </View>
                 <View
                     flex={1}
