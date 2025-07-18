@@ -73,7 +73,7 @@
 /* hack to remove padding from the bottom on default settings so the icon sites flush */
 
 .f-attachment__text > * + * {
-    margin-top: -1px;
+    margin-top: -7px;
 }
 
 .f-attachment.sm .f-attachment__text > * + * {
