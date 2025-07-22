@@ -23,7 +23,6 @@
 .f-date-cell {
     height: auto;
     flex-grow: 1;
-    font-weight: 500;
     position: relative;
     cursor: pointer;
     user-select: none;
@@ -62,7 +61,7 @@
 
 .f-date-cell:not(.is-disabled,.is-unavailable).is-today {
     color: var(--f-date-cell-today);
-    font-weight: bold;
+    font-weight: var(--f-font-weight-bold);
 }
 
 /* pending */
@@ -180,7 +179,7 @@
 
 .f-weekdays > * {
     flex: 1;
-    font-weight: 600;
+    font-weight: var(--f-font-weight-semibold);
     text-align: center;
     padding: var(--f-month-weekday-padding);
     color: var(--f-color-text);

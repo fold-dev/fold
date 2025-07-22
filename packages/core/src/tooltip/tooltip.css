@@ -1,5 +1,5 @@
 :root {
-    --f-tooltip-background: var(--f-color-base-800);
+    --f-tooltip-background: var(--f-color-base-900);
     --f-tooltip-color: var(--f-color-base-100);
     --f-tooltip-border-radius: var(--f-radius);
     --f-tooltip-reposition-duraction: var(--f-transition-duration-fast);
