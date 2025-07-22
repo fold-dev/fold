@@ -1,7 +1,6 @@
 import { plural } from './util'
 
 export const FDate = (date: Date) => {
-
     const toISOWithTimezone = () => {
         const offset = date.getTimezoneOffset()
         const adjustedDate = new Date(date.getTime() - (offset * 60000))
@@ -154,7 +153,9 @@ export const FDate = (date: Date) => {
         const minutes = Math.floor(seconds / 60)
 
         if (days > 548) {
-            return isPast ? years + ' years ago' : 'in ' + years + plural(years, ' year')
+            return isPast
+                ? `${years} ${plural(years, 'year')} ago`
+                : `in ${years} ${plural(years, 'year')}`
         }
 
         if (days >= 320 && days <= 547) {
@@ -162,7 +163,9 @@ export const FDate = (date: Date) => {
         }
 
         if (days >= 45 && days <= 319) {
-            return isPast ? months + ' months ago' : 'in ' + months + plural(months, ' month')
+            return isPast
+                ? `${months} ${plural(months, 'month')} ago`
+                : `in ${months} ${plural(months, 'month')}`
         }
 
         if (days >= 26 && days <= 45) {
@@ -170,7 +173,9 @@ export const FDate = (date: Date) => {
         }
 
         if (hours >= 36 && days <= 25) {
-            return isPast ? days + ' days ago' : 'in ' + days + plural(days, ' day')
+            return isPast
+                ? `${days} ${plural(days, 'day')} ago`
+                : `in ${days} ${plural(days, 'day')}`
         }
 
         if (hours >= 22 && hours <= 35) {
@@ -178,7 +183,9 @@ export const FDate = (date: Date) => {
         }
 
         if (minutes >= 90 && hours <= 21) {
-            return isPast ? hours + ' hours ago' : 'in ' + hours + plural(hours, ' hour')
+            return isPast
+                ? `${hours} ${plural(hours, 'hour')} ago`
+                : `in ${hours} ${plural(hours, 'hour')}`
         }
 
         if (minutes >= 45 && minutes <= 89) {
@@ -186,7 +193,9 @@ export const FDate = (date: Date) => {
         }
 
         if (seconds >= 90 && minutes <= 44) {
-            return isPast ? minutes + ' minutes ago' : 'in ' + minutes + plural(minutes, ' minute')
+            return isPast
+                ? `${minutes} ${plural(minutes, 'minute')} ago`
+                : `in ${minutes} ${plural(minutes, 'minute')}`
         }
 
         if (seconds >= 45 && seconds <= 89) {
