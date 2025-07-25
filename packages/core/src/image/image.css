@@ -23,7 +23,7 @@
 }
 
 .f-image img {
-    display: inline-block;
+    display: block;
     border-radius: inherit;
     object-fit: cover;
 }
