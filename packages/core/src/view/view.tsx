@@ -15,6 +15,7 @@ import { CommonProps, CoreViewProps, ShorthandProps } from '../types'
 export type ScrollViewProps = {
     freeze?: boolean
     smooth?: boolean
+    watchMutations?: boolean
     stickToTop?: boolean
     stickToBottom?: boolean
     onScrollToBottom?: any
@@ -26,6 +27,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     const { 
         freeze = false,
         smooth = true, 
+        watchMutations,
         stickToTop, 
         stickToBottom, 
         onScrollToBottom, 
@@ -99,7 +101,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
     useWindowEvent('wheel', handleWheelEvent)
 
-    useCustomEvent('scrollview:scroll-down', handleCustomEvent)
+    useCustomEvent('scrollview:scroll-down', handleCustomEvent)   
 
     useEffect(() => {
         let interval = setInterval(() => {
@@ -111,6 +113,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     })
 
     useEffect(() => {
+        if (!watchMutations) return 
         const el = scrollRef.current
         if (!el) return
 
@@ -127,7 +130,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
         if (stickToTop) scrollToTop()
 
         return () => observer.disconnect()
-    }, [props.children, stickToBottom, stickToTop])
+    }, [props.children, stickToBottom, stickToTop, watchMutations])
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -142,7 +145,6 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     }, [props.children, stickToBottom, stickToTop])
 
     useEffect(() => {
-        
         if (stickToBottom) scrollToBottom()
         if (stickToTop) scrollToTop()
     }, [stickToBottom, stickToTop, props.children])
