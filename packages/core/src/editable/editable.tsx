@@ -40,7 +40,6 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
         target.removeEventListener('focusout', handleFocusOut)
         target.removeEventListener('mousedown', noEvent)
         target.blur()
-        keypressCache.current = false
         switch (type) {
             case 'escape':
                 return onCancel ? onCancel(cache.current) : null
@@ -52,28 +51,28 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
     }
 
     const handleFocusOut = (e: any) => {
+        if (keypressCache.current) return
         e.preventDefault()
         e.stopPropagation()
-        if (keypressCache.current) return
         const target: any = e.target
         deFocus(target, 'focusout')
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
+        keypressCache.current = true
+        
         const { metaKey, key } = e
         const { isEnter, isEscape } = getKey(e)
 
         if (isEscape) {
             e.preventDefault()
             e.stopPropagation()
-            keypressCache.current = true
             deFocus(e.currentTarget as HTMLElement, 'escape')
         }
 
         if (isEnter) {
             e.preventDefault()
             e.stopPropagation()
-            keypressCache.current = true
             deFocus(e.currentTarget as HTMLElement, 'enter')
             return
         }
@@ -88,6 +87,8 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
                     return e.preventDefault()
             }
         }
+
+        keypressCache.current = false
     }
 
     const handleClick = (e) => {
