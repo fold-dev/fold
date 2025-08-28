@@ -6,11 +6,11 @@
     --f-select-color-selected: var(--f-color-accent);
     --f-select-background-selected: var(--f-color-surface-strong);
     --f-select-option-focus: var(--f-color-surface-stronger); 
-    --f-select-option-active-size: 0.2rem;
     --f-select-option-hover: var(--f-color-surface-strong);
     --f-select-option-active: var(--f-color-surface-stronger);
     --f-select-options-height: 200px; 
-    --f-select-option-padding: var(--f-space-inset-x-3);
+    --f-select-option-padding: var(--f-space-2);
+    --f-select-options-padding: 4px;
     --f-select-popover-border-color: var(--f-color-border);
     --f-select-popover-border-radius: var(--f-radius);
     --f-select-popover-background: var(--f-color-surface);
@@ -70,8 +70,6 @@ input.f-select:disabled {
     height: fit-content;
     animation: f-popover-fadein var(--f-transition-duration-fast);
     pointer-events: all;
-    padding-bottom: var(--f-select-popover-border-radius);
-    padding-top: var(--f-select-popover-border-radius);
 }
 
 .f-select-popover.is-offscreen {
@@ -95,7 +93,7 @@ input.f-select:disabled {
     overflow-y: auto;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: var(--f-select-options-padding);
     list-style-type: none;
     display: block;
     max-height: var(--f-select-options-height);
@@ -121,6 +119,7 @@ li.f-select-list-option-container {
 .f-select-list-option-container:focus,
 .f-select-list-option-container.is-focused {
     background-color: var(--f-select-option-focus);
+    border-radius: var(--f-radius);
     outline: none;
 }
 
@@ -140,6 +139,7 @@ li.f-select-list-option-container {
     cursor: pointer;  
     flex-grow: 1;
     transition: background-color 0.2s;
+    border-radius: var(--f-radius);
 }
 
 .f-select-list-option .f-select-list-option__label {
@@ -183,15 +183,6 @@ li.f-select-list-option-container {
     text-overflow: ellipsis;
     text-align: left;
     color: currentColor;
-}
-
-.f-select-list-option__active {
-    background-color: var(--f-select-color-selected);
-    position: absolute;
-    left: 0px;
-    top: 0%;
-    width: var(--f-select-option-active-size);
-    height: 100%;
 }
 
 .f-select-list-option__prefix {
