@@ -610,7 +610,6 @@ export const SelectListOption = (props: SelectOptionProps) => {
         <p
             className={className}
             onClick={handleClick}>
-            {selected && <span className="f-select-list-option__active" />}
             <span className="f-select-list-option__prefix f-row">
                 <IconLib
                     icon="check"
