@@ -39,6 +39,7 @@ export type PopoverProps = {
      * @description Be careful as this can have unintended consequences with other elements
      */
     hardEscape?: boolean
+    ignoreContainers?: string[]
     __focusTrapTimeoutDelay?: number
     __blockDismissEvent?: boolean
     focusTrap?: boolean
@@ -59,6 +60,7 @@ export type PopoverProps = {
 export const Popover = forwardRef((props: PopoverProps, ref) => {
     const {
         hardEscape,
+        ignoreContainers = [],
         __focusTrapTimeoutDelay = 100,
         __blockDismissEvent = false,
         focusTrap = true,
@@ -121,9 +123,23 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
     }
 
     const handleClick = (e) => {
+        const containers: any = []
+        let shouldDismiss = true
+
+        // add dom elements to the container
+        if (ignoreContainers.length) {
+            ignoreContainers.map((id) => containers.push(documentObject.getElementById(id)))
+        }
+
+        containers.map((container) => {
+            if (container?.contains(e.target) && shouldDismiss) {
+                shouldDismiss = false
+            }
+        })
+
         if (containerRef.current) {
             if (!containerRef.current?.contains(e.target)) {
-                if (onDismiss) dismissPopover(e)
+                if (onDismiss && shouldDismiss) dismissPopover(e)
             }
         }
     }
