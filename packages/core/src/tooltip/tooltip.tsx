@@ -70,7 +70,7 @@ export const Tooltip = (props: TooltipProps) => {
     const timerRef = useRef(null)
     const timeoutRef = useRef(null)
     const id = useId()
-    const [isVisible, setVisible] = useState(false)
+    const [isVisible, setVisible] = useState(alwaysVisible)
     const [box, setBox] = useState<any>(null)
     const { setTimer, clearTimer } = useTimer()
     const showTooltip = box && (isVisible || alwaysVisible)
@@ -127,6 +127,13 @@ export const Tooltip = (props: TooltipProps) => {
             element.removeEventListener('blur', handleMouseDismiss)
         }
     }, [])
+
+    useEffect(() => {
+        if (alwaysVisible) {
+            updateBox()
+            setVisible(true)
+        }
+    }, [alwaysVisible])
 
     useLayoutEffect(() => {
         timerRef.current = showTooltip ? setInterval(updateBox, REPOSITION_INTERVAL) : null
