@@ -93,7 +93,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     const handleMouseDismiss = (e) => {
         blurElement(childRef.current)
-        clearInterval(timeoutRef.current)
+        clearTimeout(timeoutRef.current)
         dismissTooltip()
     }
 
@@ -112,24 +112,21 @@ export const Tooltip = (props: TooltipProps) => {
     useEvent('keydown', handleKeyDown)
 
     useEffect(() => {
-        updateBox()
+        const element = childRef.current
+        if (!element) return
 
-        childRef.current?.addEventListener('focus', handleMouseEnter)
-        childRef.current?.addEventListener('mouseenter', handleMouseEnter)
-        childRef.current?.addEventListener('mouseleave', handleMouseDismiss)
-        childRef.current?.addEventListener('mouseout', handleMouseDismiss)
-        childRef.current?.addEventListener('mousedown', handleMouseDismiss)
-        childRef.current?.addEventListener('blur', handleMouseDismiss)
+        element.addEventListener('mouseenter', handleMouseEnter)
+        element.addEventListener('mouseleave', handleMouseDismiss)
+        element.addEventListener('focus', handleMouseEnter)
+        element.addEventListener('blur', handleMouseDismiss)
 
         return () => {
-            childRef.current?.removeEventListener('focus', handleMouseEnter)
-            childRef.current?.removeEventListener('mouseenter', handleMouseEnter)
-            childRef.current?.removeEventListener('mouseleave', handleMouseDismiss)
-            childRef.current?.removeEventListener('mouseout', handleMouseDismiss)
-            childRef.current?.removeEventListener('mousedown', handleMouseDismiss)
-            childRef.current?.removeEventListener('blur', handleMouseDismiss)
+            element.removeEventListener('mouseenter', handleMouseEnter)
+            element.removeEventListener('mouseleave', handleMouseDismiss)
+            element.removeEventListener('focus', handleMouseEnter)
+            element.removeEventListener('blur', handleMouseDismiss)
         }
-    }, [props.children])
+    }, [])
 
     useLayoutEffect(() => {
         timerRef.current = showTooltip ? setInterval(updateBox, REPOSITION_INTERVAL) : null
