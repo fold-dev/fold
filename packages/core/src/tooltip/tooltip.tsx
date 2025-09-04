@@ -84,6 +84,7 @@ export const Tooltip = (props: TooltipProps) => {
     const updateBox = () => setBox(getBoundingClientRect(childRef.current))
 
     const handleMouseEnter = (e) => {
+        if (e.currentTarget != childRef.current) return
         //focusElement(childRef.current)
         timeoutRef.current = setTimeout(() => {
             updateBox()
@@ -92,6 +93,8 @@ export const Tooltip = (props: TooltipProps) => {
     }
 
     const handleMouseDismiss = (e) => {
+        console.log(e.currentTarget, childRef.current)
+        if (e.currentTarget != childRef.current) return
         blurElement(childRef.current)
         clearInterval(timeoutRef.current)
         dismissTooltip()
