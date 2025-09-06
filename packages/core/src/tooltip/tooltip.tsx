@@ -93,7 +93,6 @@ export const Tooltip = (props: TooltipProps) => {
     }
 
     const handleMouseDismiss = (e) => {
-        console.log(e.currentTarget, childRef.current)
         if (e.currentTarget != childRef.current) return
         blurElement(childRef.current)
         clearTimeout(timeoutRef.current)

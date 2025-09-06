@@ -103,6 +103,7 @@ export const MenuOptionGroup = (props: MenuOptionGroupProps) => {
     const handleClick = (value) => {
         if (checked.includes(value)) {
             setChecked(checked.filter((c) => c != value))
+            if (onChange) onChange(value)
         } else {
             if (type == 'checkbox') {
                 const newValue = [...checked, value]
