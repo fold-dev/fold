@@ -121,12 +121,14 @@ export const Tooltip = (props: TooltipProps) => {
         element.addEventListener('mouseleave', handleMouseDismiss)
         element.addEventListener('focus', handleMouseEnter)
         element.addEventListener('blur', handleMouseDismiss)
+        element.addEventListener('mousedown', handleMouseDismiss)
 
         return () => {
             element.removeEventListener('mouseenter', handleMouseEnter)
             element.removeEventListener('mouseleave', handleMouseDismiss)
             element.removeEventListener('focus', handleMouseEnter)
             element.removeEventListener('blur', handleMouseDismiss)
+            element.removeEventListener('mousedown', handleMouseDismiss)
         }
     }, [])
 
