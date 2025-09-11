@@ -23,7 +23,6 @@
     animation: f-tooltip-fadein var(--f-transition-duration-fast);
     pointer-events: none;
     position: absolute;
-    white-space: nowrap;
     padding: var(--f-space-inset-x-3);
     box-shadow: var(--f-shadow-lg);
     background: var(--f-tooltip-background);
@@ -36,6 +35,12 @@
     user-select: none;
     width: fit-content;
     height: fit-content;
+    max-width: 300px;
+    width: max-content;
+    max-width: 300px;
+    height: fit-content;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .f-tooltip-content .f-text,
