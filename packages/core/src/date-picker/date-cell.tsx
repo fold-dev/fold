@@ -23,7 +23,7 @@ export const DateCell = (props: DateCellProps) => {
             'f-date-cell': true,
             'f-row': true,
             'f-buttonize': true,
-            'is-selected': selected && !unavailable,
+            'is-selected': selected,
             'is-unavailable': unavailable,
             'is-weekend': weekend,
             'is-pending': pending,

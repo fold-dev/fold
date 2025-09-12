@@ -11,7 +11,7 @@
     --f-date-cell-disabled-background: var(--f-color-surface-strong);
     --f-date-cell-pending: var(--f-color-accent);
     --f-date-cell-pending-background: var(--f-color-accent-weak);
-    --f-date-cell-edge-selected: var(--f-color-accent-weak);
+    --f-date-cell-edge-selected: var(--f-color-accent-100);
     --f-date-cell-edge-selected-background: var(--f-color-accent);
     --f-date-cell-selected: var(--f-color-accent);
     --f-date-cell-selected-background: var(--f-color-accent-weak);
@@ -82,7 +82,6 @@
     z-index: -2;
     background: var(--f-date-cell-pending-background);
     border-radius: var(--f-radius-full);
-    opacity: var(--f-date-cell-pending-opacity); /* instead of adding a accent-weaker token */
     animation-name: f-date-cell-selection-fadein;
     animation-duration: 0.2s;
     animation-timing-function: ease-in;
@@ -126,8 +125,8 @@
     animation-timing-function: ease-in;
 }
  
-.f-date-cell:not(.is-unavailable).is-start::after,
-.f-date-cell:not(.is-unavailable).is-end::after {
+.f-date-cell.is-start::after,
+.f-date-cell.is-end::after {
     border-radius: var(--f-radius-full);
     content: ' ';
     display: block;

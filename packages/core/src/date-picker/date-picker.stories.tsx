@@ -119,13 +119,15 @@ export const MonthDisplay = () => {
     const disabled = new Date(year, month, 14)
 
     return (
-        <DatePickerMonth
-            width={300}
-            height={275}
-            date={date}
-            selection={[[selected, selected]]}
-            disabled={[[disabled]]}
-        />
+        <DatePickerProvider>
+            <DatePickerMonth
+                width={300}
+                height={275}
+                date={date}
+                selection={[[selected, selected]]}
+                disabled={[[disabled]]}
+            />
+        </DatePickerProvider>
     )
 }
 
@@ -142,14 +144,16 @@ export const MonthAndWeekdays = () => {
 
     return (
         <View width={300}>
-            <DatePickerWeekdays width="100%" />
-            <DatePickerMonth
-                width="100%"
-                height={275}
-                date={date}
-                selection={[[start, end]]}
-                disabled={[[disabled]]}
-            />
+            <DatePickerProvider>
+                <DatePickerWeekdays width="100%" />
+                <DatePickerMonth
+                    width="100%"
+                    height={275}
+                    date={date}
+                    selection={[[start, end]]}
+                    disabled={[[disabled]]}
+                />
+            </DatePickerProvider>
         </View>
     )
 }
@@ -167,39 +171,41 @@ export const MonthCustomDayRender = () => {
 
     return (
         <View width={300}>
-            <DatePickerWeekdays width="100%" />
-            <DatePickerMonth
-                width="100%"
-                height={275}
-                date={date}
-                selection={[[start, end]]}
-                disabled={[[disabled]]}
-                renderDay={(day) => {
-                    if (day.getDate() == 11 && day.getMonth() == date.getMonth()) {
-                        return (
-                            <IconLib
-                                icon="warning"
-                                color="var(--f-color-danger)"
-                            />
-                        )
-                    } else if (day.getDate() == 7 && day.getMonth() == date.getMonth()) {
-                        return (
-                            <>
-                                <span>{day.getDate()}</span>
-                                <Badge
-                                    variant="danger"
-                                    anchor="top-left"
-                                    width={7}
-                                    height={7}
-                                    style={{ marginLeft: 7, marginTop: 7 }}
+            <DatePickerProvider>
+                <DatePickerWeekdays width="100%" />
+                <DatePickerMonth
+                    width="100%"
+                    height={275}
+                    date={date}
+                    selection={[[start, end]]}
+                    disabled={[[disabled]]}
+                    renderDay={(day) => {
+                        if (day.getDate() == 11 && day.getMonth() == date.getMonth()) {
+                            return (
+                                <IconLib
+                                    icon="warning"
+                                    color="var(--f-color-danger)"
                                 />
-                            </>
-                        )
-                    } else {
-                        return day.getDate()
-                    }
-                }}
-            />
+                            )
+                        } else if (day.getDate() == 7 && day.getMonth() == date.getMonth()) {
+                            return (
+                                <>
+                                    <span>{day.getDate()}</span>
+                                    <Badge
+                                        variant="danger"
+                                        anchor="top-left"
+                                        width={7}
+                                        height={7}
+                                        style={{ marginLeft: 7, marginTop: 7 }}
+                                    />
+                                </>
+                            )
+                        } else {
+                            return day.getDate()
+                        }
+                    }}
+                />
+            </DatePickerProvider>
         </View>
     )
 }
