@@ -97,9 +97,8 @@ export const DatePickerMonth = (props: DatePickerMonthProps) => {
     }
 
     const handleChange = (day) => {
-        const isUnavailable = day.date.getMonth() !== date.getMonth()
         const isDisabled = day.disabled
-        if (!isUnavailable && !isDisabled && onChange) {
+        if (!isDisabled && onChange) {
             onChange(selectWeek ? [...pendingRowSelection] : day.date)
         }
     }

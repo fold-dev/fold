@@ -168,9 +168,9 @@ export const WithColorAndLabels = () => {
                 tooltipValue={(value) => Math.round(value * 100) + ' %'}
                 labelValue={(value) => Math.round(value * 10) + ' %'}
                 style={{
-                    '--f-slider-handle-background-color': 'var(--f-color-electric-400)',
-                    '--f-slider-fill-background': 'var(--f-color-electric-300)',
-                    '--f-slider-handle-background-color-hover': 'var(--f-color-electric-600)',
+                    '--f-slider-handle-background-color': 'var(--f-color-blue-400)',
+                    '--f-slider-fill-background': 'var(--f-color-blue-300)',
+                    '--f-slider-handle-background-color-hover': 'var(--f-color-blue-600)',
                 }}
             />
         </>

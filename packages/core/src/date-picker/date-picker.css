@@ -11,11 +11,11 @@
     --f-date-cell-disabled-background: var(--f-color-surface-strong);
     --f-date-cell-pending: var(--f-color-accent);
     --f-date-cell-pending-background: var(--f-color-accent-weak);
-    --f-date-cell-edge-selected: var(--f-color-accent-weak);
+    --f-date-cell-edge-selected: var(--f-color-accent-100);
     --f-date-cell-edge-selected-background: var(--f-color-accent);
     --f-date-cell-selected: var(--f-color-accent);
     --f-date-cell-selected-background: var(--f-color-accent-weak);
-    --f-date-cell-selected-space: 0px;
+    --f-date-cell-selected-space: 2px;
     --f-date-cell-today: var(--f-color-accent);
     --f-date-cell-pending-opacity: 0.25;
 }
@@ -38,7 +38,7 @@
 .f-date-cell:focus {
     background: var(--f-date-cell-weekend-background) !important;
     outline: none;
-    border-radius: var(--f-radius-full);
+    border-radius: var(--f-radius);
 }
 
 .f-date-cell.is-unavailable {
@@ -78,11 +78,10 @@
     width: calc(100% - var(--f-date-cell-selected-space));
     height: calc(100% - var(--f-date-cell-selected-space));
     top: var(--f-date-cell-selected-space);
-    left: 0;
+    left: var(--f-date-cell-selected-space);
     z-index: -2;
     background: var(--f-date-cell-pending-background);
-    border-radius: var(--f-radius-full);
-    opacity: var(--f-date-cell-pending-opacity); /* instead of adding a accent-weaker token */
+    border-radius: var(--f-radius);
     animation-name: f-date-cell-selection-fadein;
     animation-duration: 0.2s;
     animation-timing-function: ease-in;
@@ -126,9 +125,9 @@
     animation-timing-function: ease-in;
 }
  
-.f-date-cell:not(.is-unavailable).is-start::after,
-.f-date-cell:not(.is-unavailable).is-end::after {
-    border-radius: var(--f-radius-full);
+.f-date-cell.is-start::after,
+.f-date-cell.is-end::after {
+    border-radius: var(--f-radius);
     content: ' ';
     display: block;
     pointer-events: none;
@@ -145,13 +144,13 @@
 }
  
 .f-date-cell.is-start::before {
-    border-top-left-radius: var(--f-radius-full);
-    border-bottom-left-radius: var(--f-radius-full);
+    border-top-left-radius: var(--f-radius);
+    border-bottom-left-radius: var(--f-radius);
 }
 
 .f-date-cell.is-end::before {
-    border-top-right-radius: var(--f-radius-full);
-    border-bottom-right-radius: var(--f-radius-full);
+    border-top-right-radius: var(--f-radius);
+    border-bottom-right-radius: var(--f-radius);
 } 
 
 @keyframes f-date-cell-selected-fadein {

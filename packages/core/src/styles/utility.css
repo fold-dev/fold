@@ -175,6 +175,11 @@
 
 /* cursors */
 
+.f-cursor-col-resize,
+.f-cursor-col-resize * {
+    cursor: col-resize !important;
+}
+
 .f-cursor-row,
 .f-cursor-row * {
     cursor: row-resize !important;
