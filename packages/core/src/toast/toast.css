@@ -3,7 +3,7 @@
     --f-toast-color: var(--f-color-base-100);
     --f-toast-background-color: var(--f-color-base-900);
     --f-toast-max-width: 100%;
-    --f-toast-padding: var(--f-space-4);
+    --f-toast-padding: var(--f-space-3);
 }
 
 .f-toast-container {

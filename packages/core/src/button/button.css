@@ -496,7 +496,6 @@
 .f-button.xl { 
     height: var(--f-size-15); 
     padding: 0 var(--f-space-5);
-    border-radius: calc(var(--f-button-border-radius) * 1.2);
 }
 
 /* ********************************************* */

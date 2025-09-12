@@ -4,7 +4,7 @@
     --f-notification-color: var(--f-color-text-weaker);
     --f-notification-background-color: var(--f-color-surface-strong);
     --f-notification-spacing: var(--f-space-4);
-    --f-notification-padding: var(--f-space-inset-x-4);
+    --f-notification-padding: var(--f-space-4);
 }
 
 .f-notification {

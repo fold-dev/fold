@@ -8,7 +8,6 @@
 }
 
 .f-modal {
-    
     background: var(--f-modal-overlay);
     position: fixed;
     width: 100%;

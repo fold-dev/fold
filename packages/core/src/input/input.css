@@ -8,7 +8,7 @@
     --f-input-color-placeholder: var(--f-color-text-weakest);
     --f-input-color-disabled: var(--f-color-text-weakest);
     --f-input-border-radius: var(--f-radius);
-    --f-input-base-padding: var(--f-space-4);
+    --f-input-base-padding: var(--f-space-3);
     --f-input-padding: 0 var(--f-input-base-padding);
     --f-input-padding-tag: 0.2rem var(--f-space-2);
     --f-input-shadow: var(--f-shadow-sm);
