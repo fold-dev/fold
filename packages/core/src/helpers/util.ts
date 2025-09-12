@@ -48,7 +48,7 @@ export const clamp = (value, min, max) => {
 
 export const pad = (number, max = 10) => (number < max ? '0' + number : number)
 
-export type GlobalCursor = 'col' | 'row' | 'grabbing'
+export type GlobalCursor = 'col' | 'row' | 'grabbing' | 'col-resize'
 
 export const globalCursor = {
     add: (cursor: GlobalCursor) => addDocumentClass('f-cursor-' + cursor),
