@@ -72,12 +72,9 @@
 
 /* hack to remove padding from the bottom on default settings so the icon sites flush */
 
-.f-attachment__text > * + * {
-    margin-top: -7px;
-}
-
+.f-attachment__text > * + *,
 .f-attachment.sm .f-attachment__text > * + * {
-    margin-top: -2.5px;
+    margin-top: -0.25rem;
 }
 
 .f-attachment__text-label {
@@ -90,10 +87,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: var(--f-font-weight-normal);
 }
 
 .f-attachment__text-meta {
     max-width: 100%;
+    font-weight: var(--f-font-weight-normal);
 }
 
 .f-attachment__text-meta span {
@@ -103,6 +102,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     color: var(--f-color-text-weakest);
+    font-weight: var(--f-font-weight-normal);
 }
 
 /* error */
@@ -120,18 +120,18 @@
 /* xs & xl not supported yet */
 
 .f-attachment.sm .f-attachment__icon { 
-    width: var(--f-size-10); 
-    height: var(--f-size-10); 
-}
-
-.f-attachment.md .f-attachment__icon { 
     width: var(--f-size-12); 
     height: var(--f-size-12); 
 }
 
-.f-attachment.lg .f-attachment__icon { 
+.f-attachment.md .f-attachment__icon { 
     width: var(--f-size-14); 
     height: var(--f-size-14); 
+}
+
+.f-attachment.lg .f-attachment__icon { 
+    width: var(--f-size-16); 
+    height: var(--f-size-16); 
 }
 
 /* thumb */ 

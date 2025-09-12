@@ -9,6 +9,6 @@
         "3xl": { "value": "1.5rem" },
         "full": { "value": "9999px" },
         "round": { "value": "50%" },
-        "default": { "value": "{radius.lg}" }
+        "default": { "value": "{radius.md}" }
     }
 }

@@ -244,6 +244,7 @@ export const Attachment = (props: AttachmentProps) => {
                             thickness={3}
                             width="100%"
                             animated
+                            variant="accent"
                         />
                     )}
 
@@ -321,6 +322,7 @@ export const AttachmentThumb = (props: AttachmentThumbProps) => {
                 <Progress
                     value={loadingProgress}
                     thickness={5}
+                    variant="accent"
                 />
             )}
             {poster && !loading && (
