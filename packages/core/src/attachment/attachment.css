@@ -93,6 +93,7 @@
 .f-attachment__text-meta {
     max-width: 100%;
     font-weight: var(--f-font-weight-normal);
+    color: var(--f-color-text-weakest);
 }
 
 .f-attachment__text-meta span {
