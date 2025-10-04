@@ -3,6 +3,7 @@ import { classNames, CoreViewProps, getButton, mergeRefs, useDrag, View } from '
 
 export type DragElementProps = {
     id?: string
+    onlyIndentDataAttr?: boolean
     indent?: number
     noDrop?: boolean
     noDrag?: boolean
@@ -12,15 +13,15 @@ export type DragElementProps = {
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = forwardRef((props: DragElementProps, ref) => {
-    const { id, indent = 0, noIndent, noDrop, noDrag, noFocus, style = {}, dragThreshold = 3, ...rest } = props
+    const { id, indent = 0, noIndent, onlyIndentDataAttr, noDrop, noDrag, noFocus, style = {}, dragThreshold = 3, ...rest } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp, onMouseDownExplicit, getCache } = useDrag()
     const elementRef = useRef(null)
     const styles = useMemo(
         () => ({
             ...style,
-            width: indent ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
-            marginLeft: indent && !noIndent ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
+            width: indent && onlyIndentDataAttr ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
+            marginLeft: indent && !noIndent&& onlyIndentDataAttr ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
         }),
         [style, indent]
     )
