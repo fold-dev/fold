@@ -20,8 +20,8 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
     const styles = useMemo(
         () => ({
             ...style,
-            width: indent && onlyIndentDataAttr ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
-            marginLeft: indent && !noIndent&& onlyIndentDataAttr ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
+            width: indent && !onlyIndentDataAttr ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
+            marginLeft: indent && !noIndent && !onlyIndentDataAttr ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
         }),
         [style, indent]
     )
