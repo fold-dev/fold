@@ -46,6 +46,7 @@
 .f-tooltip-content .f-text,
 .f-tooltip-content .f-heading {
     color: inherit;
+    text-align: center;
 }
 
 .f-tooltip-content .f-text {
