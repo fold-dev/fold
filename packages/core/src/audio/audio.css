@@ -78,6 +78,8 @@
     height: 100%;   
     z-index: 5;
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     background: transparent;
 }
 
@@ -106,4 +108,20 @@
     box-shadow: none;
     border: none;
     background: transparent;
+}
+
+.f-audio-waveform input[type="range"].f-audio-waveform__range::-moz-range-thumb {
+    height: var(--f-audio-waveform-pin-height);
+    width: var(--f-audio-waveform-pin-width);
+    border: none;
+    border-radius: var(--f-radius);
+    background-color: var(--f-audio-waveform-active);
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.f-audio-waveform input[type="range"].f-audio-waveform__range::-moz-range-track {
+    background: transparent;
+    border: none;
+    height: 100%;
 }

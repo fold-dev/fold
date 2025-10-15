@@ -1,6 +1,6 @@
 :root {
     --f-select-width: 300px;
-    --f-select-color: var(--f-color-text);
+    --f-select-color: var(--f-color-text-weak);
     --f-select-color-placeholder: var(--f-color-text-weakest);
     --f-select-color-disabled: var(--f-color-text-weakest);
     --f-select-color-selected: var(--f-color-accent);
