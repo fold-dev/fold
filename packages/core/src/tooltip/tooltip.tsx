@@ -58,6 +58,7 @@ export const Tooltip = (props: TooltipProps) => {
     const {
         arrow = true,
         text,
+        disabled,
         anchor = 'top-center',
         alwaysVisible = false,
         content,
@@ -73,7 +74,7 @@ export const Tooltip = (props: TooltipProps) => {
     const [isVisible, setVisible] = useState(alwaysVisible)
     const [box, setBox] = useState<any>(null)
     const { setTimer, clearTimer } = useTimer()
-    const showTooltip = box && (isVisible || alwaysVisible)
+    const showTooltip = box && (isVisible || alwaysVisible) && (!!text || !!content)
     const className = classNames(
         {
             'f-tooltip': true,
@@ -151,7 +152,7 @@ export const Tooltip = (props: TooltipProps) => {
                 'aria-describedby': id,
             })}
 
-            {showTooltip && (
+            {(showTooltip && !disabled) && (
                 <Portal>
                     <View
                         {...rest}
