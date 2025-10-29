@@ -257,6 +257,7 @@
     transition-duration: var(--f-button-transition-delay);
 }
 
+.f-button.is-subtle:not(:disabled,.is-loading).is-active,
 .f-button.is-subtle:not(:disabled):hover {
     background: var(--f-button-background-color-hover);
 }

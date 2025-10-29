@@ -27,6 +27,7 @@ export const dispatchCustomEvent = (eventName: string, data: any = {}) =>
 
 export const useCustomEvent = (event: string, handler, passive = false) => {
     useEffect(() => {
+        if (!event) return
         documentObject.addEventListener(event, handler, passive)
         return () => documentObject.removeEventListener(event, handler)
     })
