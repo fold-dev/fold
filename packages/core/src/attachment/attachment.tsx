@@ -1,11 +1,13 @@
 import React, { ReactElement, ReactNode } from 'react'
 import { Icon, If, Image, Progress, Spinner, SpinnerOverlay, View } from '../'
-import { bytesToSize, classNames } from '../helpers'
+import { bytesToSize, classNames, windowObject } from '../helpers'
 import { Text } from '../text/text'
 import { CoreViewProps } from '../types'
 import { IconLib } from '../icon'
 
-export const MIME = {
+export const FOLD_ATTACHMENT_MIME_TYPES = 'FOLD_ATTACHMENT_MIME_TYPES'
+
+windowObject[FOLD_ATTACHMENT_MIME_TYPES] = {
     DESCRIPTION: {
         'audio/aac': 'AAC audio',
         'application/x-abiword': 'AbiWorddocument',
@@ -78,6 +80,7 @@ export const MIME = {
         'audio/3gpp': '3GPPaudio/video container',
         'audio/3gpp2': '3GPP2audio/video container',
         'application/x-7z-compressed': '7-ziparchive',
+        'task': 'Task',
     },
     ICON: {
         'audio/aac': 'audio',
@@ -151,6 +154,7 @@ export const MIME = {
         'audio/3gpp': 'audio',
         'audio/3gpp2': 'audio',
         'application/x-7z-compressed': 'paperclip',
+        'task': 'check',
     },
 }
 
@@ -168,7 +172,7 @@ export type AttachmentProps = {
     loading?: boolean
     loadingProgress?: number
     label?: string
-} & CoreViewProps & { href?: string }
+} & CoreViewProps & { href?: string, target?: string }
 
 export const Attachment = (props: AttachmentProps) => {
     const {
@@ -195,7 +199,8 @@ export const Attachment = (props: AttachmentProps) => {
         },
         [props.className, size]
     )
-    const icon: string = mime ? MIME.ICON[mime] : error ? 'warning' : 'paperclip'
+
+    const icon: string = mime ? windowObject[FOLD_ATTACHMENT_MIME_TYPES].ICON[mime] : error ? 'warning' : 'paperclip'
 
     return (
         <View
@@ -265,7 +270,7 @@ export const Attachment = (props: AttachmentProps) => {
                                     as="span"
                                     className="f-attachment__text-meta">
                                     <span>
-                                        {MIME.DESCRIPTION[mime]}
+                                        {windowObject[FOLD_ATTACHMENT_MIME_TYPES].DESCRIPTION[mime]}
                                     </span>
                                 </Text>
                             )}
@@ -310,7 +315,7 @@ export const AttachmentThumb = (props: AttachmentThumbProps) => {
         },
         [props.className]
     )
-    const icon: string = mime ? MIME.ICON[mime] : error ? 'warning' : 'paperclip'
+    const icon: string = mime ? windowObject[FOLD_ATTACHMENT_MIME_TYPES].ICON[mime] : error ? 'warning' : 'paperclip'
 
     return (
         <View
