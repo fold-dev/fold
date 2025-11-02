@@ -78,6 +78,7 @@ export const MIME = {
         'audio/3gpp': '3GPPaudio/video container',
         'audio/3gpp2': '3GPP2audio/video container',
         'application/x-7z-compressed': '7-ziparchive',
+        'task': 'Task',
     },
     ICON: {
         'audio/aac': 'audio',
@@ -151,6 +152,7 @@ export const MIME = {
         'audio/3gpp': 'audio',
         'audio/3gpp2': 'audio',
         'application/x-7z-compressed': 'paperclip',
+        'task': 'check',
     },
 }
 
@@ -168,7 +170,7 @@ export type AttachmentProps = {
     loading?: boolean
     loadingProgress?: number
     label?: string
-} & CoreViewProps & { href?: string }
+} & CoreViewProps & { href?: string, target?: string }
 
 export const Attachment = (props: AttachmentProps) => {
     const {
