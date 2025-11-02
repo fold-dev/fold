@@ -1,11 +1,13 @@
 import React, { ReactElement, ReactNode } from 'react'
 import { Icon, If, Image, Progress, Spinner, SpinnerOverlay, View } from '../'
-import { bytesToSize, classNames } from '../helpers'
+import { bytesToSize, classNames, windowObject } from '../helpers'
 import { Text } from '../text/text'
 import { CoreViewProps } from '../types'
 import { IconLib } from '../icon'
 
-export const MIME = {
+export const FOLD_ATTACHMENT_MIME_TYPES = 'FOLD_ATTACHMENT_MIME_TYPES'
+
+windowObject[FOLD_ATTACHMENT_MIME_TYPES] = {
     DESCRIPTION: {
         'audio/aac': 'AAC audio',
         'application/x-abiword': 'AbiWorddocument',
@@ -197,7 +199,8 @@ export const Attachment = (props: AttachmentProps) => {
         },
         [props.className, size]
     )
-    const icon: string = mime ? MIME.ICON[mime] : error ? 'warning' : 'paperclip'
+
+    const icon: string = mime ? windowObject[FOLD_ATTACHMENT_MIME_TYPES].ICON[mime] : error ? 'warning' : 'paperclip'
 
     return (
         <View
@@ -267,7 +270,7 @@ export const Attachment = (props: AttachmentProps) => {
                                     as="span"
                                     className="f-attachment__text-meta">
                                     <span>
-                                        {MIME.DESCRIPTION[mime]}
+                                        {windowObject[FOLD_ATTACHMENT_MIME_TYPES].DESCRIPTION[mime]}
                                     </span>
                                 </Text>
                             )}
@@ -312,7 +315,7 @@ export const AttachmentThumb = (props: AttachmentThumbProps) => {
         },
         [props.className]
     )
-    const icon: string = mime ? MIME.ICON[mime] : error ? 'warning' : 'paperclip'
+    const icon: string = mime ? windowObject[FOLD_ATTACHMENT_MIME_TYPES].ICON[mime] : error ? 'warning' : 'paperclip'
 
     return (
         <View
