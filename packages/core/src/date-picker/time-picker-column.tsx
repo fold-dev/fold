@@ -4,13 +4,14 @@ import { TimePickerTime } from './time-picker-time'
 
 export type TimePickerColumnProps = {
     size?: Size
+    pad?: boolean
     items: number[]
     selected: number
     onSelect: any
 } & CoreViewProps
 
 export const TimePickerColumn = (props: TimePickerColumnProps) => {
-    const { size = 'md', items, selected, onSelect, style = {}, ...rest } = props
+    const { size = 'md', items, selected, onSelect, style = {}, pad, ...rest } = props
     const ref = useRef(null)
     const dimensions = useResize(ref.current)
     const [buffer, setBuffer] = useState(0)
@@ -52,10 +53,12 @@ export const TimePickerColumn = (props: TimePickerColumnProps) => {
             className={className}
             onKeyDown={handleKeyDown}>
             {items.map((item, index) => {
+                const i: number | any = pad ? +item < 10 ? '0' + item : item : item 
+                
                 return (
                     <TimePickerTime
                         key={index}
-                        value={item}
+                        value={i}
                         size={size}
                         selected={selected == item}
                         onSelect={() => onSelect(item)}
