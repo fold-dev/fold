@@ -156,7 +156,9 @@ module.exports = {
             type: `value`,
             transitive: true,
             matcher: (token) => token.attributes.category == 'color',
-            transformer: (token) => token.value.includes('oklch') ? oklchToHex(token.value) : chroma(token.value).hex(),
+            transformer: (token) => token.value.includes('oklch') 
+                ? oklchToHex(token.value) 
+                : chroma(token.value).hex(),
         },
         'color/css': Object.assign({}, StyleDictionary.transform[`color/css`], {
             transitive: true,
