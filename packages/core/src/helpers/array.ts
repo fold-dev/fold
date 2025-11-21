@@ -16,10 +16,10 @@ export const getTargetIndex = (origin, target) => {
             ? target.index - 1
             : target.index
         : target.moveDirection == 'down'
-            ? target.index > origin.index
-                ? target.index
-                : target.index - 1
-            : target.index
+        ? target.index > origin.index
+            ? target.index
+            : target.index - 1
+        : target.index
 }
 
 export const moveElementInArray = (array, origin, target) => {

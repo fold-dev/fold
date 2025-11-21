@@ -53,8 +53,8 @@ export const TimePickerColumn = (props: TimePickerColumnProps) => {
             className={className}
             onKeyDown={handleKeyDown}>
             {items.map((item, index) => {
-                const i: number | any = pad ? +item < 10 ? '0' + item : item : item 
-                
+                const i: number | any = pad ? (+item < 10 ? '0' + item : item) : item
+
                 return (
                     <TimePickerTime
                         key={index}

@@ -75,37 +75,39 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
         const placeholder: any = {
             visible: (isAnimated || isLined || isLinedFocus) && isTargetArea && !isTargetFocus,
             className: isAnimated ? 'f-drag-area__placeholder' : 'f-drag-area__placeholder-lined',
-            marginLeft: isVertical  
-                ? indent 
-                    ? (target.indent ? `calc(var(--f-drag-indent) * ${target.indent})` : 0) 
+            marginLeft: isVertical
+                ? indent
+                    ? target.indent
+                        ? `calc(var(--f-drag-indent) * ${target.indent})`
+                        : 0
                     : 0
                 : 0,
-            width: isVertical 
-                ? target.indent 
-                    ? `calc(100% - var(--f-drag-indent) * ${target.indent})` 
+            width: isVertical
+                ? target.indent
+                    ? `calc(100% - var(--f-drag-indent) * ${target.indent})`
                     : '100%'
-                : (isLined || isLinedFocus ? '5px !important' : (target.width || origin.width)),
-            height: isVertical 
-                ? (isLined || isLinedFocus ? undefined : origin.height) 
-                : '100%',
+                : isLined || isLinedFocus
+                ? '5px !important'
+                : target.width || origin.width,
+            height: isVertical ? (isLined || isLinedFocus ? undefined : origin.height) : '100%',
             position: noChildren ? 'relative' : 'absolute',
             transform: noChildren
                 ? null
                 : isVertical
-                    ? `translateY(${
-                        target.moveDirection == 'down'
-                            ? target.top + target.height
-                            : target.moveDirection == 'up'
-                                ? target.top
-                                : 0
-                    }px)`
-                    : `translateX(${
-                        target.moveDirection == 'right'
-                            ? target.left + target.width
-                            : target.moveDirection == 'left'
-                                ? target.left
-                                : 0
-                    }px)`,
+                ? `translateY(${
+                      target.moveDirection == 'down'
+                          ? target.top + target.height
+                          : target.moveDirection == 'up'
+                          ? target.top
+                          : 0
+                  }px)`
+                : `translateX(${
+                      target.moveDirection == 'right'
+                          ? target.left + target.width
+                          : target.moveDirection == 'left'
+                          ? target.left
+                          : 0
+                  }px)`,
         }
 
         return {
@@ -264,7 +266,7 @@ export const DragElementArea = forwardRef((props: DragElementAreaProps, ref) => 
             data-targetvariant={finalTargetVariant}>
             {props.children}
 
-            {(!disabled && placeholder.visible) && (
+            {!disabled && placeholder.visible && (
                 <div
                     className={placeholder.className}
                     data-placeholder={true}

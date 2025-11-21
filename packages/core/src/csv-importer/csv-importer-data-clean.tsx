@@ -18,7 +18,7 @@ import {
     columnSortFunc,
     dispatchDataGridEvent,
     useId,
-    useVisibility
+    useVisibility,
 } from '../'
 
 export type CsvImporterDataCleanProps = {}

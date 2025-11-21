@@ -15,7 +15,9 @@ export const docs = {
 }
 
 export const Usage = () => (
-    <Tooltip alwaysVisible text="This is the default tooltip with text that stretches past the 500px max-width size.">
+    <Tooltip
+        alwaysVisible
+        text="This is the default tooltip with text that stretches past the 500px max-width size.">
         <Pill>Hover here!</Pill>
     </Tooltip>
 )

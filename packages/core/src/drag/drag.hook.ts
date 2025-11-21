@@ -86,7 +86,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     const getNextOutdent = ({ indent, previous, previousIndent, next, nextIndent }) => {
         if (nextIndent - previousIndent >= 2) return indent
         // this needs to be here for now
-        if (nextIndent === previousIndent === indent) return indent
+        if ((nextIndent === previousIndent) === indent) return indent
         // this is the correction
         if (nextIndent === previousIndent && previousIndent === indent) return indent
         const maximumOutdent = next ? nextIndent : 0
@@ -116,15 +116,10 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
     }
 
     // this is the new experimental drag start behaviour
-    // it's only used by DragElement where we pass values in explicitly 
+    // it's only used by DragElement where we pass values in explicitly
     // instead of using the event
     // TODO: maybe name it differently
-    const onMouseDownExplicit = ({ 
-        isLeftButton, 
-        clientX,
-        clientY,
-        currentTarget,
-    }) => {
+    const onMouseDownExplicit = ({ isLeftButton, clientX, clientY, currentTarget }) => {
         if (window[FOLD_DRAG_LOCK]) return
 
         const cache = getCache()
@@ -158,7 +153,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                     const parentWidthOffset = parentWidth - width
                     if (!!parentWidthOffset && !customGhost) mouseOffsetLeft -= parentWidthOffset
                 }
-                
+
                 const x = mouseLeft - mouseOffsetLeft
                 const y = mouseTop - mouseOffsetTop
                 const newNode = el.cloneNode(true)
@@ -195,8 +190,8 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                     const previousIndent = previous ? +previous.dataset.indent : 0
                     let nextIndent = next ? +next.dataset.indent || 0 : 0
 
-                    // account for children 
-                    if ((nextIndent > indent) && next) {
+                    // account for children
+                    if (nextIndent > indent && next) {
                         let node = next
                         while (node) {
                             const nodeIndent = parseInt(node.dataset.indent, 10)
@@ -267,7 +262,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
 
     const onMouseDown = (e: any, startDelay = 150) => {
         if (window[FOLD_DRAG_LOCK]) return
-        
+
         const cache = getCache()
         const { isLeftButton } = getButton(e)
         const mouseLeft = e.clientX
@@ -363,7 +358,7 @@ export const useDrag = (args: any = { indentDelay: 100 }) => {
                                     next,
                                     nextIndent,
                                 }
-                            } 
+                            }
                         }
 
                         // save the cache for the reset
