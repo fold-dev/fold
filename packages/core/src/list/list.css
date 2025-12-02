@@ -7,7 +7,6 @@
     --f-li-line-height: normal;
 }
 
-ul,
 .f-list {
     color: var( --f-list-color);
     font-family: var(--f-font-body);
@@ -17,13 +16,11 @@ ul,
     list-style-type: none;
 }
 
-ol,
 .f-list.is-ol {
     padding: var(--f-list-padding);
     list-style-type: decimal;
 }
 
-ul,
 .f-list.is-ul {
     padding: var(--f-list-padding);
     list-style-type: disc;
@@ -33,8 +30,6 @@ ul,
     padding: 0 !important;
 }
 
-li,
-li::before,
 .f-li,
 .f-li::before {
     text-align: left;
@@ -45,27 +40,20 @@ li::before,
     margin: 0;
 }
 
-ol > li + li,
-ul > li + li,
-.f-list > li + li,
 .f-list > .f-li + .f-li {
     margin-top: var(--f-li-spacing);
 }
 
-li .f-text:not(a),
-li .f-heading,
 .f-li .f-text:not(a),
 .f-li .f-heading {
     color: currentColor;
 }
 
-li::marker,
 .f-li::marker {
     color: currentColor;
     content: var(--f-list-bullet);
 }
 
-li > .f-icon:first-child,
 .f-li > .f-icon:first-child {
     margin-right: var(--f-li-icon-margin);
 }
