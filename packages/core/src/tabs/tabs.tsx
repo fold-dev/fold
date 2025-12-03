@@ -235,7 +235,7 @@ export const TabList = (props: TabListProps) => {
                         return cloneElement(child, {
                             ...child.props,
                             'animated': animated,
-                            'selected': selected == index,
+                            'selected': child.props.selected == undefined ? selected == index : child.props.selected,
                             'onSelect': () => onSelect(index),
                             'id': props.id ? `${props.id}-tab-${index}` : null,
                             'aria-controls': props.id ? `${props.id}-panel-${index}` : null,

@@ -1,6 +1,6 @@
 :root {
     --f-attachment-background: var(--f-color-surface);
-    --f-attachment-color: var(--f-color-accent);
+    --f-attachment-color: var(--f-color-text);
     --f-attachment-border-radius: var(--f-radius);
     --f-attachment-border-color: var(--f-color-border);
     --f-attachment-border-color-hover: var(--f-color-border-strong);
@@ -93,7 +93,7 @@
 .f-attachment__text-meta {
     max-width: 100%;
     font-weight: var(--f-font-weight-normal);
-    color: var(--f-color-text-weakest);
+    color: var(--f-color-text-weaker);
 }
 
 .f-attachment__text-meta span {
@@ -102,7 +102,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: var(--f-color-text-weakest);
+    color: var(--f-color-text-weak);
     font-weight: var(--f-font-weight-normal);
 }
 

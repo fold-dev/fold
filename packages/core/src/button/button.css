@@ -57,6 +57,7 @@
     background-color: var(--f-button-active-background);
 }
 
+.f-button.is-subtle:not(:disabled,.is-loading):active,
 .f-button.is-accent:not(:disabled,.is-loading):active,
 .f-button.is-success:not(:disabled,.is-loading):active,
 .f-button.is-neutral:not(:disabled,.is-loading):active,

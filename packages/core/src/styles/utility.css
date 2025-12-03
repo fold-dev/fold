@@ -10,7 +10,8 @@
 
 .f-buttonize {
     cursor: pointer;
-    transition: opacity .1s;
+    opacity: 1;
+    transition: opacity 0.25s;
 }
 
 .f-buttonize:hover {
@@ -34,7 +35,6 @@
 .f-buttonize-outline:active {
     outline: var(--f-buttonize-outline-size-active) solid var(--f-buttonize-outline-color);
     /* filter: brightness(90%) contrast(110%); */
-
 }
 
 /* text */

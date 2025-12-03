@@ -4,7 +4,7 @@
     --f-menu-background-color: var(--f-color-surface);
     --f-menu-border-color: var(--f-color-border);
     --f-menu-border-radius: var(--f-radius);
-    --f-menubar-item-padding: var(--f-space-2);
+    --f-menubar-item-padding:  var(--f-space-2);
     --f-menu-divider-spacing: var(--f-space-2);
     --f-menu-divider-color: var(--f-color-border);
     --f-menu-item-font-weight: var(--f-font-weight-normal);
@@ -64,12 +64,12 @@
 :root {
     --f-menu-item-background-color-hover: var(--f-color-surface-strong);
     --f-menu-item-background-color-active: var(--f-color-surface-strong);
-    --f-menu-item-color: var(--f-color-text);
+    --f-menu-item-color: var(--f-color-text-weak);
     --f-menu-item-color-hover: var(--f-color-text);
     --f-menu-item-color-active: var(--f-color-accent);
     --f-menu-item-color-system-active: var(--f-color-surface-stronger);
     --f-menu-item-color-disabled: var(--f-color-text-weakest);
-    --f-menu-item-padding: 0.4rem 0.75rem;
+    --f-menu-item-padding: 0.25rem 0.75rem;
     --f-menu-item-margin: 0 var(--f-space-1);
     --f-menu-item-height: fit-content;
 }
@@ -292,6 +292,7 @@
 
 .f-menu.is-menubar > .f-menu-item > .f-menu:not(.is-menubar) > .f-menu-item > .f-menu-item__container {
     padding: var(--f-menu-item-padding);
+    padding: 0;
 }
 
 .f-menu.is-menubar > .f-menu-item .f-menu .f-menu-item__container {
