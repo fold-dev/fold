@@ -42,6 +42,10 @@ blockquote,
     /* vertical-align: middle; */
 }
 
+.f-text {
+    color: var(--f-text-color);
+}
+
 label, 
 .f-text.is-label {
     color: var(--f-label-color);
