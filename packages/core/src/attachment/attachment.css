@@ -70,13 +70,6 @@
     align-items: flex-start;
 }
 
-/* hack to remove padding from the bottom on default settings so the icon sites flush */
-
-.f-attachment__text > * + *,
-.f-attachment.sm .f-attachment__text > * + * {
-    margin-top: -0.25rem;
-}
-
 .f-attachment__text-label {
     max-width: 100%;
 }
