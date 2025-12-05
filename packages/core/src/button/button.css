@@ -483,27 +483,27 @@
 /* sizes */
 
 .f-button.xs {  
-    height: var(--f-size-8);
+    height: var(--f-size-7);
     padding: 0 var(--f-space-2);
 }
 
 .f-button.sm { 
-    height: var(--f-size-9);
+    height: var(--f-size-8);
     padding: 0 var(--f-space-3);
 }
 
 .f-button.md { 
-    height: var(--f-size-10); 
+    height: var(--f-size-9); 
     padding: 0 var(--f-space-3);
 }
 
 .f-button.lg { 
-    height: var(--f-size-13); 
+    height: var(--f-size-11); 
     padding: 0 var(--f-space-4);
 }
 
 .f-button.xl { 
-    height: var(--f-size-15); 
+    height: var(--f-size-13); 
     padding: 0 var(--f-space-5);
 }
 
