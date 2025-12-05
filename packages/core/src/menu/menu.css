@@ -5,8 +5,6 @@
     --f-menu-border-color: var(--f-color-border);
     --f-menu-border-radius: var(--f-radius);
     --f-menubar-item-padding:  var(--f-space-2);
-    --f-menu-divider-spacing: var(--f-space-2);
-    --f-menu-divider-color: var(--f-color-border);
     --f-menu-item-font-weight: var(--f-font-weight-normal);
     --f-menu-offset: 10px;
     --f-menu-item-ix-spacing: 0.75rem;
@@ -70,7 +68,7 @@
     --f-menu-item-color-system-active: var(--f-color-surface-stronger);
     --f-menu-item-color-disabled: var(--f-color-text-weakest);
     --f-menu-item-padding: 0.3rem 0.75rem;
-    --f-menu-item-margin: 0 var(--f-space-1);
+    --f-menu-item-margin: 0 0.2rem;
     --f-menu-item-height: fit-content;
 }
 
@@ -175,6 +173,11 @@
 
 /* divider */ 
 
+:root {
+    --f-menu-divider-spacing: var(--f-space-2);
+    --f-menu-divider-color: var(--f-color-border);
+}
+
 .f-menu-divider {
     height: 1px;
     width: 100%;
@@ -191,19 +194,27 @@
     display: none;
 }
 
+
+
 /* ************************************************************** */
 /* ************************************************************** */
 /* ************************************************************** */
 
 /* section */
 
+:root {
+    --f-menu-section-padding: 0.5rem 0.75rem;
+}
+
 .f-menu-section {
-    padding: var(--f-menu-item-padding);
+    padding: var(--f-menu-section-padding);
     flex-shrink: 0;
     color: var(--f-menu-item-color);
     width: 100%;
     display: block;
 }
+
+
 
 /* ************************************************************** */
 /* ************************************************************** */

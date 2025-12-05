@@ -484,12 +484,20 @@
 
 .f-button.xs {  
     height: var(--f-size-7);
-    padding: 0 var(--f-space-2);
+    padding: 0 var(--f-space-1);
+}
+
+.f-button.xs .f-text {
+    font-size: 0.75rem;
 }
 
 .f-button.sm { 
     height: var(--f-size-8);
-    padding: 0 var(--f-space-3);
+    padding: 0 var(--f-space-2);
+}
+
+.f-button.sm .f-text {
+    font-size: 0.85rem;
 }
 
 .f-button.md { 
@@ -497,14 +505,26 @@
     padding: 0 var(--f-space-3);
 }
 
+.f-button.md .f-text {
+    font-size: 0.95rem;
+}
+
 .f-button.lg { 
     height: var(--f-size-11); 
     padding: 0 var(--f-space-4);
 }
 
+.f-button.lg .f-text {
+    font-size: 1.1rem;
+}
+
 .f-button.xl { 
     height: var(--f-size-13); 
     padding: 0 var(--f-space-5);
+}
+
+.f-button.xl .f-text {
+    font-size: 1.3rem;
 }
 
 /* ********************************************* */
