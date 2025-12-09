@@ -1,9 +1,9 @@
 {
     "icon-size": {
-        "xs": { "value": "0.8rem" },
+        "xs": { "value": "0.75rem" },
         "sm": { "value": "1rem" },
-        "md": { "value": "1.3rem" },
-        "lg": { "value": "1.6rem" },
-        "xl": { "value": "2.1rem" }
+        "md": { "value": "1.25rem" },
+        "lg": { "value": "1.5rem" },
+        "xl": { "value": "2rem" }
     }
 }
