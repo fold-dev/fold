@@ -136,50 +136,50 @@ input.f-input:focus {
 
 input.f-input:not([type="color"]).xs {
     font-size: var(--f-font-size-xs);
-    height: var(--f-size-8);
+    height: var(--f-size-7);
 }
 
 input.f-input:not([type="color"]).sm {
     font-size: var(--f-font-size-sm);
-    height: var(--f-size-9);
+    height: var(--f-size-8);
 }
 
 input.f-input:not([type="color"]).md {
     font-size: var(--f-font-size-md);
-    height: var(--f-size-10); 
+    height: var(--f-size-9); 
 }
 
 input.f-input:not([type="color"]).lg {
     font-size: var(--f-font-size-lg);
-    height: var(--f-size-13); 
+    height: var(--f-size-11); 
 }
 
 input.f-input:not([type="color"]).xl {
     font-size: var(--f-font-size-xl);
-    height: var(--f-size-15); 
+    height: var(--f-size-13); 
 }
 
 /* special input control settings */
 /* 🔴 TODO: simplify! */
 
 .f-input-control input.f-input:not([type="color"]).xs {
-    height: calc(var(--f-size-8) - var(--f-input-border-width));
+    height: calc(var(--f-size-7) - var(--f-input-border-width));
 }
 
 .f-input-control input.f-input:not([type="color"]).sm {
-    height: calc(var(--f-size-9) - var(--f-input-border-width));
+    height: calc(var(--f-size-8) - var(--f-input-border-width));
 }
 
 .f-input-control input.f-input:not([type="color"]).md {
-    height: calc(var(--f-size-10) - var(--f-input-border-width));
+    height: calc(var(--f-size-9) - var(--f-input-border-width));
 }
 
 .f-input-control input.f-input:not([type="color"]).lg {
-    height: calc(var(--f-size-13) - var(--f-input-border-width));
+    height: calc(var(--f-size-11) - var(--f-input-border-width));
 }
 
 .f-input-control input.f-input:not([type="color"]).xl {
-    height: calc(var(--f-size-15) - var(--f-input-border-width));
+    height: calc(var(--f-size-13) - var(--f-input-border-width));
 }
 
 /* indicators */
@@ -356,27 +356,27 @@ input.f-input[type=color].xl {
 
 .f-tag-input.xs {
     font-size: var(--f-font-size-xs);
-    min-height: var(--f-size-8);
+    min-height: var(--f-size-7);
 }
 
 .f-tag-input.sm {
     font-size: var(--f-font-size-sm);
-    min-height: var(--f-size-9);
+    min-height: var(--f-size-8);
 }
 
 .f-tag-input.md {
     font-size: var(--f-font-size-md);
-    min-height: var(--f-size-10); 
+    min-height: var(--f-size-9); 
 }
 
 .f-tag-input.lg {
     font-size: var(--f-font-size-lg);
-    min-height: var(--f-size-13); 
+    min-height: var(--f-size-11); 
 }
 
 .f-tag-input.xl {
     font-size: var(--f-font-size-xl);
-    min-height: var(--f-size-15); 
+    min-height: var(--f-size-13); 
 }
 
 .f-tag-input input[type=search]:not(.show-indicator)::-ms-clear { display: none; width : 0; height: 0; }

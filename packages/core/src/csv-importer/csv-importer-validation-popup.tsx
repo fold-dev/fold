@@ -1,5 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { CsvImporterContext, CsvImporterSchemaValidationMessage, IconLib, If, Portal, Text, documentObject, getBoundingClientRect } from '../'
+import {
+    CsvImporterContext,
+    CsvImporterSchemaValidationMessage,
+    IconLib,
+    If,
+    Portal,
+    Text,
+    documentObject,
+    getBoundingClientRect,
+} from '../'
 
 export type CsvImporterValidationPopupProps = {
     validationMessage: CsvImporterSchemaValidationMessage

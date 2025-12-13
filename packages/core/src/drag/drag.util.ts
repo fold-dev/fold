@@ -23,9 +23,10 @@ export const getPreviousNextElements = (targetIndex, targetElement, moveDirectio
     if (!!previous) {
         // if it's the same object and the mouse is travelling up, then skip over it
         if (
-            moveDirection == 'up' 
-            && windowObject[FOLD_DRAG_STATE].origin.index == +previous.dataset.index
-            && windowObject[FOLD_DRAG_STATE].origin.areaId == previous.dataset.areaid) {
+            moveDirection == 'up' &&
+            windowObject[FOLD_DRAG_STATE].origin.index == +previous.dataset.index &&
+            windowObject[FOLD_DRAG_STATE].origin.areaId == previous.dataset.areaid
+        ) {
             previous = parent.children[targetIndex - 2]
         }
     } else {

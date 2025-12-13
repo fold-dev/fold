@@ -22,7 +22,7 @@ import {
     useScrollingDatePicker,
     useVisibility,
     View,
-    YearPicker
+    YearPicker,
 } from '@fold-dev/core'
 import React, { useMemo, useRef, useState } from 'react'
 

@@ -132,6 +132,7 @@ export const TimePicker = (props: TimePickerProps) => {
 
             {showMinutes && (
                 <TimePickerColumn
+                    pad
                     size={size}
                     items={minutes}
                     selected={minute}
@@ -141,6 +142,7 @@ export const TimePicker = (props: TimePickerProps) => {
 
             {showSeconds && (
                 <TimePickerColumn
+                    pad
                     size={size}
                     items={seconds}
                     selected={second}

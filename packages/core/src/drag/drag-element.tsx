@@ -13,7 +13,18 @@ export type DragElementProps = {
 } & Omit<CoreViewProps, 'indent'>
 
 export const DragElement = forwardRef((props: DragElementProps, ref) => {
-    const { id, indent = 0, noIndent, onlyIndentDataAttr, noDrop, noDrag, noFocus, style = {}, dragThreshold = 3, ...rest } = props
+    const {
+        id,
+        indent = 0,
+        noIndent,
+        onlyIndentDataAttr,
+        noDrop,
+        noDrag,
+        noFocus,
+        style = {},
+        dragThreshold = 3,
+        ...rest
+    } = props
     const fallbackDisplay = useMemo(() => style.display, [style])
     const { onMouseDown, onMouseUp, onMouseDownExplicit, getCache } = useDrag()
     const elementRef = useRef(null)
@@ -21,7 +32,8 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
         () => ({
             ...style,
             width: indent && !onlyIndentDataAttr ? `calc(100% - var(--f-drag-indent) * ${indent})` : '100%',
-            marginLeft: indent && !noIndent && !onlyIndentDataAttr ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
+            marginLeft:
+                indent && !noIndent && !onlyIndentDataAttr ? `calc(var(--f-drag-indent) * ${indent})` : undefined,
         }),
         [style, indent]
     )
@@ -64,7 +76,7 @@ export const DragElement = forwardRef((props: DragElementProps, ref) => {
                         clientY,
                         currentTarget,
                     })
-                    
+
                     isDragging.current = true
                 }
             }

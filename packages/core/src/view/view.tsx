@@ -24,17 +24,17 @@ export type ScrollViewProps = {
 } & CoreViewProps
 
 export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
-    const { 
+    const {
         freeze = false,
-        smooth = true, 
+        smooth = true,
         watchMutations,
-        stickToTop, 
-        stickToBottom, 
-        onScrollToBottom, 
-        onScrollToTop, 
-        style = {}, 
+        stickToTop,
+        stickToBottom,
+        onScrollToBottom,
+        onScrollToTop,
+        style = {},
         instanceId,
-        ...rest 
+        ...rest
     } = props
     const scrollRef = useRef(null)
     const userIsScrolling = useRef(null)
@@ -43,7 +43,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
     const scrollToTop = () => {
         if (freeze) return
-        if (userIsScrolling.current) return 
+        if (userIsScrolling.current) return
         if (!scrollRef.current) return
 
         if (smooth) {
@@ -55,13 +55,13 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
     const scrollToBottom = () => {
         if (freeze) return
-        if (userIsScrolling.current) return 
+        if (userIsScrolling.current) return
         if (!scrollRef.current) return
 
         if (smooth) {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight
         } else {
-            scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })    
+            scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
         }
     }
 
@@ -78,7 +78,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
     const handleWheelEvent = (e) => {
         if (freeze) return
-        
+
         const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - 1
         const isBottom = scrollRef.current.offsetHeight >= offsetHeight
         const isTop = scrollRef.current.scrollTop == 0
@@ -101,7 +101,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
     useWindowEvent('wheel', handleWheelEvent)
 
-    useCustomEvent('scrollview:scroll-down', handleCustomEvent)   
+    useCustomEvent('scrollview:scroll-down', handleCustomEvent)
 
     useEffect(() => {
         let interval = setInterval(() => {
@@ -113,7 +113,7 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
     })
 
     useEffect(() => {
-        if (!watchMutations) return 
+        if (!watchMutations) return
         const el = scrollRef.current
         if (!el) return
 

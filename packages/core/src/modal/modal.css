@@ -97,9 +97,9 @@
 :root {
     --f-modal-padding: var(--f-space-3);
     --f-modal-body-padding: var(--f-space-3);
-    --f-modal-header-padding: var(--f-space-3);
+    --f-modal-header-padding: 0.75rem;
     --f-modal-header-background: var(--f-color-surface);
-    --f-modal-footer-padding: var(--f-space-3);
+    --f-modal-footer-padding: 0.75rem;
     --f-modal-footer-background: var(--f-color-surface);
 }
 

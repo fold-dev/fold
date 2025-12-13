@@ -1,6 +1,9 @@
 import {
     Button,
-    DataGrid, DataGridHeader, DataGridProvider, DataGridTypes,
+    DataGrid,
+    DataGridHeader,
+    DataGridProvider,
+    DataGridTypes,
     FIBin,
     Icon,
     Menu,
@@ -9,8 +12,9 @@ import {
     Portal,
     Text,
     View,
-    dataGridState, dispatchDataGridEvent,
-    useDialog
+    dataGridState,
+    dispatchDataGridEvent,
+    useDialog,
 } from '@fold-dev/core'
 import React, { useState } from 'react'
 import * as data from '../../../../dummy-data'

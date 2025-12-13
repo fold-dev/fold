@@ -193,8 +193,16 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
             height: popoverRect.height,
         })
 
-        const horizontal = offscreen.x ? 'right' : (!!preferredHorizontalAnchor && (preferredHorizontalAnchor != 'left')) ? preferredHorizontalAnchor : 'left'
-        const vertical = offscreen.y ? 'top' : (!!preferredVerticalAnchor && (preferredVerticalAnchor != 'bottom')) ? preferredHorizontalAnchor : 'bottom'
+        const horizontal = offscreen.x
+            ? 'right'
+            : !!preferredHorizontalAnchor && preferredHorizontalAnchor != 'left'
+            ? preferredHorizontalAnchor
+            : 'left'
+        const vertical = offscreen.y
+            ? 'top'
+            : !!preferredVerticalAnchor && preferredVerticalAnchor != 'bottom'
+            ? preferredHorizontalAnchor
+            : 'bottom'
         const autoPosition = `${vertical}-${horizontal}`
         const finalAnchor = anchor ? anchor : autoPosition
 

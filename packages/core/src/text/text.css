@@ -33,13 +33,17 @@ samp,
 blockquote,
 .f-text {
     font-family: var(--f-font-body);
-    color: var(--f-text-color);
     border: none;
     position: relative;
     z-index: 1;
+    /* color: var(--f-text-color); */
     /* line-height: normal;  */
     /* text-decoration-thickness: var(--f-text-decoration-size);  */
     /* vertical-align: middle; */
+}
+
+.f-text {
+    color: var(--f-text-color);
 }
 
 label, 

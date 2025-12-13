@@ -172,7 +172,7 @@ export type AttachmentProps = {
     loading?: boolean
     loadingProgress?: number
     label?: string
-} & CoreViewProps & { href?: string, target?: string }
+} & CoreViewProps & { href?: string; target?: string }
 
 export const Attachment = (props: AttachmentProps) => {
     const {
@@ -260,18 +260,14 @@ export const Attachment = (props: AttachmentProps) => {
                                 size={size}
                                 color="currentColor"
                                 className="f-attachment__text-label">
-                                <span>
-                                    {label}
-                                </span>
+                                <span>{label}</span>
                             </Text>
                             {mime && (
                                 <Text
                                     size="sm"
                                     as="span"
                                     className="f-attachment__text-meta">
-                                    <span>
-                                        {windowObject[FOLD_ATTACHMENT_MIME_TYPES].DESCRIPTION[mime]}
-                                    </span>
+                                    <span>{windowObject[FOLD_ATTACHMENT_MIME_TYPES].DESCRIPTION[mime]}</span>
                                 </Text>
                             )}
                             {filesize && (

@@ -60,7 +60,7 @@ export const Editable = forwardRef((props: EditableProps, ref) => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
         keypressCache.current = true
-        
+
         const { metaKey, key } = e
         const { isEnter, isEscape } = getKey(e)
 

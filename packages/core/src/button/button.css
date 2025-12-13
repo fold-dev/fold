@@ -57,6 +57,7 @@
     background-color: var(--f-button-active-background);
 }
 
+.f-button.is-subtle:not(:disabled,.is-loading):active,
 .f-button.is-accent:not(:disabled,.is-loading):active,
 .f-button.is-success:not(:disabled,.is-loading):active,
 .f-button.is-neutral:not(:disabled,.is-loading):active,
@@ -280,6 +281,7 @@
 
 .f-button.is-accent.is-subtle.is-active,
 .f-button.is-accent.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-accent-weak); 
     background: var(--f-color-accent-weak); 
     border-color: var(--f-color-accent-weak); 
 }
@@ -291,6 +293,7 @@
 
 .f-button.is-success.is-subtle.is-active,
 .f-button.is-success.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-success-weak); 
     background: var(--f-color-success-weak); 
     border-color: var(--f-color-success-weak); 
 }
@@ -302,6 +305,7 @@
 
 .f-button.is-neutral.is-subtle.is-active,
 .f-button.is-neutral.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-neutral-weak); 
     background: var(--f-color-neutral-weak); 
     border-color: var(--f-color-neutral-weak); 
 }
@@ -313,6 +317,7 @@
 
 .f-button.is-caution.is-subtle.is-active,
 .f-button.is-caution.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-caution-weak); 
     background: var(--f-color-caution-weak); 
     border-color: var(--f-color-caution-weak); 
 }
@@ -324,6 +329,7 @@
 
 .f-button.is-warning.is-subtle.is-active,
 .f-button.is-warning.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-warning-weak); 
     background: var(--f-color-warning-weak); 
     border-color: var(--f-color-warning-weak); 
 }
@@ -335,6 +341,7 @@
 
 .f-button.is-danger.is-subtle.is-active,
 .f-button.is-danger.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-danger-weak); 
     background: var(--f-color-danger-weak); 
     border-color: var(--f-color-danger-weak); 
 }
@@ -346,6 +353,7 @@
 
 .f-button.is-highlight.is-subtle.is-active,
 .f-button.is-highlight.is-subtle:not(:disabled):hover { 
+    --f-button-background-color-hover: var(--f-color-highlight-weak); 
     background: var(--f-color-highlight-weak); 
     border-color: var(--f-color-highlight-weak); 
 }
@@ -475,28 +483,48 @@
 /* sizes */
 
 .f-button.xs {  
+    height: var(--f-size-7);
+    padding: 0 var(--f-space-1);
+}
+
+.f-button.xs .f-text {
+    font-size: 0.75rem;
+}
+
+.f-button.sm { 
     height: var(--f-size-8);
     padding: 0 var(--f-space-2);
 }
 
-.f-button.sm { 
-    height: var(--f-size-9);
-    padding: 0 var(--f-space-3);
+.f-button.sm .f-text {
+    font-size: 0.85rem;
 }
 
 .f-button.md { 
-    height: var(--f-size-10); 
+    height: var(--f-size-9); 
     padding: 0 var(--f-space-3);
 }
 
+.f-button.md .f-text {
+    font-size: 0.95rem;
+}
+
 .f-button.lg { 
-    height: var(--f-size-13); 
+    height: var(--f-size-11); 
     padding: 0 var(--f-space-4);
 }
 
+.f-button.lg .f-text {
+    font-size: 1.1rem;
+}
+
 .f-button.xl { 
-    height: var(--f-size-15); 
+    height: var(--f-size-13); 
     padding: 0 var(--f-space-5);
+}
+
+.f-button.xl .f-text {
+    font-size: 1.3rem;
 }
 
 /* ********************************************* */

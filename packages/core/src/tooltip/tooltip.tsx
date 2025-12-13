@@ -152,7 +152,7 @@ export const Tooltip = (props: TooltipProps) => {
                 'aria-describedby': id,
             })}
 
-            {(showTooltip && !disabled) && (
+            {showTooltip && !disabled && (
                 <Portal>
                     <View
                         {...rest}
