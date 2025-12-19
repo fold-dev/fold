@@ -83,6 +83,9 @@ export const ScrollView = forwardRef((props: ScrollViewProps, ref) => {
 
         // give the browser time to repaint the scroll
         setTimeout(() => {
+            // maybe unmounted now
+            if (!scrollRef.current) return
+
             const offsetHeight = scrollRef.current.scrollHeight - scrollRef.current.scrollTop
             const isBottom = scrollRef.current.offsetHeight >= offsetHeight
             const isTop = scrollRef.current.scrollTop == 0
