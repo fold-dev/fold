@@ -22,9 +22,9 @@ export const Card = (props: CardProps) => {
         <View
             {...{ width, height, ...rest }}
             className={className}>
-            {props.header && <div className="f-card__header">{props.header}</div>}
+            {props.header && <div className="f-card__header f-row">{props.header}</div>}
             {props.children}
-            {props.footer && <div className="f-card__footer">{props.footer}</div>}
+            {props.footer && <div className="f-card__footer f-row">{props.footer}</div>}
         </View>
     )
 }

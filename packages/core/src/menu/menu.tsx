@@ -141,10 +141,20 @@ export type MenuProps = {
     width?: number | string
     closeFromParentMenuItem?: any
     isSubmenu?: boolean
+    isScrollable?: boolean
 } & CoreViewProps
 
 export const Menu = (props: MenuProps) => {
-    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParentMenuItem, style = {}, ...rest } = props
+    const {
+        disableAutoFocus,
+        variant = 'menu',
+        width,
+        isSubmenu,
+        closeFromParentMenuItem,
+        style = {},
+        isScrollable,
+        ...rest
+    } = props
     const isMenubar = variant == 'menubar'
     const role = isMenubar ? 'menubar' : 'menu'
     const menuRef = useRef(null)
@@ -161,6 +171,8 @@ export const Menu = (props: MenuProps) => {
     const className = classNames(
         {
             'f-menu': true,
+            'f-overflow-y-auto': isScrollable,
+            'f-scrollbar': isScrollable,
             'is-menubar': isMenubar,
             'f-row': isMenubar,
             'is-offscreen-x': offscreen.offscreenX && isSubmenu,

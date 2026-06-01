@@ -9,6 +9,7 @@
     --f-menu-offset: 10px;
     --f-menu-item-ix-spacing: 0.75rem;
     --f-menubar-padding: 0.25rem;
+    --f-overflow-max: 300px;
 }
 
 .f-menu {
@@ -24,6 +25,10 @@
     padding: var(--f-menu-padding) 0;
     z-index: var(--f-index-menu);
     position: relative;
+}
+
+.f-menu.f-overflow-y-auto {
+    max-height: var(--f-overflow-max);
 }
 
 .f-menu:not(.is-menubar) {
