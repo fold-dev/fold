@@ -1,9 +1,10 @@
 :root {
     --f-buttonize-opacity: 0.8;
     --f-buttonize-opacity-active: 0.6;
-    --f-buttonize-outline-size: 2px;
-    --f-buttonize-outline-size-active: 2px;
-    --f-buttonize-outline-color: var(--f-color-accent);
+    --f-buttonize-outline-size: 1px;
+    --f-buttonize-outline-size-active: 1px;
+    --f-buttonize-outline-color: var(--f-color-border-strong);
+    --f-buttonize-outline-offset: -1px;
 }
 
 /* button */
@@ -28,6 +29,7 @@
 
 .f-buttonize-outline:hover {
     cursor: pointer;
+    outline-offset: var(--f-buttonize-outline-offset);
     outline: var(--f-buttonize-outline-size) solid var(--f-buttonize-outline-color);
 }
 

@@ -318,7 +318,20 @@ export const Select = (props: SelectProps) => {
     // resets the cursor
     useEffect(() => {
         setCursor(0)
-    }, [text, visible])
+    }, [text])
+
+    // on open, jump cursor to the first selected option
+    useEffect(() => {
+        if (!visible) {
+            setCursor(0)
+            return
+        }
+        if (selected.length == 0) return
+        const selectedIndex = filteredOptions.findIndex((option) => selected.includes(option.key))
+        if (selectedIndex < 0) return
+        setCursor(selectedIndex)
+        if (as == 'default') scrollIntoView()
+    }, [visible])
 
     // manages the scroll for the virutal list
     // similar to scrollCursorIntoView()

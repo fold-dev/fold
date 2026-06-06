@@ -5,7 +5,7 @@
     --f-select-color-disabled: var(--f-color-text-weakest);
     --f-select-color-selected: var(--f-color-accent);
     --f-select-background-selected: var(--f-color-surface-strong);
-    --f-select-option-focus: var(--f-color-surface-stronger);
+    --f-select-option-focus: rgba(from var(--f-color-surface-strong) r g b / 50%);
     --f-select-option-hover: var(--f-color-surface-strong);
     --f-select-option-active: var(--f-color-surface-stronger);
     --f-select-options-height: 200px;
