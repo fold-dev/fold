@@ -475,40 +475,73 @@
     padding: 0 var(--f-space-2);
 }
 
+.f-button.xs.is-square {
+    padding: 0;
+    width: var(--f-size-8);
+}
+
 .f-button.xs .f-text {
     font-size: var(--f-font-size-xs);
 }
+
+/* sm */
 
 .f-button.sm {
     height: var(--f-size-9);
     padding: 0 var(--f-space-3);
 }
 
+.f-button.sm.is-square {
+    padding: 0;
+    width: var(--f-size-9);
+}
+
 .f-button.sm .f-text {
     font-size: var(--f-font-size-sm);
 }
+
+/* md */
 
 .f-button.md {
     height: var(--f-size-10);
     padding: 0 var(--f-space-4);
 }
 
+.f-button.md.is-square {
+    padding: 0;
+    width: var(--f-size-10);
+}
+
 .f-button.md .f-text {
     font-size: var(--f-font-size-md);
 }
+
+/* lg */
 
 .f-button.lg {
     height: var(--f-size-12);
     padding: 0 var(--f-space-5);
 }
 
+.f-button.lg.is-square {
+    padding: 0;
+    width: var(--f-size-12);
+}
+
 .f-button.lg .f-text {
     font-size: var(--f-font-size-lg);
 }
 
+/* xl */
+
 .f-button.xl {
     height: var(--f-size-14);
     padding: 0 var(--f-space-6);
+}
+
+.f-button.xl.is-square {
+    padding: 0;
+    width: var(--f-size-14);
 }
 
 .f-button.xl .f-text {
