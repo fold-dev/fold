@@ -22,7 +22,7 @@ packages/
   design/   → Design tokens via Style Dictionary (@fold-ui/design)
 ```
 
-**Tech stack:** TypeScript 4.8, React 18, Storybook 7, Jest 29, ESBuild, PostCSS, npm workspaces.
+**Tech stack:** TypeScript 5.9, React 18, Storybook 10 (react-webpack5 + SWC compiler), Jest 29, ESBuild, PostCSS, npm workspaces.
 
 ## Component Directory Structure
 

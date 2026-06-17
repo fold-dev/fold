@@ -10,11 +10,7 @@ let stories = [
 
 const config: StorybookConfig = {
     stories,
-    addons: [
-        '@storybook/addon-links', 
-        '@storybook/addon-essentials', 
-        '@storybook/addon-interactions'
-    ],
+    addons: ['@storybook/addon-webpack5-compiler-swc'],
     webpackFinal: async (config: any) => {
       config.resolve.extensions.push(".ts", ".tsx")
       return config
@@ -27,10 +23,6 @@ const config: StorybookConfig = {
     },
     docs: {
         autodocs: 'tag',
-    },
-    babel: async (options: any) => {
-        options.presets.push('@babel/preset-typescript')
-        return options
     },
     staticDirs: ['../public'],
     features: {},

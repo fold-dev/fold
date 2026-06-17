@@ -32,23 +32,21 @@ export const decorators = [
 const preview: Preview = {
     decorators,
     parameters: {
-        actions: { argTypesRegex: '^on[A-Z].*' },
         backgrounds: {
-            default: 'light',
-            values: [
-                {
+            options: {
+                default: {
                     name: 'default',
                     value: 'var(--f-color-background)',
                 },
-                {
+                highlight: {
                     name: 'highlight',
                     value: '#f0f3f5',
                 },
-                {
+                light: {
                     name: 'light',
                     value: 'var(--f-color-background)',
                 },
-            ],
+            },
         },
         controls: {
             matchers: {
@@ -56,6 +54,9 @@ const preview: Preview = {
                 date: /Date$/,
             },
         },
+    },
+    initialGlobals: {
+        backgrounds: { value: 'light' },
     },
 }
 

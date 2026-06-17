@@ -2,9 +2,9 @@ import {
     ContextMenuContext,
     DragElement,
     documentObject,
-    getDragState,
     getKey,
     useDrag,
+    useDragState,
     useEvent,
     windowObject,
 } from '@fold-ui/core'
@@ -57,7 +57,7 @@ export const TodoTask = (props: TodoTaskProps) => {
     const hasSubtasks = task.tasks ? !!task.tasks.length : false
     const {
         origin: { elementId },
-    } = getDragState('origin')
+    } = useDragState('origin')
     const [indent, setIndent] = useState(props.indent || 0)
     const [indentCache, _] = useState(props.indent || 0)
     const isSubtasksVisible = hasSubtasks && !collapsed && elementId != id && visible
