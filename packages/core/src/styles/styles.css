@@ -32,6 +32,7 @@ we don't want to use !important
 @import '../audio/audio.css';
 @import '../avatar/avatar.css';
 @import '../badge/badge.css';
+@import '../bar-chart/bar-chart.css';
 @import '../breadcrumb/breadcrumb.css';
 @import '../button/button.css';
 @import '../card/card.css';
@@ -53,6 +54,7 @@ we don't want to use !important
 @import '../input/input.css';
 @import '../kbd/kbd.css';
 @import '../layout/layout.css';
+@import '../line-chart/line-chart.css';
 @import '../list/list.css';
 @import '../menu/menu.css';
 @import '../modal/modal.css';
@@ -60,6 +62,7 @@ we don't want to use !important
 @import '../notification/notification.css';
 @import '../option/option.css';
 @import '../pagination/pagination.css';
+@import '../pie-chart/pie-chart.css';
 @import '../pill/pill.css';
 @import '../popover/popover.css';
 @import '../progress/progress.css';
