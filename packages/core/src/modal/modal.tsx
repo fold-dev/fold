@@ -9,6 +9,7 @@ export const ModalClose = (props: ModalCloseProps) => {
     return (
         <IconButton
             subtle
+            square
             size="xs"
             iconProps={{ size: 'md' }}
             {...props}

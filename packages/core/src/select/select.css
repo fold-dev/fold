@@ -3,7 +3,7 @@
     --f-select-color: var(--f-color-text-weak);
     --f-select-color-placeholder: var(--f-color-text-weakest);
     --f-select-color-disabled: var(--f-color-text-weakest);
-    --f-select-color-selected: var(--f-color-accent);
+    --f-select-color-selected: var(--f-color-text);
     --f-select-background-selected: var(--f-color-surface-strong);
     --f-select-option-focus: rgba(from var(--f-color-surface-strong) r g b / 50%);
     --f-select-option-hover: var(--f-color-surface-strong);
@@ -212,6 +212,14 @@ li.f-select-list-option-container {
 
 .f-select-container.is-static {
     z-index: var(--f-select-index);
+}
+
+/* ignore outline for static (it just looks weird) */
+
+.f-select-container.is-static:focus-within,
+.f-select-container.is-static .f-input-control:focus-within,
+.f-select-container.is-static .f-input-common:focus-within {
+    outline: none;
 }
 
 .f-select-container.is-static .f-input-control,

@@ -234,7 +234,7 @@ export const TabList = (props: TabListProps) => {
                     {renderChildren(props.children, (child: ReactElement, index) => {
                         return cloneElement(child, {
                             ...child.props,
-                            'animated': animated,
+                            'animated': child.type === Tab ? animated : undefined,
                             'selected': child.props.selected == undefined ? selected == index : child.props.selected,
                             'onSelect': () => onSelect(index),
                             'id': props.id ? `${props.id}-tab-${index}` : null,

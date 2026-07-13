@@ -42,7 +42,12 @@ export const Stat = (props: StatProps) => {
             {number != null && <Heading>{number}</Heading>}
             {(icon || descriptionTool || description) && (
                 <div className="f-row f-stat-footer">
-                    {icon && <IconLib icon={icon} />}
+                    {icon && (
+                        <IconLib
+                            icon={icon}
+                            size="sm"
+                        />
+                    )}
                     {descriptionTool}
                     {description && (
                         <Text

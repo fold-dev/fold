@@ -1,6 +1,6 @@
 :root {
     --f-avatar-border-radius: var(--f-radius-round);
-    --f-avatar-color: var(--f-color-accent);
+    --f-avatar-color: var(--f-color-text-weaker);
     --f-avatar-background-color: var(--f-color-surface-stronger);
     --f-avatar-group-overlap: -1rem;
     --f-avatar-group-overlap-small: -0.66rem;
@@ -27,6 +27,10 @@
 .f-avatar .f-text {
     color: currentColor;
     padding: 0;
+}
+
+.f-avatar .f-icon {
+    position: relative;
 }
 
 /* Sizes */

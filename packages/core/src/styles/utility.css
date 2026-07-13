@@ -211,3 +211,9 @@
 .f-text-center {
     text-align: center;
 }
+
+/* visibility */
+
+.f-hidden {
+    display: none;
+}

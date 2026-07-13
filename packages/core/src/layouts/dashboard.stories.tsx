@@ -169,7 +169,7 @@ const PageHeader = ({ title, subtitle, children }: any) => (
         bgToken="surface"
         style={{ borderBottom: '0.1rem solid var(--f-color-border)' }}>
         <View column gap={2} alignItems="flex-start">
-            <Heading as="h3" fontWeight="bold">
+            <Heading as="h3">
                 {title}
             </Heading>
             {subtitle && (
@@ -581,7 +581,7 @@ const TeamPage = () => (
                 }>
                 Members
             </SectionTitle>
-            <Table striped={false} lined>
+            <Table striped={false} lined width="100%">
                 <THead>
                     <Tr>
                         <Th>Member</Th>
@@ -593,10 +593,10 @@ const TeamPage = () => (
                 <TBody>
                     {team.map((m) => (
                         <Tr key={m.name}>
-                            <Td>
-                                <View row gap={10}>
+                            <Td align="left">
+                                <View row gap={10} justifyContent="flex-start">
                                     <Avatar size="sm" name={m.name} src={m.src} presence={m.presence as any} />
-                                    <Text fontWeight="bold">{m.name}</Text>
+                                    <Text>{m.name}</Text>
                                 </View>
                             </Td>
                             <Td>

@@ -42,7 +42,6 @@
 
 .f-line-chart__axis {
     fill: var(--f-color-text-weak);
-    font-size: 0.7rem;
 }
 
 .f-line-chart__tooltip {

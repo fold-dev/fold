@@ -79,10 +79,7 @@ export const BarChart = (props: BarChartProps) => {
         return Math.max(...counts, 0) || 1
     }, [data])
 
-    const yTicks = useMemo(
-        () => new Array(ticks).fill(null).map((_, i) => (max / (ticks - 1)) * i),
-        [max, ticks]
-    )
+    const yTicks = useMemo(() => new Array(ticks).fill(null).map((_, i) => (max / (ticks - 1)) * i), [max, ticks])
 
     const band = labels.length ? innerWidth / labels.length : innerWidth
     const groupPadding = band * 0.2

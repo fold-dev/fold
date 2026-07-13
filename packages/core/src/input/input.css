@@ -196,11 +196,13 @@ input.f-input[type='search']:not(.show-indicator)::-ms-clear {
     width: 0;
     height: 0;
 }
+
 input.f-input[type='search']:not(.show-indicator)::-ms-reveal {
     display: none;
     width: 0;
     height: 0;
 }
+
 input.f-input[type='search']:not(.show-indicator)::-webkit-search-decoration,
 input.f-input[type='search']:not(.show-indicator)::-webkit-search-cancel-button,
 input.f-input[type='search']:not(.show-indicator)::-webkit-search-results-button,

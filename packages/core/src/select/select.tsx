@@ -183,15 +183,16 @@ export const Select = (props: SelectProps) => {
     }
 
     const handleClick = (e) => {
-        if (!visible && !disabled) {
+        if (disabled) return
+        // always route focus to the tag input field on click
+        // for static/always-open tag inputs visible is permanently true,
+        // so without this clicking next to a pill never focuses the field
+        if (tagInput) focusElement(tagInputFieldRef.current)
+        if (!visible) {
             show()
             openCallback()
             // make sure to focus the right element
-            if (tagInput) {
-                focusElement(tagInputFieldRef.current)
-            } else {
-                focusElementById(popupId)
-            }
+            if (!tagInput) focusElementById(popupId)
         }
     }
 
@@ -359,6 +360,20 @@ export const Select = (props: SelectProps) => {
             openCallback()
         }
     }, [openOnMount, visible, disabled])
+
+    // static (always open): focus the input on mount
+    // small delay so any wrapping popover/portal has settled
+    useEffect(() => {
+        if (isStatic && !disabled) {
+            waitForRender(() => {
+                if (tagInput) {
+                    focusElement(tagInputFieldRef.current)
+                } else {
+                    focusElementById(popupId)
+                }
+            }, 250)
+        }
+    }, [])
 
     return (
         <View

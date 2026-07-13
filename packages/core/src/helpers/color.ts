@@ -129,11 +129,15 @@ export const lightenedHex = (hex, percent) => {
     let g = parseInt(hex.substring(2, 4), 16)
     let b = parseInt(hex.substring(4, 6), 16)
 
-    r = Math.min(255, Math.floor(r + (255 - r) * (percent / 100)))
-    g = Math.min(255, Math.floor(g + (255 - g) * (percent / 100)))
-    b = Math.min(255, Math.floor(b + (255 - b) * (percent / 100)))
+    if (isNaN(r) || isNaN(g) || isNaN(b)) return `#${hex}`
 
-    let lightenedHex = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()
+    r = Math.max(0, Math.min(255, Math.floor(r + (255 - r) * (percent / 100))))
+    g = Math.max(0, Math.min(255, Math.floor(g + (255 - g) * (percent / 100))))
+    b = Math.max(0, Math.min(255, Math.floor(b + (255 - b) * (percent / 100))))
 
-    return lightenedHex
+    const rr = r.toString(16).padStart(2, '0')
+    const gg = g.toString(16).padStart(2, '0')
+    const bb = b.toString(16).padStart(2, '0')
+
+    return `#${rr}${gg}${bb}`.toUpperCase()
 }

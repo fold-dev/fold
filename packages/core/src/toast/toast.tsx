@@ -60,6 +60,7 @@ export type ToastMessage = {
     variant?: Variant
     showDismiss?: boolean
     showProgress?: boolean
+    dontPauseOnHover?: boolean
     anchor?: ToastAnchor
     delay?: number
     toastComponent?: any
@@ -80,14 +81,15 @@ export const Toast = (props: ToastProps) => {
         variant = 'default',
         showDismiss = true,
         showProgress = false,
+        dontPauseOnHover = false,
         anchor = DEFAULT_TOAST_ANCHOR,
         delay = 3000,
         toastComponent,
         ueid,
-        paused,
         onDismiss,
         containerProps,
     } = props
+    const paused = props.paused && !dontPauseOnHover
     const className = classNames(
         {
             'f-toast': true,

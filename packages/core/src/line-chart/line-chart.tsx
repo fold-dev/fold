@@ -46,7 +46,7 @@ export type LineChartProps = {
      */
     ticks?: number
     /**
-     * Render a point on each line at every x-axis tick.
+     * Show the points on the each x axis tick
      */
     showPoints?: boolean
 } & CoreViewProps
@@ -97,10 +97,8 @@ export const LineChart = (props: LineChartProps) => {
 
     const count = useMemo(() => Math.max(...data.map((s) => s.points.length), 0), [data])
 
-    const xFor = (index: number) =>
-        MARGIN.left + (count <= 1 ? innerWidth / 2 : (innerWidth / (count - 1)) * index)
-    const yFor = (value: number) =>
-        MARGIN.top + innerHeight - ((value - min) / (max - min || 1)) * innerHeight
+    const xFor = (index: number) => MARGIN.left + (count <= 1 ? innerWidth / 2 : (innerWidth / (count - 1)) * index)
+    const yFor = (value: number) => MARGIN.top + innerHeight - ((value - min) / (max - min || 1)) * innerHeight
 
     const yTicks = useMemo(
         () => new Array(ticks).fill(null).map((_, i) => min + ((max - min) / (ticks - 1)) * i),
@@ -208,7 +206,7 @@ export const LineChart = (props: LineChartProps) => {
                                         />
                                     )}
                                     <text
-                                        className="f-line-chart__axis"
+                                        className="f-line-chart__axis f-text sm"
                                         x={MARGIN.left - 8}
                                         y={y}
                                         textAnchor="end"
@@ -228,8 +226,8 @@ export const LineChart = (props: LineChartProps) => {
                             return (
                                 <text
                                     key={i}
-                                    className="f-line-chart__axis"
-                                    x={xFor(i)}
+                                    className="f-line-chart__axis f-text sm"
+                                    x={xFor(i) - 3}
                                     y={height - 8}
                                     textAnchor="middle">
                                     {point[0]}
@@ -241,9 +239,7 @@ export const LineChart = (props: LineChartProps) => {
                     {width > 0 &&
                         data.map((series, index) => {
                             if (hidden.includes(index)) return null
-                            const line = series.points
-                                .map((p, i) => `${xFor(i)} ${yFor(p[1])}`)
-                                .join(' L ')
+                            const line = series.points.map((p, i) => `${xFor(i)} ${yFor(p[1])}`).join(' L ')
                             const areaPath =
                                 `M ${xFor(0)} ${MARGIN.top + innerHeight} ` +
                                 `L ${line} ` +
@@ -266,25 +262,29 @@ export const LineChart = (props: LineChartProps) => {
                                         fill="none"
                                         stroke={series.color}
                                     />
-                                    {showPoints &&
-                                        series.points.map((p, i) => (
-                                            <circle
-                                                key={i}
-                                                className="f-line-chart__dot"
-                                                cx={xFor(i)}
-                                                cy={yFor(p[1])}
-                                                r={3}
-                                                fill={series.color}
-                                                onMouseEnter={() =>
-                                                    setTip({
-                                                        x: xFor(i),
-                                                        y: yFor(p[1]),
-                                                        label: `${p[0]} · ${formatChartNumber(p[1])}`,
-                                                    })
-                                                }
-                                                onMouseLeave={() => setTip(null)}
-                                            />
-                                        ))}
+
+                                    {showPoints && (
+                                        <>
+                                            {series.points.map((p, i) => (
+                                                <circle
+                                                    key={i}
+                                                    className="f-line-chart__dot"
+                                                    cx={xFor(i)}
+                                                    cy={yFor(p[1])}
+                                                    r={3}
+                                                    fill={series.color}
+                                                    onMouseEnter={() =>
+                                                        setTip({
+                                                            x: xFor(i),
+                                                            y: yFor(p[1]),
+                                                            label: `${p[0]} · ${formatChartNumber(p[1])}`,
+                                                        })
+                                                    }
+                                                    onMouseLeave={() => setTip(null)}
+                                                />
+                                            ))}
+                                        </>
+                                    )}
                                 </g>
                             )
                         })}
