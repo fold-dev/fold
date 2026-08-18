@@ -68,7 +68,6 @@ export const Range = (props: RangeProps) => {
             <input
                 type="range"
                 ref={rangeRef}
-                role="sider"
                 step={step}
                 min={min}
                 max={max}
@@ -80,7 +79,7 @@ export const Range = (props: RangeProps) => {
                 aria-valuetext={handleTextValue()}
                 aria-labelledby={labelId}
                 aria-orientation="horizontal"
-                onChange={handleChange}
+                onInput={handleChange}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 {...inputProps}

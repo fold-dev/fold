@@ -16,7 +16,7 @@
     --f-date-cell-selected: var(--f-color-accent);
     --f-date-cell-selected-background: rgba(from var(--f-color-accent) r g b / 10%);
     --f-date-cell-selected-space: 2px;
-    --f-date-cell-today: var(--f-color-accent);
+    --f-date-cell-today: var(--f-color-highlight);
     --f-date-cell-pending-opacity: 0.25;
 }
 

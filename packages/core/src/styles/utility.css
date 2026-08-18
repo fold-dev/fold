@@ -217,3 +217,13 @@
 .f-hidden {
     display: none;
 }
+
+/* general */
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}

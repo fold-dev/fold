@@ -1,7 +1,7 @@
 :root {
     --f-options-padding: 2px;
     --f-options-spacing: 0;
-    --f-options-border-radius: var(--f-radius);
+    --f-options-border-radius: var(--f-radius-full);
     --f-options-background-color: var(--f-color-surface-stronger);
     --f-options-active-background-color: var(--f-color-surface);
     --f-option-color: var(--f-color-text-weak);
