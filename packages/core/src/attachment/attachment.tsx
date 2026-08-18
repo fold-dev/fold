@@ -196,6 +196,7 @@ export const Attachment = (props: AttachmentProps) => {
             'f-attachment': true,
             'is-error': error,
             'is-loading': loading,
+            'has-hero': heroPoster,
         },
         [props.className, size]
     )
@@ -228,12 +229,14 @@ export const Attachment = (props: AttachmentProps) => {
                             thickness={4}
                         />
                     )}
+
                     {poster && !loading && (
                         <Image
                             loader
                             src={poster}
                         />
                     )}
+
                     {!poster && !loading && (
                         <IconLib
                             icon={icon}
@@ -262,17 +265,17 @@ export const Attachment = (props: AttachmentProps) => {
                                 className="f-attachment__text-label">
                                 <span>{label}</span>
                             </Text>
+
                             {mime && (
                                 <Text
-                                    size="sm"
                                     as="span"
                                     className="f-attachment__text-meta">
                                     <span>{windowObject[F_ATTACHMENT_MIME_TYPES].DESCRIPTION[mime]}</span>
                                 </Text>
                             )}
+
                             {!!filesize && (
                                 <Text
-                                    size="sm"
                                     as="span"
                                     className="f-attachment__text-meta">
                                     {bytesToSize(filesize)}

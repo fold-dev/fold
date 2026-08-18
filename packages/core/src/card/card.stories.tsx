@@ -35,7 +35,7 @@ export const Usage = () => (
     <Card
         width={300}
         footer={
-            <>
+            <View width="100%">
                 <Divider />
                 <ButtonGroup
                     p={15}
@@ -44,7 +44,7 @@ export const Usage = () => (
                     <Button>Book Now</Button>
                     <Button>Add to Wishlist</Button>
                 </ButtonGroup>
-            </>
+            </View>
         }
         header={
             <Image

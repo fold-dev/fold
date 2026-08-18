@@ -30,6 +30,7 @@ import {
     renderChildren,
     renderWithProps,
 } from '../helpers'
+import { useResize } from '../hooks/resize.hook'
 import { IconLib } from '../icon'
 import { CoreViewProps, Size } from '../types'
 
@@ -141,16 +142,36 @@ export type MenuProps = {
     width?: number | string
     closeFromParentMenuItem?: any
     isSubmenu?: boolean
+    /**
+     * Enables vertical overflow scrolling and scroll controls. Submenus inside a scrollable menu are clipped by
+     * the scroll container.
+     */
+    isScrollable?: boolean
+    scrollJump?: number
 } & CoreViewProps
 
 export const Menu = (props: MenuProps) => {
-    const { disableAutoFocus, variant = 'menu', width, isSubmenu, closeFromParentMenuItem, style = {}, ...rest } = props
+    const {
+        disableAutoFocus,
+        variant = 'menu',
+        width,
+        isSubmenu,
+        closeFromParentMenuItem,
+        style = {},
+        isScrollable,
+        scrollJump = 120,
+        ...rest
+    } = props
     const isMenubar = variant == 'menubar'
     const role = isMenubar ? 'menubar' : 'menu'
     const menuRef = useRef(null)
+    const scrollRef = useRef(null)
     const focusRef = useRef(null)
     const menuItemRefs = useRef([])
     const [offscreen, setOffscreen] = useState<any>({})
+    const [overflowStart, setOverflowStart] = useState(false)
+    const [overflowEnd, setOverflowEnd] = useState(false)
+    const dimensions = useResize(scrollRef.current)
     const styles = useMemo(() => {
         return {
             ...style,
@@ -161,6 +182,7 @@ export const Menu = (props: MenuProps) => {
     const className = classNames(
         {
             'f-menu': true,
+            'is-scrollable': isScrollable,
             'is-menubar': isMenubar,
             'f-row': isMenubar,
             'is-offscreen-x': offscreen.offscreenX && isSubmenu,
@@ -170,6 +192,30 @@ export const Menu = (props: MenuProps) => {
     )
 
     const closeFromMenu = () => (closeFromParentMenuItem ? closeFromParentMenuItem() : null)
+
+    const handleScrollLess = () => (scrollRef.current.scrollTop -= scrollJump)
+
+    const handleScrollMore = () => (scrollRef.current.scrollTop += scrollJump)
+
+    const toggleScrollButtonVisibility = (element) => {
+        setOverflowStart(element.scrollTop > 0)
+        setOverflowEnd(element.scrollTop < element.scrollHeight - element.offsetHeight - 1)
+    }
+
+    const calculateScroll = () => {
+        if (!isScrollable || !scrollRef.current) {
+            setOverflowStart(false)
+            setOverflowEnd(false)
+            return
+        }
+
+        if (scrollRef.current.offsetHeight < scrollRef.current.scrollHeight) {
+            toggleScrollButtonVisibility(scrollRef.current)
+        } else {
+            setOverflowStart(false)
+            setOverflowEnd(false)
+        }
+    }
 
     const firstMenuItem = () => menuItemRefs.current[0]
 
@@ -225,7 +271,9 @@ export const Menu = (props: MenuProps) => {
     useLayoutEffect(() => {
         // Get the number of child nodes into cache
         // We'll use these to iterate over for focus
-        const childNodes = menuRef.current.querySelectorAll(':scope > span > a:not(.is-disabled)[role="menuitem"]')
+        const childNodes = (scrollRef.current || menuRef.current).querySelectorAll(
+            ':scope > span > a:not(.is-disabled)[role="menuitem"]'
+        )
 
         // Set as an array
         menuItemRefs.current = [...childNodes]
@@ -234,9 +282,33 @@ export const Menu = (props: MenuProps) => {
         setOffscreen(isOffScreen(menuRef.current))
     }, [])
 
+    useLayoutEffect(() => {
+        calculateScroll()
+    }, [dimensions, isScrollable, props.children])
+
     useEffect(() => {
         if (!disableAutoFocus) setFocusToFirstMenuitem()
     }, [disableAutoFocus])
+
+    const children = renderChildren(props.children, (child: ReactElement, index) => {
+        if (child) {
+            if (child.type == MenuItem) {
+                return cloneElement(child, {
+                    ...child.props,
+                    setFocusToPreviousMenuitem,
+                    setFocusToNextMenuitem,
+                    setFocusToFirstMenuitem,
+                    setFocusToLastMenuitem,
+                    setFocusToCache,
+                    closeFromMenu,
+                })
+            } else {
+                return child
+            }
+        } else {
+            return null
+        }
+    })
 
     return (
         <View
@@ -247,25 +319,50 @@ export const Menu = (props: MenuProps) => {
             role={role}
             style={styles}
             onKeyDown={handleKeyDown}>
-            {renderChildren(props.children, (child: ReactElement, index) => {
-                if (child) {
-                    if (child.type == MenuItem) {
-                        return cloneElement(child, {
-                            ...child.props,
-                            setFocusToPreviousMenuitem,
-                            setFocusToNextMenuitem,
-                            setFocusToFirstMenuitem,
-                            setFocusToLastMenuitem,
-                            setFocusToCache,
-                            closeFromMenu,
-                        })
-                    } else {
-                        return child
-                    }
-                } else {
-                    return null
-                }
-            })}
+            {isScrollable ? (
+                <>
+                    {overflowStart && (
+                        <div className="f-menu__scroll-button is-start f-row">
+                            <Button
+                                size="xs"
+                                border="none"
+                                aria-label="Scroll menu up"
+                                shadow="var(--f-shadow-lg)"
+                                onClick={handleScrollLess}>
+                                <IconLib
+                                    icon="chevron-up"
+                                    size="sm"
+                                />
+                            </Button>
+                        </div>
+                    )}
+
+                    <div
+                        ref={scrollRef}
+                        className="f-menu__scroll f-scrollbar"
+                        onScroll={(e) => toggleScrollButtonVisibility(e.currentTarget)}>
+                        {children}
+                    </div>
+
+                    {overflowEnd && (
+                        <div className="f-menu__scroll-button is-end f-row">
+                            <Button
+                                size="xs"
+                                border="none"
+                                aria-label="Scroll menu down"
+                                shadow="var(--f-shadow-lg)"
+                                onClick={handleScrollMore}>
+                                <IconLib
+                                    icon="chevron-down"
+                                    size="sm"
+                                />
+                            </Button>
+                        </div>
+                    )}
+                </>
+            ) : (
+                children
+            )}
         </View>
     )
 }

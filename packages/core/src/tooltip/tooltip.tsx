@@ -1,4 +1,13 @@
-import React, { Children, ReactElement, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, {
+    Children,
+    cloneElement,
+    forwardRef,
+    ReactElement,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+} from 'react'
 import { Portal, View, useId } from '..'
 import {
     blurElement,
@@ -9,7 +18,8 @@ import {
     getBoundingClientRect,
     getKey,
     getPopoutClass,
-    renderWithProps,
+    mergeRefs,
+    renderChildren,
 } from '../helpers'
 import { useEvent } from '../hooks/event.hook'
 import { useTimer } from '../hooks/timer.hook'
@@ -54,7 +64,7 @@ export type TooltipProps = {
     onDismiss?: any
 } & CoreViewProps
 
-export const Tooltip = (props: TooltipProps) => {
+export const Tooltip = forwardRef((props: TooltipProps, ref) => {
     const {
         arrow = true,
         text,
@@ -65,6 +75,7 @@ export const Tooltip = (props: TooltipProps) => {
         delay = 500,
         contentProps = {},
         onDismiss,
+        id: targetId,
         ...rest
     } = props
     const childRef = useRef(null)
@@ -147,10 +158,14 @@ export const Tooltip = (props: TooltipProps) => {
 
     return (
         <>
-            {renderWithProps(props.children, {
-                'ref': childRef,
-                'aria-describedby': id,
-            })}
+            {renderChildren(props.children, (child) =>
+                cloneElement(child, {
+                    ...child.props,
+                    'ref': mergeRefs([child.ref, childRef, ref]),
+                    'id': targetId || child.props.id,
+                    'aria-describedby': id,
+                })
+            )}
 
             {showTooltip && !disabled && (
                 <Portal>
@@ -171,4 +186,4 @@ export const Tooltip = (props: TooltipProps) => {
             )}
         </>
     )
-}
+})

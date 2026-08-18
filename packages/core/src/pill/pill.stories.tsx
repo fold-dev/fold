@@ -97,7 +97,7 @@ export const WithPrefixAndSuffix = () => (
                     size="sm"
                 />
             }>
-            Johannes du Plessis
+            John Seymour
         </Pill>
     </Stack>
 )

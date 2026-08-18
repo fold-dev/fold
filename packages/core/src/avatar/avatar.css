@@ -1,7 +1,7 @@
 :root {
     --f-avatar-border-radius: var(--f-radius-round);
-    --f-avatar-color: var(--f-color-accent);
-    --f-avatar-background-color: var(--f-color-surface-strong);
+    --f-avatar-color: var(--f-color-text-weaker);
+    --f-avatar-background-color: var(--f-color-surface-stronger);
     --f-avatar-group-overlap: -1rem;
     --f-avatar-group-overlap-small: -0.66rem;
     --f-avatar-group-spacing: 1px;
@@ -9,7 +9,7 @@
 }
 
 .f-avatar {
-    background-color: var(--f-avatar-background-color);
+    background: var(--f-avatar-background-color);
     color: var(--f-avatar-color);
     border-radius: var(--f-avatar-border-radius);
     transition: opacity 0.2s, border 0.1s;
@@ -27,6 +27,11 @@
 .f-avatar .f-text {
     color: currentColor;
     padding: 0;
+    white-space: nowrap;
+}
+
+.f-avatar .f-icon {
+    position: relative;
 }
 
 /* Sizes */

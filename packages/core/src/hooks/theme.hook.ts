@@ -3,13 +3,13 @@ import { documentObject, windowObject } from '../helpers'
 import { useObserver } from './observer.hook'
 import { useStorage } from './storage.hook'
 
-export const __F_THEME_STORAGE = '__F_THEME_STORAGE'
+export const THEME_STORAGE = 'THEME_STORAGE'
 export type AppSystemMode = 'light' | 'dark'
 
 export function useTheme() {
     const getRootElement = () => {
         return documentObject.documentElement
-        return documentObject.getElementsByTagName('html')[0]
+        //return documentObject.getElementsByTagName('html')[0]
     }
 
     const mutationRecord = useObserver(getRootElement())
@@ -24,16 +24,16 @@ export function useTheme() {
 
     const setTheme = (theme: string) => {
         getRootElement().setAttribute('data-theme', theme)
-        setStorage(__F_THEME_STORAGE, theme)
+        setStorage(THEME_STORAGE, theme)
     }
 
     const removeTheme = (theme: string) => {
         getRootElement().removeAttribute('data-theme')
-        deleteStorage(__F_THEME_STORAGE)
+        deleteStorage(THEME_STORAGE)
     }
 
     const getStoredTheme = () => {
-        return getStorage(__F_THEME_STORAGE)
+        return getStorage(THEME_STORAGE)
     }
 
     const getSystemTheme = (): 'light' | 'dark' => {

@@ -253,6 +253,7 @@ export const getKey = (e) => {
     const { shiftKey, ctrlKey, altKey, metaKey } = e
 
     return {
+        isFind: e.key == 'f' && (metaKey || ctrlKey),
         isBackspace: key == 'Backspace',
         isEscape: key == 'Escape',
         isSpace: key == ' ',

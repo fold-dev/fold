@@ -44,6 +44,7 @@ export type PopoverProps = {
     __blockDismissEvent?: boolean
     focusTrap?: boolean
     preventFocusScroll?: boolean
+    refocusOnDismiss?: boolean
     targetId?: string
     fixPosition?: { top: number; left: number }
     arrow?: boolean
@@ -65,6 +66,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         __blockDismissEvent = false,
         focusTrap = true,
         preventFocusScroll,
+        refocusOnDismiss = true,
         targetId,
         fixPosition,
         anchorProps = {},
@@ -97,7 +99,7 @@ export const Popover = forwardRef((props: PopoverProps, ref) => {
         [props.className, getPopoutClass(finalAnchor)]
     )
 
-    const dismissPopover = (e, refocus = true) => {
+    const dismissPopover = (e, refocus = refocusOnDismiss) => {
         if (__blockDismissEvent) {
             e.preventDefault()
             e.stopPropagation()

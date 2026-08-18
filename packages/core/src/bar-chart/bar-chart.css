@@ -1,0 +1,47 @@
+.f-bar-chart {
+    width: 100%;
+}
+
+.f-bar-chart__chart {
+    display: block;
+}
+
+.f-bar-chart__swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: var(--f-radius);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.f-bar-chart__bar {
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.f-bar-chart__bar:hover {
+    opacity: 0.85;
+}
+
+.f-bar-chart__grid {
+    stroke: var(--f-color-border);
+    stroke-width: 1;
+}
+
+.f-bar-chart__axis {
+    fill: var(--f-color-text-weak);
+    font-size: 0.7rem;
+}
+
+.f-bar-chart__tooltip {
+    position: absolute;
+    transform: translateX(-50%) translateY(-100%);
+    background: var(--f-color-surface-inverse);
+    color: var(--f-color-text-on-color);
+    border-radius: var(--f-radius);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
+}

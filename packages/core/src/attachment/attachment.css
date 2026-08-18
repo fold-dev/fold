@@ -9,8 +9,9 @@
     --f-attachment-thumb-background: var(--f-color-surface);
     --f-attachment-thumb-size: var(--f-size-28);
     --f-attachment-thumb-overlay: var(--f-color-overlay);
-    --f-attachment-padding: var(--f-size-2);
+    --f-attachment-padding: var(--f-size-1);
     --f-attachment-spacing: var(--f-size-2);
+    --f-attachment-shadow: var(--f-shadow-sm);
 }
 
 .f-attachment {
@@ -25,10 +26,12 @@
     border-radius: var(--f-attachment-border-radius);
     padding: var(--f-attachment-padding);
     background: var(--f-attachment-background);
+    box-shadow: var(--f-attachment-shadow);
 }
 
 .f-attachment__content {
     width: 100%;
+    height: 100%;
     padding: 0;
     margin: 0;
     gap: var(--f-attachment-spacing);
@@ -54,7 +57,7 @@
 
 .f-attachment__hero-poster {
     width: 100% !important;
-    margin-bottom: var(--f-size-2);
+    margin-bottom: var(--f-attachment-padding);
     position: relative;
 }
 
@@ -68,10 +71,6 @@
     overflow: hidden;
     flex: 1;
     align-items: flex-start;
-}
-
-.f-attachment.sm .f-attachment__text * + * {
-    margin-top: -0.25rem;
 }
 
 .f-attachment__text-label {
@@ -91,8 +90,10 @@
     max-width: 100%;
     font-weight: var(--f-font-weight-normal);
     color: var(--f-color-text-weakest);
+    margin-top: -0.15rem;
 }
 
+.f-attachment__text-meta.f-text,
 .f-attachment__text-meta span {
     display: inline-block;
     width: 100%;
@@ -101,6 +102,7 @@
     white-space: nowrap;
     color: var(--f-color-text-weaker);
     font-weight: var(--f-font-weight-normal);
+    font-size: var(--f-font-size-xs);
 }
 
 /* error */
@@ -118,13 +120,13 @@
 /* xs & xl not supported yet */
 
 .f-attachment.sm .f-attachment__icon {
-    width: var(--f-size-12);
-    height: var(--f-size-12);
+    width: var(--f-size-13);
+    height: var(--f-size-13);
 }
 
 .f-attachment.md .f-attachment__icon {
-    width: var(--f-size-14);
-    height: var(--f-size-14);
+    width: var(--f-size-15);
+    height: var(--f-size-15);
 }
 
 .f-attachment.lg .f-attachment__icon {

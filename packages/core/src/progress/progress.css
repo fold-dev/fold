@@ -1,6 +1,6 @@
 :root {
     --f-progress-background: var(--f-color-surface-strong);
-    --f-progress-active: var(--f-color-surface-stronger);
+    --f-progress-active: var(--f-color-accent);
     --f-progress-radius: var(--f-radius);
     --f-progress-subtle-padding: var(--f-space-1);
     --f-progress-subtle-opacity: 0.2;

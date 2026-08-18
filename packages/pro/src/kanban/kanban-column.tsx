@@ -5,10 +5,10 @@ import {
     classNames,
     dispatchDragEvent,
     documentObject,
-    getDragState,
     getKey,
     useDrag,
     useDragEvent,
+    useDragState,
     useEvent,
     waitForRender,
     windowObject,
@@ -69,7 +69,7 @@ export const KanbanColumn = (props: KanbanColumnProps) => {
         'f-col': true,
         'is-collapsed': collapsed,
     })
-    const { target } = getDragState('target')
+    const { target } = useDragState('target')
 
     const handleCardAdd = (value: string) => {
         onCardAdd({

@@ -34,7 +34,7 @@
 
 .f-badge .f-badge__text {
     margin: 0;
-    padding: 0 var(--f-space-2);
+    padding: 0 0.325rem;
     color: currentColor;
     display: inline-block;
 }
@@ -162,7 +162,7 @@
 .f-badge.xs {
     padding: 0;
     font-weight: var(--f-font-weight-semibold);
-    height: var(--f-size-4);
+    height: calc(var(--f-size-4) + 0.125rem);
 }
 
 .f-badge.sm {

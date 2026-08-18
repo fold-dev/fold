@@ -27,7 +27,7 @@ export const ListButton = (props: ListButtonProps) => {
                     border="none">
                     <MenuOptionGroup
                         onChange={(optionValue) => {
-                            const list = options.findIndex((item) => item.value == optionValue)
+                            const list = options.findIndex((item :any) => item.value == optionValue)
                             onChange(list)
                             hide()
                         }}

@@ -9,6 +9,8 @@
     --f-menu-offset: 10px;
     --f-menu-item-ix-spacing: 0.75rem;
     --f-menubar-padding: 0.25rem;
+    --f-overflow-max: 300px;
+    --f-menu-scroll-button-padding: var(--f-size-5);
 }
 
 .f-menu {
@@ -24,6 +26,44 @@
     padding: var(--f-menu-padding) 0;
     z-index: var(--f-index-menu);
     position: relative;
+}
+
+.f-menu.is-scrollable {
+    max-height: var(--f-overflow-max);
+    overflow: hidden;
+    padding: 0;
+}
+
+.f-menu__scroll {
+    max-height: var(--f-overflow-max);
+    overflow-y: auto;
+    padding: var(--f-menu-padding) 0;
+    scroll-behavior: smooth;
+}
+
+.f-menu__scroll-button {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.f-menu__scroll-button.is-start {
+    top: 0;
+    padding-bottom: var(--f-menu-scroll-button-padding);
+    background: linear-gradient(to bottom, var(--f-menu-background-color) 50%, transparent 100%);
+}
+
+.f-menu__scroll-button.is-end {
+    bottom: 0;
+    padding-top: var(--f-menu-scroll-button-padding);
+    background: linear-gradient(to top, var(--f-menu-background-color) 50%, transparent 100%);
+}
+
+.f-menu__scroll-button .f-button {
+    max-width: 5rem;
+    width: 60%;
+    min-width: 3rem;
 }
 
 .f-menu:not(.is-menubar) {

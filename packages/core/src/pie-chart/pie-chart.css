@@ -1,0 +1,28 @@
+.f-pie-chart {
+    width: fit-content;
+}
+
+.f-pie-chart__chart {
+    display: block;
+    overflow: visible;
+}
+
+.f-pie-chart__slice {
+    stroke: var(--f-color-surface);
+    stroke-width: 2;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.f-pie-chart__swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: var(--f-radius);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.f-pie-chart__legend {
+    user-select: none;
+    transition: opacity 0.15s ease;
+}
