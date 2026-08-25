@@ -61,12 +61,17 @@
     background-color: var(--f-cropper-background-color);
     margin-bottom: var(--f-space-5);
     flex: 1;
+    min-height: 0;
     width: 100%;
 }
 
 .f-cropper__canvas canvas {
+    display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    touch-action: none;
 }
 
 .f-cropper__tools {

@@ -17,7 +17,10 @@ export const useResize = (el: HTMLElement) => {
     useLayoutEffect(() => {
         if (!el) return
 
-        new ResizeObserver(observe).observe(el)
+        const observer = new ResizeObserver(observe)
+        observer.observe(el)
+
+        return () => observer.disconnect()
     }, [el])
 
     return box
