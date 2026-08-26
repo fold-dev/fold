@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import { Logo, LogoSolid } from './logo'
+import { Logo, LogoOutline } from './logo'
 
 describe('Logo Component', () => {
-    test('renders as solid version', () => {
-        const { baseElement } = render(<LogoSolid />)
+    test('renders as outline version', () => {
+        const { baseElement } = render(<LogoOutline />)
         expect(baseElement).toBeInTheDocument()
     })
 
