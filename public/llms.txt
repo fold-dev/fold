@@ -1,0 +1,16 @@
+# Fold UI
+
+> A TypeScript and React UI kit with Core components and a shared Design token system.
+
+Use these generated references as the source of truth for package setup, component props, examples, CSS variables, and design tokens. Pro is intentionally excluded while its APIs are under active development.
+
+## Documentation
+
+- [Core components](./llms-core.txt): Component descriptions, prop tables, CSS variables, and examples for `@fold-ui/core`.
+- [Design tokens](./llms-design.txt): Resolved tokens and theming guidance for `@fold-ui/design`.
+- [Complete reference](./llms-full.txt): Core and Design combined for clients with large context windows.
+
+## Optional
+
+- [Fold documentation](https://fold-ui.com/docs): Human guides and interactive component examples.
+- [GitHub repository](https://github.com/fold-ui/fold): Source code and issue tracker.
