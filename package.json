@@ -49,6 +49,7 @@
         "dev": "npm --workspace @fold-ui/core run watch:styles | npm --workspace @fold-ui/core run watch | npm --workspace @fold-ui/pro run watch:styles | npm --workspace @fold-ui/pro run watch | npm run storybook | npm --workspace @fold-ui/design run watch",
         "storybook": "storybook dev -p 6006",
         "storybook:build": "npm --workspace @fold-ui/design run build:prod && npm --workspace @fold-ui/core run build:prod && npm --workspace @fold-ui/pro run build:prod && storybook build -c .storybook -o storybook-static",
+        "build:llms": "npm --workspace @fold-ui/design run build:prod && node ./scripts/llms/build.mjs --output-dir ../website/public",
         "build:docs:core": "ts-node ./scripts/docgen/build.ts --path=./packages/core/src",
         "build:docs:pro": "ts-node ./scripts/docgen/build.ts --path=./packages/pro/src",
         "build:docs": "npm run build:docs:core && npm run build:docs:pro",
