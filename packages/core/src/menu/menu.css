@@ -3,7 +3,7 @@
     --f-menu-padding: var(--f-space-1);
     --f-menu-background-color: var(--f-color-surface);
     --f-menu-border-color: var(--f-color-border);
-    --f-menu-border-radius: var(--f-radius-lg);
+    --f-menu-border-radius: var(--f-radius);
     --f-menubar-item-padding: var(--f-space-2);
     --f-menu-item-font-weight: var(--f-font-weight-normal);
     --f-menu-offset: 10px;
