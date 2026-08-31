@@ -3,7 +3,7 @@
     --f-pill-label-padding: 0 var(--f-space-2);
     --f-pill-buffer-icon: var(--f-space-1);
     --f-pill-border-width: 1px;
-    --f-pill-border-radius: var(--f-radius-full);
+    --f-pill-border-radius: var(--f-radius);
     --f-pill-border-color: var(--f-color-border);
     --f-pill-color: var(--f-color-text);
     --f-pill-color-subtle: var(--f-color-text-weak);

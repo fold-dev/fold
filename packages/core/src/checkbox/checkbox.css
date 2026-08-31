@@ -1,5 +1,5 @@
 :root {
-    --f-checkbox-border-radius: var(--f-radius);
+    --f-checkbox-border-radius: var(--f-radius-xs);
     --f-checkbox-border-color: var(--f-color-border);
     --f-checkbox-border-color-hover: var(--f-color-border-strong);
     --f-checkbox-background-color: var(--f-color-surface);
