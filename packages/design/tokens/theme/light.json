@@ -5,10 +5,10 @@
         "color": {
             "background": { "value": "{color.base.50}" },
             "accent": {
-                " ": { "value": "{color.accent.500}" },
-                "subtle": { "value": "{color.accent.300}" },
-                "text": { "value": "{color.accent.100}" },
-                "weak": { "value": "{color.accent.50}" }
+                " ": { "value": "{color.accent.800}" },
+                "subtle": { "value": "{color.accent.600}" },
+                "text": { "value": "{color.accent.200}" },
+                "weak": { "value": "{color.accent.100}" }
             },
             "success": {
                 " ": { "value": "{color.teal.400}" },
@@ -48,10 +48,10 @@
             },
             "text": {
                 " ": { "value": "{color.base.900}" },
-                "weak": { "value": "{color.base.700}" },
+                "weak": { "value": "{color.base.650}" },
                 "weaker": { "value": "{color.base.500}" },
                 "weakest": { "value": "{color.base.400}" },
-                "link": { "value": "{color.accent.500}" },
+                "link": { "value": "{color.accent.800}" },
                 "on-color": { "value": "{color.white}" }
             },
             "surface": {
