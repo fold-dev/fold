@@ -3,7 +3,7 @@
         "radius": { "value": "{radius.default}" },
         "focus": { "value": "2px solid {color.accent.450}" },
         "color": {
-            "overlay": { "value": "oklch(30% 0.0175 var(--f-hue) / 0.5)" },
+            "overlay": { "value": "oklch(30% 0.0175 300 / 0.5)" },
             "background": { "value": "{color.base.50}" },
             "accent": {
                 " ": { "value": "{color.accent.800}" },
