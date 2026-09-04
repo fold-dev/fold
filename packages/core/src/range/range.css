@@ -1,6 +1,6 @@
 :root {
     --f-range-border-radius: var(--f-radius-full);
-    --f-range-background: var(--f-color-surface-stronger);
+    --f-range-background: var(--f-color-surface-strong);
     --f-range-thumb-shadow: var(--f-shadow-base);
     --f-range-thumb-border-radius: var(--f-radius-full);
     --f-range-thumb-background-color: var(--f-color-accent);

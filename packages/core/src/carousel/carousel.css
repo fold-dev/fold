@@ -2,7 +2,7 @@
     --f-carousel-radius: var(--f-radius);
     --f-carousel-pill-radius: var(--f-radius);
     --f-carousel-pill-color-active: var(--f-color-accent);
-    --f-carousel-pill-color-inactive: var(--f-color-surface-stronger);
+    --f-carousel-pill-color-inactive: var(--f-color-surface-strong);
     --f-carousel-pills-spacing: var(--f-space-1);
     --f-carousel-pills-padding: var(--f-space-2);
     --f-carousel-pill-height-inactive: var(--f-size-3);
