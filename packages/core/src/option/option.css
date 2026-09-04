@@ -2,7 +2,7 @@
     --f-options-padding: 2px;
     --f-options-spacing: 0;
     --f-options-border-radius: var(--f-radius);
-    --f-options-background-color: var(--f-color-surface-stronger);
+    --f-options-background-color: var(--f-color-surface-strong);
     --f-options-active-background-color: var(--f-color-surface);
     --f-option-color: var(--f-color-text-weak);
     --f-option-disabled-color: var(--f-color-text-weakest);

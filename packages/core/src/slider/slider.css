@@ -1,7 +1,7 @@
 :root {
     --f-slider-marker: var(--f-color-surface);
     --f-slider-border-radius: var(--f-radius-full);
-    --f-slider-background: var(--f-color-surface-stronger);
+    --f-slider-background: var(--f-color-surface-strong);
     --f-slider-fill-background: var(--f-color-accent);
     --f-slider-handle-border-radius: var(--f-radius-full);
     --f-slider-handle-background-color: var(--f-color-accent);

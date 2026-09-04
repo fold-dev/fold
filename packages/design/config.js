@@ -120,21 +120,21 @@ const format = {
 
 const oklchToHex = (oklchStr) => {
     try {
-      const match = oklchStr.match(/oklch\(([^)]+)\)/)
+        const match = oklchStr.match(/oklch\(([^)]+)\)/)
 
-      if (!match) {
-        throw new Error("Invalid OKLCH format")
-      }
-  
-      const [l, c, h] = match[1].split(/\s+/).map(Number)
-      const hex = chroma.oklch(l, c, h).hex()
+        if (!match) {
+            throw new Error('Invalid OKLCH format')
+        }
 
-      return hex
+        const [l, c, h] = match[1].split(/\s+/).map(Number)
+        const hex = chroma.oklch(l, c, h).hex()
+
+        return hex
     } catch (error) {
-      console.error("Error converting OKLCH string to HEX:", error);
-      return null
+        console.error('Error converting OKLCH string to HEX:', error)
+        return null
     }
-  }
+}
 
 const files = fs
     .readdirSync(dir)
@@ -156,13 +156,11 @@ module.exports = {
             type: `value`,
             transitive: true,
             matcher: (token) => token.attributes.category == 'color',
-            transformer: (token) => token.value.includes('oklch') ? oklchToHex(token.value) : chroma(token.value).hex(),
-            // this keeps the oklch value
-            // transformer: (token) => {
-            //     if (token.value.includes('oklch')) return token.value
-            //     const [l, c, h] = chroma(token.value).oklch()
-            //     return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${isNaN(h) ? 0 : h.toFixed(1)})`
-            // },
+            transformer: (token) => {
+                if (token.value.includes('oklch')) return token.value
+                const [l, c, h] = chroma(token.value).oklch()
+                return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${isNaN(h) ? 0 : h.toFixed(1)})`
+            },
         },
         'color/css': Object.assign({}, StyleDictionary.transform[`color/css`], {
             transitive: true,

@@ -154,7 +154,7 @@
     --f-checkbox-alt-active-background-color: var(--f-color-accent-weak);
     --f-checkbox-alt-active-border-color: var(--f-color-accent);
     --f-checkbox-alt-active-color: var(--f-color-accent);
-    --f-checkbox-alt-disabled-background-color: var(--f-color-surface-stronger);
+    --f-checkbox-alt-disabled-background-color: var(--f-color-surface-strong);
     --f-checkbox-alt-disabled-border-color: var(--f-color-border);
     --f-checkbox-alt-disabled-color: var(--f-color-border);
 }

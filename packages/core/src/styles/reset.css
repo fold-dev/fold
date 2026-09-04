@@ -50,4 +50,6 @@ img {
 
 :root {
     --f-outline-offset: 0px;
+    --f-hue: 300;
+    --f-accent-hue: 300;
 }
